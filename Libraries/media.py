@@ -54,10 +54,10 @@ media_list = {
     "chocolate_agar": {
         "name": "Chocolate agar",
         "supplier": "VWR",
-        "catalog_number": "90006-202",
+        "catalog_number": "89407-118", #"90006-202" for pack of 100
         "distribution": ["premade"],
         "premade_plate_cost": 0000,  # cost per box of premade plates
-        "plates_per_box": 100  # number of plates per box
+        "plates_per_box": 10  # number of plates per box
     },
 
     "cin_agar": {
@@ -319,9 +319,28 @@ media_list = {
         "distribution": ["plate", "slant"],
     },
 
+    "tributyrin": {
+        "name": "Tributyruin (add-in)",
+        "supplier": "VWR",
+        "catolog_number": "IC10311180",
+        "cost_per_ml": 0.0,  
+        "distribution": ["plate", "slant"],
+    },
+
+    "tributyrin_agar_base":{
+        "name": "Tributyruin Agar Base",
+        "supplier": "VWR",
+        "catolog_number": "61000-694",
+        "cost_per_ml": 0.0,  
+        "distribution": ["plate", "slant"],
+    },
+
     "tsa": {
         "name": "Tryptic Soy Agar (TSA)",
-        "distribution": ["premade"],
+        "supplier": "VWR",
+        "catolog_number": "89405-202", #cat_num for powder ##catalog_number for premade plates 101205-688
+        "cost_per_ml": 0.0,  
+        "distribution": ["premade", "plate", "slant", "deep"],
         "premade_plate_cost": 24.15,  # cost per box of premade TSA plates
         "plates_per_box": 10  # number of plates per box
     },
@@ -340,9 +359,19 @@ media_list = {
 
     "xld_plate": { #xld plates premade 100 plates 161.63
         "name": "Xylose Lysine Deoxycholate (XLD) Plates",
+        "supplier": "VWR",
+        "catalog_number": "90006-218",
         "distribution": ["premade"],
         "premade_plate_cost": 161.63,  # cost per box of premade XLD plates
         "plates_per_box": 100
+    },
+
+    "ym_plus_nacl": {
+        "name": "YM + NaCl",
+        "supplier": "VWR",
+        "catolog_number": "90003-874", 
+        "cost_per_ml": 0.0,  
+        "distribution": ["plate", "slant", "deep"],
     }
 }
 
