@@ -1,0 +1,114 @@
+
+{
+    "experiments": {
+        "experiment_1.1": {
+            "experiment_name": "1-1 Glo Germ Hand Washing Education System",
+            "bacteria": {},
+            "media": {},
+            "supplies": {
+                    "glo_germ": {
+                        "name": "Glo Germ Hand Wash",
+                        "cost_per_unit": 17.09,
+                        "quantity": 1,
+                        "quantity_needed_for_experiment": "2_per_section"
+                }
+            }
+        },
+
+        "experiment_1.4": {
+            "experiment_name": "1-4 Common Aseptic Techniques",
+            "bacteria": {
+                "Staphylococcus epidermidis": {
+                    "name": "Staphylococcus epidermidis",
+                    "distribution": ["broth","premade","slant"],
+                    "number_of_samples": "3_per_group"
+                }
+            },
+            "media": {
+                "prep_media":{
+                    "nutrient_broth": {
+                        "distribution": "broth",
+                        "total_samples": "1_per_group"
+                    },
+                    "nutrient_agar": {
+                        "slant":{
+                            "distribution": "slant",
+                            "total_samples": "1_per_group"
+                        },
+                        "prepared":{
+                            "distribution": "premade",
+                            "total_samples": "1_per_group"
+                        }
+                    }
+                },
+                "experimental_media": {
+                    "nutrient_broth": {
+                        "distribution": "broth",
+                        "total_samples": "4_per_student"
+                    },
+                    "nutrient_agar": {
+                        "distribution": "slant",
+                        "total_samples": "3_per_student"
+                    }
+                }
+            }
+        },
+        "experiment_1.5-6": {
+            "experiment_name": "1-5&6 Streak and Spread Plate Methods of Isolation",
+            "bacteria": {
+                "prep_bacteria":{
+                    "Bacteria_A":{
+                        "name": "Escherichia coli",
+                        "distribution": ["broth"],
+                        "number_of_samples": 8
+                    },
+                    "Bacteria_B":{
+                        "name": "Staphylococcus aureus",
+                        "distribution": ["broth"],
+                        "number_of_samples": 8
+                    }
+                },
+                "expermiental_bacteria": {
+                    "Mixed Culture":{
+                        "name": "E. coli + S. aureus",
+                        "distribution": ["broth"],
+                        "number_of_samples": "1_per_group"
+                    }
+                }
+            },
+            "media": {
+                "prep_media":{
+                    "nutrient_broth": {
+                        "distribution": "broth",
+                        "total_samples": "1_per_group",
+                        "additonal": 16
+                    },
+                "experimental_media": {
+                    "tsa": {
+                        "distribution": "premade",
+                        "total_samples": "3_per_student"
+                    }, 
+                    "nutrient_agar":{
+                        "distribution": "premade",
+                        "total_samples": "8_per_group"
+                        }
+                    }
+                }
+            },
+            "supplies": {
+                "transfer_pipette": {
+                    "name": "Sterile Transfer Pipette",
+                    "cost_per_unit": 20.00,
+                    "quantity": 500,
+                    "quantity_needed_for_experiment": "5_per_group"
+                    },
+                "microcentrifuge_tube": {
+                    "name": "Microcentrifuge Tube",
+                    "cost_per_unit": 20.00,
+                    "quantity": 100,
+                    "quantity_needed_for_experiment": "5_per_group"
+                    }
+            }
+        }
+    }
+}
