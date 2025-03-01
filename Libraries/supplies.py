@@ -34,11 +34,11 @@ supplies = {
     },
 
     "plating_beads": {
-        "name": "Beads, glass plating",
+        "name": "Plating Beads",
         "supplier": "VWR",
         "catalog_number": "76005-122",
-        "cost_per_unit": 0,
-        "quantity": 230
+        "cost_per_unit": 45.57,
+        "quantity": 230 # 230g, using 3-4 beads per plate
     },
 
     "bibulous_paper":{
@@ -81,7 +81,6 @@ supplies = {
         "quantity": 500 #500g
     },
 
-
     "cotton_swabs": {
         "name": "Sterile Cotton Swabs",
         "supplier": "VWR",
@@ -98,81 +97,160 @@ supplies = {
         "quantity": 500
     },
     
-################################################# this is where i stopped 2/27
     "cryoblock":{
-
-    }, 
-
-    "cryovials": {
-        "name": "Cryovials, 2 mL",
+        "name": "Cryoblock", 
         "supplier": "VWR",
-        "catalog_number": "89093-666",
-        "cost_per_unit": 0,
-        "quantity": 500
-    },
-    "falcon_tubes_50mL": {
-        "name": "Falcon tubes (Spectra tubes), 50 mL, sterile",
-        "supplier": "VWR",
-        "catalog_number": "470228-005",
-        "cost_per_unit": 0,
-        "quantity": 50
-    },
-    "falcon_tubes_15mL": {
-        "name": "Falcon tubes (Spectra tubes), 15 mL, sterile",
-        "supplier": "VWR",
-        "catalog_number": "470228-006",
-        "cost_per_unit": 0,
-        "quantity": 50
-    },
-    "gaspak_anaerobe_sachet": {
-        "name": "GasPak Anaerobe Sachet",
-        "supplier": "BD",
-        "catalog_number": "90003-836",
-        "cost_per_unit": 0,
-        "quantity": 20
-    },
-    "gaspak_ez_campy_sachet": {
-        "name": "GasPak EZ Campy Sachet",
-        "supplier": "BD",
-        "catalog_number": "90003-633",
-        "cost_per_unit": 0,
-        "quantity": 20
-    },
-    "hydrogen_peroxide": {
-        "name": "10% Hydrogen Peroxide, ACS grade",
-        "supplier": "Fisher Sci",
-        "catalog_number": "90003-634",
-        "cost_per_unit": 0,
-        "quantity": 500
-    },
-    "isopropanol_labels": {
-        "name": "Isopropanol adhesive labels, 2” x 3”, black/yellow",
-        "supplier": "VWR",
-        "catalog_number": "BP839-100",
-        "cost_per_unit": 0,
-        "quantity": 25
-    },
-    "lithium_ion_battery": {
-        "name": "Lithium ion rechargeable battery for Repeater E3/E3X Xstream pipets",
-        "supplier": "Eppendorf",
-        "catalog_number": "22462407",
+        "catalog_number": "75784-932",
         "cost_per_unit": 0,
         "quantity": 1
     },
-    "nitrate_reagent_a": {
-        "name": "Nitrate reagent A",
-        "supplier": "Millipore Sigma",
-        "catalog_number": "39441",
+
+    "cryo_cube_base":{
+        "name": "Cryo Cube Base", 
+        "supplier": "VWR",
+        "catalog_number": "75784-934",
+        "cost_per_unit": 0,
+        "quantity": 4
+    },
+
+    "cryovials": {
+        "name": "Cryovials", #2 mL
+        "supplier": "VWR",
+        "catalog_number": "76523-178",
+        "cost_per_unit": 0,
+        "quantity": 50
+    },
+
+    "dropper_bottle_amber": {
+        "name": "Amber Dropper Bottle",
+        "supplier": "VWR",
+        "catalog_number": "470338-6550",
+        "cost_per_unit": 0,
+        "quantity": 144
+    },
+
+    "durham_tube": {  # 0.7mL tubes
+        "name": "Durham Tube",
+        "supplier": "VWR",
+        "catalog_number": "89001-454",
+        "cost_per_unit": 281.04,
+        "quantity": 72
+    },
+
+    "falcon_tubes_15mL": {
+        "name": "Falcon tubes, 15 mL",
+        "supplier": "VWR",
+        "catalog_number": "470224-998",
+        "cost_per_unit": 0,
+        "quantity": 50
+    },
+
+    "falcon_tubes_50mL": {
+        "name": "Falcon tubes, 50 mL",
+        "supplier": "VWR",
+        "catalog_number": "470225-002",
+        "cost_per_unit": 0,
+        "quantity": 50
+    },
+
+    "gaspak_chamber": {
+        "name": "GasPak Incubation Chamber, Standard",
+        "supplier": "VWR",
+        "catalog_number": "90003-634",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
+    "gaspak_chamber_rack": {
+        "name": "GasPak Incubation Chamber Rack, Standard",
+        "supplier": "VWR",
+        "catalog_number": "89024-786",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
+    "gaspak_chamber_large": {
+        "name": "GasPak Incubation Chamber, Large",
+        "supplier": "VWR",
+        "catalog_number": "90003-634",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
+    "gaspak_chamber_rack_large": {
+        "name": "GasPak Incubation Chamber Rack, Large",
+        "supplier": "VWR",
+        "catalog_number": "90003-640;",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
+    "gloves_xs": {
+        "name": "Nitrile Gloves XS",
+        "supplier": "VWR",
+        "catalog_number": "76579-100",
         "cost_per_unit": 0,
         "quantity": 100
     },
-    "nitrate_reagent_b": {
-        "name": "Nitrate reagent B",
-        "supplier": "Millipore Sigma",
-        "catalog_number": "39441",
+   
+    "gloves_s": {
+        "name": "Nitrile Gloves S",
+        "supplier": "VWR",
+        "catalog_number": "76499-262",
         "cost_per_unit": 0,
         "quantity": 100
     },
+    
+    "gloves_m": {
+        "name": "Nitrile Gloves M",
+        "supplier": "VWR",
+        "catalog_number": "76499-264",
+        "cost_per_unit": 0,
+        "quantity": 100
+    },
+    
+    "gloves_l": {
+        "name": "Nitrile Gloves L",
+        "supplier": "VWR",
+        "catalog_number": "76499-266",
+        "cost_per_unit": 0,
+        "quantity": 100
+    },
+
+    "india_ink":{
+        "name": "India Ink Droppers",
+        "supplier": "VWR",
+        "catalog_number": "90003-681",
+        "cost_per_unit": 0,
+        "quantity": 50
+    },
+
+    "inoculation_loop_yellow":{
+        "name": "Inoculation Loops, 10uL (yellow)",
+        "supplier": "VWR",
+        "catalog_number": "10799-779",
+        "cost_per_unit": 0,
+        "quantity": 0000 #need to check website
+    },
+
+    "isopropanol_vinyl_label": {
+        "name": "Isopropanol Labels",
+        "supplier": "VWR",
+        "catalog_number": "103040-692",
+        "cost_per_unit": 41.10,
+        "quantity": 25
+    },
+
+    "kimwipes":{
+        "name": "Kimwipes",
+        "supplier": "VWR",
+        "catalog_number": "82003-820",
+        "cost_per_unit": 0,
+        "quantity": 60 #60 boxes per case, 280 sheets/box 
+    },
+
+################################################# this is where i stopped 2/28
+
     "pipet_tips_200uL": {
         "name": "Pipet tips, 200 uL, preracked",
         "supplier": "Rainin",
@@ -226,12 +304,6 @@ supplies = {
         "quantity": 25
     },
 
-    "durham_tube": {  # 0.7mL tubes
-        "name": "Durham Tube",
-        "cost_per_unit": 281.04,
-        "quantity": 72
-    },
-
     "empty_petri_dish_small": {
         "name": "Empty Petri Dish (small)",
         "cost_per_unit": 83.64,
@@ -262,12 +334,6 @@ supplies = {
         "quantity": 1  # distributed by bottles
     },
 
-    "isopropanol_vinyl_label": {
-        "name": "Isopropanol Vinyl Label",
-        "cost_per_unit": 41.10,
-        "quantity": 25
-    },
-
     "label_maker": {
         "name": "Label Maker",
         "cost": 17.95
@@ -291,11 +357,6 @@ supplies = {
         "quantity": 100
     },
 
-    "plating_beads": {
-        "name": "Plating Beads",
-        "cost_per_unit": 45.57,
-        "quantity": 230  # 230g, using 3-4 beads per plate
-    },
 
     "red_autoclave_bag": {
         "name": "Autoclave Bag",
