@@ -148,7 +148,7 @@ media_list = {
         "premade_plate_cost": 44.98,  # cost per box of premade mENDO plates
         "plates_per_box": 10
     },
-
+    
     "motility_media": { #motility media $201.75 for 500g makes 2777 tubes
         "name": "Motility Media",
         "supplier": "VWR",
@@ -224,6 +224,8 @@ media_list = {
 
     "rcp": {
         "name": "Rabbit Coagulase Plasma (RCP)",
+        "supplier": "VWR",
+        "catalog_number": "90003-150", 
         "cost_per_ml": 3.21,  # cost per mL
         "distribution": ["microcentrifuge_tube"]
     },

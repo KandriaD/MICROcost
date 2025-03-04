@@ -1,20 +1,36 @@
 #cost of other materials that are not bacteria or media
 
 supplies = {
-    "kb_ladder": {
-        "name": "1 kb ladder, 0.2 mL",
-        "supplier": "NEBS",
-        "catalog_number": "N32325",
-        "cost_per_unit": 0,
-        "quantity": 1
+    "api_20e_kit": {
+        "name": "API 20E Kit",
+        "supplier": "VWR",
+        "catalog_number": "90060-674",
+        "cost_per_unit": 542.92,
+        "quantity": 25
     },
 
-    "plates_12_well": {
-        "name": "12-well plates, sterile",
+    "api_staph_kit": {
+        "name": "API STAPH Kit",
         "supplier": "VWR",
-        "catalog_number": "470332-698",
-        "cost_per_unit": 0,
-        "quantity": 10
+        "catalog_number": "90060-684",
+        "cost_per_unit": 00,
+        "quantity": 25
+    },
+
+    "api_strep_kit": {
+        "name": "API STREP Kit",
+        "supplier": "VWR",
+        "catalog_number": "90060-686",
+        "cost_per_unit": 00,
+        "quantity": 25
+    },
+
+    "api_zym": {
+        "name": "API ZYM",
+        "supplier": "VWR",
+        "catalog_number": "90060-706",
+        "cost_per_unit": 579.86,
+        "quantity": 25
     },
 
     "autoclave_bin_small": {
@@ -50,10 +66,10 @@ supplies = {
     },
 
     "biohazard_autoclave_bags": {
-        "name": "Biohazard autoclave bags", #19” x 23”, 2 mil
+        "name": "Biohazard Autoclave Bags", #19” x 23”, 2 mil
         "supplier": "VWR",
         "catalog_number": "76359-158",
-        "cost_per_unit": 0,
+        "cost_per_unit": 70.09,
         "quantity": 200
     },
 
@@ -81,6 +97,14 @@ supplies = {
         "quantity": 500 #500g
     },
 
+        "clear_tubing": {
+        "name": "Tubing",
+        "supplier": "VWR",
+        "catalog_number": "89305-352",
+        "cost_per_unit": 282.21, 
+        "quantity": 25
+    },
+
     "cotton_swabs": {
         "name": "Sterile Cotton Swabs",
         "supplier": "VWR",
@@ -89,14 +113,6 @@ supplies = {
         "quantity": 100
     },
 
-    "culture_tubes": {
-        "name": "Culture Tubes", #17 x 100 mm with closures, 14 mL
-        "supplier": "VWR",
-        "catalog_number": "60818-725",
-        "cost_per_unit": 0,
-        "quantity": 500
-    },
-    
     "cryoblock":{
         "name": "Cryoblock", 
         "supplier": "VWR",
@@ -121,6 +137,14 @@ supplies = {
         "quantity": 50
     },
 
+        "culture_tubes": {
+        "name": "Culture Tubes", #17 x 100 mm with closures, 14 mL
+        "supplier": "VWR",
+        "catalog_number": "60818-725",
+        "cost_per_unit": 0,
+        "quantity": 500
+    },
+    
     "dropper_bottle_amber": {
         "name": "Amber Dropper Bottle",
         "supplier": "VWR",
@@ -137,6 +161,14 @@ supplies = {
         "quantity": 72
     },
 
+    "enteropluri_kit": {  
+        "name": "EnteroPluri Kit",
+        "supplier": "VWR",
+        "catalog_number": "BD215336",
+        "cost_per_unit": 00,
+        "quantity": 25
+    },
+
     "falcon_tubes_15mL": {
         "name": "Falcon tubes, 15 mL",
         "supplier": "VWR",
@@ -151,6 +183,22 @@ supplies = {
         "catalog_number": "470225-002",
         "cost_per_unit": 0,
         "quantity": 50
+    },
+
+    "gaspak_anaerobe_sachet": {
+        "name": "GasPak Anaerobe Sachet",
+        "supplier": "VWR",
+        "catalog_number": "90003-642",
+        "cost_per_unit": 103.76,
+        "quantity": 20
+    },
+
+    "gaspak_campy_sachet": {
+        "name": "GasPak EZ Campy Sachet",
+        "supplier": "VWR",
+        "catalog_number": "90003-646",
+        "cost_per_unit": 113.03,
+        "quantity": 20
     },
 
     "gaspak_chamber": {
@@ -183,6 +231,21 @@ supplies = {
         "catalog_number": "90003-640;",
         "cost_per_unit": 0,
         "quantity": 1
+    },
+
+    "gaspak_co2_sachet": {
+        "name": "GasPak CO2 Sachet",
+        "supplier": "VWR",
+        "catalog_number": "90003-644",
+        "cost_per_unit": 00,
+        "quantity": 20
+    },
+
+    "glo_germ": {
+        "name": "Glo Germ Hand Wash",
+        "supplier": "VWR",
+        "cost_per_unit": 17.09,  # from VWR
+        "quantity": 1  # distributed by bottles
     },
 
     "gloves_xs": {
@@ -241,97 +304,20 @@ supplies = {
         "quantity": 25
     },
 
-    "kimwipes":{
+    "kb_ladder": {
+        "name": "1 kb ladder, 0.2 mL",
+        "supplier": "NEBS",
+        "catalog_number": "N32325",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
+    "kimwipes": {
         "name": "Kimwipes",
         "supplier": "VWR",
         "catalog_number": "82003-820",
         "cost_per_unit": 0,
         "quantity": 60 #60 boxes per case, 280 sheets/box 
-    },
-
-################################################# this is where i stopped 2/28
-
-    "pipet_tips_200uL": {
-        "name": "Pipet tips, 200 uL, preracked",
-        "supplier": "Rainin",
-        "catalog_number": "30389291",
-        "cost_per_unit": 0,
-        "quantity": 8
-    },
-    "pipet_tips_1000uL": {
-        "name": "Pipet tips, 1000 uL, preracked",
-        "supplier": "Rainin",
-        "catalog_number": "30389290",
-        "cost_per_unit": 0,
-        "quantity": 10
-    },
-    "pipet_tips_250uL": {
-        "name": "Pipet tips, 250 uL, preracked in boxes, green (UNIVERSAL)",
-        "supplier": "Rainin",
-        "catalog_number": "30389191",
-        "cost_per_unit": 0,
-        "quantity": 10
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    "api_20e_kit": {
-        "name": "API 20E Kit",
-        "cost_per_unit": 542.92,
-        "quantity": 25
-    },
-
-    "api_zym": {
-        "name": "API ZYM",
-        "cost_per_unit": 579.86,
-        "quantity": 25
-    },
-
-    "clear_tubing": {
-        "name": "Tubing",
-        "cost_per_unit": 282.21, 
-        "quantity": 25
-    },
-
-    "empty_petri_dish_small": {
-        "name": "Empty Petri Dish (small)",
-        "cost_per_unit": 83.64,
-        "quantity": 500
-    },
-
-    "empty_petri_dish_standard": {
-        "name": "Empty Petri Dish",
-        "cost_per_unit": 97.64,
-        "quantity": 500
-    },
-
-    "gaspak_anaerobe_sachet": {
-        "name": "GasPak Anaerobe Sachet",
-        "cost_per_unit": 103.76,
-        "quantity": 20
-    },
-
-    "gaspak_ez_campy_sachet": {
-        "name": "GasPak EZ Campy Sachet",
-        "cost_per_unit": 113.03,
-        "quantity": 20
-    },
-
-    "glo_germ": {
-        "name": "Glo Germ Hand Wash",
-        "cost_per_unit": 17.09,  # from VWR
-        "quantity": 1  # distributed by bottles
     },
 
     "label_maker": {
@@ -347,56 +333,266 @@ supplies = {
 
     "lab_tape": {
         "name": "Lab Tape",
+        "supplier": "VWR",
+        "catalog_number": "89097-920",
         "cost_per_unit": 64.13,
         "quantity": 24
     },
 
+    "lens_paper": {
+        "name": "Lens Paper, 4x6",
+        "supplier": "VWR",
+        "catalog_number": "52846-001",
+        "cost_per_unit": 0,
+        "quantity": 12 #50 sheets per book
+    },
+
+
+    "loops_disposable_1ul":{
+        "name": "Disposable Loop, 1uL",
+        "supplier": "VWR",
+        "catalog_number": "50806-404",
+        "cost_per_unit": 0,
+        "quantity": 1000  
+    },
+
+    "loops_disposable_10ul":{
+        "name": "Disposable Loop, 10uL",
+        "supplier": "VWR",
+        "catalog_number": "30002-170",
+        "cost_per_unit": 0,
+        "quantity": 1000  
+    },
+
+    "mcfarland_standard_0.5": {
+        "name": "McFarland Standard, 0.5",
+        "supplier": "VWR",
+        "catalog_number": "89426-218",
+        "cost_per_unit": 00, 
+        "quantity": 1
+    },
+    
+    "mic_stips": {
+        "name": "MIC Strips from Liofilchem MTS Truimethoprim-Sulamethoxazole",
+        "supplier": "Fischer Scientific",
+        "catalog_number": "22-777-912",
+        "cost_per_unit": 136.62,
+        "quantity": 30
+    },
+
+    "microbank_2ml": {
+        "name": "Microbank w/2D barcode, 2 mL",
+        "supplier": "VWR",
+        "catalog_number": "75784-880",
+        "cost_per_unit": 00, 
+        "quantity": 80
+    },
+
     "microcentrifuge_tube": {
-        "name": "Microcentrifuge Tube",
-        "cost_per_unit": 20.00,  # arbitrary value
-        "quantity": 100
+        "name": "Microcentrifuge Tube, 1.5 mL",
+        "supplier": "VWR",
+        "catalog_number": "20170-038",
+        "cost_per_unit": 00,  
+        "quantity": 500
     },
 
-
-    "red_autoclave_bag": {
-        "name": "Autoclave Bag",
-        "cost_per_unit": 70.09,
-        "quantity": 200
+    "microscope_slide_cover_slips": {
+            "name": "Microscope Slide Cover Slips, 18x18mm",
+        "supplier": "VWR",
+        "catalog_number": "470112-504",
+        "cost_per_unit": 00,  
+        "quantity": 100 #check this
     },
 
-    "serological_pipette_10mL": {
-        "name": "Serological Pipette 10mL",
-        "cost_per_unit": 74.05,
-        "quantity": 400
+    "microscope_slides": {
+        "name": "Microscope Slides",
+        "supplier": "VWR",
+        "catalog_number": "470016-270",
+        "cost_per_unit": 00,  
+        "quantity": 72 #72/box
+    },
+
+    "petri_plate_small": {
+        "name": "Empty Petri Dish, 60mm",
+        "supplier": "VWR",
+        "catalog_number": "25384-092",
+        "cost_per_unit": 83.64,
+        "quantity": 500
+    },
+
+    "petri_plate_standard": {
+        "name": "Empty Petri Dish, 100mm",
+        "supplier": "VWR",
+        "catalog_number": "25384-342",
+        "cost_per_unit": 97.64,
+        "quantity": 500
+    },
+
+    "pipet_tips_lts_10uL": {
+        "name": "Pipet tips, 10 uL (LTS, red)",
+        "supplier": "Rainin",
+        "catalog_number": "30389291",
+        "cost_per_unit": 0,
+        "quantity": 10 #10 racks/case, 960 tips (10 racks of 96 tips)
+    },
+
+    "pipet_tips_lts_20uL": {
+        "name": "Pipet tips, 20 uL (LTS, red)",
+        "supplier": "Rainin",
+        "catalog_number": "30389200",
+        "cost_per_unit": 0,
+        "quantity": 10 #10 racks/case
+    },
+
+    "pipet_tips_lts_250uL": {
+        "name": "Pipet tips, 250 uL (LTS, green)",
+        "supplier": "Rainin",
+        "catalog_number": "30389243",
+        "cost_per_unit": 0,
+        "quantity": 10 #10 racks/case
+    },
+
+    "pipet_tips_universial_250uL": {
+        "name": "Pipet tips, 250 uL (UNIVERSAL, green)",
+        "supplier": "Rainin",
+        "catalog_number": "30389191",
+        "cost_per_unit": 0,
+        "quantity": 10 #10 racks/case
+    },
+
+ #   "pipet_tips_lts_1000uL": { #individual refills
+ #       "name": "Pipet tips, 1000 uL (LST, blue)",
+ #       "supplier": "Rainin",
+ #       "catalog_number": "30389271",
+ #       "cost_per_unit": 0,
+ #       "quantity": 8
+ #   },
+ 
+    "pipet_tips_lts_1000uL": { #stacked refills
+        "name": "Pipet tips, 1000 uL (LST, blue)",
+        "supplier": "Rainin",
+        "catalog_number": "30389292",
+        "cost_per_unit": 0,
+        "quantity": 8
+    },
+
+    
+    "plates_12_well": {
+        "name": "12-well plates, sterile",
+        "supplier": "VWR",
+        "catalog_number": "470332-698",
+        "cost_per_unit": 0,
+        "quantity": 10
+    },
+
+    "polystyrene_test_tube_5ml": {
+        "name": "Polystyrene Test Tubes, 5 mL",
+        "supplier": "VWR",
+        "catalog_number": "89497-810",
+        "cost_per_unit": 0,
+        "quantity": 500
+    },
+
+    "pry_kit": {
+        "name": "PRY Kit",
+        "supplier": "VWR",
+        "catalog_number": "10324-574",
+        "cost_per_unit": 0,
+        "quantity": 75
+    },
+
+    "rechargable_battery_for_repeater_pipet": {
+        "name": "Lithium Ion Rechargable Battery for Repeater E3/E3x Xstream Pipets",
+        "supplier": "Eppendorf",
+        "catalog_number": "22462407",
+        "cost_per_unit": 39.00,
+        "quantity": 1
     },
 
     "serological_pipette_5mL": {
-        "name": "Serological Pipette 5mL",
+        "name": "Serological Pipette, 5mL",
+        "supplier": "VWR",
+        "catalog_number": "76201-710",
         "cost_per_unit": 67.31,
+        "quantity": 400
+    },    
+
+    "serological_pipette_10mL": {
+        "name": "Serological Pipette, 10mL",
+        "supplier": "VWR",
+        "catalog_number": "75816-100",
+        "cost_per_unit": 74.05,
         "quantity": 400
     },
 
     "steam_sterilization_integrator": {
         "name": "Steam Sterilization Integrator",
+        "supplier": "VWR",
+        "catalog_number": "101101-728",
         "cost_per_unit": 35.10,
         "quantity": 100
     },
+    
+    "streppro_grouping_kit": {
+        "name": "StrepPRO Grouping Kit", 
+        "supplier": "VWR",
+        "catalog_number": "10063-760",
+        "cost_per_unit": 0,
+        "quantity": 60
+    },
 
+    "sybr_dna_stain": {
+        "name": "SYBR Safe DNA gel stain",
+        "supplier": "Fisher Scientific",
+        "catalog_number": "S33102",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
+    "test_tube_rack": {
+        "name": "Test Tube Rack",
+        "supplier": "VWR",
+        "catalog_number": "89215-772",
+        "cost_per_unit": 0,
+        "quantity": 8 #8 racks per case
+    },
 
     "transfer_pipette": {
         "name": "Sterile Transfer Pipette",
-        "cost_per_unit": 20.00,  # arbitrary value
+        "supplier": "VWR",
+        "catalog_number": "41404-021",
+        "cost_per_unit": 00,  
         "quantity": 500
+    },
+
+    "vaccum_filtration_setup_150ml": {
+        "name": "Vaccum Filtratuion Setup, 150 mL",
+        "supplier": "VWR",
+        "catalog_number": "10040-460",
+        "cost_per_unit": 00,  
+        "quantity": 1
+    },
+
+    "vpa+vpb": {
+        "name": "VP A + VP B", #for API 20E kit
+        "supplier": "VWR",
+        "catalog_number": "95060-978",
+        "cost_per_unit": 00,  
+        "quantity": 10 #2x5ml
     },
 
     "zyme_a_x2_reagent": {
         "name": "ZYME A X2 Reagent",
+        "supplier": "VWR",
+        "catalog_number": "95060-964",
         "cost_per_unit": 56.38,
         "quantity": 16
     },  # 16x8mL vials (check this)
 
     "zyme_b_x2_reagent": {
         "name": "ZYME B X2 Reagent",
+        "supplier": "VWR",
+        "catalog_number": "95060-962",
         "cost_per_unit": 56.28,
         "quantity": 10
     }  # 10x5mL vials (check this)

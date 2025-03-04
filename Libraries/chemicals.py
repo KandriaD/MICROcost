@@ -35,18 +35,38 @@ chemical_list = {
         "cost_per_unit": 86.88, #cost per bottle of 100g
         "quantity": 100 
     },
-    "mineral oil": 34.45, #cost per bottle of 1L
 
+    "maltose_monohydrate": {
+        "name": "Maltose Monohydrate",
+        "supplier": "VWR",
+        "catalog_number": "97062-604",
+        "cost_per_unit": 00, #cost per bottle of 100g
+        "quantity": 100 
+    },
 
+    "mineral oil": {
+        "name": "Maltose Monohydrate", #used to top the test tube 1ml for microcentrfuge or 5ml in test tubes, only for anerobic
+        "supplier": "VWR",
+        "catalog_number": "97062-604",
+        "cost_per_unit": 34.45, #cost per bottle of 1L
+        "quantity": 1000 #1L = 1000 mL
+    },
 
+    "ninhydrin": {
+        "name": "Ninhydrin", 
+        "catalog_number": "470301-874",
+        "cost_per_unit":  000,
+        "quantity": 500 #500 mL
+    },
 
-        "nitrate_reagent_a": {
+    "nitrate_reagent_a": {
         "name": "Nitrate reagent A",
         "supplier": "Millipore Sigma",
-        "catalog_number": "39441",
+        "catalog_number": "38497",
         "cost_per_unit": 0,
         "quantity": 100
     },
+
     "nitrate_reagent_b": {
         "name": "Nitrate reagent B",
         "supplier": "Millipore Sigma",
@@ -54,4 +74,44 @@ chemical_list = {
         "cost_per_unit": 0,
         "quantity": 100
     },
+
+    "oxidrops": {
+        "name": "Oxidrops Liquid (Oxidase Reagent)", #very short shelf life
+        "supplier": "VWR",
+        "catalog_number": "89428-918",
+        "cost_per_unit": 0,
+        "quantity": 30
+    },
+
+   "sodium_deoxycholate": {
+        "name": "Sodium Deoxycholate", 
+        "supplier": "VWR",
+        "catalog_number": "97062-028",
+        "cost_per_unit": 0,
+        "quantity": 50
+    },
+
+    "tda_reagent": {
+        "name": "TDA Reagent", 
+        "supplier": "VWR",
+        "catalog_number": "95060-952",
+        "cost_per_unit": 0,
+        "quantity": 10 #2x5mL
+    },
+
+    "tweeen_80": {
+        "name": "Tween 80 (water soluble)", 
+        "supplier": "VWR",
+        "catalog_number": "76347-646",
+        "cost_per_unit": 0,
+        "quantity": 500  
+    },
+
+    "ziehl_neelsen_carbolfuchsin": {
+        "name": "Ziehl-Neelsen Carbolfuchsin", 
+        "supplier": "VWR",
+        "catalog_number": "76591-146    ",
+        "cost_per_unit": 0,
+        "quantity": 236 #8oz = 236.588 ml
+    }
 }
