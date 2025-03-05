@@ -1,12 +1,4 @@
 # Import libraries
-import sys
-sys.path.append(r'C:\Users\Kandriad\Documents\GitHub\MICROcost\Libraries')
-
-import antibiotics
-import bacteria
-import chemicals
-import media
-import supplies
 
 #import tkinter for user interface display
 import tkinter as tk
