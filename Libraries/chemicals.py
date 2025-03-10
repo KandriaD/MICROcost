@@ -40,7 +40,7 @@ chemical_list = {
         "name": "Maltose Monohydrate",
         "supplier": "VWR",
         "catalog_number": "97062-604",
-        "cost_per_unit": 00, #cost per bottle of 100g
+        "cost_per_unit": 46.62, #cost per bottle of 100g
         "quantity": 100 
     },
 
@@ -54,8 +54,9 @@ chemical_list = {
 
     "ninhydrin": {
         "name": "Ninhydrin", 
+        "supplier": "VWR",
         "catalog_number": "470301-874",
-        "cost_per_unit":  000,
+        "cost_per_unit":  16.50,
         "quantity": 500 #500 mL
     },
 
@@ -79,7 +80,7 @@ chemical_list = {
         "name": "Oxidrops Liquid (Oxidase Reagent)", #very short shelf life
         "supplier": "VWR",
         "catalog_number": "89428-918",
-        "cost_per_unit": 0,
+        "cost_per_unit": 30.19,
         "quantity": 30
     },
 
@@ -87,7 +88,7 @@ chemical_list = {
         "name": "Sodium Deoxycholate", 
         "supplier": "VWR",
         "catalog_number": "97062-028",
-        "cost_per_unit": 0,
+        "cost_per_unit": 152.14,
         "quantity": 50
     },
 
@@ -95,7 +96,7 @@ chemical_list = {
         "name": "TDA Reagent", 
         "supplier": "VWR",
         "catalog_number": "95060-952",
-        "cost_per_unit": 0,
+        "cost_per_unit": 60.04,
         "quantity": 10 #2x5mL
     },
 
@@ -103,15 +104,15 @@ chemical_list = {
         "name": "Tween 80 (water soluble)", 
         "supplier": "VWR",
         "catalog_number": "76347-646",
-        "cost_per_unit": 0,
+        "cost_per_unit": 38.11,
         "quantity": 500  
     },
 
     "ziehl_neelsen_carbolfuchsin": {
         "name": "Ziehl-Neelsen Carbolfuchsin", 
         "supplier": "VWR",
-        "catalog_number": "76591-146    ",
-        "cost_per_unit": 0,
+        "catalog_number": "76591-146",
+        "cost_per_unit": 27.95,
         "quantity": 236 #8oz = 236.588 ml
     }
 }

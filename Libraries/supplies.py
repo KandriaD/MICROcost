@@ -252,7 +252,7 @@ supplies = {
         "name": "Nitrile Gloves XS",
         "supplier": "VWR",
         "catalog_number": "76579-100",
-        "cost_per_unit": 0,
+        "cost_per_unit": 5.38,
         "quantity": 100
     },
    
@@ -260,7 +260,7 @@ supplies = {
         "name": "Nitrile Gloves S",
         "supplier": "VWR",
         "catalog_number": "76499-262",
-        "cost_per_unit": 0,
+        "cost_per_unit": 8.83,
         "quantity": 100
     },
     
@@ -268,7 +268,7 @@ supplies = {
         "name": "Nitrile Gloves M",
         "supplier": "VWR",
         "catalog_number": "76499-264",
-        "cost_per_unit": 0,
+        "cost_per_unit": 8.83,
         "quantity": 100
     },
     
@@ -276,7 +276,7 @@ supplies = {
         "name": "Nitrile Gloves L",
         "supplier": "VWR",
         "catalog_number": "76499-266",
-        "cost_per_unit": 0,
+        "cost_per_unit": 11.48,
         "quantity": 100
     },
 
@@ -284,7 +284,7 @@ supplies = {
         "name": "India Ink Droppers",
         "supplier": "VWR",
         "catalog_number": "90003-681",
-        "cost_per_unit": 0,
+        "cost_per_unit": 97.50,
         "quantity": 50
     },
 
@@ -292,8 +292,8 @@ supplies = {
         "name": "Inoculation Loops, 10uL (yellow)",
         "supplier": "VWR",
         "catalog_number": "10799-779",
-        "cost_per_unit": 0,
-        "quantity": 0000 #need to check website
+        "cost_per_unit": 69.17,
+        "quantity": 1000 
     },
 
     "isopropanol_vinyl_label": {
@@ -316,7 +316,7 @@ supplies = {
         "name": "Kimwipes",
         "supplier": "VWR",
         "catalog_number": "82003-820",
-        "cost_per_unit": 0,
+        "cost_per_unit": 147.60,
         "quantity": 60 #60 boxes per case, 280 sheets/box 
     },
 
@@ -343,7 +343,7 @@ supplies = {
         "name": "Lens Paper, 4x6",
         "supplier": "VWR",
         "catalog_number": "52846-001",
-        "cost_per_unit": 0,
+        "cost_per_unit": 13.10,
         "quantity": 12 #50 sheets per book
     },
 
@@ -352,7 +352,7 @@ supplies = {
         "name": "Disposable Loop, 1uL",
         "supplier": "VWR",
         "catalog_number": "50806-404",
-        "cost_per_unit": 0,
+        "cost_per_unit": 242.15, #there are cheaper options
         "quantity": 1000  
     },
 
@@ -360,7 +360,7 @@ supplies = {
         "name": "Disposable Loop, 10uL",
         "supplier": "VWR",
         "catalog_number": "30002-170",
-        "cost_per_unit": 0,
+        "cost_per_unit": 78.69,
         "quantity": 1000  
     },
 
@@ -368,7 +368,7 @@ supplies = {
         "name": "McFarland Standard, 0.5",
         "supplier": "VWR",
         "catalog_number": "89426-218",
-        "cost_per_unit": 00, 
+        "cost_per_unit": 28.92, 
         "quantity": 1
     },
     
@@ -384,7 +384,7 @@ supplies = {
         "name": "Microbank w/2D barcode, 2 mL",
         "supplier": "VWR",
         "catalog_number": "75784-880",
-        "cost_per_unit": 00, 
+        "cost_per_unit": 256.11, 
         "quantity": 80
     },
 
@@ -392,7 +392,7 @@ supplies = {
         "name": "Microcentrifuge Tube, 1.5 mL",
         "supplier": "VWR",
         "catalog_number": "20170-038",
-        "cost_per_unit": 00,  
+        "cost_per_unit": 27.00,  
         "quantity": 500
     },
 
@@ -400,7 +400,7 @@ supplies = {
             "name": "Microscope Slide Cover Slips, 18x18mm",
         "supplier": "VWR",
         "catalog_number": "470112-504",
-        "cost_per_unit": 00,  
+        "cost_per_unit": 5.63,  
         "quantity": 100 #check this
     },
 
@@ -408,7 +408,7 @@ supplies = {
         "name": "Microscope Slides",
         "supplier": "VWR",
         "catalog_number": "470016-270",
-        "cost_per_unit": 00,  
+        "cost_per_unit": 3.64,  
         "quantity": 72 #72/box
     },
 
@@ -481,7 +481,7 @@ supplies = {
         "name": "12-well plates, sterile",
         "supplier": "VWR",
         "catalog_number": "470332-698",
-        "cost_per_unit": 0,
+        "cost_per_unit": 19.70,
         "quantity": 10
     },
 
@@ -489,7 +489,7 @@ supplies = {
         "name": "Polystyrene Test Tubes, 5 mL",
         "supplier": "VWR",
         "catalog_number": "89497-810",
-        "cost_per_unit": 0,
+        "cost_per_unit": 60.58,
         "quantity": 500
     },
 
@@ -497,8 +497,8 @@ supplies = {
         "name": "PRY Kit",
         "supplier": "VWR",
         "catalog_number": "10324-574",
-        "cost_per_unit": 0,
-        "quantity": 75
+        "cost_per_unit": 211.47,
+        "quantity": 75 #unclear on website
     },
 
     "rechargable_battery_for_repeater_pipet": {
@@ -537,7 +537,7 @@ supplies = {
         "name": "StrepPRO Grouping Kit", 
         "supplier": "VWR",
         "catalog_number": "10063-760",
-        "cost_per_unit": 0,
+        "cost_per_unit": 948.30,
         "quantity": 60
     },
 
@@ -553,15 +553,15 @@ supplies = {
         "name": "Test Tube Rack",
         "supplier": "VWR",
         "catalog_number": "89215-772",
-        "cost_per_unit": 0,
+        "cost_per_unit": 152.38,
         "quantity": 8 #8 racks per case
     },
 
     "transfer_pipette": {
         "name": "Sterile Transfer Pipette",
         "supplier": "VWR",
-        "catalog_number": "41404-021",
-        "cost_per_unit": 00,  
+        "catalog_number": "414004-021",
+        "cost_per_unit": 29.28,  
         "quantity": 500
     },
 
@@ -569,15 +569,15 @@ supplies = {
         "name": "Vaccum Filtratuion Setup, 150 mL",
         "supplier": "VWR",
         "catalog_number": "10040-460",
-        "cost_per_unit": 00,  
-        "quantity": 1
+        "cost_per_unit": 74.16,  
+        "quantity": 12
     },
 
     "vpa+vpb": {
         "name": "VP A + VP B", #for API 20E kit
         "supplier": "VWR",
         "catalog_number": "95060-978",
-        "cost_per_unit": 00,  
+        "cost_per_unit": 60.04,  
         "quantity": 10 #2x5ml
     },
 
