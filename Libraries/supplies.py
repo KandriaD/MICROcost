@@ -4,32 +4,32 @@ supplies = {
     "api_20e_kit": {
         "name": "API 20E Kit",
         "supplier": "VWR",
-        "catalog_number": "90060-674",
-        "cost_per_unit": 542.92,
+        "catalog_number": "95060-674",
+        "cost_per_unit": 511.37,
         "quantity": 25
     },
 
     "api_staph_kit": {
         "name": "API STAPH Kit",
         "supplier": "VWR",
-        "catalog_number": "90060-684",
-        "cost_per_unit": 00,
+        "catalog_number": "95060-684",
+        "cost_per_unit": 384.98,
         "quantity": 25
     },
 
     "api_strep_kit": {
         "name": "API STREP Kit",
         "supplier": "VWR",
-        "catalog_number": "90060-686",
-        "cost_per_unit": 00,
+        "catalog_number": "95060-686",
+        "cost_per_unit": 382.45,
         "quantity": 25
     },
 
     "api_zym": {
         "name": "API ZYM",
         "supplier": "VWR",
-        "catalog_number": "90060-706",
-        "cost_per_unit": 579.86,
+        "catalog_number": "95060-706",
+        "cost_per_unit": 566.22,
         "quantity": 25
     },
 
@@ -37,7 +37,7 @@ supplies = {
         "name": "Autoclave bin, small",
         "supplier": "VWR",
         "catalog_number": "62662-026",
-        "cost_per_unit": 0,
+        "cost_per_unit": 157.19,
         "quantity": 1
     },
 
@@ -45,7 +45,7 @@ supplies = {
         "name": "Autoclave bin, large",
         "supplier": "VWR",
         "catalog_number": "62662-048",
-        "cost_per_unit": 0,
+        "cost_per_unit": 252.01,
         "quantity": 1
     },
 
@@ -60,8 +60,8 @@ supplies = {
     "bibulous_paper":{
         "name": "Bibulous Paper 4x6",
         "supplier": "VWR",
-        "catalog_number": "2811-007",
-        "cost_per_unit": 0,
+        "catalog_number": "28511-007",
+        "cost_per_unit": 21.22,
         "quantity": 12 #50sheets per book
     },
 
@@ -69,7 +69,7 @@ supplies = {
         "name": "Biohazard Autoclave Bags", #19” x 23”, 2 mil
         "supplier": "VWR",
         "catalog_number": "76359-158",
-        "cost_per_unit": 70.09,
+        "cost_per_unit": 79.84,
         "quantity": 200
     },
 
@@ -77,7 +77,7 @@ supplies = {
         "name": "Biohazard container", # for lab benches, 6”x6”x10”
         "supplier": "VWR",
         "catalog_number": "11214-711",
-        "cost_per_unit": 0,
+        "cost_per_unit": 284.90,
         "quantity": 50
     },
 
@@ -85,7 +85,7 @@ supplies = {
         "name": "Biohazard Pipet Keeper",
         "supplier": "VWR",
         "catalog_number": "11214-715",
-        "cost_per_unit": 242.55,
+        "cost_per_unit": 275.95,
         "quantity": 50
     },
 
@@ -93,11 +93,11 @@ supplies = {
         "name": "Casamino acids",
         "supplier": "VWR",
         "catalog_number": "97063-378",
-        "cost_per_unit": 0,
+        "cost_per_unit": 164.85,
         "quantity": 500 #500g
     },
 
-        "clear_tubing": {
+    "clear_tubing": {
         "name": "Tubing",
         "supplier": "VWR",
         "catalog_number": "89305-352",
@@ -109,7 +109,7 @@ supplies = {
         "name": "Sterile Cotton Swabs",
         "supplier": "VWR",
         "catalog_number": "10806-050",
-        "cost_per_unit": 13.95,
+        "cost_per_unit": 14.72,
         "quantity": 100
     },
 
@@ -117,7 +117,7 @@ supplies = {
         "name": "Cryoblock", 
         "supplier": "VWR",
         "catalog_number": "75784-932",
-        "cost_per_unit": 0,
+        "cost_per_unit": 181.22,
         "quantity": 1
     },
 
@@ -125,7 +125,7 @@ supplies = {
         "name": "Cryo Cube Base", 
         "supplier": "VWR",
         "catalog_number": "75784-934",
-        "cost_per_unit": 0,
+        "cost_per_unit": 84.06,
         "quantity": 4
     },
 
@@ -133,23 +133,23 @@ supplies = {
         "name": "Cryovials", #2 mL
         "supplier": "VWR",
         "catalog_number": "76523-178",
-        "cost_per_unit": 0,
+        "cost_per_unit": 23.20,
         "quantity": 50
     },
 
-        "culture_tubes": {
+    "culture_tubes": {
         "name": "Culture Tubes", #17 x 100 mm with closures, 14 mL
         "supplier": "VWR",
         "catalog_number": "60818-725",
-        "cost_per_unit": 0,
+        "cost_per_unit": 352.24,
         "quantity": 500
     },
     
     "dropper_bottle_amber": {
         "name": "Amber Dropper Bottle",
         "supplier": "VWR",
-        "catalog_number": "470338-6550",
-        "cost_per_unit": 0,
+        "catalog_number": "470338-650",
+        "cost_per_unit": 230.45,
         "quantity": 144
     },
 
@@ -157,39 +157,39 @@ supplies = {
         "name": "Durham Tube",
         "supplier": "VWR",
         "catalog_number": "89001-454",
-        "cost_per_unit": 281.04,
-        "quantity": 72
+        "cost_per_unit": 259.64,
+        "quantity": 720
     },
 
-    "enteropluri_kit": {  
-        "name": "EnteroPluri Kit",
-        "supplier": "VWR",
-        "catalog_number": "BD215336",
-        "cost_per_unit": 00,
-        "quantity": 25
-    },
+#    "enteropluri_kit": {  #discontinued
+#        "name": "EnteroPluri Kit",
+#        "supplier": "VWR",
+#        "catalog_number": "BD215336",
+#        "cost_per_unit": 00,
+#        "quantity": 25
+#    },
 
     "falcon_tubes_15mL": {
         "name": "Falcon tubes, 15 mL",
         "supplier": "VWR",
         "catalog_number": "470224-998",
-        "cost_per_unit": 0,
-        "quantity": 50
+        "cost_per_unit": 263.61,
+        "quantity": 500
     },
 
     "falcon_tubes_50mL": {
         "name": "Falcon tubes, 50 mL",
         "supplier": "VWR",
         "catalog_number": "470225-002",
-        "cost_per_unit": 0,
-        "quantity": 50
+        "cost_per_unit": 255.06,
+        "quantity": 500
     },
 
     "gaspak_anaerobe_sachet": {
         "name": "GasPak Anaerobe Sachet",
         "supplier": "VWR",
         "catalog_number": "90003-642",
-        "cost_per_unit": 103.76,
+        "cost_per_unit": 97.32,
         "quantity": 20
     },
 
@@ -197,7 +197,7 @@ supplies = {
         "name": "GasPak EZ Campy Sachet",
         "supplier": "VWR",
         "catalog_number": "90003-646",
-        "cost_per_unit": 113.03,
+        "cost_per_unit": 102.24,
         "quantity": 20
     },
 
@@ -205,7 +205,7 @@ supplies = {
         "name": "GasPak Incubation Chamber, Standard",
         "supplier": "VWR",
         "catalog_number": "90003-634",
-        "cost_per_unit": 0,
+        "cost_per_unit": 216.29,
         "quantity": 1
     },
 
@@ -213,7 +213,7 @@ supplies = {
         "name": "GasPak Incubation Chamber Rack, Standard",
         "supplier": "VWR",
         "catalog_number": "89024-786",
-        "cost_per_unit": 0,
+        "cost_per_unit": 139.34,
         "quantity": 1
     },
 
@@ -221,7 +221,7 @@ supplies = {
         "name": "GasPak Incubation Chamber, Large",
         "supplier": "VWR",
         "catalog_number": "90003-634",
-        "cost_per_unit": 0,
+        "cost_per_unit": 229.38,
         "quantity": 1
     },
 
@@ -229,7 +229,7 @@ supplies = {
         "name": "GasPak Incubation Chamber Rack, Large",
         "supplier": "VWR",
         "catalog_number": "90003-640;",
-        "cost_per_unit": 0,
+        "cost_per_unit": 131.87,
         "quantity": 1
     },
 
@@ -237,7 +237,7 @@ supplies = {
         "name": "GasPak CO2 Sachet",
         "supplier": "VWR",
         "catalog_number": "90003-644",
-        "cost_per_unit": 00,
+        "cost_per_unit": 80.40,
         "quantity": 20
     },
 

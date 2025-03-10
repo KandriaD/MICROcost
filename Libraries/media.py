@@ -38,7 +38,7 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "10324-332",
         "distribution": ["premade"],
-        "premade_plate_cost": 78.63,  # cost per box of premade BA plates
+        "premade_plate_cost": 54.16,  # cost per box of premade plates
         "plates_per_box": 100  # number of plates per box
     },
 
@@ -47,7 +47,7 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "89405-034",
         "distribution": ["premade"],
-        "premade_plate_cost": 0000,  # cost per box of premade plates
+        "premade_plate_cost": 15.92,  # cost per box of premade plates
         "plates_per_box": 10  # number of plates per box
     },
 
@@ -56,7 +56,7 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "89407-118", #"90006-202" for pack of 100
         "distribution": ["premade"],
-        "premade_plate_cost": 0000,  # cost per box of premade plates
+        "premade_plate_cost": 7.27,  # cost per box of premade plates
         "plates_per_box": 10  # number of plates per box
     },
 
@@ -65,7 +65,7 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "89407-218",
         "distribution": ["premade"],
-        "premade_plate_cost": 0000,  # cost per box of premade plates
+        "premade_plate_cost": 16.88,  # cost per box of premade plates
         "plates_per_box": 10  # number of plates per box
     },
 
@@ -74,7 +74,7 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "470180-738",
         "distribution": ["premade"],
-        "premade_plate_cost": 45.88,  # cost per box of premade CNA plates
+        "premade_plate_cost": 23.86,  # cost per box of premade CNA plates
         "plates_per_box": 10
     },
 
@@ -82,7 +82,7 @@ media_list = {
         "name": "Cornmeal agar",
         "supplier": "VWR",
         "catalog_number": "61000-028", #changed on 2/27/25 from 90000-098 17g/L
-        "cost_per_ml": 0.0,  # need to check new bottle to figure out how much 500g bottle makes when we order it
+        "cost_per_ml": 0.0,  ## $292.94 for 500g # need to check new bottle to figure out how much 500g bottle makes when we order it
         "distribution": ["plate"]
     },
 
@@ -120,7 +120,7 @@ media_list = {
         "name": "Luria-Bertani agar",
         "supplier": "VWR",
         "catalog_number": "90003-346",
-        "cost_per_ml": 0.0,
+        "cost_per_ml": 0.0, # $165.55 for 500g
         "distribution": ["plate"]
     },
     
@@ -128,7 +128,7 @@ media_list = {
         "name": "MacConkey Agar (MAC)",
         "supplier": "VWR",
         "catalog_number": "90000-168",
-        "cost_per_ml": 0.017,  # cost per mL
+        "cost_per_ml": 0.017,  # cost per mL ## $151.63 for 500g
         "distribution": ["plate"]
     },
     
@@ -136,7 +136,7 @@ media_list = {
         "name": "Marine Agar (MA)",
         "supplier": "VWR",
         "catalog_number": "89225-372",
-        "cost_per_ml": 0.0,  # cost per mL
+        "cost_per_ml": 0.0,  # cost per mL ## $622.30 for 3kg
         "distribution": ["plate", "slant", "deep"],
     },
 
@@ -145,7 +145,7 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "89407-156",
         "distribution": ["premade"],
-        "premade_plate_cost": 44.98,  # cost per box of premade mENDO plates
+        "premade_plate_cost": 11.36,  # cost per box of premade mENDO plates
         "plates_per_box": 10
     },
     
@@ -170,7 +170,7 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "10324-496",
         "distribution": ["premade"],
-        "premade_plate_cost": 0000,  # cost per box of premade plates
+        "premade_plate_cost": 16.04,  # cost per box of premade plates
         "plates_per_box": 10
     },
 
@@ -178,7 +178,7 @@ media_list = {
         "name": "Muller-Hinton Agar",
         "supplier": "VWR",
         "catalog_number": '95039-350',
-        "cost_per_ml": 0.0, #muller hinton agar 500g 132.35, 13157ml
+        "cost_per_ml": 0.0119, #muller hinton agar 500g 157.17, 13157ml
         "distribution": ["slant", "plate"]   
     },
 
@@ -186,9 +186,9 @@ media_list = {
         "name": "Nutrient Agar (NA)",
         "supplier": "VWR",
         "catalog_number": "101106-820", # catalog number for premade plates ### catalog number for powder 470227-474
-        "cost_per_ml": 0.0,  # cost per mL
+        "cost_per_ml": 0.0,  # cost per mL ##207.69 for 1kg
         "distribution": ["plate", "slant", "deep", "premade"],
-        "premade_plate_cost": 17.82,  # cost per box of premade plates
+        "premade_plate_cost": 28.17,  # cost per box of premade plates
         "plates_per_box": 10  # number of plates per box
     },
 
@@ -202,7 +202,7 @@ media_list = {
         "name": "Potato Dextrose Agar",
         "supplier": "VWR",
         "catalog_number": "90000-758", 
-        "cost_per_ml": 0.0,  # cost per mL
+        "cost_per_ml": 0.0,  # cost per mL ##$193.69 for 500g
         "distribution": ["plate", "slant", "deep"],
     },
 
@@ -210,7 +210,7 @@ media_list = {
         "name": "Phenylethylalanine",
         "supplier": "VWR",
         "catalog_number": "89405-884", 
-        "cost_per_ml": 0.0,  # cost per mL
+        "cost_per_ml": 0.0,  # cost per mL ##192.52 for 500g
         "distribution": ["plate", "slant", "deep"],
     },
 
@@ -218,7 +218,7 @@ media_list = {
         "name": "R2A", #stored in 401 fridge
         "supplier": "VWR",
         "catalog_number": "90000-994", 
-        "cost_per_ml": 0.0,  # cost per mL
+        "cost_per_ml": 0.0,  # cost per mL ##245.34 for 500g
         "distribution": ["plate", "slant", "deep"],
     },
 
@@ -235,7 +235,7 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "101205-670",
         "distribution": ["premade"],
-        "premade_plate_cost": 121.61,  # cost per box of premade RODAC plates
+        "premade_plate_cost": 22.34,  # cost per box of premade RODAC plates
         "plates_per_box": 10
     },
 
@@ -252,7 +252,7 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "470177-376",
         "distribution": ["premade"],
-        "premade_plate_cost": 0000,  # cost per box of premade plates
+        "premade_plate_cost": 25.64,  # cost per box of premade plates
         "plates_per_box": 10
     },
 
@@ -273,21 +273,21 @@ media_list = {
         "distribution": ["plate", "slant"]
     },
 
-    "spirit_blue_base":{
-        "name": "Spirit Blue Base",
-        "supplier": "VWR",
-        "catolog_number": "90004-552",
-        "cost_per_ml": 0.0,  
-        "distribution": ["plate", "slant"]
-    },
+ #   "spirit_blue_base":{
+ #       "name": "Spirit Blue Base",
+ #       "supplier": "VWR",
+ #       "catolog_number": "90004-552",
+ #       "cost_per_ml": 0.0,  
+ #       "distribution": ["plate", "slant"]
+ #   },
     
-    "spirit_blue_lipase": {
-        "name": "Spirit Blue Lipase",
-        "supplier": "VWR",
-        "catolog_number": "BD215335",
-        "cost_per_ml": 0.0,  
-        "distribution": ["plate", "slant"]
-    },
+ #   "spirit_blue_lipase": { #discontinued
+ #       "name": "Spirit Blue Lipase",
+ #       "supplier": "VWR",
+ #       "catolog_number": "BD215335",
+ #       "cost_per_ml": 0.0,  
+ #       "distribution": ["plate", "slant"]
+ #   },
 
     "starch_agar": {
         "name": "Starch Agar",
@@ -301,23 +301,23 @@ media_list = {
         "name": "Thiosulfate-Citrate-Bile Salts-sucrose (TCBS)",
         "supplier": "VWR",
         "catolog_number": "89406-112",
-        "cost_per_ml": 0.0241,  #tcbs plate media 500g 137.16, 5681ml
+        "cost_per_ml": 0.0377,  #tcbs plate media 500g 213.97, 5681ml
         "distribution": ["plate", "slant"]
     },
 
-    "tinsdale_base": { #tinsdale agar base 500g 434.02; 22.5 g for 500ml media
+    "tinsdale_base": { #tinsdale agar base 500g 539.03; 22.5 g for 500ml media
         "name": "Tinsdale Base",
         "supplier": "VWR",
         "catolog_number": "90003-990",
-        "cost_per_ml": 0.0391,  
+        "cost_per_ml": 0.0485,  
         "distribution": ["plate", "slant"]
     },
 
     "tinsdale_enrichment": { #tinsdale enrichment 6 bottles total 600ml 1360.11, use 15ml into 100ml of base
         "name": "Tinsdale Enrichment",
         "supplier": "VWR",
-        "catolog_number": "90003-668",
-        "cost_per_ml": 0.0,  
+        "catolog_number": "90002-668",
+        "cost_per_ml": 0.2957,  
         "distribution": ["plate", "slant"],
     },
 
@@ -343,7 +343,7 @@ media_list = {
         "catolog_number": "89405-202", #cat_num for powder ##catalog_number for premade plates 101205-688
         "cost_per_ml": 0.0,  
         "distribution": ["premade", "plate", "slant", "deep"],
-        "premade_plate_cost": 24.15,  # cost per box of premade TSA plates
+        "premade_plate_cost": 13.18,  # cost per box of premade TSA plates
         "plates_per_box": 10  # number of plates per box
     },
 
@@ -364,12 +364,12 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "90006-218",
         "distribution": ["premade"],
-        "premade_plate_cost": 161.63,  # cost per box of premade XLD plates
+        "premade_plate_cost": 144.48,  # cost per box of premade XLD plates
         "plates_per_box": 100
     },
 
-    "ym_plus_nacl": {
-        "name": "YM + NaCl",
+    "ym_plus_nacl": { #stored in 401
+        "name": "Yeast Mold + NaCl",
         "supplier": "VWR",
         "catolog_number": "90003-874", 
         "cost_per_ml": 0.0,  

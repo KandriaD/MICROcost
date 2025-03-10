@@ -13,7 +13,7 @@ chemical_list = {
         "name": "Fetal Bovine Serum",
         "supplier": "VWR",
         "catalog_number": "76644-856",
-        "cost_per_unit": 0,
+        "cost_per_unit": 68.60,
         "quantity": 50 #50 mL
     },
 
