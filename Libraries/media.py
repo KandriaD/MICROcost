@@ -27,8 +27,18 @@ media_list = {
         "distribution": ["slant", "plate"]
     },
 
+    "bhi_agar": {
+        "name": "Brain Heart Infusion Agar (BHI)",
+        "supplier": "VWR",
+        "catalog_number": "90000-066",
+        "cost_per_ml": 000, #285.28 for 500g
+        "distribution": ["slant"]
+    },
+
     "bhi_broth": { #BHI broth $146.79 for 500g makes 2702 tubes
         "name": "Brain Heart Infusion Broth (BHI)",
+        "supplier": "VWR",
+        "catalog_number": "90000-060",
         "cost_per_ml": 0.0326,  # cost per mL; 500g makes 2702 tubes, $146.79/2702 = $0.29358/tube each tube has 9ml, so $0.0326/ml
         "distribution": ["broth"]
     },
