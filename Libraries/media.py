@@ -27,6 +27,14 @@ media_list = {
         "distribution": ["slant", "plate"]
     },
 
+    "bglb": {
+        "name": "BGLB (Brillant Green Lactose Bile w/ Durham tubes)",
+        "supplier": "VWR",
+        "catalog_number": "90003-916",
+        "cost_per_unit": 000, #242.73 for 500g
+        "distribution": ["broth"]
+    },
+
     "bhi_agar": {
         "name": "Brain Heart Infusion Agar (BHI)",
         "supplier": "VWR",
@@ -41,6 +49,14 @@ media_list = {
         "catalog_number": "90000-060",
         "cost_per_ml": 0.0326,  # cost per mL; 500g makes 2702 tubes, $146.79/2702 = $0.29358/tube each tube has 9ml, so $0.0326/ml
         "distribution": ["broth"]
+    },
+
+    "bile_esculin_slants": {
+        "name": "Bile Esculin Slants",
+        "supplier": "VWR",
+        "catalog_number": "89405-170",
+        "cost_per_ml": 000, #168.41 for 500g
+        "distribution": ["slant"]
     },
 
     "blood_agar": {
@@ -97,8 +113,10 @@ media_list = {
     },
 
     "decarb_broth": { #decarboxylate broth 500g 170.63 makes 9505 tubes
-        "name": "Decarboxylate Broth",
-        "cost_per_ml": 0.0179,  # $170.63/9505 = $0.0179/tube each tube has 9ml, so $0.0179/ml
+        "name": "Decarboxylase Broth",
+        "supplier": "VWR",
+        "catalog_number": "95021-768",
+        "cost_per_ml": 0.0023,  # $200.17 for 500g
         "distribution": ["broth"]
     },
 

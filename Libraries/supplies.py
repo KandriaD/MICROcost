@@ -432,32 +432,32 @@ supplies = {
         "name": "Pipet tips, 10 uL (LTS, red)",
         "supplier": "Rainin",
         "catalog_number": "30389291",
-        "cost_per_unit": 0,
-        "quantity": 10 #10 racks/case, 960 tips (10 racks of 96 tips)
+        "cost_per_unit": 40,
+        "quantity": 960 #10 racks/case, 960 tips (10 racks of 96 tips)
     },
 
     "pipet_tips_lts_20uL": {
         "name": "Pipet tips, 20 uL (LTS, red)",
         "supplier": "Rainin",
         "catalog_number": "30389200",
-        "cost_per_unit": 0,
-        "quantity": 10 #10 racks/case
+        "cost_per_unit": 39.90,
+        "quantity": 960 #10 racks/case. 960 tips total
     },
 
     "pipet_tips_lts_250uL": {
         "name": "Pipet tips, 250 uL (LTS, green)",
         "supplier": "Rainin",
         "catalog_number": "30389243",
-        "cost_per_unit": 0,
-        "quantity": 10 #10 racks/case
+        "cost_per_unit": 39.90,
+        "quantity": 960 #10 racks/case
     },
 
     "pipet_tips_universial_250uL": {
         "name": "Pipet tips, 250 uL (UNIVERSAL, green)",
         "supplier": "Rainin",
         "catalog_number": "30389191",
-        "cost_per_unit": 0,
-        "quantity": 10 #10 racks/case
+        "cost_per_unit": 39.90,
+        "quantity": 960 #10 racks/case
     },
 
  #   "pipet_tips_lts_1000uL": { #individual refills
@@ -472,8 +472,8 @@ supplies = {
         "name": "Pipet tips, 1000 uL (LST, blue)",
         "supplier": "Rainin",
         "catalog_number": "30389292",
-        "cost_per_unit": 0,
-        "quantity": 8
+        "cost_per_unit": 40,
+        "quantity": 768  #8 layers of 96
     },
 
     
@@ -497,8 +497,8 @@ supplies = {
         "name": "PRY Kit",
         "supplier": "VWR",
         "catalog_number": "10324-574",
-        "cost_per_unit": 211.47,
-        "quantity": 75 #unclear on website
+        "cost_per_unit": 211.47, #need divide bt 75
+        "quantity": 75 
     },
 
     "rechargable_battery_for_repeater_pipet": {
@@ -545,8 +545,8 @@ supplies = {
         "name": "SYBR Safe DNA gel stain",
         "supplier": "Fisher Scientific",
         "catalog_number": "S33102",
-        "cost_per_unit": 0,
-        "quantity": 1
+        "cost_per_unit": 95.65,
+        "quantity": 400 #400 uL
     },
 
     "test_tube_rack": {
