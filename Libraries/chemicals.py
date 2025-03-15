@@ -44,14 +44,6 @@ chemical_list = {
         "quantity": 100 
     },
 
-    "mineral oil": {
-        "name": "Maltose Monohydrate", #used to top the test tube 1ml for microcentrfuge or 5ml in test tubes, only for anerobic
-        "supplier": "VWR",
-        "catalog_number": "97062-604",
-        "cost_per_unit": 34.45, #cost per bottle of 1L
-        "quantity": 1000 #1L = 1000 mL
-    },
-
     "ninhydrin": {
         "name": "Ninhydrin", 
         "supplier": "VWR",

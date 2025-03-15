@@ -497,7 +497,7 @@ supplies = {
         "name": "PRY Kit",
         "supplier": "VWR",
         "catalog_number": "10324-574",
-        "cost_per_unit": 211.47, #need divide bt 75
+        "cost_per_unit": 211.47,
         "quantity": 75 
     },
 
