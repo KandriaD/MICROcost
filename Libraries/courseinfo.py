@@ -1,4 +1,4 @@
-#course information for all classes
+#course information for all classes Spring 2025
 
 # courseinfo.py
 
@@ -28,8 +28,3 @@ courses = {
     micro461L.name: micro461L,
     micro463L.name: micro463L
 }
-
-# Example usage
-if __name__ == "__main__":
-    # Print the details of MICRO 140L
-    print(courses["MICRO401L"])

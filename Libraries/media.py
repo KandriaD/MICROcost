@@ -27,7 +27,7 @@ media_list = {
         "name": "BGLB (Brillant Green Lactose Bile w/ Durham tubes)",
         "supplier": "VWR",
         "catalog_number": "90003-916",
-        "cost_per_unit": 000 #242.73 for 500g
+        "cost_per_ml": 000 #242.73 for 500g
     },
 
     "bhi_agar": {

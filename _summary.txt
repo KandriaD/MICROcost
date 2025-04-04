@@ -1,0 +1,8 @@
+Experiment Name: 
+Course: MICRO351L
+Sections: 3
+Students: 30
+Groups: 15
+Rooms: 114, 115B, 115B
+
+=== Biologicals ===
