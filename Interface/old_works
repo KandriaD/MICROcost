@@ -71,39 +71,6 @@ def remove_last_supply():
         print(f"Removed supply: {removed['name']}")
         update_preview()
 
-# Function to remove last uninoculated media
-def remove_last_uninoculated_media():
-    if added_uninoculated_media:
-        removed = added_uninoculated_media.pop()
-        print(f"Removed uninoculated media: {removed['name']}")
-        update_preview()
-
-# Function to remove last chemical
-def remove_last_chemical():
-    if added_chemicals:
-        removed = added_chemicals.pop()
-        print(f"Removed chemical: {removed['name']}")
-        update_preview()
-
-# Function to clear all inputs
-def clear_inputs():
-    specimen_var.set("")
-    media_var.set("")
-    type_var.set("")
-    distribution_entry.delete(0, tk.END)
-    distribution_type_var.set("")
-    supply_var.set("")
-    supply_quantity_entry.delete(0, tk.END)
-    supply_quantity_type_var.set("")
-    media_uninoc_var.set("")
-    media_uninoc_type_var.set("")
-    media_uninoc_quantity_entry.delete(0, tk.END)
-    media_uninoc_quantity_type_var.set("")
-    chemical_var.set("")
-    chemical_type_var.set("")
-    chemical_quantity_entry.delete(0, tk.END)
-    chemical_quantity_type_var.set("")
-
 # Function to add biological
 def add_biological():
     selected_specimen = specimen_var.get()
@@ -301,69 +268,20 @@ def add_chemical():
 # --- GUI Layout Setup ---
 root = tk.Tk()
 root.title("Microbiology Lab Cost Calculator")
+root.geometry("1000x700")
 
-# Scrollable Frame Setup
-canvas = tk.Canvas(root)
-scrollbar = ttk.Scrollbar(root, orient="vertical", command=canvas.yview)
-canvas.configure(yscrollcommand=scrollbar.set)
+# Layout Frames
+main_frame = ttk.Frame(root)
+main_frame.grid(row=0, column=0, sticky="nsew")
 
-scrollable_frame = ttk.Frame(canvas)
+input_frame = ttk.Frame(main_frame)
+input_frame.grid(row=0, column=0, sticky="nw")
 
-# Add scrollable_frame to the canvas
-canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
-
-scrollbar.grid(row=0, column=1, sticky="ns")
-canvas.grid(row=0, column=0, sticky="nsew")
-
-# Configure the scroll region to the size of the scrollable_frame
-def on_frame_configure(event):
-    canvas.configure(scrollregion=canvas.bbox("all"))
-
-scrollable_frame.bind("<Configure>", on_frame_configure)
-
-# Input fields, buttons, and frames for biologicals, supplies, and other data
-frame = ttk.Frame(scrollable_frame)
-frame.grid(row=0, column=0, padx=10, pady=10)
-
-specimen_label = ttk.Label(frame, text="Specimen:")
-specimen_label.grid(row=0, column=0, sticky="w")
-
-specimen_var = tk.StringVar()
-specimen_entry = ttk.Entry(frame, textvariable=specimen_var)
-specimen_entry.grid(row=0, column=1)
-
-media_label = ttk.Label(frame, text="Media:")
-media_label.grid(row=1, column=0, sticky="w")
-
-media_var = tk.StringVar()
-media_menu = ttk.Combobox(frame, textvariable=media_var, values=list(media.media_list.keys()))
-media_menu.grid(row=1, column=1)
-
-type_label = ttk.Label(frame, text="Type:")
-type_label.grid(row=2, column=0, sticky="w")
-
-type_var = tk.StringVar()
-type_menu = ttk.Combobox(frame, textvariable=type_var, values=list(media.standard_volumes_ml.keys()))
-type_menu.grid(row=2, column=1)
-
-distribution_label = ttk.Label(frame, text="Distribution Quantity:")
-distribution_label.grid(row=3, column=0, sticky="w")
-
-distribution_entry = ttk.Entry(frame)
-distribution_entry.grid(row=3, column=1)
-
-distribution_type_var = tk.StringVar()
-distribution_type_menu = ttk.Combobox(frame, textvariable=distribution_type_var, values=["Per Student", "Per Group", "Per Section", "Per Table"])
-distribution_type_menu.grid(row=4, column=1)
-
-add_biological_button = ttk.Button(frame, text="Add Biological", command=add_biological)
-add_biological_button.grid(row=5, column=0, pady=10)
-
-remove_biological_button = ttk.Button(frame, text="Remove Last Biological", command=remove_last_biological)
-remove_biological_button.grid(row=5, column=1, pady=10)
+preview_frame = ttk.LabelFrame(main_frame, text="Preview")
+preview_frame.grid(row=0, column=1, sticky="ne", padx=10, pady=10)
 
 # Course Info
-course_frame = ttk.LabelFrame(frame, text="Course Info")
+course_frame = ttk.LabelFrame(input_frame, text="Course Info")
 course_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 
 ttk.Label(course_frame, text="Course Name").grid(row=0, column=0, padx=5, pady=5)
@@ -372,105 +290,132 @@ course_type_dropdown = ttk.Combobox(course_frame, textvariable=course_type_var, 
 course_type_dropdown.grid(row=0, column=1, padx=5, pady=5)
 
 # Experiment Name
-ttk.Label(frame, text="Experiment Name:").grid(row=1, column=0, padx=5, pady=5)
-experiment_name = ttk.Entry(frame, width=40)
+ttk.Label(input_frame, text="Experiment Name:").grid(row=1, column=0, padx=5, pady=5)
+experiment_name = ttk.Entry(input_frame, width=40)
 experiment_name.grid(row=1, column=1, padx=5, pady=5)
 
+# Biologicals Section
+bio_frame = ttk.LabelFrame(input_frame, text="Biologicals")
+bio_frame.grid(row=2, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+
+specimen_var = tk.StringVar()
+specimen_dropdown = ttk.Combobox(bio_frame, textvariable=specimen_var, state="readonly", width=30)
+specimen_dropdown.grid(row=0, column=1, padx=5, pady=5)
+ttk.Label(bio_frame, text="Specimen:").grid(row=0, column=0, padx=5, pady=5)
+
+media_var = tk.StringVar()
+media_dropdown = ttk.Combobox(bio_frame, textvariable=media_var, state="readonly", width=40)
+media_dropdown.grid(row=1, column=1, padx=5, pady=5)
+ttk.Label(bio_frame, text="Media:").grid(row=1, column=0, padx=5, pady=5)
+
+type_var = tk.StringVar()
+type_dropdown = ttk.Combobox(bio_frame, textvariable=type_var, state="readonly", width=25)
+type_dropdown.grid(row=2, column=1, padx=5, pady=5)
+ttk.Label(bio_frame, text="Type:").grid(row=2, column=0, padx=5, pady=5)
+
+distribution_entry = ttk.Entry(bio_frame, width=10)
+distribution_entry.grid(row=3, column=1, padx=5, pady=5)
+distribution_type_var = tk.StringVar()
+distribution_type_dropdown = ttk.Combobox(bio_frame, textvariable=distribution_type_var, values=["Per Section", "Per Table", "Per Group", "Per Student"])
+distribution_type_dropdown.grid(row=3, column=2, padx=5, pady=5)
+ttk.Label(bio_frame, text="Distribution:").grid(row=3, column=0, padx=5, pady=5)
+
+media_dropdown.bind("<<ComboboxSelected>>", lambda event: type_dropdown.config(values=list(media.standard_volumes_ml.keys())))
+
+add_biological_button = ttk.Button(bio_frame, text="Add Biological", command=add_biological)
+add_biological_button.grid(row=4, column=0, columnspan=3, pady=5)
+
+remove_bio_button = ttk.Button(bio_frame, text="Remove Last Biological", command=remove_last_biological)
+remove_bio_button.grid(row=5, column=0, columnspan=3, pady=5)
+
 # Supplies Section
-supply_label = ttk.Label(frame, text="Supply:")
-supply_label.grid(row=6, column=0, sticky="w")
+supplies_frame = ttk.LabelFrame(input_frame, text="Supplies")
+supplies_frame.grid(row=3, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 
 supply_var = tk.StringVar()
-supply_menu = ttk.Combobox(frame, textvariable=supply_var, values=list(supplies.general_supplies.keys()))
-supply_menu.grid(row=6, column=1)
+supply_dropdown = ttk.Combobox(supplies_frame, textvariable=supply_var, state="readonly", width=40)
+supply_dropdown.grid(row=0, column=1, padx=5, pady=5)
+ttk.Label(supplies_frame, text="Supply:").grid(row=0, column=0, padx=5, pady=5)
 
-supply_quantity_label = ttk.Label(frame, text="Quantity:")
-supply_quantity_label.grid(row=7, column=0, sticky="w")
-
-supply_quantity_entry = ttk.Entry(frame)
-supply_quantity_entry.grid(row=7, column=1)
+supply_quantity_entry = ttk.Entry(supplies_frame, width=10)
+supply_quantity_entry.grid(row=1, column=1, padx=5, pady=5)
+ttk.Label(supplies_frame, text="Quantity:").grid(row=1, column=0, padx=5, pady=5)
 
 supply_quantity_type_var = tk.StringVar()
-supply_quantity_type_menu = ttk.Combobox(frame, textvariable=supply_quantity_type_var, values=["Per Student", "Per Group", "Per Section", "Per Table"])
-supply_quantity_type_menu.grid(row=8, column=1)
+quantity_type_dropdown = ttk.Combobox(supplies_frame, textvariable=supply_quantity_type_var, values=["Per Section", "Per Table", "Per Group", "Per Student"])
+quantity_type_dropdown.grid(row=1, column=3, padx=5, pady=5)
+ttk.Label(supplies_frame, text="Quantity Type:").grid(row=1, column=2, padx=5, pady=5)
 
-add_supply_button = ttk.Button(frame, text="Add Supply", command=add_supply)
-add_supply_button.grid(row=9, column=0, pady=10)
+add_supply_button = ttk.Button(supplies_frame, text="Add Supply", command=add_supply)
+add_supply_button.grid(row=2, column=0, columnspan=4, pady=5)
 
-remove_supply_button = ttk.Button(frame, text="Remove Last Supply", command=remove_last_supply)
-remove_supply_button.grid(row=9, column=1, pady=10)
+remove_supply_button = ttk.Button(supplies_frame, text="Remove Last Supply", command=remove_last_supply)
+remove_supply_button.grid(row=3, column=0, columnspan=4, pady=5)
 
 # Uninoculated Media Section
-media_uninoc_label = ttk.Label(frame, text="Uninoculated Media:")
-media_uninoc_label.grid(row=10, column=0, sticky="w")
+media_uninoc_frame = ttk.LabelFrame(input_frame, text="Uninoculated Media")
+media_uninoc_frame.grid(row=4, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 
 media_uninoc_var = tk.StringVar()
-media_uninoc_menu = ttk.Combobox(frame, textvariable=media_uninoc_var, values=list(media.media_list.keys()))
-media_uninoc_menu.grid(row=10, column=1)
-
-media_uninoc_type_label = ttk.Label(frame, text="Type:")
-media_uninoc_type_label.grid(row=11, column=0, sticky="w")
+media_uninoc_dropdown = ttk.Combobox(media_uninoc_frame, textvariable=media_uninoc_var, state="readonly", width=40)
+media_uninoc_dropdown.grid(row=0, column=1, padx=5, pady=5)
+ttk.Label(media_uninoc_frame, text="Media:").grid(row=0, column=0, padx=5, pady=5)
 
 media_uninoc_type_var = tk.StringVar()
-media_uninoc_type_menu = ttk.Combobox(frame, textvariable=media_uninoc_type_var, values=list(media.standard_volumes_ml.keys()))
-media_uninoc_type_menu.grid(row=11, column=1)
+media_uninoc_type_dropdown = ttk.Combobox(media_uninoc_frame, textvariable=media_uninoc_type_var, state="readonly", width=25)
+media_uninoc_type_dropdown.grid(row=1, column=1, padx=5, pady=5)
+ttk.Label(media_uninoc_frame, text="Type:").grid(row=1, column=0, padx=5, pady=5)
 
-media_uninoc_quantity_label = ttk.Label(frame, text="Quantity:")
-media_uninoc_quantity_label.grid(row=12, column=0, sticky="w")
-
-media_uninoc_quantity_entry = ttk.Entry(frame)
-media_uninoc_quantity_entry.grid(row=12, column=1)
-
+media_uninoc_quantity_entry = ttk.Entry(media_uninoc_frame, width=10)
+media_uninoc_quantity_entry.grid(row=2, column=1, padx=5, pady=5)
 media_uninoc_quantity_type_var = tk.StringVar()
-media_uninoc_quantity_type_menu = ttk.Combobox(frame, textvariable=media_uninoc_quantity_type_var, values=["Per Student", "Per Group", "Per Section", "Per Table"])
-media_uninoc_quantity_type_menu.grid(row=13, column=1)
+media_uninoc_quantity_type_dropdown = ttk.Combobox(media_uninoc_frame, textvariable=media_uninoc_quantity_type_var, values=["Per Section", "Per Table", "Per Group", "Per Student"])
+media_uninoc_quantity_type_dropdown.grid(row=2, column=2, padx=5, pady=5)
+ttk.Label(media_uninoc_frame, text="Distribution:").grid(row=2, column=0, padx=5, pady=5)
 
-add_uninoculated_media_button = ttk.Button(frame, text="Add Uninoculated Media", command=add_uninoculated_media)
-add_uninoculated_media_button.grid(row=14, column=0, pady=10)
+media_uninoc_dropdown.bind("<<ComboboxSelected>>", lambda event: media_uninoc_type_dropdown.config(values=list(media.standard_volumes_ml.keys())))
+add_media_button = ttk.Button(media_uninoc_frame, text="Add Media", command=add_uninoculated_media)
+add_media_button.grid(row=3, column=0, columnspan=3, pady=5)
 
-remove_uninoculated_media_button = ttk.Button(frame, text="Remove Last Uninoculated Media", command=remove_last_chemical)
-remove_uninoculated_media_button.grid(row=14, column=1, pady=10)
-
-# Chemical Section
-chemical_label = ttk.Label(frame, text="Chemical:")
-chemical_label.grid(row=15, column=0, sticky="w")
+# Chemicals Section
+chemicals_frame = ttk.LabelFrame(input_frame, text="Chemicals")
+chemicals_frame.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 
 chemical_var = tk.StringVar()
-chemical_menu = ttk.Combobox(frame, textvariable=chemical_var, values=list(chemicals.chemicals.keys()))
-chemical_menu.grid(row=15, column=1)
-
-chemical_type_label = ttk.Label(frame, text="Type:")
-chemical_type_label.grid(row=16, column=0, sticky="w")
+chemical_dropdown = ttk.Combobox(chemicals_frame, textvariable=chemical_var, state="readonly", width=40)
+chemical_dropdown.grid(row=0, column=1, padx=5, pady=5)
+ttk.Label(chemicals_frame, text="Chemical:").grid(row=0, column=0, padx=5, pady=5)
 
 chemical_type_var = tk.StringVar()
-chemical_type_menu = ttk.Combobox(frame, textvariable=chemical_type_var, values=list(media.standard_volumes_ml.keys()))
-chemical_type_menu.grid(row=16, column=1)
+chemical_type_dropdown = ttk.Combobox(chemicals_frame, textvariable=chemical_type_var, state="readonly", width=25)
+chemical_type_dropdown.grid(row=1, column=1, padx=5, pady=5)
+ttk.Label(chemicals_frame, text="Type:").grid(row=1, column=0, padx=5, pady=5)
 
-chemical_quantity_label = ttk.Label(frame, text="Quantity:")
-chemical_quantity_label.grid(row=17, column=0, sticky="w")
-
-chemical_quantity_entry = ttk.Entry(frame)
-chemical_quantity_entry.grid(row=17, column=1)
-
+chemical_quantity_entry = ttk.Entry(chemicals_frame, width=10)
+chemical_quantity_entry.grid(row=2, column=1, padx=5, pady=5)
 chemical_quantity_type_var = tk.StringVar()
-chemical_quantity_type_menu = ttk.Combobox(frame, textvariable=chemical_quantity_type_var, values=["Per Student", "Per Group", "Per Section", "Per Table"])
-chemical_quantity_type_menu.grid(row=18, column=1)
+chemical_quantity_type_dropdown = ttk.Combobox(chemicals_frame, textvariable=chemical_quantity_type_var, values=["Per Section", "Per Table", "Per Group", "Per Student"])
+chemical_quantity_type_dropdown.grid(row=2, column=2, padx=5, pady=5)
+ttk.Label(chemicals_frame, text="Distribution:").grid(row=2, column=0, padx=5, pady=5)
 
-add_chemical_button = ttk.Button(frame, text="Add Chemical", command=add_chemical)
-add_chemical_button.grid(row=19, column=0, pady=10)
+chemical_dropdown.bind("<<ComboboxSelected>>", lambda event: chemical_type_dropdown.config(values=list(media.standard_volumes_ml.keys())))
+add_chemical_button = ttk.Button(chemicals_frame, text="Add Chemical", command=add_chemical)
+add_chemical_button.grid(row=3, column=0, columnspan=3, pady=5)
 
-remove_chemical_button = ttk.Button(frame, text="Remove Last Chemical", command=remove_last_chemical)
-remove_chemical_button.grid(row=19, column=1, pady=10)# Preview Frame
-preview_frame = ttk.Frame(scrollable_frame)
-preview_frame.grid(row=1, column=0, padx=10, pady=10)
+# Preview Text
+preview_text = tk.Text(preview_frame, width=60, height=40, state="disabled", wrap="word")
+preview_text.pack(padx=5, pady=5)
 
-preview_text = tk.Text(preview_frame, wrap="none", width=60, height=20)
-preview_text.grid(row=0, column=0)
-
-export_button = ttk.Button(scrollable_frame, text="Export Summary", command=update_preview)
-export_button.grid(row=2, column=0, pady=20)
-
-clear_button = ttk.Button(scrollable_frame, text="Clear All Inputs", command=clear_inputs)
-clear_button.grid(row=3, column=0, pady=10)
-
+# Populate Dropdowns
+if hasattr(bacteria, "bacteria_list"):
+    specimen_dropdown["values"] = list(bacteria.bacteria_list)
+if hasattr(media, "media_list"):
+    media_dropdown["values"] = [value["name"] for key, value in media.media_list.items()]
+if hasattr(supplies, "general_supplies"):
+    supply_dropdown["values"] = list(supplies.general_supplies.keys())
+if hasattr(media, "media_list"):
+    media_uninoc_dropdown["values"] = [value["name"] for key, value in media.media_list.items()]
+if hasattr(chemicals, "chemicals"):
+    chemical_dropdown["values"] = list(chemicals.chemicals.keys())
+    
 root.mainloop()
