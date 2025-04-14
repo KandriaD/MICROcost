@@ -75,14 +75,14 @@ def remove_last_supply():
 def remove_last_uninoculated_media():
     if added_uninoculated_media:
         removed = added_uninoculated_media.pop()
-        print(f"Removed uninoculated media: {removed['name']}")
+        print(f"Removed uninoculated media: {removed['media']}")
         update_preview()
 
 # Function to remove last chemical
 def remove_last_chemical():
     if added_chemicals:
         removed = added_chemicals.pop()
-        print(f"Removed chemical: {removed['name']}")
+        print(f"Removed chemical: {removed['chemical']}")
         update_preview()
 
 # Function to clear all inputs

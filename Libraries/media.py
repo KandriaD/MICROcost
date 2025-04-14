@@ -13,28 +13,19 @@ standard_volumes_ml = {
     "topper_microcentrifuge_tube": 1
 }
 
-#media amounts
-    #ec broth 9ml
-    #luros tripos broth 9
-    #nitrate broth 9
-    #pbb tubex 9
-    #other broth or agar are 5
-#empty petri plate 500 plates 97.64 ... ask her where she got this number, the packing slip says 83.64; either way added it to supplies.py
-
-#media costs
 media_list = {
     "bglb": {
         "name": "BGLB (Brillant Green Lactose Bile w/ Durham tubes)",
         "supplier": "VWR",
         "catalog_number": "90003-916",
-        "cost_per_ml": 000 #242.73 for 500g
+        "cost_per_ml": 0.01942 #242.73 for 500g
     },
 
     "bhi_agar": {
         "name": "Brain Heart Infusion Agar (BHI)",
         "supplier": "VWR",
         "catalog_number": "90000-066",
-        "cost_per_ml": 000 #285.28 for 500g
+        "cost_per_ml": 0.02111 #285.28 for 500g
     },
 
     "bhi_broth": {
@@ -48,39 +39,39 @@ media_list = {
         "name": "Bile Esculin Agar (BEA)",
         "supplier": "VWR",
         "catalog_number": "89405-170",
-        "cost_per_ml": 000 #168.41 for 500g
+        "cost_per_ml": 0.02088 #168.41 for 500g
     },
 
     "blood_agar": {
-        "name": "Blood Agar (BA)",
+        "name": "Blood Agar (BA) [premade]",
         "supplier": "VWR",
         "catalog_number": "10324-332",
         "cost_per_ml": 54.16/100 #premade
     },
 
     "campy_cva":{
-        "name": "Campy CVA",
+        "name": "Campy CVA [premade]",
         "supplier": "VWR",
         "catalog_number": "89405-034",
         "cost_per_ml": 15.92/10 #premade
     },
 
     "chocolate_agar": {
-        "name": "Chocolate agar",
+        "name": "Chocolate agar [premade]",
         "supplier": "VWR",
         "catalog_number": "89407-118", #"90006-202" for pack of 100
         "cost_per_ml": 7.27/10 #premade
     },
 
     "cin_agar": {
-        "name": "CIN Agar",
+        "name": "CIN Agar [premade]",
         "supplier": "VWR",
         "catalog_number": "89407-218",
         "cost_per_ml": 16.88/10 #premade
     },
 
     "cna_plates": {
-        "name": "Columbia CNA Plates",
+        "name": "Columbia CNA Plates [premade]",
         "supplier": "VWR",
         "catalog_number": "470180-738",
         "cost_per_ml": 23.86/10 #premade
@@ -90,21 +81,21 @@ media_list = {
         "name": "Cornmeal agar",
         "supplier": "VWR",
         "catalog_number": "61000-028", #changed on 2/27/25 from 90000-098 17g/L
-        "cost_per_ml": 0.0  ## $292.94 for 500g
+        "cost_per_ml": 0.00996  ## $292.94 for 500g
     },
 
     "decarb_broth": { #decarboxylate broth 500g 170.63 makes 9505 tubes
         "name": "Decarboxylase Broth",
         "supplier": "VWR",
         "catalog_number": "95021-768",
-        "cost_per_ml": 0.00 # $200.17 for 500g
+        "cost_per_ml": 0.00421 # $200.17 for 500g
     },
 
-    "dnase_plate": { 
-        "name": "DNase Agar Plates",
+    "dnase_agar": { 
+        "name": "DNase Agar",
         "supplier": "VWR",
         "catalog_number": "95021-114",
-        "cost_per_ml": 0.0 #dnase plates 500g bottle makes 793 plates
+        "cost_per_ml": 0.07472 #dnase 500g bottle makes 793 plates
     },
 
     "ec_broth": { 
@@ -114,8 +105,8 @@ media_list = {
         "cost_per_ml": 196.50/500*37/1000
     },
 
-    "emb_plate": {
-        "name": "Eosin Methylene Blue (EMB) Plates",
+    "emb": {
+        "name": "Eosin Methylene Blue (EMB)",
         "supplier": "VWR",
         "catalog_number": "90000-122",
         "cost_per_ml": 000 #157.43 for 500g
@@ -137,32 +128,32 @@ media_list = {
         "name": "Lauryl Tryptose Broth w/ Durham tubes",
         "supplier": "VWR",
         "catalog_number": "90001-770",
-        "cost_per_ml": 0.0  #149.33 for 500g
+        "cost_per_ml": 0.01063  #149.33 for 500g
     },
 
     "lb_agar": {
         "name": "Luria-Bertani agar",
         "supplier": "VWR",
         "catalog_number": "90003-346",
-        "cost_per_ml": 0.0 # $165.55 for 500g
+        "cost_per_ml": 0.01324 # $165.55 for 500g
     },
 
     "lb_broth": {
         "name": "Lennox Broth (LB)",
         "supplier": "VWR",
         "catalog_number": "76346-580",
-        "cost_per_ml": 0.0 # $71.64 for 500g
+        "cost_per_ml": 0.00287 # $71.64 for 500g
     },
     
     "loeffler_agar_slants": { 
-        "name": "Loeffler Agar Slants",
+        "name": "Loeffler Agar Slants [premade]",
         "supplier": "VWR",
         "catalog_number": "89426-236",
         "cost_per_ml": 130.40/20 #premade
     },
 
     "lowenstein_jensen_slants": { 
-        "name": "Lowensteun-Jensen Slants",
+        "name": "Lowensteun-Jensen Slants [premade]",
         "supplier": "VWR",
         "catalog_number": "90001-154",
         "cost_per_ml": 48.35/10  #premade
@@ -190,7 +181,7 @@ media_list = {
     },
 
     "mendo_plates": {
-        "name": "mENDO Plates",
+        "name": "mENDO Plates [premade]",
         "supplier": "VWR",
         "catalog_number": "89407-156",
         "cost_per_ml": 11.36/10 #premade
@@ -228,7 +219,7 @@ media_list = {
         "name": "MR-VP Broths",
         "supplier": "VWR",
         "catalog_number": "75803-772",
-        "cost_per_ml": 0.0  #117.73 for 500g
+        "cost_per_ml": 0.004  #117.73 for 500g
     },
 
     "msa": { #MSA (manatal salt agar) media alone $114.95 for 1 bottle, makes 300 plates
@@ -239,7 +230,7 @@ media_list = {
     },
 
     "mtm_agar": {
-        "name": "Modified Thayer-Martin Agar",
+        "name": "Modified Thayer-Martin Agar [premade]",
         "supplier": "VWR",
         "catalog_number": "10324-496",
         "cost_per_ml": 16.04/10 #premade
@@ -256,11 +247,11 @@ media_list = {
         "name": "Nutrient Agar (NA)",
         "supplier": "VWR",
         "catalog_number": "470227-474",
-        "cost_per_ml": 0.0  # cost per mL ##213.85 for 1kg
+        "cost_per_ml": 0.00492  # cost per mL ##213.85 for 1kg
     },
 
     "nutrient_agar_plate_premade": {
-        "name": "Nutrient Agar (NA) Plate",
+        "name": "Nutrient Agar (NA) Plate [premade]",
         "supplier": "VWR",
         "catalog_number": "101106-820", 
         "cost_per_ml": 28.17/10 
@@ -270,7 +261,7 @@ media_list = {
         "name": "Nutrient Broth (NB)",
         "supplier": "VWR",
         "catalog_number": "470227-476",
-        "cost_per_ml": 0.0  # 196.46 per 1kg
+        "cost_per_ml": 0.00177  # 196.46 per 1kg
     },
 
     "nutrient_gelatin": { 
@@ -312,11 +303,11 @@ media_list = {
         "name": "Phenylalinine Agar",
         "supplier": "VWR",
         "catalog_number": "89405-884", 
-        "cost_per_ml": 0.0 
+        "cost_per_ml": 0.0089
     },   
     
     "potassium_tellurite_agar": {
-        "name": "Potassium Tellurite Agar",
+        "name": "Potassium Tellurite Agar [premade]",
         "supplier": "Fischer Scientific",
         "catalog_number": "50-948-700",
         "cost_per_ml": 84.96/20 #premade
@@ -337,7 +328,7 @@ media_list = {
     },
 
     "rodac_plates": {
-        "name": "RODAC Plates",
+        "name": "RODAC Plates [premade]",
         "supplier": "VWR",
         "catalog_number": "101205-670",
         "cost_per_ml": 22.34/10 #premade
@@ -347,11 +338,11 @@ media_list = {
         "name": "Salmonella Shigella (SS) Agar",
         "supplier": "VWR",
         "catalog_number": "90000-240",
-        "cost_per_ml": 0.0,  # $169.84/555 = $0.306/tube each tube has 15ml, so $0.305/ml ##now $210.93
+        "cost_per_ml": 0.305,  # $169.84/555 = $0.306/tube each tube has 15ml, so $0.305/ml ##now $210.93
     },
 
     "sda":{
-        "name": "Sabourad Dextrose Agar",
+        "name": "Sabourad Dextrose Agar [premade]",
         "supplier": "VWR",
         "catalog_number": "470177-376",
         "cost_per_ml": 25.64/10 #premade
@@ -368,7 +359,7 @@ media_list = {
         "name": "Simmon's Citrate",
         "supplier": "VWR",
         "catolog_number": "470317-448",
-        "cost_per_ml": 00
+        "cost_per_ml": 0.00527
     },    
 
     "skim_milk_agar":{
@@ -382,7 +373,7 @@ media_list = {
         "name": "AK Agar (Sporulating Agar)",
         "supplier": "VWR",
         "catolog_number": "90000-014",
-        "cost_per_ml": 00
+        "cost_per_ml": 0.02385
     },
 
     "starch_agar": {
@@ -396,7 +387,7 @@ media_list = {
         "name": "Thiosulfate-Citrate-Bile Salts-sucrose (TCBS)",
         "supplier": "VWR",
         "catolog_number": "89406-112",
-        "cost_per_ml": 0000  #tcbs plate media 500g 224.45
+        "cost_per_ml": 0.03591  #tcbs plate media 500g 224.45
     },
 
     "thioglycollate_broth": {
@@ -431,18 +422,18 @@ media_list = {
         "name": "Tributyruin Agar Base",
         "supplier": "VWR",
         "catolog_number": "61000-694",
-        "cost_per_ml": 0.0
+        "cost_per_ml": 0.00852
     },
 
     "tsa": {
         "name": "Tryptic Soy Agar (TSA)",
         "supplier": "VWR",
         "catolog_number": "89405-202",
-        "cost_per_ml": 0.0
+        "cost_per_ml": 0.00876
     },
 
     "tsa_plates_premade": {
-        "name": "Tryptic Soy Agar (TSA) Plates",
+        "name": "Tryptic Soy Agar (TSA) Plates [premade]",
         "supplier": "VWR",
         "catolog_number": "101205-688",
         "cost_per_ml": 13.18/10 #premade
@@ -452,7 +443,7 @@ media_list = {
         "name": "Tryptic Soy Broth (TSB)",
         "supplier": "VWR",
         "catalog_number": "470227-520",
-        "cost_per_ml": 0.0
+        "cost_per_ml": 0.00456
     },
 
     "tsia": { 
@@ -463,14 +454,14 @@ media_list = {
     },
 
     "urea_slants": { 
-        "name": "Urea Slants",
+        "name": "Urea Slants [premade]",
         "supplier": "VWR",
         "catalog_number": "10065-304",
         "cost_per_ml": 82.34/20 #premade
     },
 
     "xld_plate": { #xld plates premade 100 plates 161.63
-        "name": "Xylose Lysine Deoxycholate (XLD) Plates",
+        "name": "Xylose Lysine Deoxycholate (XLD) Plates [premade]",
         "supplier": "VWR",
         "catalog_number": "90006-218",
         "cost_per_ml": 144.48/100
