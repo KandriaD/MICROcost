@@ -3,13 +3,13 @@ import sys
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-# Ensure the Libraries folder is in sys.path
+# --- Ensure the Libraries folder is in sys.path ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
 libraries_path = os.path.join(script_dir, "..", "Libraries")
 if libraries_path not in sys.path:
     sys.path.append(libraries_path)
 
-# Import custom libraries
+# --- Import custom libraries ---
 import bacteria
 import media
 import courseinfo
@@ -17,13 +17,13 @@ import supplies
 import antibiotics
 import chemicals
 
-# Global storage variables
+# --- Global storage variables ---
 added_biologicals = []
 added_supplies = []
 added_uninoculated_media = []
 added_chemicals = []
 
-# Function to update preview
+# --- Functions for updating preview and adding/removing items ---
 def update_preview():
     preview_text.config(state="normal")
     preview_text.delete(1.0, tk.END)
@@ -57,21 +57,31 @@ def update_preview():
 
     preview_text.config(state="disabled")
 
-# Function to remove last biological
+# --- Functions to add and remove biologicals, supplies, uninoculated media, and chemicals ---
 def remove_last_biological():
     if added_biologicals:
         removed = added_biologicals.pop()
         print(f"Removed biological: {removed['specimen']}")
         update_preview()
 
-# Function to remove last supply
 def remove_last_supply():
     if added_supplies:
         removed = added_supplies.pop()
         print(f"Removed supply: {removed['name']}")
         update_preview()
 
-# Function to add biological
+def remove_last_uninoculated_media():
+    if added_uninoculated_media:
+        removed = added_uninoculated_media.pop()
+        print(f"Removed uninoculated media: {removed['media']}")
+        update_preview()
+
+def remove_last_chemical():
+    if added_chemicals:
+        removed = added_chemicals.pop()
+        print(f"Removed chemical: {removed['chemical']}")
+        update_preview()
+
 def add_biological():
     selected_specimen = specimen_var.get()
     selected_media = media_var.get()
@@ -122,7 +132,6 @@ def add_biological():
     print(f"Added biological: {selected_specimen}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
-# Function to add supply
 def add_supply():
     selected_supply = supply_var.get()
     quantity = supply_quantity_entry.get()
@@ -167,7 +176,6 @@ def add_supply():
     print(f"Added supply: {selected_supply}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
-# Function to add uninoculated media
 def add_uninoculated_media():
     selected_media = media_uninoc_var.get()
     selected_type = media_uninoc_type_var.get()
@@ -216,7 +224,6 @@ def add_uninoculated_media():
     print(f"Added uninoculated media: {selected_media}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
-# Function to add chemical
 def add_chemical():
     selected_chemical = chemical_var.get()
     selected_type = chemical_type_var.get()
