@@ -3,13 +3,13 @@ import sys
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-# Ensure the Libraries folder is in sys.path
+# --- Ensure the Libraries folder is in sys.path ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
 libraries_path = os.path.join(script_dir, "..", "Libraries")
 if libraries_path not in sys.path:
     sys.path.append(libraries_path)
 
-# Import custom libraries
+# --- Import custom libraries ---
 import bacteria
 import media
 import courseinfo
@@ -17,13 +17,13 @@ import supplies
 import antibiotics
 import chemicals
 
-# Global storage variables
+# --- Global storage variables ---
 added_biologicals = []
 added_supplies = []
 added_uninoculated_media = []
 added_chemicals = []
 
-# Function to update preview
+# --- Functions for updating preview and adding/removing items ---
 def update_preview():
     preview_text.config(state="normal")
     preview_text.delete(1.0, tk.END)
@@ -57,21 +57,31 @@ def update_preview():
 
     preview_text.config(state="disabled")
 
-# Function to remove last biological
+# --- Functions to add and remove biologicals, supplies, uninoculated media, and chemicals ---
 def remove_last_biological():
     if added_biologicals:
         removed = added_biologicals.pop()
         print(f"Removed biological: {removed['specimen']}")
         update_preview()
 
-# Function to remove last supply
 def remove_last_supply():
     if added_supplies:
         removed = added_supplies.pop()
         print(f"Removed supply: {removed['name']}")
         update_preview()
 
-# Function to add biological
+def remove_last_uninoculated_media():
+    if added_uninoculated_media:
+        removed = added_uninoculated_media.pop()
+        print(f"Removed uninoculated media: {removed['media']}")
+        update_preview()
+
+def remove_last_chemical():
+    if added_chemicals:
+        removed = added_chemicals.pop()
+        print(f"Removed chemical: {removed['chemical']}")
+        update_preview()
+
 def add_biological():
     selected_specimen = specimen_var.get()
     selected_media = media_var.get()
@@ -122,7 +132,6 @@ def add_biological():
     print(f"Added biological: {selected_specimen}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
-# Function to add supply
 def add_supply():
     selected_supply = supply_var.get()
     quantity = supply_quantity_entry.get()
@@ -167,7 +176,6 @@ def add_supply():
     print(f"Added supply: {selected_supply}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
-# Function to add uninoculated media
 def add_uninoculated_media():
     selected_media = media_uninoc_var.get()
     selected_type = media_uninoc_type_var.get()
@@ -216,7 +224,6 @@ def add_uninoculated_media():
     print(f"Added uninoculated media: {selected_media}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
-# Function to add chemical
 def add_chemical():
     selected_chemical = chemical_var.get()
     selected_type = chemical_type_var.get()
@@ -266,40 +273,51 @@ def add_chemical():
     update_preview()
 
 # --- GUI Layout Setup ---
-class LabCostCalculatorApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Microbiology Lab Cost Calculator")
+root = tk.Tk()
+root.title("Microbiology Lab Cost Calculator")
+root.geometry("1000x700")
 
-        # Scrollable frame setup
-        self.canvas = tk.Canvas(self.root)
-        self.scrollbar = ttk.Scrollbar(self.root, orient="vertical", command=self.canvas.yview)
-        self.scrollable_frame = ttk.Frame(self.canvas)
+# Create a Canvas to make the frame scrollable
+canvas = tk.Canvas(root)
+canvas.grid(row=0, column=0, sticky="nsew")
 
-        self.scrollable_frame.bind(
-            "<Configure>",
-            lambda e: self.canvas.configure(
-                scrollregion=self.canvas.bbox("all")
-            )
-        )
+# Add a Scrollbar for the canvas
+scrollbar = ttk.Scrollbar(root, orient="vertical", command=canvas.yview)
+scrollbar.grid(row=0, column=1, sticky="ns")
 
-        self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
-        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+# Link the scrollbar with the canvas
+canvas.config(yscrollcommand=scrollbar.set)
 
-        self.canvas.pack(side="left", fill="both", expand=True)
-        self.scrollbar.pack(side="right", fill="y")
+# Create a frame inside the canvas
+scrollable_frame = ttk.Frame(canvas)
+canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
 
-# Course Info Section
-        input_frame = ttk.Frame(self.scrollable_frame)
-        input_frame.pack(fill="both", expand=True, padx=10, pady=10)
+# Update the scrollable region whenever the frame's contents change
+def on_frame_configure(event):
+    canvas.config(scrollregion=canvas.bbox("all"))
 
-        course_frame = ttk.LabelFrame(input_frame, text="Course Info")
-        course_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+scrollable_frame.bind("<Configure>", on_frame_configure)
 
-        ttk.Label(course_frame, text="Course Name").grid(row=0, column=0, padx=5, pady=5)
-        course_type_var = tk.StringVar()
-        course_type_dropdown = ttk.Combobox(course_frame, textvariable=course_type_var, values=["Course 1", "Course 2", "Course 3"])  # Example course list
-        course_type_dropdown.grid(row=0, column=1, padx=5, pady=5)
+# --- Layout for inputs ---
+input_frame = ttk.Frame(scrollable_frame)
+input_frame.grid(row=0, column=0, sticky="nw")
+
+# --- Preview Section ---
+preview_frame = ttk.LabelFrame(input_frame, text="Preview")
+preview_frame.grid(row=4, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+
+preview_text = tk.Text(preview_frame, height=20, width=80)
+preview_text.grid(row=0, column=0, padx=5, pady=5)
+preview_text.config(state="disabled")
+
+# Course Info
+course_frame = ttk.LabelFrame(input_frame, text="Course Info")
+course_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+
+ttk.Label(course_frame, text="Course Name").grid(row=0, column=0, padx=5, pady=5)
+course_type_var = tk.StringVar()
+course_type_dropdown = ttk.Combobox(course_frame, textvariable=course_type_var, values=list(courseinfo.courses.keys()))
+course_type_dropdown.grid(row=0, column=1, padx=5, pady=5)
 
 # Experiment Name
 ttk.Label(input_frame, text="Experiment Name:").grid(row=1, column=0, padx=5, pady=5)
@@ -414,10 +432,6 @@ chemical_dropdown.bind("<<ComboboxSelected>>", lambda event: chemical_type_dropd
 add_chemical_button = ttk.Button(chemicals_frame, text="Add Chemical", command=add_chemical)
 add_chemical_button.grid(row=3, column=0, columnspan=3, pady=5)
 
-# Preview Text
-preview_text = tk.Text(preview_frame, width=60, height=40, state="disabled", wrap="word")
-preview_text.pack(padx=5, pady=5)
-
 # Populate Dropdowns
 if hasattr(bacteria, "bacteria_list"):
     specimen_dropdown["values"] = list(bacteria.bacteria_list)
@@ -429,62 +443,5 @@ if hasattr(media, "media_list"):
     media_uninoc_dropdown["values"] = [value["name"] for key, value in media.media_list.items()]
 if hasattr(chemicals, "chemicals"):
     chemical_dropdown["values"] = list(chemicals.chemicals.keys())
-
-# Export Button
-    self.export_button = ttk.Button(self.scrollable_frame, text="Export Summary", command=self.export_summary)
-    self.export_button.pack(pady=10)
-
-    def add_media(self):
-        entry = ttk.Entry(self.media_frame)
-        entry.pack()
-        self.media_widgets.append(entry)
-
-    def remove_last_media(self):
-        if self.media_widgets:
-            last_widget = self.media_widgets.pop()
-            last_widget.destroy()
-
-    def add_chemical(self):
-        entry = ttk.Entry(self.chem_frame)
-        entry.pack()
-        self.chemical_widgets.append(entry)
-
-    def remove_last_chemical(self):
-        if self.chemical_widgets:
-            last_widget = self.chemical_widgets.pop()
-            last_widget.destroy()
-
-    def export_summary(self):
-        filetypes = [("CSV files", "*.csv"), ("PDF files", "*.pdf")]
-        file_path = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=filetypes)
-
-        if file_path.endswith(".csv"):
-            self.export_csv(file_path)
-        elif file_path.endswith(".pdf"):
-            self.export_pdf(file_path)
-
-    def export_csv(self, file_path):
-        with open(file_path, mode='w', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow(["Uninoculated Media"])
-            for entry in self.media_widgets:
-                writer.writerow([entry.get()])
-            writer.writerow([])
-            writer.writerow(["Chemicals"])
-            for entry in self.chemical_widgets:
-                writer.writerow([entry.get()])
-
-    def export_pdf(self, file_path):
-        pdf = FPDF()
-        pdf.add_page()
-        pdf.set_font("Arial", size=12)
-        pdf.cell(200, 10, txt="Uninoculated Media", ln=True)
-        for entry in self.media_widgets:
-            pdf.cell(200, 10, txt=entry.get(), ln=True)
-        pdf.cell(200, 10, txt="", ln=True)
-        pdf.cell(200, 10, txt="Chemicals", ln=True)
-        for entry in self.chemical_widgets:
-            pdf.cell(200, 10, txt=entry.get(), ln=True)
-        pdf.output(file_path)
-
+    
 root.mainloop()
