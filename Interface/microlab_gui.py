@@ -2,14 +2,24 @@ import os
 import sys
 import tkinter as tk
 from tkinter import ttk, messagebox
+from tkinter import filedialog
+import csv
 
-# Ensure the Libraries folder is in sys.path
+# --- Define global variables for muliple experiments ---
+experiments = {}  # Dictionary to store all experiment data
+current_experiment = None  # Variable to store the name of the current experiment
+biologicals_list = []  # List to store biologicals for the current experiment
+supplies_list = []  # List to store supplies for the current experiment
+media_list = []  # List to store media for the current experiment
+chemicals_list = []  # List to store chemicals for the current experiment
+
+# --- Ensure the Libraries folder is in sys.path ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
 libraries_path = os.path.join(script_dir, "..", "Libraries")
 if libraries_path not in sys.path:
     sys.path.append(libraries_path)
 
-# Import custom libraries
+# --- Import custom libraries ---
 import bacteria
 import media
 import courseinfo
@@ -17,13 +27,45 @@ import supplies
 import antibiotics
 import chemicals
 
-# Global storage variables
+# --- Global storage variables for adding materials ---
 added_biologicals = []
 added_supplies = []
 added_uninoculated_media = []
 added_chemicals = []
 
-# Function to update preview
+# --- Funtion to start a new experiment ---
+def start_new_experiment():
+    global current_experiment, biologicals_list, supplies_list, media_list, chemicals_list
+
+    name = experiment_name_entry.get().strip()
+    if not name:
+        messagebox.showwarning("No Name", "Please enter a name for the experiment.")
+        return
+
+    current_experiment = name
+    biologicals_list = []
+    supplies_list = []
+    media_list = []
+    chemicals_list = []
+
+    print(f"Started new experiment: {current_experiment}")
+
+    # Reset the experiment name
+    current_experiment = None
+
+    # Optionally, clear the entry field for the experiment name
+    experiment_name_entry.delete(0, 'end') 
+
+#set name for new experiment
+def set_experiment_name():
+    global current_experiment
+    experiment_name = experiment_name_entry.get()  # Get the experiment name from the input field
+    if experiment_name:
+        current_experiment = experiment_name  # Store the name
+    else:
+        print("Please enter an experiment name.")  # Optional error message
+
+# --- Functions for updating preview and adding/removing items ---
 def update_preview():
     preview_text.config(state="normal")
     preview_text.delete(1.0, tk.END)
@@ -57,54 +99,31 @@ def update_preview():
 
     preview_text.config(state="disabled")
 
-# Function to remove last biological
+# --- Functions to add and remove biologicals, supplies, uninoculated media, and chemicals ---
 def remove_last_biological():
     if added_biologicals:
         removed = added_biologicals.pop()
         print(f"Removed biological: {removed['specimen']}")
         update_preview()
 
-# Function to remove last supply
 def remove_last_supply():
     if added_supplies:
         removed = added_supplies.pop()
         print(f"Removed supply: {removed['name']}")
         update_preview()
 
-# Function to remove last uninoculated media
 def remove_last_uninoculated_media():
     if added_uninoculated_media:
         removed = added_uninoculated_media.pop()
         print(f"Removed uninoculated media: {removed['media']}")
         update_preview()
 
-# Function to remove last chemical
 def remove_last_chemical():
     if added_chemicals:
         removed = added_chemicals.pop()
         print(f"Removed chemical: {removed['chemical']}")
         update_preview()
 
-# Function to clear all inputs
-def clear_inputs():
-    specimen_var.set("")
-    media_var.set("")
-    type_var.set("")
-    distribution_entry.delete(0, tk.END)
-    distribution_type_var.set("")
-    supply_var.set("")
-    supply_quantity_entry.delete(0, tk.END)
-    supply_quantity_type_var.set("")
-    media_uninoc_var.set("")
-    media_uninoc_type_var.set("")
-    media_uninoc_quantity_entry.delete(0, tk.END)
-    media_uninoc_quantity_type_var.set("")
-    chemical_var.set("")
-    chemical_type_var.set("")
-    chemical_quantity_entry.delete(0, tk.END)
-    chemical_quantity_type_var.set("")
-
-# Function to add biological
 def add_biological():
     selected_specimen = specimen_var.get()
     selected_media = media_var.get()
@@ -155,13 +174,12 @@ def add_biological():
     print(f"Added biological: {selected_specimen}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
-# Function to add supply
 def add_supply():
-    selected_supply = supply_var.get()
+    selected_supply_name = supply_var.get()
     quantity = supply_quantity_entry.get()
     quantity_type = supply_quantity_type_var.get()
 
-    if not all([selected_supply, quantity, quantity_type]):
+    if not all([selected_supply_name, quantity, quantity_type]):
         print("Missing supply info")
         return
 
@@ -176,31 +194,36 @@ def add_supply():
         print("Invalid course selection")
         return
 
-    supply_info = supplies.general_supplies.get(selected_supply)
-    if not supply_info:
-        print("Supply not found")
+    # Get the key using the name-to-key dictionary
+    supply_key = supply_name_to_key.get(selected_supply_name)
+    if not supply_key:
+        print("Supply key not found")
         return
 
-    per_item_cost = supply_info["cost_per_unit"]
-    total_units = {
+    supply_info = supplies.supplies.get(supply_key)
+    if not supply_info:
+        print("Supply info not found")
+        return
+
+    per_item_cost = supply_info["cost_per_unit"]/supply_info["quantity"]
+    units = {
         "Per Student": course.students,
         "Per Group": course.groups,
         "Per Section": course.sections,
-        "Per Table": 6 * course.sections,
+        "Per Table": 6 * course.sections,  # Assuming 6 tables per section
     }.get(quantity_type, 1) * quantity
 
-    total_cost = total_units * per_item_cost
+    total_cost = units * per_item_cost
 
     added_supplies.append({
-        "name": selected_supply,
+        "name": selected_supply_name,
         "distribution": f"{quantity} {quantity_type}",
         "cost": round(total_cost, 2)
     })
 
-    print(f"Added supply: {selected_supply}, Cost: ${round(total_cost, 2)}")
+    print(f"Added supply: {selected_supply_name}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
-# Function to add uninoculated media
 def add_uninoculated_media():
     selected_media = media_uninoc_var.get()
     selected_type = media_uninoc_type_var.get()
@@ -249,7 +272,6 @@ def add_uninoculated_media():
     print(f"Added uninoculated media: {selected_media}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
-# Function to add chemical
 def add_chemical():
     selected_chemical = chemical_var.get()
     selected_type = chemical_type_var.get()
@@ -299,49 +321,40 @@ def add_chemical():
     update_preview()
 
 # --- GUI Layout Setup ---
-class LabCostCalculatorApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Microbiology Lab Cost Calculator")
+root = tk.Tk()
+root.title("Microbiology Lab Cost Calculator")
+root.geometry("1200x900")
 
-        # Scrollable frame setup
-        self.canvas = tk.Canvas(self.root)
-        self.scrollbar = ttk.Scrollbar(self.root, orient="vertical", command=self.canvas.yview)
-        self.scrollable_frame = ttk.Frame(self.canvas)
+# Layout Frames
+main_frame = ttk.Frame(root)
+main_frame.grid(row=0, column=0, sticky="nsew")
 
-        self.scrollable_frame.bind(
-            "<Configure>",
-            lambda e: self.canvas.configure(
-                scrollregion=self.canvas.bbox("all")
-            )
-        )
+input_frame = ttk.Frame(main_frame)
+input_frame.grid(row=0, column=0, sticky="nw")
 
-        self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
-        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+preview_frame = ttk.LabelFrame(main_frame, text="Preview")
+preview_frame.grid(row=0, column=1, sticky="ne", padx=10, pady=10)
 
-        self.canvas.pack(side="left", fill="both", expand=True)
-        self.scrollbar.pack(side="right", fill="y")
+# Course Info
+course_frame = ttk.LabelFrame(input_frame, text="Course Info")
+course_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 
-# Course Info Section
-        input_frame = ttk.Frame(self.scrollable_frame)
-        input_frame.pack(fill="both", expand=True, padx=10, pady=10)
+ttk.Label(course_frame, text="Course Name").grid(row=0, column=0, padx=5, pady=5)
+course_type_var = tk.StringVar()
+course_type_dropdown = ttk.Combobox(course_frame, textvariable=course_type_var, values=list(courseinfo.courses.keys()))
+course_type_dropdown.grid(row=0, column=1, padx=5, pady=5)
 
-        course_frame = ttk.LabelFrame(input_frame, text="Course Info")
-        course_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+# Experiment Name (Label + Entry + Set Button using grid)
+ttk.Label(input_frame, text="Experiment Name:").grid(row=1, column=0, padx=5, pady=5, sticky="w")
+experiment_name_entry = ttk.Entry(input_frame, width=40)
+experiment_name_entry.grid(row=1, column=1, padx=5, pady=5)
 
-        ttk.Label(course_frame, text="Course Name").grid(row=0, column=0, padx=5, pady=5)
-        course_type_var = tk.StringVar()
-        course_type_dropdown = ttk.Combobox(course_frame, textvariable=course_type_var, values=["Course 1", "Course 2", "Course 3"])  # Example course list
-        course_type_dropdown.grid(row=0, column=1, padx=5, pady=5)
-
-# Experiment Name
-ttk.Label(input_frame, text="Experiment Name:").grid(row=1, column=0, padx=5, pady=5)
-experiment_name = ttk.Entry(input_frame, width=40)
-experiment_name.grid(row=1, column=1, padx=5, pady=5)
+set_name_button = tk.Button(input_frame, text="Set Experiment Name", command=set_experiment_name)
+set_name_button.grid(row=2, column=1, padx=5, pady=5)
 
 # Biologicals Section
 bio_frame = ttk.LabelFrame(input_frame, text="Biologicals")
-bio_frame.grid(row=2, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+bio_frame.grid(row=3, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 
 specimen_var = tk.StringVar()
 specimen_dropdown = ttk.Combobox(bio_frame, textvariable=specimen_var, state="readonly", width=30)
@@ -375,10 +388,13 @@ remove_bio_button.grid(row=5, column=0, columnspan=3, pady=5)
 
 # Supplies Section
 supplies_frame = ttk.LabelFrame(input_frame, text="Supplies")
-supplies_frame.grid(row=3, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+supplies_frame.grid(row=4, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+
+supply_names = [item["name"] for item in supplies.supplies.values()]
+supply_name_to_key = {item["name"]: key for key, item in supplies.supplies.items()}
 
 supply_var = tk.StringVar()
-supply_dropdown = ttk.Combobox(supplies_frame, textvariable=supply_var, state="readonly", width=40)
+supply_dropdown = ttk.Combobox(supplies_frame, textvariable=supply_var, values=supply_names, state="readonly", width=40)
 supply_dropdown.grid(row=0, column=1, padx=5, pady=5)
 ttk.Label(supplies_frame, text="Supply:").grid(row=0, column=0, padx=5, pady=5)
 
@@ -399,7 +415,7 @@ remove_supply_button.grid(row=3, column=0, columnspan=4, pady=5)
 
 # Uninoculated Media Section
 media_uninoc_frame = ttk.LabelFrame(input_frame, text="Uninoculated Media")
-media_uninoc_frame.grid(row=4, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+media_uninoc_frame.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 
 media_uninoc_var = tk.StringVar()
 media_uninoc_dropdown = ttk.Combobox(media_uninoc_frame, textvariable=media_uninoc_var, state="readonly", width=40)
@@ -422,12 +438,18 @@ media_uninoc_dropdown.bind("<<ComboboxSelected>>", lambda event: media_uninoc_ty
 add_media_button = ttk.Button(media_uninoc_frame, text="Add Media", command=add_uninoculated_media)
 add_media_button.grid(row=3, column=0, columnspan=3, pady=5)
 
+remove_media_button = ttk.Button(media_uninoc_frame, text="Remove Last Media", command=remove_last_uninoculated_media)
+remove_media_button.grid(row=4, column=0, columnspan=3, pady=5)
+
 # Chemicals Section
 chemicals_frame = ttk.LabelFrame(input_frame, text="Chemicals")
-chemicals_frame.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+chemicals_frame.grid(row=6, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+
+chemical_key_to_name = {key: val["name"] for key, val in chemicals.chemical_list.items()}
+chemical_name_to_key = {val["name"]: key for key, val in chemicals.chemical_list.items()}
 
 chemical_var = tk.StringVar()
-chemical_dropdown = ttk.Combobox(chemicals_frame, textvariable=chemical_var, state="readonly", width=40)
+chemical_dropdown = ttk.Combobox(chemicals_frame, textvariable=chemical_var, values=list(chemical_key_to_name.values()), state="readonly", width=40)
 chemical_dropdown.grid(row=0, column=1, padx=5, pady=5)
 ttk.Label(chemicals_frame, text="Chemical:").grid(row=0, column=0, padx=5, pady=5)
 
@@ -447,6 +469,9 @@ chemical_dropdown.bind("<<ComboboxSelected>>", lambda event: chemical_type_dropd
 add_chemical_button = ttk.Button(chemicals_frame, text="Add Chemical", command=add_chemical)
 add_chemical_button.grid(row=3, column=0, columnspan=3, pady=5)
 
+remove_chemical_button = ttk.Button(chemicals_frame, text="Remove Last Chemical", command=remove_last_chemical)
+remove_chemical_button.grid(row=4, column=0, columnspan=3, pady=5)
+
 # Preview Text
 preview_text = tk.Text(preview_frame, width=60, height=40, state="disabled", wrap="word")
 preview_text.pack(padx=5, pady=5)
@@ -463,61 +488,99 @@ if hasattr(media, "media_list"):
 if hasattr(chemicals, "chemicals"):
     chemical_dropdown["values"] = list(chemicals.chemicals.keys())
 
-# Export Button
-    self.export_button = ttk.Button(self.scrollable_frame, text="Export Summary", command=self.export_summary)
-    self.export_button.pack(pady=10)
+# --- Add buttons to start a new experiment and export summary ---
+import csv
+from tkinter import filedialog
 
-    def add_media(self):
-        entry = ttk.Entry(self.media_frame)
-        entry.pack()
-        self.media_widgets.append(entry)
+def export_summary():
+    global current_experiment, experiments, biologicals_list, supplies_list, media_list, chemicals_list
 
-    def remove_last_media(self):
-        if self.media_widgets:
-            last_widget = self.media_widgets.pop()
-            last_widget.destroy()
+    # Save current experiment data before exporting
+    if current_experiment:
+        experiments[current_experiment] = {
+            "biologicals": biologicals_list.copy(),
+            "supplies": supplies_list.copy(),
+            "media": media_list.copy(),
+            "chemicals": chemicals_list.copy()
+        }
 
-    def add_chemical(self):
-        entry = ttk.Entry(self.chem_frame)
-        entry.pack()
-        self.chemical_widgets.append(entry)
+    # Ask where to save the file
+    print("Current experiment name:", current_experiment)
+    print("Experiments stored:", experiments)
 
-    def remove_last_chemical(self):
-        if self.chemical_widgets:
-            last_widget = self.chemical_widgets.pop()
-            last_widget.destroy()
+    file_path = filedialog.asksaveasfilename(
+        defaultextension=".csv",
+        filetypes=[("CSV files", "*.csv")],
+        title="Save Experiment Summary As"
+    )
 
-    def export_summary(self):
-        filetypes = [("CSV files", "*.csv"), ("PDF files", "*.pdf")]
-        file_path = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=filetypes)
+    if not file_path:
+        return  # User cancelled
 
-        if file_path.endswith(".csv"):
-            self.export_csv(file_path)
-        elif file_path.endswith(".pdf"):
-            self.export_pdf(file_path)
+    # Write data to CSV
+    with open(file_path, "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["Experiment", "Type", "Item", "Amount", "Unit", "Cost"])
 
-    def export_csv(self, file_path):
-        with open(file_path, mode='w', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow(["Uninoculated Media"])
-            for entry in self.media_widgets:
-                writer.writerow([entry.get()])
-            writer.writerow([])
-            writer.writerow(["Chemicals"])
-            for entry in self.chemical_widgets:
-                writer.writerow([entry.get()])
+        for experiment_name, data in experiments.items():
+            for section_name, items in data.items():
+                for item in items:
+                    writer.writerow([
+                        experiment_name,
+                        section_name.capitalize(),
+                        item.get("name", ""),
+                        item.get("amount", ""),
+                        item.get("unit", ""),
+                        item.get("cost", "")
+                    ])
+    print("EXPERIMENTS:", experiments)
 
-    def export_pdf(self, file_path):
-        pdf = FPDF()
-        pdf.add_page()
-        pdf.set_font("Arial", size=12)
-        pdf.cell(200, 10, txt="Uninoculated Media", ln=True)
-        for entry in self.media_widgets:
-            pdf.cell(200, 10, txt=entry.get(), ln=True)
-        pdf.cell(200, 10, txt="", ln=True)
-        pdf.cell(200, 10, txt="Chemicals", ln=True)
-        for entry in self.chemical_widgets:
-            pdf.cell(200, 10, txt=entry.get(), ln=True)
-        pdf.output(file_path)
+def export_csv(file_path):
+    with open(file_path, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        # Header
+        writer.writerow(["Experiment Name", experiment_name.get()])
+        writer.writerow(["Course", course_type_var.get()])
+        course = courseinfo.courses.get(course_type_var.get())
+        if course:
+            writer.writerow(["Sections", course.sections])
+            writer.writerow(["Groups", course.groups])
+            writer.writerow(["Students", course.students])
+        writer.writerow([])
 
+        # Biologicals
+        writer.writerow(["Biologicals"])
+        writer.writerow(["Specimen", "Media", "Type", "Distribution", "Cost"])
+        for b in added_biologicals:
+            writer.writerow([b['specimen'], b['media'], b['type'], b['distribution'], b['cost']])
+        writer.writerow([])
+
+        # Supplies
+        writer.writerow(["Supplies"])
+        writer.writerow(["Name", "Distribution", "Cost"])
+        for s in added_supplies:
+            writer.writerow([s['name'], s['distribution'], s['cost']])
+        writer.writerow([])
+
+        # Media
+        writer.writerow(["Uninoculated Media"])
+        writer.writerow(["Media", "Type", "Distribution", "Cost"])
+        for m in added_uninoculated_media:
+            writer.writerow([m['media'], m['type'], m['distribution'], m['cost']])
+        writer.writerow([])
+
+        # Chemicals
+        writer.writerow(["Chemicals"])
+        writer.writerow(["Chemical", "Type", "Distribution", "Cost"])
+        for c in added_chemicals:
+            writer.writerow([c['chemical'], c['type'], c['distribution'], c['cost']])
+        writer.writerow([])
+
+# new experiment nd export summary buttons
+start_new_button = ttk.Button(preview_frame, text="Start New Experiment", command=start_new_experiment)
+start_new_button.pack(pady=10)
+
+export_button = ttk.Button(preview_frame, text="Export Summary", command=export_summary)
+export_button.pack(pady=10)
+   
 root.mainloop()

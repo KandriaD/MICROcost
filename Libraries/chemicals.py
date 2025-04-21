@@ -25,8 +25,13 @@ chemical_list = {
         "quantity": 500 # 500 mL
     },
 
-    "isopropanol_70%": 2.59, #cost per bottle from LongsDrugs when not on sale
-    "isopropanol_70%_sale": 1.49, #cost per bottle from LongsDrugs when on sale
+    "isopropanol_70%": { ####1.49, cost per bottle from LongsDrugs when on sale
+        "name": "Isopropanol 70%",
+        "supplier": "Longs Drugs",
+        "catalog_number": "0000", #need to get the catalog_number
+        "cost_per_unit": 2.59, #cost per bottle from LongsDrugs when not on sale
+        "quantity": 500 # 500 mL
+    },
 
     "l_ornithine_hydrochloride": {
         "name": "L-Ornithine Hydrochloride",

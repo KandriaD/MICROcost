@@ -244,8 +244,8 @@ supplies = {
     "glo_germ": {
         "name": "Glo Germ Hand Wash",
         "supplier": "VWR",
-        "cost_per_unit": 17.09,  # from VWR
-        "quantity": 1  # distributed by bottles
+        "cost_per_unit": 17.09,  # from VWR per bottle
+        "quantity": 236.588  # distributed by bottles, but students probably only use about 5mL each, so this is per ml
     },
 
     "gloves_xs": {
