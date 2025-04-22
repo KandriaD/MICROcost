@@ -17,6 +17,14 @@ chemical_list = {
         "quantity": 50 #50 mL
     },
 
+    "glucose_salts": {
+        "name": "Glucose Salts",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 00, #cost per bottle of
+        "quantity": 00
+    },
+
     "hydrogen_peroxide": {
         "name": "30% Hydrogen Peroxide",
         "supplier": "Fisher Sci",

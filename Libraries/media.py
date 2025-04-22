@@ -25,14 +25,14 @@ media_list = {
         "name": "Brain Heart Infusion Agar (BHI)",
         "supplier": "VWR",
         "catalog_number": "90000-066",
-        "cost_per_ml": 0.02111 #285.28 for 500g
+        "cost_per_ml": 0.02967 #285.28 for 500g
     },
 
     "bhi_broth": {
         "name": "Brain Heart Infusion Broth (BHI)",
         "supplier": "VWR",
         "catalog_number": "90000-060",
-        "cost_per_ml": 00 #182.31 for 500g
+        "cost_per_ml": 0.01349 #182.31 for 500g
     },
 
     "bile_esculin_agar": {

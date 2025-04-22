@@ -566,7 +566,7 @@ bacteria_list = {
         "stock_cost": 0.00
     },
 
-    "Seratia marcescens": {
+    "Serratia marcescens": {
         "synonyms": ["S. marcescens"],
         "gram": "negative",
         "shape": "rod",

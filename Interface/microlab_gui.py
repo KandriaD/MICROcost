@@ -230,7 +230,7 @@ def add_supply():
     update_preview()
 
 def add_uninoculated_media():
-    global uninoculated_media_list
+    global media_list
 
     selected_media = media_uninoc_var.get()
     selected_type = media_uninoc_type_var.get()
@@ -272,7 +272,7 @@ def add_uninoculated_media():
 
     total_cost = volume_ml * cost_per_ml * total_samples
 
-    uninoculated_media_list.append({
+    media_list.append({
         "media": selected_media,
         "type": selected_type,
         "distribution": f"{dist_num} {dist_type}",
@@ -414,7 +414,7 @@ add_biological_button = ttk.Button(bio_frame, text="Add Biological", command=add
 add_biological_button.grid(row=4, column=0, columnspan=3, pady=5)
 
 remove_bio_button = ttk.Button(bio_frame, text="Remove Last Biological", command=remove_last_biological)
-remove_bio_button.grid(row=4, column=0, columnspan=3, pady=5)
+remove_bio_button.grid(row=5, column=0, columnspan=3, pady=5)
 
 # Supplies Section
 supplies_frame = ttk.LabelFrame(input_frame, text="Supplies")
