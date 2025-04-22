@@ -35,35 +35,20 @@ added_chemicals = []
 
 # --- Funtion to start a new experiment ---
 def start_new_experiment():
-    global current_experiment, biologicals_list, supplies_list, media_list, chemicals_list
+    global current_experiment
+    
+    # Set the current experiment to a new name (you may already have a method to get this)
+    experiment_name = experiment_name_entry.get()  # or use another variable
+    current_experiment = experiment_name  # Ensure it's assigned here
 
-    name = experiment_name_entry.get().strip()
-    if not name:
-        messagebox.showwarning("No Name", "Please enter a name for the experiment.")
-        return
-
-    current_experiment = name
+    # Initialize the lists for the new experiment
+    global biologicals_list, supplies_list, media_list, chemicals_list
     biologicals_list = []
     supplies_list = []
     media_list = []
     chemicals_list = []
 
     print(f"Started new experiment: {current_experiment}")
-
-    # Reset the experiment name
-    current_experiment = None
-
-    # Optionally, clear the entry field for the experiment name
-    experiment_name_entry.delete(0, 'end') 
-
-#set name for new experiment
-def set_experiment_name():
-    global current_experiment
-    experiment_name = experiment_name_entry.get()  # Get the experiment name from the input field
-    if experiment_name:
-        current_experiment = experiment_name  # Store the name
-    else:
-        print("Please enter an experiment name.")  # Optional error message
 
 # --- Functions for updating preview and adding/removing items ---
 def update_preview():
@@ -125,6 +110,8 @@ def remove_last_chemical():
         update_preview()
 
 def add_biological():
+    global biologicals_list
+
     selected_specimen = specimen_var.get()
     selected_media = media_var.get()
     selected_type = type_var.get()
@@ -156,25 +143,34 @@ def add_biological():
     cost_per_ml = media_data["cost_per_ml"]
     total_samples = {
         "Per Student": course.students,
+        "Per Pair": course.students // 2,
         "Per Group": course.groups,
-        "Per Section": course.sections,
         "Per Table": 6 * course.sections,
+        "Per Section": course.sections,
+        "Per Room": len(course.rooms),
+        "Per Course": 1,
     }.get(dist_type, 1) * dist_num
 
     total_cost = volume_ml * cost_per_ml * total_samples
 
-    added_biologicals.append({
+    biological = {
         "specimen": selected_specimen,
         "media": selected_media,
         "type": selected_type,
         "distribution": f"{dist_num} {dist_type}",
         "cost": round(total_cost, 2)
-    })
+    }
+
+    biologicals_list.append(biological)
+
+    added_biologicals.append(biological)
 
     print(f"Added biological: {selected_specimen}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
 def add_supply():
+    global supplies_list
+
     selected_supply_name = supply_var.get()
     quantity = supply_quantity_entry.get()
     quantity_type = supply_quantity_type_var.get()
@@ -205,15 +201,24 @@ def add_supply():
         print("Supply info not found")
         return
 
-    per_item_cost = supply_info["cost_per_unit"]/supply_info["quantity"]
+    per_item_cost = supply_info["cost_per_unit"] / supply_info["quantity"]
     units = {
         "Per Student": course.students,
+        "Per Pair": course.students // 2,
         "Per Group": course.groups,
+        "Per Table": 6 * course.sections,
         "Per Section": course.sections,
-        "Per Table": 6 * course.sections,  # Assuming 6 tables per section
+        "Per Room": len(course.rooms),
+        "Per Course": 1,
     }.get(quantity_type, 1) * quantity
 
     total_cost = units * per_item_cost
+
+    supplies_list.append({
+        "name": selected_supply_name,
+        "distribution": f"{quantity} {quantity_type}",
+        "cost": round(total_cost, 2)
+    })
 
     added_supplies.append({
         "name": selected_supply_name,
@@ -225,6 +230,8 @@ def add_supply():
     update_preview()
 
 def add_uninoculated_media():
+    global uninoculated_media_list
+
     selected_media = media_uninoc_var.get()
     selected_type = media_uninoc_type_var.get()
     dist_num = media_uninoc_quantity_entry.get()
@@ -255,12 +262,22 @@ def add_uninoculated_media():
     cost_per_ml = media_data["cost_per_ml"]
     total_samples = {
         "Per Student": course.students,
+        "Per Pair": course.students // 2,
         "Per Group": course.groups,
-        "Per Section": course.sections,
         "Per Table": 6 * course.sections,
+        "Per Section": course.sections,
+        "Per Room": len(course.rooms),
+        "Per Course": 1,
     }.get(dist_type, 1) * dist_num
 
     total_cost = volume_ml * cost_per_ml * total_samples
+
+    uninoculated_media_list.append({
+        "media": selected_media,
+        "type": selected_type,
+        "distribution": f"{dist_num} {dist_type}",
+        "cost": round(total_cost, 2)
+    })
 
     added_uninoculated_media.append({
         "media": selected_media,
@@ -273,6 +290,8 @@ def add_uninoculated_media():
     update_preview()
 
 def add_chemical():
+    global chemicals_list
+
     selected_chemical = chemical_var.get()
     selected_type = chemical_type_var.get()
     dist_num = chemical_quantity_entry.get()
@@ -303,12 +322,22 @@ def add_chemical():
     cost_per_ml = chemical_data["cost_per_ml"]
     total_samples = {
         "Per Student": course.students,
+        "Per Pair": course.students // 2,
         "Per Group": course.groups,
-        "Per Section": course.sections,
         "Per Table": 6 * course.sections,
+        "Per Section": course.sections,
+        "Per Room": len(course.rooms),
+        "Per Course": 1,
     }.get(dist_type, 1) * dist_num
 
     total_cost = volume_ml * cost_per_ml * total_samples
+
+    chemicals_list.append({
+        "chemical": selected_chemical,
+        "type": selected_type,
+        "distribution": f"{dist_num} {dist_type}",
+        "cost": round(total_cost, 2)
+    })
 
     added_chemicals.append({
         "chemical": selected_chemical,
@@ -346,11 +375,12 @@ course_type_dropdown.grid(row=0, column=1, padx=5, pady=5)
 
 # Experiment Name (Label + Entry + Set Button using grid)
 ttk.Label(input_frame, text="Experiment Name:").grid(row=1, column=0, padx=5, pady=5, sticky="w")
+
 experiment_name_entry = ttk.Entry(input_frame, width=40)
 experiment_name_entry.grid(row=1, column=1, padx=5, pady=5)
 
-set_name_button = tk.Button(input_frame, text="Set Experiment Name", command=set_experiment_name)
-set_name_button.grid(row=2, column=1, padx=5, pady=5)
+start_new_button = ttk.Button(input_frame, text="Set Experiment Name", command=start_new_experiment)
+start_new_button.grid(row=2, column=1, padx=5, pady=5)
 
 # Biologicals Section
 bio_frame = ttk.LabelFrame(input_frame, text="Biologicals")
@@ -374,7 +404,7 @@ ttk.Label(bio_frame, text="Type:").grid(row=2, column=0, padx=5, pady=5)
 distribution_entry = ttk.Entry(bio_frame, width=10)
 distribution_entry.grid(row=3, column=1, padx=5, pady=5)
 distribution_type_var = tk.StringVar()
-distribution_type_dropdown = ttk.Combobox(bio_frame, textvariable=distribution_type_var, values=["Per Section", "Per Table", "Per Group", "Per Student"])
+distribution_type_dropdown = ttk.Combobox(bio_frame, textvariable=distribution_type_var, values=["Per Course", "Per Room", "Per Section", "Per Table", "Per Group", "Per Pair", "Per Student"])
 distribution_type_dropdown.grid(row=3, column=2, padx=5, pady=5)
 ttk.Label(bio_frame, text="Distribution:").grid(row=3, column=0, padx=5, pady=5)
 
@@ -384,7 +414,7 @@ add_biological_button = ttk.Button(bio_frame, text="Add Biological", command=add
 add_biological_button.grid(row=4, column=0, columnspan=3, pady=5)
 
 remove_bio_button = ttk.Button(bio_frame, text="Remove Last Biological", command=remove_last_biological)
-remove_bio_button.grid(row=5, column=0, columnspan=3, pady=5)
+remove_bio_button.grid(row=4, column=0, columnspan=3, pady=5)
 
 # Supplies Section
 supplies_frame = ttk.LabelFrame(input_frame, text="Supplies")
@@ -403,7 +433,7 @@ supply_quantity_entry.grid(row=1, column=1, padx=5, pady=5)
 ttk.Label(supplies_frame, text="Quantity:").grid(row=1, column=0, padx=5, pady=5)
 
 supply_quantity_type_var = tk.StringVar()
-quantity_type_dropdown = ttk.Combobox(supplies_frame, textvariable=supply_quantity_type_var, values=["Per Section", "Per Table", "Per Group", "Per Student"])
+quantity_type_dropdown = ttk.Combobox(supplies_frame, textvariable=supply_quantity_type_var, values=["Per Course", "Per Room", "Per Section", "Per Table", "Per Group", "Per Pair", "Per Student"])
 quantity_type_dropdown.grid(row=1, column=3, padx=5, pady=5)
 ttk.Label(supplies_frame, text="Quantity Type:").grid(row=1, column=2, padx=5, pady=5)
 
@@ -430,7 +460,7 @@ ttk.Label(media_uninoc_frame, text="Type:").grid(row=1, column=0, padx=5, pady=5
 media_uninoc_quantity_entry = ttk.Entry(media_uninoc_frame, width=10)
 media_uninoc_quantity_entry.grid(row=2, column=1, padx=5, pady=5)
 media_uninoc_quantity_type_var = tk.StringVar()
-media_uninoc_quantity_type_dropdown = ttk.Combobox(media_uninoc_frame, textvariable=media_uninoc_quantity_type_var, values=["Per Section", "Per Table", "Per Group", "Per Student"])
+media_uninoc_quantity_type_dropdown = ttk.Combobox(media_uninoc_frame, textvariable=media_uninoc_quantity_type_var, values=["Per Course", "Per Room", "Per Section", "Per Table", "Per Group", "Per Pair", "Per Student"])
 media_uninoc_quantity_type_dropdown.grid(row=2, column=2, padx=5, pady=5)
 ttk.Label(media_uninoc_frame, text="Distribution:").grid(row=2, column=0, padx=5, pady=5)
 
@@ -461,7 +491,7 @@ ttk.Label(chemicals_frame, text="Type:").grid(row=1, column=0, padx=5, pady=5)
 chemical_quantity_entry = ttk.Entry(chemicals_frame, width=10)
 chemical_quantity_entry.grid(row=2, column=1, padx=5, pady=5)
 chemical_quantity_type_var = tk.StringVar()
-chemical_quantity_type_dropdown = ttk.Combobox(chemicals_frame, textvariable=chemical_quantity_type_var, values=["Per Section", "Per Table", "Per Group", "Per Student"])
+chemical_quantity_type_dropdown = ttk.Combobox(chemicals_frame, textvariable=chemical_quantity_type_var, values=["Per Course", "Per Room", "Per Section", "Per Table", "Per Group", "Per Pair", "Per Student"])
 chemical_quantity_type_dropdown.grid(row=2, column=2, padx=5, pady=5)
 ttk.Label(chemicals_frame, text="Distribution:").grid(row=2, column=0, padx=5, pady=5)
 
@@ -488,15 +518,13 @@ if hasattr(media, "media_list"):
 if hasattr(chemicals, "chemicals"):
     chemical_dropdown["values"] = list(chemicals.chemicals.keys())
 
-# --- Add buttons to start a new experiment and export summary ---
-import csv
-from tkinter import filedialog
-
+# --- Function to export summary to CSV ---
 def export_summary():
     global current_experiment, experiments, biologicals_list, supplies_list, media_list, chemicals_list
 
-    # Save current experiment data before exporting
+    # Ensure current_experiment is not empty
     if current_experiment:
+        # Ensure the experiment data is properly populated
         experiments[current_experiment] = {
             "biologicals": biologicals_list.copy(),
             "supplies": supplies_list.copy(),
@@ -504,10 +532,17 @@ def export_summary():
             "chemicals": chemicals_list.copy()
         }
 
-    # Ask where to save the file
+    # Debugging: Print the data about to be exported
     print("Current experiment name:", current_experiment)
     print("Experiments stored:", experiments)
 
+    # Debugging: Print lists to check if they are populated correctly
+    print("Biologicals List:", biologicals_list)
+    print("Supplies List:", supplies_list)
+    print("Media List:", media_list)
+    print("Chemicals List:", chemicals_list)
+
+    # Ask where to save the file
     file_path = filedialog.asksaveasfilename(
         defaultextension=".csv",
         filetypes=[("CSV files", "*.csv")],
@@ -515,13 +550,16 @@ def export_summary():
     )
 
     if not file_path:
-        return  # User cancelled
+        return  # User cancelled the save operation
 
     # Write data to CSV
     with open(file_path, "w", newline="") as file:
         writer = csv.writer(file)
+        
+        # Write header
         writer.writerow(["Experiment", "Type", "Item", "Amount", "Unit", "Cost"])
 
+        # Write data for each experiment
         for experiment_name, data in experiments.items():
             for section_name, items in data.items():
                 for item in items:
@@ -533,9 +571,11 @@ def export_summary():
                         item.get("unit", ""),
                         item.get("cost", "")
                     ])
-    print("EXPERIMENTS:", experiments)
+    print("CSV Exported Successfully!")
 
 def export_csv(file_path):
+    global biologicals_list, supplies_list, media_list, chemicals_list, experiments
+
     with open(file_path, mode='w', newline='') as file:
         writer = csv.writer(file)
         # Header
@@ -576,9 +616,7 @@ def export_csv(file_path):
             writer.writerow([c['chemical'], c['type'], c['distribution'], c['cost']])
         writer.writerow([])
 
-# new experiment nd export summary buttons
-start_new_button = ttk.Button(preview_frame, text="Start New Experiment", command=start_new_experiment)
-start_new_button.pack(pady=10)
+# export summary buttons
 
 export_button = ttk.Button(preview_frame, text="Export Summary", command=export_summary)
 export_button.pack(pady=10)
