@@ -1,12 +1,43 @@
 #chemical costs for microbio labs
-
+#many chemicals, such as stains, we have had for many years and are effectively free at current
 chemical_list = {
+    "bleach": {
+        "name": "Bleach (Sodium Hypochlorite)",
+        "supplier": "Longs Drugs",
+        "catalog_number": "",
+        "cost_per_unit": 3.43, #"bleach" 3.43 for 43 oz
+        "quantity": 1271.66 #ml
+    },
+
+    "crystal_violet": {
+        "name": "Crystal Violet",
+        "supplier": "VWR",
+        "catalog_number": "95060-952",
+        "cost_per_unit": 19.26,
+        "quantity": 237 #mL
+    },
+    "decolorizer": {
+        "name": "Decolorizer (95% Ethanol)",
+        "supplier": "VWR",
+        "catalog_number": "95060-952",
+        "cost_per_unit": 0, #95% ethonol from chem stock room
+        "quantity": 500 #mL
+    },
+
+    "dextrose":{
+        "name": "Dextrose (D-Glucose)",
+        "supplier": "VWR",
+        "catalog_number": "BDH9230-500G",
+        "cost_per_unit": 30.97, #cost per bottle of 500g
+        "quantity": 500 #500g
+    },
+
     "ferric_chloride": {
         "name": "Ferric Chloride [iron (III) chloride hexahydrate]",
         "supplier": "VWR",
         "catalog_number": "00-00", #look at Cas# on bottle and find cheap on on VWR
-        "cost_per_unit": 0,
-        "quantity": 500 #500g
+        "cost_per_unit": 0.00853,#cost per ml for 10%solution
+        "quantity": 1  #42.64 for 500g then make a 10% solution in water
     },
 
     "fetal_bovine_serum": {
@@ -21,7 +52,7 @@ chemical_list = {
         "name": "Glucose Salts",
         "supplier": "",
         "catalog_number": "",
-        "cost_per_unit": 00, #cost per bottle of
+        "cost_per_unit": 00, #cost for 5ml 0.0014
         "quantity": 00
     },
 
@@ -33,6 +64,22 @@ chemical_list = {
         "quantity": 500 # 500 mL
     },
 
+    "india_ink":{
+        "name": "India Ink Droppers",
+        "supplier": "VWR",
+        "catalog_number": "90003-681",
+        "cost_per_unit": 97.50,
+        "quantity": 50
+    },
+
+    "iodine": {
+        "name": "Gram's Iodine",
+        "supplier": "VWR",
+        "catalog_number": "470301-184",
+        "cost_per_unit": 69.45, 
+        "quantity": 1000 #1000mL
+    },
+
     "isopropanol_70%": { ####1.49, cost per bottle from LongsDrugs when on sale
         "name": "Isopropanol 70%",
         "supplier": "Longs Drugs",
@@ -41,12 +88,28 @@ chemical_list = {
         "quantity": 500 # 500 mL
     },
 
+    "lactophenol_cotton_blue":{ #amplule
+        "name": "Lactophenol Cotton Blue",
+        "supplier": "VWR",
+        "catalog_number": "90003-668",
+        "cost_per_unit": 103.86, #cost per bottle of 100mL
+        "quantity": 50 #ampules
+    },
+
     "l_ornithine_hydrochloride": {
         "name": "L-Ornithine Hydrochloride",
         "supplier": "Fisher Scientific",
         "catalog_number": "BP389-100",
         "cost_per_unit": 86.88, #cost per bottle of 100g
         "quantity": 100 
+    },
+
+    "lysol": {
+        "name": "Lysol (Disinfectant Spray)",
+        "supplier": "Longs Drugs",
+        "catalog_number": "",
+        "cost_per_unit": 3.98, # 3.98 for 28 oz
+        "quantity": 828.059 #ml
     },
 
     "maltose_monohydrate": {
@@ -71,6 +134,14 @@ chemical_list = {
         "catalog_number": "38497",
         "cost_per_unit": 0,
         "quantity": 100
+    }, 
+
+    "nacl": {
+        "name": "Sodium Chloride (NaCl)",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0.03,
+        "quantity": 500 #500ml
     },
 
     "nitrate_reagent_b": {
@@ -121,3 +192,4 @@ chemical_list = {
         "quantity": 236 #8oz = 236.588 ml
     }
 }
+

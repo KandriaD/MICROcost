@@ -54,7 +54,7 @@ supplies = {
         "supplier": "VWR",
         "catalog_number": "76005-122",
         "cost_per_unit": 45.57,
-        "quantity": 230 # 230g, using 3-4 beads per plate
+        "quantity": 230 # 230g, using 3-4 beads per plate probably 2g
     },
 
     "bibulous_paper":{
@@ -74,14 +74,14 @@ supplies = {
     },
 
     "biohazard_container": {
-        "name": "Biohazard container", # for lab benches, 6”x6”x10”
+        "name": "Biohazard container", # for lab benches, 6”x6”x10” change out once a semester
         "supplier": "VWR",
         "catalog_number": "11214-711",
         "cost_per_unit": 284.90,
         "quantity": 50
     },
 
-    "biohazard_pipet_keeper": {
+    "biohazard_pipet_keeper": { #change out 3x a semester
         "name": "Biohazard Pipet Keeper",
         "supplier": "VWR",
         "catalog_number": "11214-715",
@@ -278,14 +278,6 @@ supplies = {
         "catalog_number": "76499-266",
         "cost_per_unit": 11.48,
         "quantity": 100
-    },
-
-    "india_ink":{
-        "name": "India Ink Droppers",
-        "supplier": "VWR",
-        "catalog_number": "90003-681",
-        "cost_per_unit": 97.50,
-        "quantity": 50
     },
 
     "inoculation_loop_yellow":{

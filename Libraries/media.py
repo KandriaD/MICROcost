@@ -170,7 +170,7 @@ media_list = {
         "name": "Marine Agar (MA)",
         "supplier": "VWR",
         "catalog_number": "89225-372",
-        "cost_per_ml": 0.0  # $622.30 for 3kg
+        "cost_per_ml": 0.00643 # $622.30 for 3kg
     },
 
     "marine_broth": {

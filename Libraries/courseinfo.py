@@ -9,9 +9,10 @@ class Course:
         self.students = students
         self.groups = groups
         self.rooms = rooms
+        self.tables = len(rooms) * 6  # Each room has 6 tables
 
     def __repr__(self):
-        return f"Course({self.name}, {self.sections}, {self.students}, {self.groups}, {self.rooms})"
+        return f"Course({self.name}, {self.sections}, {self.students}, {self.groups}, {self.rooms}, {self.tables} tables)"
 
 # Creating course instances
 micro140L = Course("MICRO140L", 2, 33, 16, ["115C", "114"])
