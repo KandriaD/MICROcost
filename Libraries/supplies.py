@@ -1,6 +1,14 @@
 #cost of other materials that are not bacteria or media
 
 supplies = {
+    "96_well_plates":{
+        "name": "96 well plates",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 136.08,
+        "quantity": 100
+    },
+
     "api_20e_kit": {
         "name": "API 20E Kit",
         "supplier": "VWR",
@@ -547,6 +555,14 @@ supplies = {
         "catalog_number": "89215-772",
         "cost_per_unit": 152.38,
         "quantity": 8 #8 racks per case
+    },
+
+    "toothpicks":{
+        "name": "Sterile Toothpicks",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 4.99,
+        "quantity": 2500
     },
 
     "transfer_pipette": {

@@ -57,11 +57,11 @@ chemical_list = {
     },
 
     "hydrogen_peroxide": {
-        "name": "30% Hydrogen Peroxide",
+        "name": "3% Hydrogen Peroxide",
         "supplier": "Fisher Sci",
         "catalog_number": "0000", #need to get the catalog_number 
-        "cost_per_unit": 0, #36.03/500ml
-        "quantity": 500 # 500 mL
+        "cost_per_unit": 36.03, #36.03/500ml for 30%
+        "quantity": 5000 # 5000 mL when diluted to 3%
     },
 
     "india_ink":{
@@ -86,6 +86,14 @@ chemical_list = {
         "catalog_number": "0000", #need to get the catalog_number
         "cost_per_unit": 2.59, #cost per bottle from LongsDrugs when not on sale
         "quantity": 500 # 500 mL
+    },
+
+    "kovacs_reagent":{
+        "name": "Kovac's Reagent",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 310.39,
+        "quantity": 50  #50 dropper ampules
     },
 
     "lactophenol_cotton_blue":{ #amplule
@@ -190,6 +198,14 @@ chemical_list = {
         "catalog_number": "76591-146",
         "cost_per_unit": 27.95,
         "quantity": 236 #8oz = 236.588 ml
+    },
+
+    "zinc_powder":{
+        "name": "Zinc Powder",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 14.51, #14.51 for 25g, only use 0.01g per use
+        "quantity": 2500 #number of uses per container
     }
 }
 
