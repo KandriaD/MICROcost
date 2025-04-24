@@ -380,7 +380,7 @@ experiment_name_entry = ttk.Entry(input_frame, width=40)
 experiment_name_entry.grid(row=1, column=1, padx=5, pady=5)
 
 start_new_button = ttk.Button(input_frame, text="Set Experiment Name", command=start_new_experiment)
-start_new_button.grid(row=2, column=1, padx=5, pady=5)
+start_new_button.grid(row=1, column=2, padx=5, pady=5)
 
 # Biologicals Section
 bio_frame = ttk.LabelFrame(input_frame, text="Biologicals")
@@ -411,10 +411,10 @@ ttk.Label(bio_frame, text="Distribution:").grid(row=3, column=0, padx=5, pady=5)
 media_dropdown.bind("<<ComboboxSelected>>", lambda event: type_dropdown.config(values=list(media.standard_volumes_ml.keys())))
 
 add_biological_button = ttk.Button(bio_frame, text="Add Biological", command=add_biological)
-add_biological_button.grid(row=4, column=0, columnspan=3, pady=5)
+add_biological_button.grid(row=2, column=3, columnspan=3, pady=5)
 
 remove_bio_button = ttk.Button(bio_frame, text="Remove Last Biological", command=remove_last_biological)
-remove_bio_button.grid(row=5, column=0, columnspan=3, pady=5)
+remove_bio_button.grid(row=3, column=3, columnspan=3, pady=5)
 
 # Supplies Section
 supplies_frame = ttk.LabelFrame(input_frame, text="Supplies")
@@ -438,10 +438,10 @@ quantity_type_dropdown.grid(row=1, column=3, padx=5, pady=5)
 ttk.Label(supplies_frame, text="Quantity Type:").grid(row=1, column=2, padx=5, pady=5)
 
 add_supply_button = ttk.Button(supplies_frame, text="Add Supply", command=add_supply)
-add_supply_button.grid(row=2, column=0, columnspan=4, pady=5)
+add_supply_button.grid(row=0, column=4, columnspan=4, pady=5)
 
 remove_supply_button = ttk.Button(supplies_frame, text="Remove Last Supply", command=remove_last_supply)
-remove_supply_button.grid(row=3, column=0, columnspan=4, pady=5)
+remove_supply_button.grid(row=1, column=4, columnspan=4, pady=5)
 
 # Uninoculated Media Section
 media_uninoc_frame = ttk.LabelFrame(input_frame, text="Uninoculated Media")
@@ -466,10 +466,10 @@ ttk.Label(media_uninoc_frame, text="Distribution:").grid(row=2, column=0, padx=5
 
 media_uninoc_dropdown.bind("<<ComboboxSelected>>", lambda event: media_uninoc_type_dropdown.config(values=list(media.standard_volumes_ml.keys())))
 add_media_button = ttk.Button(media_uninoc_frame, text="Add Media", command=add_uninoculated_media)
-add_media_button.grid(row=3, column=0, columnspan=3, pady=5)
+add_media_button.grid(row=1, column=3, columnspan=3, pady=5)
 
 remove_media_button = ttk.Button(media_uninoc_frame, text="Remove Last Media", command=remove_last_uninoculated_media)
-remove_media_button.grid(row=4, column=0, columnspan=3, pady=5)
+remove_media_button.grid(row=2, column=3, columnspan=3, pady=5)
 
 # Chemicals Section
 chemicals_frame = ttk.LabelFrame(input_frame, text="Chemicals")
@@ -500,7 +500,7 @@ add_chemical_button = ttk.Button(chemicals_frame, text="Add Chemical", command=a
 add_chemical_button.grid(row=3, column=0, columnspan=3, pady=5)
 
 remove_chemical_button = ttk.Button(chemicals_frame, text="Remove Last Chemical", command=remove_last_chemical)
-remove_chemical_button.grid(row=4, column=0, columnspan=3, pady=5)
+remove_chemical_button.grid(row=3, column=2, columnspan=3, pady=5)
 
 # Preview Text
 preview_text = tk.Text(preview_frame, width=60, height=40, state="disabled", wrap="word")
