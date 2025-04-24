@@ -16,6 +16,7 @@ chemical_list = {
         "cost_per_unit": 19.26,
         "quantity": 237 #mL
     },
+    
     "decolorizer": {
         "name": "Decolorizer (95% Ethanol)",
         "supplier": "VWR",
@@ -128,6 +129,14 @@ chemical_list = {
         "quantity": 100 
     },
 
+    "methylene_blue":{
+        "name": "Methylene Blue",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
     "ninhydrin": {
         "name": "Ninhydrin", 
         "supplier": "VWR",
@@ -166,6 +175,14 @@ chemical_list = {
         "catalog_number": "89428-918",
         "cost_per_unit": 30.19,
         "quantity": 30
+    },
+
+    "safranin":{
+        "name": "Safranin",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
     },
 
    "sodium_deoxycholate": {
