@@ -65,6 +65,14 @@ supplies = {
         "quantity": 230 # 230g, using 3-4 beads per plate probably 2g
     },
 
+    "blue_sharpie": {
+        "name": "Blue Sharpie",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 11.64,
+        "quantity": 12 #12 per box
+    },
+
     "bibulous_paper":{
         "name": "Bibulous Paper 4x6",
         "supplier": "VWR",
@@ -169,6 +177,7 @@ supplies = {
         "quantity": 720
     },
 
+
 #    "enteropluri_kit": {  #discontinued
 #        "name": "EnteroPluri Kit",
 #        "supplier": "VWR",
@@ -260,32 +269,48 @@ supplies = {
         "name": "Nitrile Gloves XS",
         "supplier": "VWR",
         "catalog_number": "76579-100",
-        "cost_per_unit": 5.38,
-        "quantity": 100
+        "cost_per_unit": 102.53,
+        "quantity": 10 #10 boxes per case, 100 gloves/box
     },
    
     "gloves_s": {
         "name": "Nitrile Gloves S",
         "supplier": "VWR",
         "catalog_number": "76499-262",
-        "cost_per_unit": 8.83,
-        "quantity": 100
+        "cost_per_unit": 66.39,
+        "quantity": 10
     },
     
     "gloves_m": {
         "name": "Nitrile Gloves M",
         "supplier": "VWR",
         "catalog_number": "76499-264",
-        "cost_per_unit": 8.83,
-        "quantity": 100
+        "cost_per_unit": 122.31,
+        "quantity": 10
     },
     
     "gloves_l": {
         "name": "Nitrile Gloves L",
         "supplier": "VWR",
         "catalog_number": "76499-266",
-        "cost_per_unit": 11.48,
-        "quantity": 100
+        "cost_per_unit": 122.31,
+        "quantity": 10
+    },
+
+    "gloves_xl": {
+        "name": "Nitrile Gloves XL",
+        "supplier": "VWR",
+        "catalog_number": "76499-268",
+        "cost_per_unit": 122.31,
+        "quantity": 10
+    },
+    
+    "immersion_oil": {
+        "name": "Immersion Oil",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 17.31,
+        "quantity": 10 #10 oz
     },
 
     "inoculation_loop_yellow":{
@@ -410,6 +435,14 @@ supplies = {
         "catalog_number": "470016-270",
         "cost_per_unit": 3.64,  
         "quantity": 72 #72/box
+    },
+
+    "oil_cleaner": {
+        "name": "Oil Cleaner",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 37.99/12,  #12 bottles per case
+        "quantity": 10 #10 oz per bottle
     },
 
     "petri_plate_small": {
@@ -605,3 +638,4 @@ supplies = {
         "quantity": 10
     }  # 10x5mL vials (check this)
 }
+

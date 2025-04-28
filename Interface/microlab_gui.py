@@ -24,14 +24,8 @@ import bacteria
 import media
 import courseinfo
 import supplies
-import antibiotics
+from antibiotics import antibiotics
 import chemicals
-
-# --- Global storage variables for adding materials ---
-added_biologicals = []
-added_supplies = []
-added_uninoculated_media = []
-added_chemicals = []
 
 # --- Funtion to start a new experiment ---
 def start_new_experiment():
@@ -56,25 +50,25 @@ def update_preview():
     preview_text.delete(1.0, tk.END)
 
     preview_text.insert(tk.END, f"=== Biologicals ===\n")
-    for b in added_biologicals:
+    for b in biologicals_list:
         preview_text.insert(tk.END, f"{b['specimen']} on {b['media']} ({b['type']}) [{b['distribution']}]: ${b['cost']}\n")
 
     preview_text.insert(tk.END, f"\n=== Supplies ===\n")
-    for s in added_supplies:
+    for s in supplies_list:
         preview_text.insert(tk.END, f"{s['name']} [{s['distribution']}]: ${s['cost']}\n")
 
     preview_text.insert(tk.END, f"\n=== Uninoculated Media ===\n")
-    for m in added_uninoculated_media:
+    for m in media_list:
         preview_text.insert(tk.END, f"{m['media']} ({m['type']}) [{m['distribution']}]: ${m['cost']}\n")
 
     preview_text.insert(tk.END, f"\n=== Chemicals ===\n")
-    for c in added_chemicals:
+    for c in chemicals_list:
         preview_text.insert(tk.END, f"{c['chemical']} ({c['type']}) [{c['distribution']}]: ${c['cost']}\n")
     
-    total_bio_cost = sum(b['cost'] for b in added_biologicals)
-    total_supply_cost = sum(s['cost'] for s in added_supplies)
-    total_media_cost = sum(m['cost'] for m in added_uninoculated_media)
-    total_chemical_cost = sum(c['cost'] for c in added_chemicals)
+    total_bio_cost = sum(b['cost'] for b in biologicals_list)
+    total_supply_cost = sum(s['cost'] for s in supplies_list)
+    total_media_cost = sum(m['cost'] for m in media_list)
+    total_chemical_cost = sum(c['cost'] for c in chemicals_list)
 
     preview_text.insert(tk.END, f"\nTotal Biological Cost: ${round(total_bio_cost, 2)}\n")
     preview_text.insert(tk.END, f"Total Supplies Cost: ${round(total_supply_cost, 2)}\n")
@@ -86,26 +80,26 @@ def update_preview():
 
 # --- Functions to add and remove biologicals, supplies, uninoculated media, and chemicals ---
 def remove_last_biological():
-    if added_biologicals:
-        removed = added_biologicals.pop()
+    if biologicals_list:
+        removed = biologicals_list.pop()
         print(f"Removed biological: {removed['specimen']}")
         update_preview()
 
 def remove_last_supply():
-    if added_supplies:
-        removed = added_supplies.pop()
+    if supplies_list:
+        removed = supplies_list.pop()
         print(f"Removed supply: {removed['name']}")
         update_preview()
 
 def remove_last_uninoculated_media():
-    if added_uninoculated_media:
-        removed = added_uninoculated_media.pop()
+    if media_list:
+        removed = media_list.pop()
         print(f"Removed uninoculated media: {removed['media']}")
         update_preview()
 
 def remove_last_chemical():
-    if added_chemicals:
-        removed = added_chemicals.pop()
+    if chemicals_list:
+        removed = chemicals_list.pop()
         print(f"Removed chemical: {removed['chemical']}")
         update_preview()
 
@@ -163,19 +157,16 @@ def add_biological():
 
     biologicals_list.append(biological)
 
-    added_biologicals.append(biological)
-
-    print(f"Added biological: {selected_specimen}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
 def add_supply():
     global supplies_list
 
-    selected_supply_name = supply_var.get()
+    selected_item_name = item_var.get()  # Get the selected supply name
     quantity = supply_quantity_entry.get()
     quantity_type = supply_quantity_type_var.get()
 
-    if not all([selected_supply_name, quantity, quantity_type]):
+    if not all([selected_item_name, quantity, quantity_type]):
         print("Missing supply info")
         return
 
@@ -185,23 +176,35 @@ def add_supply():
         print("Quantity must be a number")
         return
 
+    # Get the course info
     course = courseinfo.courses.get(course_type_var.get())
     if not course:
         print("Invalid course selection")
         return
 
-    # Get the key using the name-to-key dictionary
-    supply_key = supply_name_to_key.get(selected_supply_name)
-    if not supply_key:
-        print("Supply key not found")
-        return
+    # Determine if the selected item is a supply or antibiotic
+    supply_key = supply_name_to_key.get(selected_item_name)
+    antibiotic_key = antibiotic_name_to_key.get(selected_item_name)
 
     supply_info = supplies.supplies.get(supply_key)
-    if not supply_info:
-        print("Supply info not found")
+    antibiotic_info = antibiotics.get(antibiotic_key)
+
+
+    # If not found in supplies, check in antibiotics
+    if not supply_info and not antibiotic_info:
+        print("Item not found")
         return
 
-    per_item_cost = supply_info["cost_per_unit"] / supply_info["quantity"]
+    # If item is found in supplies
+    if supply_info:
+        per_item_cost = supply_info["cost_per_unit"] / supply_info["quantity"]
+        category = "supply"
+    # If item is found in antibiotics
+    elif antibiotic_info:
+        per_item_cost = antibiotic_info["cost_per_unit"] / antibiotic_info["quantity"]
+        category = "antibiotic"
+
+    # Calculate units based on quantity type
     units = {
         "Per Student": course.students,
         "Per Pair": course.students // 2,
@@ -215,18 +218,12 @@ def add_supply():
     total_cost = units * per_item_cost
 
     supplies_list.append({
-        "name": selected_supply_name,
+        "name": selected_item_name,
+        "category": category,  # Add category for reference (supply or antibiotic)
         "distribution": f"{quantity} {quantity_type}",
         "cost": round(total_cost, 2)
     })
 
-    added_supplies.append({
-        "name": selected_supply_name,
-        "distribution": f"{quantity} {quantity_type}",
-        "cost": round(total_cost, 2)
-    })
-
-    print(f"Added supply: {selected_supply_name}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
 def add_uninoculated_media():
@@ -279,14 +276,6 @@ def add_uninoculated_media():
         "cost": round(total_cost, 2)
     })
 
-    added_uninoculated_media.append({
-        "media": selected_media,
-        "type": selected_type,
-        "distribution": f"{dist_num} {dist_type}",
-        "cost": round(total_cost, 2)
-    })
-
-    print(f"Added uninoculated media: {selected_media}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
 def add_chemical():
@@ -313,7 +302,7 @@ def add_chemical():
         return
 
     volume_ml = media.standard_volumes_ml[selected_type]
-    chemical_data = chemicals.chemicals.get(selected_chemical)
+    chemical_data = chemicals.chemicals_list.get(selected_chemical)
 
     if not chemical_data:
         print(f"No chemical data found for {selected_chemical}")
@@ -339,14 +328,6 @@ def add_chemical():
         "cost": round(total_cost, 2)
     })
 
-    added_chemicals.append({
-        "chemical": selected_chemical,
-        "type": selected_type,
-        "distribution": f"{dist_num} {dist_type}",
-        "cost": round(total_cost, 2)
-    })
-
-    print(f"Added chemical: {selected_chemical}, Cost: ${round(total_cost, 2)}")
     update_preview()
 
 # --- GUI Layout Setup ---
@@ -423,9 +404,14 @@ supplies_frame.grid(row=4, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 supply_names = [item["name"] for item in supplies.supplies.values()]
 supply_name_to_key = {item["name"]: key for key, item in supplies.supplies.items()}
 
-supply_var = tk.StringVar()
-supply_dropdown = ttk.Combobox(supplies_frame, textvariable=supply_var, values=supply_names, state="readonly", width=40)
-supply_dropdown.grid(row=0, column=1, padx=5, pady=5)
+antibiotic_names = [item["name"] for item in antibiotics.values()]
+antibiotic_name_to_key = {item["name"]: key for key, item in antibiotics.items()}
+
+combined_items = supply_names + antibiotic_names
+
+item_var = tk.StringVar()
+item_dropdown = ttk.Combobox(supplies_frame, textvariable=item_var, values=combined_items, state="readonly", width=40)
+item_dropdown.grid(row=0, column=1, padx=5, pady=5)
 ttk.Label(supplies_frame, text="Supply:").grid(row=0, column=0, padx=5, pady=5)
 
 supply_quantity_entry = ttk.Entry(supplies_frame, width=10)
@@ -515,8 +501,8 @@ if hasattr(supplies, "general_supplies"):
     supply_dropdown["values"] = list(supplies.general_supplies.keys())
 if hasattr(media, "media_list"):
     media_uninoc_dropdown["values"] = [value["name"] for key, value in media.media_list.items()]
-if hasattr(chemicals, "chemicals"):
-    chemical_dropdown["values"] = list(chemicals.chemicals.keys())
+if hasattr(chemicals, "chemical_list"):
+    chemical_dropdown["values"] = list(chemicals.chemical_list.keys())
 
 # --- Function to export summary to CSV ---
 def export_summary():
@@ -574,51 +560,63 @@ def export_summary():
     print("CSV Exported Successfully!")
 
 def export_csv(file_path):
+    if not file_path:
+        return
+    
     global biologicals_list, supplies_list, media_list, chemicals_list, experiments
 
     with open(file_path, mode='w', newline='') as file:
         writer = csv.writer(file)
         # Header
-        writer.writerow(["Experiment Name", experiment_name.get()])
         writer.writerow(["Course", course_type_var.get()])
         course = courseinfo.courses.get(course_type_var.get())
         if course:
             writer.writerow(["Sections", course.sections])
             writer.writerow(["Groups", course.groups])
             writer.writerow(["Students", course.students])
+            writer.writerow(["Rooms", (course.rooms)])
+        writer.writerow(["Experiment Name", experiment_name_entry.get()])
         writer.writerow([])
 
         # Biologicals
         writer.writerow(["Biologicals"])
         writer.writerow(["Specimen", "Media", "Type", "Distribution", "Cost"])
-        for b in added_biologicals:
+        for b in biologicals_list:
             writer.writerow([b['specimen'], b['media'], b['type'], b['distribution'], b['cost']])
         writer.writerow([])
 
         # Supplies
         writer.writerow(["Supplies"])
         writer.writerow(["Name", "Distribution", "Cost"])
-        for s in added_supplies:
+        for s in supplies_list:
             writer.writerow([s['name'], s['distribution'], s['cost']])
         writer.writerow([])
 
         # Media
         writer.writerow(["Uninoculated Media"])
         writer.writerow(["Media", "Type", "Distribution", "Cost"])
-        for m in added_uninoculated_media:
+        for m in media_list:
             writer.writerow([m['media'], m['type'], m['distribution'], m['cost']])
         writer.writerow([])
 
         # Chemicals
         writer.writerow(["Chemicals"])
         writer.writerow(["Chemical", "Type", "Distribution", "Cost"])
-        for c in added_chemicals:
+        for c in chemicals_list:
             writer.writerow([c['chemical'], c['type'], c['distribution'], c['cost']])
         writer.writerow([])
 
 # export summary buttons
 
-export_button = ttk.Button(preview_frame, text="Export Summary", command=export_summary)
+export_button = ttk.Button(preview_frame, text="Export Summary", 
+    command=lambda: export_csv(
+        filedialog.asksaveasfilename(
+            defaultextension=".csv",
+            filetypes=[("CSV files", "*.csv")],
+            title="Save Experiment Summary As"
+        )
+    )
+    )
 export_button.pack(pady=10)
    
 root.mainloop()

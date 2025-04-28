@@ -112,9 +112,11 @@ media_list = {
         "cost_per_ml": 000 #157.43 for 500g
     },
 
-    "glucose_salts_broth": { 
+    "glucose_salts": {
         "name": "Glucose Salts Broth",
-        "cost_per_ml": 0.0,  #we make it, is a mixture of salts
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_ml": 0.0014/5 #cost for 5ml 0.0014
     },
 
     "hek_plates": { 
