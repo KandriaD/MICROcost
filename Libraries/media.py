@@ -293,7 +293,7 @@ media_list = {
     },
 
     "pea": {
-        "name": "Phenylethylalanine",
+        "name": "Phenylethylalanine (PEA)",
         "supplier": "VWR",
         "catalog_number": "89405-884", 
         "cost_per_ml": 0.0 #192.52 for 500g
