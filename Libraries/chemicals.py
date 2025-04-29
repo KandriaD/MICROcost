@@ -1,6 +1,14 @@
 #chemical costs for microbio labs
 #many chemicals, such as stains, we have had for many years and are effectively free at current
 chemical_list = {
+    "acid_alcohol": {
+        "name": "Acid Alcohol (3% HCl in Ethanol)",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 68, #this is cost of ethonol only #3% HCl in ethanol from chem stock room
+        "quantity": 1000 #mL
+    },
+
     "bleach": {
         "name": "Bleach (Sodium Hypochlorite)",
         "supplier": "Longs Drugs",
@@ -21,8 +29,8 @@ chemical_list = {
         "name": "Decolorizer (95% Ethanol)",
         "supplier": "VWR",
         "catalog_number": "95060-952",
-        "cost_per_unit": 0, #95% ethonol from chem stock room
-        "quantity": 500 #mL
+        "cost_per_unit": 68, #95% ethonol from chem stock room
+        "quantity": 1000 #mL
     },
 
     "dextrose":{
@@ -34,10 +42,10 @@ chemical_list = {
     },
 
     "ferric_chloride": {
-        "name": "Ferric Chloride [iron (III) chloride hexahydrate]",
+        "name": "10% Ferric Chloride Solution",
         "supplier": "VWR",
         "catalog_number": "00-00", #look at Cas# on bottle and find cheap on on VWR
-        "cost_per_unit": 0.00853,#cost per ml for 10%solution
+        "cost_per_unit": 0.00853, #cost per ml for 10%solution
         "quantity": 1  #42.64 for 500g then make a 10% solution in water
     },
 
@@ -113,6 +121,14 @@ chemical_list = {
         "quantity": 828.059 #ml
     },
 
+    "malachite_green": {
+        "name": "Malachite Green",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1 #mL
+    },
+
     "maltose_monohydrate": {
         "name": "Maltose Monohydrate",
         "supplier": "VWR",
@@ -129,21 +145,13 @@ chemical_list = {
         "quantity": 1
     },
 
-    "ninhydrin": {
-        "name": "Ninhydrin", 
-        "supplier": "VWR",
-        "catalog_number": "470301-874",
-        "cost_per_unit":  16.50,
-        "quantity": 500 #500 mL
-    },
-
-    "nitrate_reagent_a": {
-        "name": "Nitrate reagent A",
-        "supplier": "Millipore Sigma",
-        "catalog_number": "38497",
+    "methyl_red": {
+        "name": "Methyl Red",
+        "supplier": "",
+        "catalog_number": "",
         "cost_per_unit": 0,
-        "quantity": 100
-    }, 
+        "quantity": 1
+    },
 
     "nacl": {
         "name": "Sodium Chloride (NaCl)",
@@ -153,11 +161,35 @@ chemical_list = {
         "quantity": 500 #500ml
     },
 
+    "ninhydrin": {
+        "name": "Ninhydrin", 
+        "supplier": "VWR",
+        "catalog_number": "470301-874",
+        "cost_per_unit":  16.50,
+        "quantity": 500 #500 mL
+    },
+
+    "nigrosin": {
+        "name": "Nigrosin",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
+        "quantity": 1
+    },
+
+    "nitrate_reagent_a": {
+        "name": "Nitrate reagent A",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "38497",
+        "cost_per_unit": 47.5,
+        "quantity": 100
+    }, 
+
     "nitrate_reagent_b": {
         "name": "Nitrate reagent B",
         "supplier": "Millipore Sigma",
         "catalog_number": "39441",
-        "cost_per_unit": 0,
+        "cost_per_unit": 47.5,
         "quantity": 100
     },
 

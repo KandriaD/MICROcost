@@ -10,12 +10,13 @@ standard_volumes_ml = {
     "microcentrifuge_tube": 0.5, #500uL per microcentrifuge tube
     "premade": 1, #premaid plates do not use mL-based calculations
     "topper_test_tube": 5,
-    "topper_microcentrifuge_tube": 1
+    "topper_microcentrifuge_tube": 1,
+    "1_ml": 1, #1mL, used for chemicals when need specific volumes
 }
 
 media_list = {
     "bglb": {
-        "name": "BGLB (Brillant Green Lactose Bile w/ Durham tubes)",
+        "name": "BGLB (Brillant Green Lactose Bile)",
         "supplier": "VWR",
         "catalog_number": "90003-916",
         "cost_per_ml": 0.01942 #242.73 for 500g
@@ -99,7 +100,7 @@ media_list = {
     },
 
     "ec_broth": { 
-        "name": "EC broth w/ Durham tubes",
+        "name": "EC broth",
         "supplier": "VWR",
         "catalog_number": "90002-320",
         "cost_per_ml": 196.50/500*37/1000
@@ -119,15 +120,15 @@ media_list = {
         "cost_per_ml": 0.0014/5 #cost for 5ml 0.0014
     },
 
-    "hek_plates": { 
-        "name": "Hektoen enteric (HEK) Plates",
+    "hek": { 
+        "name": "Hektoen enteric (HEK)",
         "supplier": "VWR",
         "catalog_number": "95021-880",
         "cost_per_ml": 201.90/500*76.67/1000
     },
 
     "lauryl_triptose_broth": { 
-        "name": "Lauryl Tryptose Broth w/ Durham tubes",
+        "name": "Lauryl Tryptose Broth",
         "supplier": "VWR",
         "catalog_number": "90001-770",
         "cost_per_ml": 0.01063  #149.33 for 500g
@@ -190,7 +191,7 @@ media_list = {
     },
     
     "middlebrook_7h11_slants": {
-        "name": "Middlebrook 7H11 Slants",
+        "name": "Middlebrook 7H11 Slants [premade]",
         "supplier": "VWR",
         "catalog_number": "52428-852",
         "cost_per_ml": 106.31/20  # 106.31 per pack of 20 
@@ -243,6 +244,13 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": '95039-350',
         "cost_per_ml": 165.75/500*38/1000
+    },
+
+    "nitrate_broth": {
+        "name": "Nitrate Broth",
+        "supplier": "VWR",
+        "catalog_number": "",
+        "cost_per_ml": 167.81/500*9/1000 # $167.81 for 500g... how many grams makes 1L? google says 9g/L, but need to check bottle. doing math based off this for now
     },
 
     "nutrient_agar_powder": {
@@ -417,7 +425,7 @@ media_list = {
         "name": "Tributyruin (add-in)",
         "supplier": "VWR",
         "catolog_number": "IC10311180",
-        "cost_per_ml": 0.0
+        "cost_per_ml": 66.84/100*2/1000 #66.84 per 100ml #how much goes into the base? assuming 2ml per 1000ml base for now, but need to check.
     },
 
     "tributyrin_agar_base":{

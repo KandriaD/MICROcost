@@ -202,6 +202,22 @@ supplies = {
         "quantity": 500
     },
 
+    "filter_paper_55mm": {
+        "name": "Filter Paper, 55mm",
+        "supplier": "VWR",
+        "catalog_number": "",
+        "cost_per_unit": 13.37,
+        "quantity": 100 #100 peices per pack
+    },
+
+    "fitler_membrane_0.45um": {
+        "name": "Filter Membrane, 0.45um",
+        "supplier": "VWR",
+        "catalog_number": "",
+        "cost_per_unit": 43.29,
+        "quantity": 100 #100 peices per pack
+    },
+
     "gaspak_anaerobe_sachet": {
         "name": "GasPak Anaerobe Sachet",
         "supplier": "VWR",
@@ -345,6 +361,14 @@ supplies = {
         "quantity": 60 #60 boxes per case, 280 sheets/box 
     },
 
+    "kovacs_reagent": {
+        "name": "Kovac's Reagent",
+        "supplier": "VWR",
+        "catalog_number": "",
+        "cost_per_unit": 310.29,
+        "quantity": 50 #droppers, should get about 2 drops out of each dropper, ask Hung how much put in each tube, probably 1 drop per tube
+    },
+
     "label_maker": {
         "name": "Label Maker",
         "cost": 17.95
@@ -445,6 +469,14 @@ supplies = {
         "quantity": 10 #10 oz per bottle
     },
 
+    "oxisticks": {
+        "name": "Oxisticks",
+        "supplier": "VWR",
+        "catalog_number": "89407-794",
+        "cost_per_unit": 25.13,
+        "quantity": 25
+    },
+
     "petri_plate_small": {
         "name": "Empty Petri Dish, 60mm",
         "supplier": "VWR",
@@ -458,6 +490,14 @@ supplies = {
         "supplier": "VWR",
         "catalog_number": "25384-342",
         "cost_per_unit": 97.64,
+        "quantity": 500
+    },
+
+    "petri_plate_nonslippable": {
+        "name": "Empty Petri Dish, 100mm, Non-slippable",
+        "supplier": "VWR",
+        "catalog_number": "25384-302",
+        "cost_per_unit": 92.42,
         "quantity": 500
     },
 
@@ -524,6 +564,14 @@ supplies = {
         "catalog_number": "89497-810",
         "cost_per_unit": 60.58,
         "quantity": 500
+    },
+
+    "prospore_ampoule": {
+        "name": "Prospore Ampoule",
+        "supplier": "VWR",
+        "catalog_number": "101384-678",
+        "cost_per_unit": 224.20,
+        "quantity": 50
     },
 
     "pry_kit": {

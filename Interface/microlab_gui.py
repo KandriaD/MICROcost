@@ -302,13 +302,13 @@ def add_chemical():
         return
 
     volume_ml = media.standard_volumes_ml[selected_type]
-    chemical_data = chemicals.chemicals_list.get(selected_chemical)
+    chemical_data = chemicals.chemical_list.get(selected_chemical)
 
     if not chemical_data:
         print(f"No chemical data found for {selected_chemical}")
         return
 
-    cost_per_ml = chemical_data["cost_per_ml"]
+    cost_per_ml = chemical_data["cost_per_unit"]/chemical_data["quantity"]
     total_samples = {
         "Per Student": course.students,
         "Per Pair": course.students // 2,

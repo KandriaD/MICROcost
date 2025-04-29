@@ -494,6 +494,18 @@ bacteria_list = {
         "stock_cost": 0.00
     },
 
+    "Proteus vulgaris": {
+        "synonyms": ["P. vulgaris"],
+        "gram": "negative",
+        "shape": "cocci",
+        "growth": "aerobic",
+        "optimum_temperature": "37C",
+        "optimum_pH": "7.0",
+        "pathogenicity": "common in the gut",
+        "notes": "common in the gut",
+        "stock_cost": 0.00
+    },
+
     "Providencia stuartii": {
         "synonyms": ["P. stuartii"],
         "gram": "negative",
@@ -554,18 +566,6 @@ bacteria_list = {
         "stock_cost": 0.00
     },
 
-    "Salmonella enterica enterica serovar enteritidis": {
-        "synonyms": ["S. enterica enterica serovar enteritidis", "Salmonella enterica serotype enteritidis", "S. enteritidis"],
-        "gram": "negative",
-        "shape": "rod",
-        "growth": "facultative anaerobe",
-        "optimum_temperature": "37C",
-        "optimum_pH": "7.0",
-        "pathogenicity": "major cause of foodborne illness",
-        "notes": "common in poultry",
-        "stock_cost": 0.00
-    },
-
     "Serratia marcescens": {
         "synonyms": ["S. marcescens"],
         "gram": "negative",
@@ -580,6 +580,18 @@ bacteria_list = {
 
     "Shigella dysenteriae": {
         "synonyms": ["S. dysenteriae"],
+        "gram": "negative",
+        "shape": "rod",
+        "growth": "facultative anaerobe",
+        "optimum_temperature": "37C",
+        "optimum_pH": "7.0",
+        "pathogenicity": "major cause of dysentery",
+        "notes": "common in the gut",
+        "stock_cost": 0.00
+    },
+
+    "Shigella flexneri": {
+        "synonyms": ["S. flexneri"],
         "gram": "negative",
         "shape": "rod",
         "growth": "facultative anaerobe",
