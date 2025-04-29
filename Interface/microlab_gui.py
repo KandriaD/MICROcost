@@ -1,9 +1,11 @@
 import os
 import sys
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk
 from tkinter import filedialog
-import csv
+from docx import Document
+from docx.shared import Pt
+
 
 # --- Define global variables for muliple experiments ---
 experiments = {}  # Dictionary to store all experiment data
@@ -29,14 +31,25 @@ import chemicals
 
 # --- Funtion to start a new experiment ---
 def start_new_experiment():
-    global current_experiment
+    global current_experiment, biologicals_list, supplies_list, media_list, chemicals_list
+
+    if current_experiment:
+        experiments[current_experiment] = {
+            "biologicals": biologicals_list.copy(),
+            "supplies": supplies_list.copy(),
+            "media": media_list.copy(),
+            "chemicals": chemicals_list.copy()
+        }
+
+    print("Current experiment name:", current_experiment)
+    print("Experiments stored:", experiments)
     
     # Set the current experiment to a new name (you may already have a method to get this)
     experiment_name = experiment_name_entry.get()  # or use another variable
     current_experiment = experiment_name  # Ensure it's assigned here
 
     # Initialize the lists for the new experiment
-    global biologicals_list, supplies_list, media_list, chemicals_list
+    
     biologicals_list = []
     supplies_list = []
     media_list = []
@@ -156,6 +169,8 @@ def add_biological():
     }
 
     biologicals_list.append(biological)
+
+    print(biologicals_list)
 
     update_preview()
 
@@ -300,9 +315,14 @@ def add_chemical():
     if not course:
         print("No course selected or invalid")
         return
+    
+    for key, value in chemicals.chemical_list.items():
+        if value.get("name") == selected_chemical:
+            chemical_key = key
+            break
 
     volume_ml = media.standard_volumes_ml[selected_type]
-    chemical_data = chemicals.chemical_list.get(selected_chemical)
+    chemical_data = chemicals.chemical_list.get(chemical_key)
 
     if not chemical_data:
         print(f"No chemical data found for {selected_chemical}")
@@ -461,11 +481,10 @@ remove_media_button.grid(row=4, column=0, columnspan=3, pady=5)
 chemicals_frame = ttk.LabelFrame(input_frame, text="Chemicals")
 chemicals_frame.grid(row=6, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 
-chemical_key_to_name = {key: val["name"] for key, val in chemicals.chemical_list.items()}
-chemical_name_to_key = {val["name"]: key for key, val in chemicals.chemical_list.items()}
+chemical_names = [item["name"] for item in chemicals.chemical_list.values()]
 
 chemical_var = tk.StringVar()
-chemical_dropdown = ttk.Combobox(chemicals_frame, textvariable=chemical_var, values=list(chemical_key_to_name.values()), state="readonly", width=40)
+chemical_dropdown = ttk.Combobox(chemicals_frame, textvariable=chemical_var, values=chemical_names, state="readonly", width=40)
 chemical_dropdown.grid(row=0, column=1, padx=5, pady=5)
 ttk.Label(chemicals_frame, text="Chemical:").grid(row=0, column=0, padx=5, pady=5)
 
@@ -492,25 +511,111 @@ remove_chemical_button.grid(row=4, column=0, columnspan=3, pady=5)
 preview_text = tk.Text(preview_frame, width=60, height=40, state="disabled", wrap="word")
 preview_text.pack(padx=5, pady=5)
 
+
+
 # Populate Dropdowns
 if hasattr(bacteria, "bacteria_list"):
     specimen_dropdown["values"] = list(bacteria.bacteria_list)
 if hasattr(media, "media_list"):
     media_dropdown["values"] = [value["name"] for key, value in media.media_list.items()]
-if hasattr(supplies, "general_supplies"):
-    supply_dropdown["values"] = list(supplies.general_supplies.keys())
 if hasattr(media, "media_list"):
     media_uninoc_dropdown["values"] = [value["name"] for key, value in media.media_list.items()]
-if hasattr(chemicals, "chemical_list"):
-    chemical_dropdown["values"] = list(chemicals.chemical_list.keys())
 
-# --- Function to export summary to CSV ---
+def add_italicized_text(para, text, italic_list):
+    """
+    Adds text to a paragraph, italicizing any matches from italic_list.
+    """
+    idx = 0
+    while idx < len(text):
+        match = None
+        for name in italic_list:
+            if text[idx:].startswith(name):
+                match = name
+                break
+
+        if match:
+            italic_run = para.add_run(match)
+            italic_run.italic = True
+            idx += len(match)
+        else:
+            para.add_run(text[idx])
+            idx += 1
+
+def write_biologicals(doc, biologicals):
+    doc.add_heading("Biologicals", level=2)
+    italic_list = list(bacteria.bacteria_list)
+
+    for item in biologicals:
+        para = doc.add_paragraph()
+
+        specimen = item.get("specimen", "")
+        media = item.get("media", "")
+        type_ = item.get("type", "")
+        distribution = item.get("distribution", "")
+        cost = item.get("cost", "")
+
+        # Don't show "premade" as type if it's already in media name
+        if 'premade' in media:
+            type_text = ""
+        else:
+            type_text = f"[{type_}] "
+
+        add_italicized_text(para, specimen, italic_list)
+        para.add_run(f" on {media} {type_text}[{distribution}]: ${cost}")
+
+    doc.add_paragraph("")  # Blank line after section
+
+
+def write_supplies(doc, supplies):
+    doc.add_heading("Supplies", level=2)
+
+    for item in supplies:
+        para = doc.add_paragraph()
+        name = item.get("name", "")
+        distribution = item.get("distribution", "")
+        cost = item.get("cost", "")
+
+        para.add_run(f"Name: {name}, Distribution: {distribution}, Cost: ${cost}")
+
+    doc.add_paragraph("")
+
+
+def write_media(doc, media_items):
+    doc.add_heading("Uninoculated Media", level=2)
+
+    for item in media_items:
+        para = doc.add_paragraph()
+        media_name = item.get("media", "")
+        type_ = item.get("type", "")
+        distribution = item.get("distribution", "")
+        cost = item.get("cost", "")
+
+        para.add_run(f"Media: {media_name}, Type: {type_}, Distribution: {distribution}, Cost: ${cost}")
+
+    doc.add_paragraph("")
+
+
+def write_chemicals(doc, chemicals):
+    doc.add_heading("Chemicals", level=2)
+
+    for item in chemicals:
+        para = doc.add_paragraph()
+        chemical = item.get("chemical", "")
+        type_ = item.get("type", "")
+        distribution = item.get("distribution", "")
+        cost = item.get("cost", "")
+
+        para.add_run(f"Chemical: {chemical}, Type: {type_}, Distribution: {distribution}, Cost: ${cost}")
+
+    doc.add_paragraph("")
+
+
+# --- Main Export Function ---
+
 def export_summary():
-    global current_experiment, experiments, biologicals_list, supplies_list, media_list, chemicals_list
+    global biologicals_list, supplies_list, media_list, chemicals_list, experiments
 
-    # Ensure current_experiment is not empty
     if current_experiment:
-        # Ensure the experiment data is properly populated
         experiments[current_experiment] = {
             "biologicals": biologicals_list.copy(),
             "supplies": supplies_list.copy(),
@@ -518,105 +623,51 @@ def export_summary():
             "chemicals": chemicals_list.copy()
         }
 
-    # Debugging: Print the data about to be exported
     print("Current experiment name:", current_experiment)
     print("Experiments stored:", experiments)
 
-    # Debugging: Print lists to check if they are populated correctly
-    print("Biologicals List:", biologicals_list)
-    print("Supplies List:", supplies_list)
-    print("Media List:", media_list)
-    print("Chemicals List:", chemicals_list)
-
-    # Ask where to save the file
     file_path = filedialog.asksaveasfilename(
-        defaultextension=".csv",
-        filetypes=[("CSV files", "*.csv")],
+        defaultextension=".docx",
+        filetypes=[("Word Documents", "*.docx")],
         title="Save Experiment Summary As"
     )
 
     if not file_path:
-        return  # User cancelled the save operation
-
-    # Write data to CSV
-    with open(file_path, "w", newline="") as file:
-        writer = csv.writer(file)
-        
-        # Write header
-        writer.writerow(["Experiment", "Type", "Item", "Amount", "Unit", "Cost"])
-
-        # Write data for each experiment
-        for experiment_name, data in experiments.items():
-            for section_name, items in data.items():
-                for item in items:
-                    writer.writerow([
-                        experiment_name,
-                        section_name.capitalize(),
-                        item.get("name", ""),
-                        item.get("amount", ""),
-                        item.get("unit", ""),
-                        item.get("cost", "")
-                    ])
-    print("CSV Exported Successfully!")
-
-def export_csv(file_path):
-    if not file_path:
         return
-    
-    global biologicals_list, supplies_list, media_list, chemicals_list, experiments
 
-    with open(file_path, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        # Header
-        writer.writerow(["Course", course_type_var.get()])
-        course = courseinfo.courses.get(course_type_var.get())
-        if course:
-            writer.writerow(["Sections", course.sections])
-            writer.writerow(["Groups", course.groups])
-            writer.writerow(["Students", course.students])
-            writer.writerow(["Rooms", (course.rooms)])
-        writer.writerow(["Experiment Name", experiment_name_entry.get()])
-        writer.writerow([])
+    doc = Document()
 
-        # Biologicals
-        writer.writerow(["Biologicals"])
-        writer.writerow(["Specimen", "Media", "Type", "Distribution", "Cost"])
-        for b in biologicals_list:
-            writer.writerow([b['specimen'], b['media'], b['type'], b['distribution'], b['cost']])
-        writer.writerow([])
+    # Title
+    doc.add_heading(f"Course: {course_type_var.get()}", level=1)
 
-        # Supplies
-        writer.writerow(["Supplies"])
-        writer.writerow(["Name", "Distribution", "Cost"])
-        for s in supplies_list:
-            writer.writerow([s['name'], s['distribution'], s['cost']])
-        writer.writerow([])
+    # Course Info
+    course = courseinfo.courses.get(course_type_var.get())
+    if course:
+        doc.add_paragraph(f"Sections: {course.sections}")
+        doc.add_paragraph(f"Groups: {course.groups}")
+        doc.add_paragraph(f"Students: {course.students}")
+        doc.add_paragraph(f"Rooms: {course.rooms}")
 
-        # Media
-        writer.writerow(["Uninoculated Media"])
-        writer.writerow(["Media", "Type", "Distribution", "Cost"])
-        for m in media_list:
-            writer.writerow([m['media'], m['type'], m['distribution'], m['cost']])
-        writer.writerow([])
+    for experiment_name, data in experiments.items():
+        print(data)
 
-        # Chemicals
-        writer.writerow(["Chemicals"])
-        writer.writerow(["Chemical", "Type", "Distribution", "Cost"])
-        for c in chemicals_list:
-            writer.writerow([c['chemical'], c['type'], c['distribution'], c['cost']])
-        writer.writerow([])
+        # Big bold heading for experiment name
+        exp_heading = doc.add_paragraph()
+        exp_run = exp_heading.add_run(f"Experiment Name: {experiment_name}")
+        exp_run.bold = True
+        exp_run.font.size = Pt(18)
+        doc.add_paragraph("")
 
-# export summary buttons
+        # Write each section
+        write_biologicals(doc, data["biologicals"])
+        write_supplies(doc, data["supplies"])
+        write_media(doc, data["media"])
+        write_chemicals(doc, data["chemicals"])
 
-export_button = ttk.Button(preview_frame, text="Export Summary", 
-    command=lambda: export_csv(
-        filedialog.asksaveasfilename(
-            defaultextension=".csv",
-            filetypes=[("CSV files", "*.csv")],
-            title="Save Experiment Summary As"
-        )
-    )
-    )
+    doc.save(file_path)
+    print("DOCX Exported Successfully!")
+
+export_button = ttk.Button(preview_frame, text="Export Summary", command=export_summary)
 export_button.pack(pady=10)
    
 root.mainloop()
