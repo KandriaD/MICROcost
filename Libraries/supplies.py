@@ -493,8 +493,8 @@ supplies = {
         "quantity": 500
     },
 
-    "petri_plate_nonslippable": {
-        "name": "Empty Petri Dish, 100mm, Non-slippable",
+    "petri_plate_slippable": {
+        "name": "Empty Petri Dish, 100mm, Slippable",
         "supplier": "VWR",
         "catalog_number": "25384-302",
         "cost_per_unit": 92.42,
