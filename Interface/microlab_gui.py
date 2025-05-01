@@ -60,7 +60,8 @@ def start_new_experiment():
 # --- Functions for updating preview and adding/removing items ---
 def update_preview():
     preview_text.config(state="normal")
-    preview_text.delete(1.0, tk.END)
+
+    preview_text.insert(tk.END, f"{experiment_name_entry.get()}\n")
 
     preview_text.insert(tk.END, f"=== Biologicals ===\n")
     for b in biologicals_list:
@@ -87,7 +88,7 @@ def update_preview():
     preview_text.insert(tk.END, f"Total Supplies Cost: ${round(total_supply_cost, 2)}\n")
     preview_text.insert(tk.END, f"Total Media Cost: ${round(total_media_cost, 2)}\n")
     preview_text.insert(tk.END, f"Total Chemical Cost: ${round(total_chemical_cost, 2)}\n")
-    preview_text.insert(tk.END, f"Grand Total: ${round(total_bio_cost + total_supply_cost + total_media_cost + total_chemical_cost, 2)}\n")
+    preview_text.insert(tk.END, f"Grand Total: ${round(total_bio_cost + total_supply_cost + total_media_cost + total_chemical_cost, 2)}\n\n")
 
     preview_text.config(state="disabled")
 
@@ -676,7 +677,6 @@ def write_chemicals(doc, chemicals):
 
 
 # --- Main Export Function ---
-
 def export_summary():
     global biologicals_list, supplies_list, media_list, chemicals_list, experiments
 
@@ -694,7 +694,7 @@ def export_summary():
     file_path = filedialog.asksaveasfilename(
         defaultextension=".docx",
         filetypes=[("Word Documents", "*.docx")],
-        title="Save Experiment Summary As"
+        title="{course_type_var.get()} Cost Analysis"
     )
 
     if not file_path:
