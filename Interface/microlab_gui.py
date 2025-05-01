@@ -637,16 +637,24 @@ def export_summary():
 
     doc = Document()
 
+    style = doc.styles['Normal']
+    font = style.font
+    font.name = 'Consolas'  # or any font you want
+    font.size = Pt(11)   # or any size you prefer
+    
     # Title
-    doc.add_heading(f"Course: {course_type_var.get()}", level=1)
+    title = doc.add_heading(level=1)
+    title_run = title.add_run(f"{course_type_var.get()} Cost Analysis n/ Based on Spring 2025")
+    title_run.font.size = Pt()
 
     # Course Info
     course = courseinfo.courses.get(course_type_var.get())
     if course:
-        doc.add_paragraph(f"Sections: {course.sections}")
-        doc.add_paragraph(f"Groups: {course.groups}")
-        doc.add_paragraph(f"Students: {course.students}")
-        doc.add_paragraph(f"Rooms: {course.rooms}")
+        course_paragraph = doc.add_paragraph()
+        course_paragraph.add_run(f"Sections: {course.sections}  |  ")
+        course_paragraph.add_run(f"Groups: {course.groups}  |  ")
+        course_paragraph.add_run(f"Students: {course.students}  |  ")
+        course_paragraph.add_run(f"Rooms: {course.rooms}")
 
     for experiment_name, data in experiments.items():
         print(data)
@@ -655,7 +663,8 @@ def export_summary():
         exp_heading = doc.add_paragraph()
         exp_run = exp_heading.add_run(f"Experiment Name: {experiment_name}")
         exp_run.bold = True
-        exp_run.font.size = Pt(18)
+        exp_run.underline = True
+        exp_run.font.size = Pt(12)
         doc.add_paragraph("")
 
         # Write each section
@@ -663,6 +672,12 @@ def export_summary():
         write_supplies(doc, data["supplies"])
         write_media(doc, data["media"])
         write_chemicals(doc, data["chemicals"])
+
+        total_cost = data.get("total_cost", 0)  # Adjust if your structure differs
+        total_paragraph = doc.add_paragraph()
+        total_run = total_paragraph.add_run(f"Total Cost: ${total_cost:,.2f}")
+        total_run.font.size = Pt(12)
+        total_run.font.highlight_color = WD_COLOR_INDEX.YELLOW
 
     doc.save(file_path)
     print("DOCX Exported Successfully!")
