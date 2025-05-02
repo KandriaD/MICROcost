@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter import filedialog
 from docx import Document
 from docx.shared import Pt
+from docx.enum.text import WD_COLOR_INDEX, WD_ALIGN_PARAGRAPH
 
 
 # --- Define global variables for muliple experiments ---
@@ -58,9 +59,60 @@ def start_new_experiment():
     print(f"Started new experiment: {current_experiment}")
 
 # --- Functions for updating preview and adding/removing items ---
+def print_experiment(widget, name, data):
+    widget.insert(tk.END, f"{name}\n")
+    
+    widget.insert(tk.END, "=== Biologicals ===\n")
+    for b in data.get("biologicals", []):
+        widget.insert(tk.END, f"{b['specimen']} on {b['media']} ({b['type']}) [{b['distribution']}]: ${b['cost']}\n")
+
+    widget.insert(tk.END, "\n=== Supplies ===\n")
+    for s in data.get("supplies", []):
+        widget.insert(tk.END, f"{s['name']} [{s['distribution']}]: ${s['cost']}\n")
+
+    widget.insert(tk.END, "\n=== Uninoculated Media ===\n")
+    for m in data.get("media", []):
+        widget.insert(tk.END, f"{m['media']} ({m['type']}) [{m['distribution']}]: ${m['cost']}\n")
+
+    widget.insert(tk.END, "\n=== Chemicals ===\n")
+    for c in data.get("chemicals", []):
+        widget.insert(tk.END, f"{c['chemical']} ({c['type']}) [{c['distribution']}]: ${c['cost']}\n")
+
+    # Totals
+    total_bio_cost = sum(b['cost'] for b in data.get("biologicals", []))
+    total_supply_cost = sum(s['cost'] for s in data.get("supplies", []))
+    total_media_cost = sum(m['cost'] for m in data.get("media", []))
+    total_chemical_cost = sum(c['cost'] for c in data.get("chemicals", []))
+    total_cost = total_bio_cost + total_supply_cost + total_media_cost + total_chemical_cost
+
+    widget.insert(tk.END, f"\nTotal Biological Cost: ${total_bio_cost:.2f}\n")
+    widget.insert(tk.END, f"Total Supplies Cost: ${total_supply_cost:.2f}\n")
+    widget.insert(tk.END, f"Total Media Cost: ${total_media_cost:.2f}\n")
+    widget.insert(tk.END, f"Total Chemical Cost: ${total_chemical_cost:.2f}\n")
+    widget.insert(tk.END, f"Total Cost: ${total_cost:.2f}\n\n")
+
 def update_preview():
     preview_text.config(state="normal")
+    preview_text.delete("1.0", tk.END)
 
+    # Print all saved experiments
+    for name, data in experiments.items():
+        print_experiment(preview_text, name, data)
+
+    # Also print the current working experiment (if it has data)
+    if current_experiment and (biologicals_list or supplies_list or media_list or chemicals_list):
+        data = {
+            "biologicals": biologicals_list,
+            "supplies": supplies_list,
+            "media": media_list,
+            "chemicals": chemicals_list
+        }
+
+
+# def update_preview():
+#     preview_text.config(state="normal")
+#     preview_text.delete(1.0, tk.END)  
+    
     preview_text.insert(tk.END, f"{experiment_name_entry.get()}\n")
 
     preview_text.insert(tk.END, f"=== Biologicals ===\n")
@@ -90,7 +142,6 @@ def update_preview():
     preview_text.insert(tk.END, f"Total Chemical Cost: ${round(total_chemical_cost, 2)}\n")
     preview_text.insert(tk.END, f"Grand Total: ${round(total_bio_cost + total_supply_cost + total_media_cost + total_chemical_cost, 2)}\n\n")
 
-    preview_text.config(state="disabled")
 
 # --- Functions to add and remove biologicals, supplies, uninoculated media, and chemicals ---
 def remove_last_biological():
@@ -204,7 +255,6 @@ def add_supply():
 
     supply_info = supplies.supplies.get(supply_key)
     antibiotic_info = antibiotics.get(antibiotic_key)
-
 
     # If not found in supplies, check in antibiotics
     if not supply_info and not antibiotic_info:
@@ -608,9 +658,13 @@ def add_italicized_text(para, text, italic_list):
             idx += 1
 
 def write_biologicals(doc, biologicals):
-    doc.add_heading("Biologicals", level=2)
+    bio_sec = doc.add_paragraph()
+    bio_sec.paragraph_format.space_after = Pt(0)
+    bio_sec_run = bio_sec.add_run("===Biologicals===")
+    bio_sec_run.font.size = Pt(11)
+    bio_sec_run.font.name = 'Consolas'
     italic_list = list(bacteria.bacteria_list)
-
+    
     for item in biologicals:
         para = doc.add_paragraph()
 
@@ -629,11 +683,15 @@ def write_biologicals(doc, biologicals):
         add_italicized_text(para, specimen, italic_list)
         para.add_run(f" on {media} {type_text}[{distribution}]: ${cost}")
 
-    doc.add_paragraph("")  # Blank line after section
+    # doc.add_paragraph("")  # Blank line after section
 
 
 def write_supplies(doc, supplies):
-    doc.add_heading("Supplies", level=2)
+    supplies_sec = doc.add_paragraph()
+    supplies_sec.paragraph_format.space_after = Pt(0)
+    supplies_sec_run = supplies_sec.add_run("===Supplies===")
+    supplies_sec_run.font.size = Pt(11)
+    supplies_sec_run.font.name = 'Consolas'
 
     for item in supplies:
         para = doc.add_paragraph()
@@ -643,11 +701,15 @@ def write_supplies(doc, supplies):
 
         para.add_run(f"Name: {name}, Distribution: {distribution}, Cost: ${cost}")
 
-    doc.add_paragraph("")
+    # doc.add_paragraph("")
 
 
 def write_media(doc, media_items):
-    doc.add_heading("Uninoculated Media", level=2)
+    media_sec = doc.add_paragraph()
+    media_sec.paragraph_format.space_after = Pt(0)
+    media_sec_run = media_sec.add_run("===Uninoculated Media===")
+    media_sec_run.font.size = Pt(11)
+    media_sec_run.font.name = 'Consolas'
 
     for item in media_items:
         para = doc.add_paragraph()
@@ -658,11 +720,15 @@ def write_media(doc, media_items):
 
         para.add_run(f"Media: {media_name}, Type: {type_}, Distribution: {distribution}, Cost: ${cost}")
 
-    doc.add_paragraph("")
+    # doc.add_paragraph("")
 
 
 def write_chemicals(doc, chemicals):
-    doc.add_heading("Chemicals", level=2)
+    chem_sec = doc.add_paragraph()
+    chem_sec.paragraph_format.space_after = Pt(0)
+    chem_sec_run = chem_sec.add_run("===Chemicals===")
+    chem_sec_run.font.size = Pt(11)
+    chem_sec_run.font.name = 'Consolas'
 
     for item in chemicals:
         para = doc.add_paragraph()
@@ -680,6 +746,8 @@ def write_chemicals(doc, chemicals):
 def export_summary():
     global biologicals_list, supplies_list, media_list, chemicals_list, experiments
 
+    cumulative_total = 0
+
     if current_experiment:
         experiments[current_experiment] = {
             "biologicals": biologicals_list.copy(),
@@ -694,7 +762,7 @@ def export_summary():
     file_path = filedialog.asksaveasfilename(
         defaultextension=".docx",
         filetypes=[("Word Documents", "*.docx")],
-        title="{course_type_var.get()} Cost Analysis"
+        title="{course_type_var.get()} Cost Analysis" ####################this is not working...
     )
 
     if not file_path:
@@ -707,15 +775,13 @@ def export_summary():
     font.name = 'Consolas'  # or any font you want
     font.size = Pt(11)   # or any size you prefer
     
-    # Title
-    title = doc.add_heading(level=1)
-    title_run = title.add_run(f"{course_type_var.get()} Cost Analysis n/ Based on Spring 2025")
-    title_run.font.size = Pt()
+    # Title being coded after the calculations to be able to use the cumulative total, but will appear first in the document
 
     # Course Info
     course = courseinfo.courses.get(course_type_var.get())
     if course:
         course_paragraph = doc.add_paragraph()
+        course_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
         course_paragraph.add_run(f"Sections: {course.sections}  |  ")
         course_paragraph.add_run(f"Groups: {course.groups}  |  ")
         course_paragraph.add_run(f"Students: {course.students}  |  ")
@@ -724,13 +790,13 @@ def export_summary():
     for experiment_name, data in experiments.items():
         print(data)
 
-        # Big bold heading for experiment name
         exp_heading = doc.add_paragraph()
+        exp_heading.paragraph_format.space_after = Pt(0)
         exp_run = exp_heading.add_run(f"Experiment Name: {experiment_name}")
         exp_run.bold = True
         exp_run.underline = True
         exp_run.font.size = Pt(12)
-        doc.add_paragraph("")
+        exp_run.font.name = 'Consolas'
 
         # Write each section
         write_biologicals(doc, data["biologicals"])
@@ -738,11 +804,58 @@ def export_summary():
         write_media(doc, data["media"])
         write_chemicals(doc, data["chemicals"])
 
-        total_cost = data.get("total_cost", 0)  # Adjust if your structure differs
+        # Calculate subtotals
+        bio_total = sum(float(b['cost']) for b in data["biologicals"])
+        supply_total = sum(float(s['cost']) for s in data["supplies"])
+        media_total = sum(float(m['cost']) for m in data["media"])
+        chem_total = sum(float(c['cost']) for c in data["chemicals"])
+        grand_total = bio_total + supply_total + media_total + chem_total
+        cumulative_total += grand_total
+
+        # Write subtotals
+        def write_subtotal_line(doc, label, amount):
+            p = doc.add_paragraph()
+            p.paragraph_format.space_after = Pt(0)
+            run = p.add_run(f"{label}: ${amount:,.2f}")
+            run.font.name = 'Consolas'
+            run.font.size = Pt(11)
+
+
+        write_subtotal_line(doc, "Total Biological Cost", bio_total)
+        write_subtotal_line(doc, "Total Supplies Cost", supply_total)
+        write_subtotal_line(doc, "Total Media Cost", media_total)
+        write_subtotal_line(doc, "Total Chemical Cost", chem_total)
+
         total_paragraph = doc.add_paragraph()
-        total_run = total_paragraph.add_run(f"Total Cost: ${total_cost:,.2f}")
+        total_run = total_paragraph.add_run(f"Total Cost: ${grand_total:,.2f}")
         total_run.font.size = Pt(12)
         total_run.font.highlight_color = WD_COLOR_INDEX.YELLOW
+
+    # Title
+    title = doc.add_paragraph()
+    title.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    title_run = title.add_run(f"{course_type_var.get()} Cost Analysis based on course enrollment for Spring 2025")
+    title_run.bold = False
+    title_run.font.size = Pt(16)
+    title_run.font.name = 'Consolas'
+
+    title.add_run().add_break()  # This adds a line break
+
+    subtitle_run = title.add_run("Calculations WITH Plate Pourer")
+    subtitle_run.bold = False
+    subtitle_run.font.size = Pt(14)
+    subtitle_run.font.name = 'Consolas'
+
+    title.add_run().add_break()
+
+    subsubtitle_run = title.add_run(f"Total Semester Cost: ${cumulative_total:,.2f}")
+    subsubtitle_run.bold = False
+    subsubtitle_run.font.size = Pt(14)
+    subsubtitle_run.font.name = 'Consolas'
+
+    title.paragraph_format.space_after = Pt(0)
+
+    doc._body._element.insert(0, title._p) # Insert title at the beginning of the document
 
     doc.save(file_path)
     print("DOCX Exported Successfully!")
