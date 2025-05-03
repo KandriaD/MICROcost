@@ -105,6 +105,22 @@ supplies = {
         "quantity": 50
     },
 
+    "biolog_gen3_microplates": {
+        "name": "BIOLOG GEN III Microplates",
+        "supplier": "BIOLOG",
+        "catalog_number": "1030",
+        "cost_per_unit": 163.8,
+        "quantity": 10
+    },
+
+    "biolog_gen3_inoculating_fluid": {
+        "name": "BIOLOG GEN III Inoculating Fluid",
+        "supplier": "BIOLOG",
+        "catalog_number": "72401",
+        "cost_per_unit": 139.5,
+        "quantity": 20
+    },
+
     "casamino_acids": {
         "name": "Casamino acids",
         "supplier": "VWR",
@@ -159,6 +175,14 @@ supplies = {
         "catalog_number": "60818-725",
         "cost_per_unit": 352.24,
         "quantity": 500
+    },
+
+    "dneasy_powersoil_kit": {
+        "name": "DNeasy PowerSoil Kit",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 700.56,
+        "quantity": 100 #100 preps
     },
     
     "dropper_bottle_amber": {
@@ -477,6 +501,14 @@ supplies = {
         "quantity": 25
     },
 
+    "pcr_purification_kit": {
+        "name": "PCR Purification Kit",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 118.44,
+        "quantity": 50 #50 preps
+    },
+
     "petri_plate_small": {
         "name": "Empty Petri Dish, 60mm",
         "supplier": "VWR",
@@ -675,7 +707,7 @@ supplies = {
         "supplier": "VWR",
         "catalog_number": "95060-964",
         "cost_per_unit": 56.38,
-        "quantity": 16
+        "quantity": 2
     },  # 16x8mL vials (check this)
 
     "zyme_b_x2_reagent": {
@@ -683,7 +715,7 @@ supplies = {
         "supplier": "VWR",
         "catalog_number": "95060-962",
         "cost_per_unit": 56.28,
-        "quantity": 10
+        "quantity": 2
     }  # 10x5mL vials (check this)
 }
 

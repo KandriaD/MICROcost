@@ -667,6 +667,7 @@ def write_biologicals(doc, biologicals):
     
     for item in biologicals:
         para = doc.add_paragraph()
+        para.paragraph_format.space_after = Pt(0) 
 
         specimen = item.get("specimen", "")
         media = item.get("media", "")
@@ -678,13 +679,14 @@ def write_biologicals(doc, biologicals):
         if 'premade' in media:
             type_text = ""
         else:
-            type_text = f"[{type_}] "
+            type_text = f"({type_}) "
 
         add_italicized_text(para, specimen, italic_list)
         para.add_run(f" on {media} {type_text}[{distribution}]: ${cost}")
 
-    # doc.add_paragraph("")  # Blank line after section
-
+    if biologicals:
+        bio_line = doc.add_paragraph()  # Blank line after section
+        bio_line.paragraph_format.space_after = Pt(0)
 
 def write_supplies(doc, supplies):
     supplies_sec = doc.add_paragraph()
@@ -699,7 +701,8 @@ def write_supplies(doc, supplies):
         distribution = item.get("distribution", "")
         cost = item.get("cost", "")
 
-        para.add_run(f"Name: {name}, Distribution: {distribution}, Cost: ${cost}")
+        para.add_run(f"{name} [{distribution}]: ${cost}")
+        para.paragraph_format.space_after = Pt(0)
 
     # doc.add_paragraph("")
 
@@ -718,8 +721,8 @@ def write_media(doc, media_items):
         distribution = item.get("distribution", "")
         cost = item.get("cost", "")
 
-        para.add_run(f"Media: {media_name}, Type: {type_}, Distribution: {distribution}, Cost: ${cost}")
-
+        para.add_run(f"{media_name} ({type_}) [{distribution}]: ${cost}")
+        para.paragraph_format.space_after = Pt(0)
     # doc.add_paragraph("")
 
 
@@ -737,8 +740,8 @@ def write_chemicals(doc, chemicals):
         distribution = item.get("distribution", "")
         cost = item.get("cost", "")
 
-        para.add_run(f"Chemical: {chemical}, Type: {type_}, Distribution: {distribution}, Cost: ${cost}")
-
+        para.add_run(f"{chemical} ({type_}) [{distribution}]: ${cost}")
+        para.paragraph_format.space_after = Pt(0)
     doc.add_paragraph("")
 
 
@@ -783,7 +786,6 @@ def export_summary():
         course_paragraph = doc.add_paragraph()
         course_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
         course_paragraph.add_run(f"Sections: {course.sections}  |  ")
-        course_paragraph.add_run(f"Groups: {course.groups}  |  ")
         course_paragraph.add_run(f"Students: {course.students}  |  ")
         course_paragraph.add_run(f"Rooms: {course.rooms}")
 
@@ -792,7 +794,7 @@ def export_summary():
 
         exp_heading = doc.add_paragraph()
         exp_heading.paragraph_format.space_after = Pt(0)
-        exp_run = exp_heading.add_run(f"Experiment Name: {experiment_name}")
+        exp_run = exp_heading.add_run(f"{experiment_name}")
         exp_run.bold = True
         exp_run.underline = True
         exp_run.font.size = Pt(12)
@@ -841,17 +843,40 @@ def export_summary():
 
     title.add_run().add_break()  # This adds a line break
 
-    subtitle_run = title.add_run("Calculations WITH Plate Pourer")
-    subtitle_run.bold = False
-    subtitle_run.font.size = Pt(14)
-    subtitle_run.font.name = 'Consolas'
+    subtitle_run1 = title.add_run("Calculations ")
+    subtitle_run1.font.size = Pt(14)
+    subtitle_run1.font.name = 'Consolas'
+
+    highlight_run = title.add_run("WITH")
+    highlight_run.font.size = Pt(14)
+    highlight_run.font.name = 'Consolas'
+    highlight_run.font.highlight_color = WD_COLOR_INDEX.TURQUOISE
+
+    subtitle_run2 = title.add_run(" Plate Pourer")
+    subtitle_run2.font.size = Pt(14)
+    subtitle_run2.font.name = 'Consolas'
+
+    # subtitle_run = title.add_run("Calculations WITH Plate Pourer")
+    # subtitle_run.bold = False
+    # subtitle_run.font.size = Pt(14)
+    # subtitle_run.font.name = 'Consolas'
 
     title.add_run().add_break()
 
-    subsubtitle_run = title.add_run(f"Total Semester Cost: ${cumulative_total:,.2f}")
+    subsubtitle_run = title.add_run("Total Semester Cost: $")
     subsubtitle_run.bold = False
     subsubtitle_run.font.size = Pt(14)
     subsubtitle_run.font.name = 'Consolas'
+
+    amount_run = title.add_run(f"${cumulative_total:,.2f}")
+    amount_run.font.size = Pt(14)
+    amount_run.font.name = 'Consolas'
+    amount_run.font.highlight_color = WD_COLOR_INDEX.TURQUOISE
+
+    # subsubtitle_run = title.add_run(f"Total Semester Cost: ${cumulative_total:,.2f}")
+    # subsubtitle_run.bold = False
+    # subsubtitle_run.font.size = Pt(14)
+    # subsubtitle_run.font.name = 'Consolas'
 
     title.paragraph_format.space_after = Pt(0)
 
