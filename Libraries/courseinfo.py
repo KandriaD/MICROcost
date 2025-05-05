@@ -16,7 +16,7 @@ class Course:
 
 # Creating course instances
 micro140L = Course("MICRO140L", 2, 33, 16, ["115C", "114"])
-micro351L = Course("MICRO351L", 3, 30, 15, ["114", "115B", "115B"])
+micro351L = Course("MICRO351L", 2, 31, 15, ["115B", "115B"]) #updated on 5/5 for summer session 2 2025
 micro401L = Course("MICRO401L", 2, 34, 17, ["115C", "115B"])
 micro461L = Course("MICRO461L", 1, 15, 7, ["113"])
 micro463L = Course("MICRO463L", 1, 15, 7, ["115B"])

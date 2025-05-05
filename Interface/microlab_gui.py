@@ -697,15 +697,16 @@ def write_supplies(doc, supplies):
 
     for item in supplies:
         para = doc.add_paragraph()
+        para.paragraph_format.space_after = Pt(0)
         name = item.get("name", "")
         distribution = item.get("distribution", "")
         cost = item.get("cost", "")
 
         para.add_run(f"{name} [{distribution}]: ${cost}")
-        para.paragraph_format.space_after = Pt(0)
 
-    # doc.add_paragraph("")
-
+    if supplies:
+            supplies_line = doc.add_paragraph()
+            supplies_line.paragraph_format.space_after = Pt(0)
 
 def write_media(doc, media_items):
     media_sec = doc.add_paragraph()
@@ -716,15 +717,17 @@ def write_media(doc, media_items):
 
     for item in media_items:
         para = doc.add_paragraph()
+        para.paragraph_format.space_after = Pt(0)
         media_name = item.get("media", "")
         type_ = item.get("type", "")
         distribution = item.get("distribution", "")
         cost = item.get("cost", "")
 
         para.add_run(f"{media_name} ({type_}) [{distribution}]: ${cost}")
-        para.paragraph_format.space_after = Pt(0)
-    # doc.add_paragraph("")
 
+    if media_items:
+        media_line = doc.add_paragraph()
+        media_line.paragraph_format.space_after = Pt(0)
 
 def write_chemicals(doc, chemicals):
     chem_sec = doc.add_paragraph()
@@ -735,13 +738,14 @@ def write_chemicals(doc, chemicals):
 
     for item in chemicals:
         para = doc.add_paragraph()
+        para.paragraph_format.space_after = Pt(0)
         chemical = item.get("chemical", "")
         type_ = item.get("type", "")
         distribution = item.get("distribution", "")
         cost = item.get("cost", "")
 
         para.add_run(f"{chemical} ({type_}) [{distribution}]: ${cost}")
-        para.paragraph_format.space_after = Pt(0)
+
     doc.add_paragraph("")
 
 
