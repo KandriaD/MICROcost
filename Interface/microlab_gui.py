@@ -107,29 +107,24 @@ def update_preview():
             "media": media_list,
             "chemicals": chemicals_list
         }
-
-
-# def update_preview():
-#     preview_text.config(state="normal")
-#     preview_text.delete(1.0, tk.END)  
     
     preview_text.insert(tk.END, f"{experiment_name_entry.get()}\n")
 
     preview_text.insert(tk.END, f"=== Biologicals ===\n")
     for b in biologicals_list:
-        preview_text.insert(tk.END, f"{b['specimen']} on {b['media']} ({b['type']}) [{b['distribution']}]: ${b['cost']}\n")
+        preview_text.insert(tk.END, f"{b['specimen']} on {b['media']} ({b['type']}) [{b['distribution']}]\n     Quantity: {b['samples']}   Cost: ${b['cost']}\n")
 
     preview_text.insert(tk.END, f"\n=== Supplies ===\n")
     for s in supplies_list:
-        preview_text.insert(tk.END, f"{s['name']} [{s['distribution']}]: ${s['cost']}\n")
+        preview_text.insert(tk.END, f"{s['name']} [{s['distribution']}]\n     Quantity: {s['quantity']}   Cost: ${s['cost']}\n")
 
     preview_text.insert(tk.END, f"\n=== Uninoculated Media ===\n")
     for m in media_list:
-        preview_text.insert(tk.END, f"{m['media']} ({m['type']}) [{m['distribution']}]: ${m['cost']}\n")
+        preview_text.insert(tk.END, f"{m['media']} ({m['type']}) [{m['distribution']}]\n     Quantity: {m['samples']}   Cost: ${m['cost']}\n")
 
     preview_text.insert(tk.END, f"\n=== Chemicals ===\n")
     for c in chemicals_list:
-        preview_text.insert(tk.END, f"{c['chemical']} ({c['type']}) [{c['distribution']}]: ${c['cost']}\n")
+        preview_text.insert(tk.END, f"{c['chemical']} ({c['type']}) [{c['distribution']}]\n     Quantity: {c['samples']}   Cost: ${c['cost']}\n")
     
     total_bio_cost = sum(b['cost'] for b in biologicals_list)
     total_supply_cost = sum(s['cost'] for s in supplies_list)
@@ -217,6 +212,7 @@ def add_biological():
         "media": selected_media,
         "type": selected_type,
         "distribution": f"{dist_num} {dist_type}",
+        "samples": total_samples,
         "cost": round(total_cost, 2)
     }
 
@@ -287,6 +283,7 @@ def add_supply():
         "name": selected_item_name,
         "category": category,  # Add category for reference (supply or antibiotic)
         "distribution": f"{quantity} {quantity_type}",
+        "quantity": units,
         "cost": round(total_cost, 2)
     })
 
@@ -339,6 +336,7 @@ def add_uninoculated_media():
         "media": selected_media,
         "type": selected_type,
         "distribution": f"{dist_num} {dist_type}",
+        "samples": total_samples,
         "cost": round(total_cost, 2)
     })
 
@@ -396,6 +394,7 @@ def add_chemical():
         "chemical": selected_chemical,
         "type": selected_type,
         "distribution": f"{dist_num} {dist_type}",
+        "samples": total_samples,
         "cost": round(total_cost, 2)
     })
 
@@ -673,6 +672,7 @@ def write_biologicals(doc, biologicals):
         media = item.get("media", "")
         type_ = item.get("type", "")
         distribution = item.get("distribution", "")
+        samples = item.get("samples", 0)
         cost = item.get("cost", "")
 
         # Don't show "premade" as type if it's already in media name
@@ -682,7 +682,7 @@ def write_biologicals(doc, biologicals):
             type_text = f"({type_}) "
 
         add_italicized_text(para, specimen, italic_list)
-        para.add_run(f" on {media} {type_text}[{distribution}]: ${cost}")
+        para.add_run(f" on {media} {type_text}[{distribution}]\n     Quantity: {samples}    Cost: ${cost}")
 
     if biologicals:
         bio_line = doc.add_paragraph()  # Blank line after section
@@ -700,9 +700,10 @@ def write_supplies(doc, supplies):
         para.paragraph_format.space_after = Pt(0)
         name = item.get("name", "")
         distribution = item.get("distribution", "")
+        quantity = item.get("quantity", "")
         cost = item.get("cost", "")
 
-        para.add_run(f"{name} [{distribution}]: ${cost}")
+        para.add_run(f"{name} [{distribution}]\n     Quantity: {quantity}   Cost: ${cost}")
 
     if supplies:
             supplies_line = doc.add_paragraph()
@@ -721,9 +722,10 @@ def write_media(doc, media_items):
         media_name = item.get("media", "")
         type_ = item.get("type", "")
         distribution = item.get("distribution", "")
+        samples = item.get("samples", 0)
         cost = item.get("cost", "")
 
-        para.add_run(f"{media_name} ({type_}) [{distribution}]: ${cost}")
+        para.add_run(f"{media_name} ({type_}) [{distribution}]\n     Quantity: {samples}   Cost: ${cost}")
 
     if media_items:
         media_line = doc.add_paragraph()
@@ -742,9 +744,10 @@ def write_chemicals(doc, chemicals):
         chemical = item.get("chemical", "")
         type_ = item.get("type", "")
         distribution = item.get("distribution", "")
+        samples = item.get("samples", 0)
         cost = item.get("cost", "")
 
-        para.add_run(f"{chemical} ({type_}) [{distribution}]: ${cost}")
+        para.add_run(f"{chemical} ({type_}) [{distribution}]\n     Quantity: {samples}   Cost: ${cost}")
 
     doc.add_paragraph("")
 
