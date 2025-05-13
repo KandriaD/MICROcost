@@ -89,6 +89,14 @@ chemical_list = {
         "quantity": 500 # 500 mL
     },
 
+    "kinyounin_carbolfuchsin": {
+        "name": "Kinyoun's Carbolfuchsin",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #have not purchased this in a long time
+        "quantity": 1
+    },
+
     "kovacs_reagent":{
         "name": "Kovac's Reagent",
         "supplier": "",
