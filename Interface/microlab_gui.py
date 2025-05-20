@@ -666,7 +666,7 @@ def write_biologicals(doc, biologicals):
     
     for item in biologicals:
         para = doc.add_paragraph()
-        para.paragraph_format.space_after = Pt(0) 
+        para.paragraph_format.space_after = Pt(0)
 
         specimen = item.get("specimen", "")
         media = item.get("media", "")
