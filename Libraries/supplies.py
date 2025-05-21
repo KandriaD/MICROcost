@@ -438,10 +438,10 @@ supplies = {
     },
 
     "mcfarland_standard_0.5": {
-        "name": "McFarland Standard, 0.5",
+        "name": "0.5 McFarland Standard",
         "supplier": "VWR",
         "catalog_number": "89426-218",
-        "cost_per_unit": 28.92, 
+        "cost_per_unit": 0, #$28.92 per, but use for mulitple years so effectively 0
         "quantity": 1
     },
     
@@ -485,6 +485,22 @@ supplies = {
         "quantity": 72 #72/box
     },
 
+        "nitrate_reagent_a": {
+        "name": "Nitrate reagent A",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "38497",
+        "cost_per_unit": 47.5,
+        "quantity": 1 #100 mL per bottle, but noting bottles used
+    }, 
+
+    "nitrate_reagent_b": {
+        "name": "Nitrate reagent B",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "39441",
+        "cost_per_unit": 47.5,
+        "quantity": 1 #100 ml per bottle, but noting bottles used
+    },
+
     "oil_cleaner": {
         "name": "Oil Cleaner",
         "supplier": "",
@@ -493,6 +509,14 @@ supplies = {
         "quantity": 10 #10 oz per bottle
     },
 
+    "oxidrops": {
+        "name": "Oxidrops Liquid (Oxidase Reagent)", #very short shelf life
+        "supplier": "VWR",
+        "catalog_number": "89428-918",
+        "cost_per_unit": 30.19,
+        "quantity": 30
+    },
+    
     "oxisticks": {
         "name": "Oxisticks",
         "supplier": "VWR",
@@ -694,24 +718,32 @@ supplies = {
         "quantity": 12
     },
 
-    "vpa+vpb": {
-        "name": "VP A + VP B", #for API 20E kit
+    "vpa": {
+        "name": "VP A", #for API 20E kit
         "supplier": "VWR",
         "catalog_number": "95060-978",
         "cost_per_unit": 60.04,  
         "quantity": 10 #2x5ml
     },
 
-    "zyme_a_x2_reagent": {
-        "name": "ZYME A X2 Reagent",
+    "vpb": {
+        "name": "VP B", #for API 20E kit
+        "supplier": "VWR",
+        "catalog_number": "95060-976",
+        "cost_per_unit": 60.04,  
+        "quantity": 10 #2x5ml
+    },
+
+    "zym_a": {
+        "name": "ZYM A",
         "supplier": "VWR",
         "catalog_number": "95060-964",
         "cost_per_unit": 56.38,
         "quantity": 2
     },  # 16x8mL vials (check this)
 
-    "zyme_b_x2_reagent": {
-        "name": "ZYME B X2 Reagent",
+    "zym_b": {
+        "name": "ZYM B",
         "supplier": "VWR",
         "catalog_number": "95060-962",
         "cost_per_unit": 56.28,

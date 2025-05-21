@@ -185,28 +185,12 @@ chemical_list = {
         "quantity": 1
     },
 
-    "nitrate_reagent_a": {
-        "name": "Nitrate reagent A",
-        "supplier": "Millipore Sigma",
-        "catalog_number": "38497",
-        "cost_per_unit": 47.5,
-        "quantity": 100
-    }, 
-
-    "nitrate_reagent_b": {
-        "name": "Nitrate reagent B",
-        "supplier": "Millipore Sigma",
-        "catalog_number": "39441",
-        "cost_per_unit": 47.5,
-        "quantity": 100
-    },
-
-    "oxidrops": {
-        "name": "Oxidrops Liquid (Oxidase Reagent)", #very short shelf life
-        "supplier": "VWR",
-        "catalog_number": "89428-918",
-        "cost_per_unit": 30.19,
-        "quantity": 30
+    "saline": {
+        "name": "Saline (0.85% NaCl)",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0.03,
+        "quantity": 500 #500ml
     },
 
     "safranin":{
@@ -239,6 +223,14 @@ chemical_list = {
         "catalog_number": "76347-646",
         "cost_per_unit": 38.11,
         "quantity": 500  
+    },
+
+    "water": {
+        "name": "Water (distilled)",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
     },
 
     "ziehl_neelsen_carbolfuchsin": {

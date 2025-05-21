@@ -6,7 +6,7 @@ from tkinter import filedialog
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_COLOR_INDEX, WD_ALIGN_PARAGRAPH
-
+import pandas as pd
 
 # --- Define global variables for muliple experiments ---
 experiments = {}  # Dictionary to store all experiment data
@@ -199,7 +199,7 @@ def add_biological():
         "Per Student": course.students,
         "Per Pair": course.students // 2,
         "Per Group": course.groups,
-        "Per Table": 6 * course.sections,
+        "Per Table": course.tables,
         "Per Section": course.sections,
         "Per Room": len(course.rooms),
         "Per Course": 1,
@@ -271,7 +271,7 @@ def add_supply():
         "Per Student": course.students,
         "Per Pair": course.students // 2,
         "Per Group": course.groups,
-        "Per Table": 6 * course.sections,
+        "Per Table": course.tables,
         "Per Section": course.sections,
         "Per Room": len(course.rooms),
         "Per Course": 1,
@@ -324,7 +324,7 @@ def add_uninoculated_media():
         "Per Student": course.students,
         "Per Pair": course.students // 2,
         "Per Group": course.groups,
-        "Per Table": 6 * course.sections,
+        "Per Table": course.tables,
         "Per Section": course.sections,
         "Per Room": len(course.rooms),
         "Per Course": 1,
@@ -382,7 +382,7 @@ def add_chemical():
         "Per Student": course.students,
         "Per Pair": course.students // 2,
         "Per Group": course.groups,
-        "Per Table": 6 * course.sections,
+        "Per Table": course.tables,
         "Per Section": course.sections,
         "Per Room": len(course.rooms),
         "Per Course": 1,

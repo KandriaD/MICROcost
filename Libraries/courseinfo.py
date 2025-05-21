@@ -9,7 +9,7 @@ class Course:
         self.students = students
         self.groups = groups
         self.rooms = rooms
-        self.tables = len(rooms) * 6  # Each room has 6 tables
+        self.tables = sum(5 if room == "113" else 6 for room in rooms)
 
     def __repr__(self):
         return f"Course({self.name}, {self.sections}, {self.students}, {self.groups}, {self.rooms}, {self.tables} tables)"
