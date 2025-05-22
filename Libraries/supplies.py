@@ -41,6 +41,14 @@ supplies = {
         "quantity": 25
     },
 
+    "apoptag_peroxidase_apoptosis_detection_kit": {
+        "name": "ApopTag Peroxidase In Situ Apoptosis Detection Kit",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "S7100",
+        "cost_per_unit": 775,
+        "quantity": 40 #40 assays
+    },
+
     "autoclave_bin_small": {
         "name": "Autoclave bin, small",
         "supplier": "VWR",
@@ -143,6 +151,14 @@ supplies = {
         "catalog_number": "10806-050",
         "cost_per_unit": 14.72,
         "quantity": 100
+    },
+
+    "coplin_jar": {
+        "name": "Coplin Jar",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "cryoblock":{
@@ -485,7 +501,15 @@ supplies = {
         "quantity": 72 #72/box
     },
 
-        "nitrate_reagent_a": {
+    "mr_frosty": {
+        "name": "Mr. Frosty",
+        "supplier": "VWR",
+        "catalog_number": "55710-200",
+        "cost_per_unit": 0, #reusable, so effectively 0;  $110.11 each
+        "quantity": 1
+    },
+
+    "nitrate_reagent_a": {
         "name": "Nitrate reagent A",
         "supplier": "Millipore Sigma",
         "catalog_number": "38497",
@@ -523,6 +547,14 @@ supplies = {
         "catalog_number": "89407-794",
         "cost_per_unit": 25.13,
         "quantity": 25
+    },
+
+    "parafilm": {
+        "name": "Parafilm",
+        "supplier": "VWR",
+        "catalog_number": "52858-000",
+        "cost_per_unit": 395.76,
+        "quantity": 12*(1500/4) #12 roll, each 1500 in long, each square is 4inx4in, so quantity is per square outlined
     },
 
     "pcr_purification_kit": {
@@ -638,6 +670,14 @@ supplies = {
         "quantity": 75 
     },
 
+    "reagent_reservoir": {
+        "name": "Reagent Reservoir",
+        "supplier": "VWR",
+        "catalog_number": "89094-658", #not available with this catalog number, used 29442-474
+        "cost_per_unit": 236.75,
+        "quantity": 100
+    },
+
     "rechargable_battery_for_repeater_pipet": {
         "name": "Lithium Ion Rechargable Battery for Repeater E3/E3x Xstream Pipets",
         "supplier": "Eppendorf",
@@ -660,6 +700,14 @@ supplies = {
         "catalog_number": "75816-100",
         "cost_per_unit": 74.05,
         "quantity": 400
+    },
+
+    "simulated_abo/rh_blood_typing_kit": {
+        "name": "Simulated ABO/Rh Blood Typing Kit",
+        "supplier": "Carolina Biological Supply",
+        "catalog_number": "700101",
+        "cost_per_unit": 63.90, 
+        "quantity": 30 #30 kits
     },
 
     "steam_sterilization_integrator": {

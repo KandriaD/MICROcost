@@ -15,6 +15,13 @@ standard_volumes_ml = {
 }
 
 media_list = {
+    "agar": {
+        "name": "Agar",
+        "supplier": "VWR",
+        "catalog_number": "IC10026280",
+        "cost_per_ml": (165.67/250)*(1.2/100) # $165.67 for 250g, want 1.2%, so 1.2g/100mL
+    },
+
     "bglb": {
         "name": "BGLB (Brillant Green Lactose Bile)",
         "supplier": "VWR",
@@ -97,6 +104,20 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "95021-114",
         "cost_per_ml": 0.07472 #dnase 500g bottle makes 793 plates
+    },
+
+    "dmem": {
+        "name": "Dulbecco's Modified Eagle Medium (DMEM)",
+        "supplier": "Fischer Scientific",
+        "catalog_number": "12491015",
+        "cost_per_ml": 50.65/500 # $50.65 for 500mL
+    },
+
+    "dpbs": {
+        "name": "Dulbecco's Phosphate Buffered Saline (DPBS)",
+        "supplier": "VWR",
+        "catalog_number": "45000-426",
+        "cost_per_ml": 164.82/6/500 #500ml per bottle, pack of 6
     },
 
     "ec_broth": { 
@@ -295,6 +316,13 @@ media_list = {
         "cost_per_ml": 251.33/500*15/1000
     },
 
+    "pbs": {
+        "name": "Phosphate Buffered Saline (PBS)",
+        "supplier": "VWR",
+        "catalog_number": "76371-734",
+        "cost_per_ml": 102.81/100/1000 #in powder packs, 1 pack makes 1L, 100 packs per box $102.81
+    },
+
     "pda": {
         "name": "Potato Dextrose Agar",
         "supplier": "VWR",
@@ -315,7 +343,7 @@ media_list = {
         "catalog_number": "89405-884", 
         "cost_per_ml": 0.0089
     },   
-    
+
     "potassium_tellurite_agar": {
         "name": "Potassium Tellurite Agar [premade]",
         "supplier": "Fischer Scientific",
@@ -484,6 +512,7 @@ media_list = {
         "cost_per_ml": 243.22/500*41/1000
     }
 }
+
 
 
 #test tubes o-f (oxidation fermentation) test tubes, no glucose base 500g 160.06, 53191ml

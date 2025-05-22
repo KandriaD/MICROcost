@@ -1,6 +1,14 @@
 #chemical costs for microbio labs
 #many chemicals, such as stains, we have had for many years and are effectively free at current
 chemical_list = {
+    "acetic_acid": {
+        "name": "Acetic Acid",
+        "supplier": "UH Chem Stock Room",
+        "catalog_number": "",
+        "cost_per_unit": 0.0, #cost per ml
+        "quantity": 1 #500ml
+    },
+
     "acid_alcohol": {
         "name": "Acid Alcohol (3% HCl in Ethanol)",
         "supplier": "",
@@ -15,6 +23,22 @@ chemical_list = {
         "catalog_number": "",
         "cost_per_unit": 3.43, #"bleach" 3.43 for 43 oz
         "quantity": 1271.66 #ml
+    },
+
+    "borate_buffered_saline": {
+        "name": "Borate Buffered Saline (BBS)",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0.003,
+        "quantity": 1 #0.17 M borate + 0.12 M NaCl, comes out to $0.00317 per ml
+    },
+
+    "borate_solution": {
+        "name": "Borate Solution",
+        "supplier": "VWR",
+        "catalog_number": "BT222805",
+        "cost_per_unit": 23.59,
+        "quantity": 500 #23.59 for 500g; density 1.73g/ml, mm 381.37 g/mol
     },
 
     "crystal_violet": {
@@ -49,12 +73,12 @@ chemical_list = {
         "quantity": 1  #42.64 for 500g then make a 10% solution in water
     },
 
-    "fetal_bovine_serum": {
-        "name": "Fetal Bovine Serum",
+    "glycine": {
+        "name": "Glycine Buffer (0.1M)",
         "supplier": "VWR",
-        "catalog_number": "76644-856",
-        "cost_per_unit": 68.60,
-        "quantity": 50 #50 mL
+        "catalog_number": "JT4059-0",
+        "cost_per_unit": 81.97, #81.97 for 250g of pure, need 0.1M solution
+        "quantity": 33300 #33300 mL of 0.1M solution
     },
 
     "hydrogen_peroxide": {
@@ -163,10 +187,18 @@ chemical_list = {
 
     "nacl": {
         "name": "Sodium Chloride (NaCl)",
-        "supplier": "",
+        "supplier": "VWR",
+        "catalog_number": "470302-522",
+        "cost_per_unit": 7.46,
+        "quantity": 500 #500g
+    },
+
+    "n-butanol": {
+        "name": "n-Butanol",
+        "supplier": "UH Chem Stock Room",
         "catalog_number": "",
-        "cost_per_unit": 0.03,
-        "quantity": 500 #500ml
+        "cost_per_unit": 25.46,
+        "quantity": 1000 #1000mL
     },
 
     "ninhydrin": {
@@ -185,6 +217,21 @@ chemical_list = {
         "quantity": 1
     },
 
+    "paraformaldehyde": {
+        "name": "Paraformaldehyde (1%)",
+        "supplier": "VWR",
+        "catalog_number": "101176-014",
+        "cost_per_unit": 103.01, #cost for 4%
+        "quantity": 4000 #1%
+    },
+        
+    "poly_l_lysine": {
+        "name": "Poly-L-Lysine",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "P8920",
+        "cost_per_ml": 157/100 # $157.00 for 100ml
+    },
+
     "saline": {
         "name": "Saline (0.85% NaCl)",
         "supplier": "",
@@ -201,7 +248,47 @@ chemical_list = {
         "quantity": 1
     },
 
-   "sodium_deoxycholate": {
+    "saturated_ammonium_sulfate": {
+        "name": "Saturated Ammonium Sulfate (4.1 M)",
+        "supplier": "VWR",
+        "catalog_number": "470300-256",
+        "cost_per_unit": 0.017, #15.38 for 500g, for 4.1M, $0.01667/ml solution
+        "quantity": 1 #ml of solution
+    },
+
+    "sigmafast_opd_hrp_substrate": {
+        "name": "SigmaFast OPD HRP Substrate",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "P9187",
+        "cost_per_unit": 0.01, #cost per ml
+        "quantity": 1000 #50 tablets, half tablet per 10ml, so 1000ml total is made
+    },
+
+    "sheep_red_blood_cells": {
+        "name": "Sheep Red Blood Cells (SRBC)",
+        "supplier": "Rockland",
+        "catalog_number": "R406-0050",
+        "cost_per_unit": 431, #cost for 50ml
+        "quantity": 50 
+    },
+
+    "sheep_red_blood_cells_2%": {
+        "name": "2% Sheep Red Blood Cells (SRBC)",
+        "supplier": "Rockland",
+        "catalog_number": "R406-0050",
+        "cost_per_unit": 0.1724, #cost per 1ml
+        "quantity": 1
+    },
+
+    "sheep_red_blood_cells_4%": {
+        "name": "4% Sheep Red Blood Cells (SRBC)",
+        "supplier": "Rockland",
+        "catalog_number": "R406-0050",
+        "cost_per_unit": 0.3448, #cost per 1ml
+        "quantity": 1 
+    },
+
+    "sodium_deoxycholate": {
         "name": "Sodium Deoxycholate", 
         "supplier": "VWR",
         "catalog_number": "97062-028",
@@ -215,6 +302,30 @@ chemical_list = {
         "catalog_number": "95060-952",
         "cost_per_unit": 60.04,
         "quantity": 10 #2x5mL
+    },
+
+    "trypan_blue": {
+        "name": "Trypan Blue Stain (0.1%)",
+        "supplier": "VWR",
+        "catalog_number": "97063-702",
+        "cost_per_unit": 43.04, #cost per bottle of 100mL
+        "quantity": 100*4 #need diluted to 0.1%
+    },
+
+    "trypsin": {
+        "name": "Trypsin (0.05% / mM EDTA)",
+        "supplier": "VWR",
+        "catalog_number": "45001-082",
+        "cost_per_unit": 72.11, #cost per 6 bottle of 100ml
+        "quantity": 600 #6 bottles of 100ml
+    },
+
+    "tween_20": {
+        "name": "Tween 20 (0.05%)", 
+        "supplier": "VWR",
+        "catalog_number": "97062-332",
+        "cost_per_unit": 98.03,
+        "quantity": 1000/5 #1000ml per bottle, need 0.05%  
     },
 
     "tweeen_80": {
@@ -247,6 +358,141 @@ chemical_list = {
         "catalog_number": "",
         "cost_per_unit": 14.51, #14.51 for 25g, only use 0.01g per use
         "quantity": 2500 #number of uses per container
+    },
+
+#serums, antiserums, and such
+    "antibiodies_anti-bovine": {
+        "name": "Antibodies (Anti-Bovine IgG)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "B1520",
+        "cost_per_unit": 557, #cost per vial
+        "quantity": 2000 #2ml vial = 2000ul
+    },
+
+    "antibiodies_anti-human": {
+        "name": "Antibodies (Anti-Human IgG)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "AP114P",
+        "cost_per_unit": 267, #cost per vial
+        "quantity": 2000 #2ml vial = 2000ul
+    },
+
+    "antibiodies_anti-goat": {
+        "name": "Antibodies (Anti-Goat IgG)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "A5420",
+        "cost_per_unit": 252.00, #cost per vial
+        "quantity": 1000 #1ml vial = 1000ul
+    },
+
+    "antibiodies_anti-mouse": {
+        "name": "Antibodies (Anti-Mouse IgG)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "F1010",
+        "cost_per_unit": 392, #cost per vial
+        "quantity": 1000 #1ml vial = 1000ul
+    },
+
+    "antibiodies_anti-rabbit": {
+        "name": "Antibodies (Anti-Rabbit IgG)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "R5131",
+        "cost_per_unit": 156, #cost per vial
+        "quantity": 2000 #2ml vial = 2000ul
+    },
+
+    "bsa": {
+        "name": "Bovine Serum Albumin (BSA) (1%)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "126609",
+        "cost_per_unit": 1260, #cost per bottle of 100g
+        "quantity": 10000 #need at 1%, so 1g in 100ml, 10000 ml produced per bottle
+    },
+
+    "fetal_bovine_serum_100%": {
+        "name": "Fetal Bovine Serum (100%)",
+        "supplier": "VWR",
+        "catalog_number": "89510-194",
+        "cost_per_unit": 96.78, #cost per bottle of 50ml
+        "quantity": 50 #50ml
+    },
+    
+    # "fetal_bovine_serum": {
+    #     "name": "Fetal Bovine Serum",
+    #     "supplier": "VWR",
+    #     "catalog_number": "76644-856",
+    #     "cost_per_unit": 68.60,
+    #     "quantity": 50 #50 mL
+    # },
+
+    "goat_antihuman_igg": {
+        "name": "Goat Anti-Human IgG (0.1mg/mL)",
+        "supplier": "Fisher Scientific",
+        "catalog_number": "A18817",
+        "cost_per_unit": 205.00, 
+        "quantity": 10 #1mg at concentration of 2mg/ml, need it at 0.1mlg/ml, so 10 ml of diluted solution per vial
+    },
+
+    "hrp_conjugated_raabbit_antigoat_igg": {
+        "name": "HRP Conjugated Rabbit Anti-Goat IgG (1:20,000)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "A5420",
+        "cost_per_unit": 205.00, 
+        "quantity": 20000 #1ml, need diluted to 1:20,000
+    },
+
+    "human_igg": {
+        "name": "Human IgG (0.1mg/mL)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "I4506",
+        "cost_per_unit": 281.00, 
+        "quantity": 50/0.1*1000 #50 mg in vial, need diluted to 0.1mg/ml, call in ul, so this is cost per ul
+    },
+
+    "human_serum": {
+        "name": "Human Serum (1:100)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "H4522",
+        "cost_per_unit": 226.80, 
+        "quantity": 100*100 #100ml per bottle, diluted 1:100
+    },
+
+    "rabbit_antisrbc_antiserum": {
+        "name": "Rabbit Anti-RBC Antiserum",
+        "supplier": "Rockland",
+        "catalog_number": "213-4139",
+        "cost_per_unit": 427, 
+        "quantity": 5000 # 50mg, reconstitued volume is 5ml, so 5000 ul
+    },
+
+    "rt_anti-digoxigenin_peroxidase": {
+        "name": "RT Anti-Digoxigenin Peroxidase Conjugate Antibody",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "90420", #NEED TO ASK CARRIE
+        "cost_per_unit": 0.0, 
+        "quantity": 1
+    },
+
+    "salmonella_h_antiserum": {
+        "name": "Salmonella H Antiserum",
+        "supplier": "Bio-Rad",
+        "catalog_number": "3561124",
+        "cost_per_unit": 1560, 
+        "quantity": 60*3 #comes in 3ml vials, 60 per box; need to call by ml
+    },
+
+    "salmonella_o_antiserum": {
+        "name": "Salmonella O Antiserum",
+        "supplier": "VWR",
+        "catalog_number": "90002-044",
+        "cost_per_unit": 281.02, 
+        "quantity": 3 #comes in 3ml vials
     }
 }
 
+#boratge buffered saline
+## 0.17M borate solution and 0.12 M NACL (adjust pH 8.5 with NaOH)
+
+#trypan blue stain
+### agar, borate bufffered saline, and 0.1% tgrypan blue
+#### figure out exact quantities and then make an entry with correct cost
