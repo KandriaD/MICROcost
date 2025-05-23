@@ -854,7 +854,7 @@ def export_summary():
     subtitle_run1.font.size = Pt(14)
     subtitle_run1.font.name = 'Consolas'
 
-    highlight_run = title.add_run("WITH")
+    highlight_run = title.add_run("WITHOUT")
     highlight_run.font.size = Pt(14)
     highlight_run.font.name = 'Consolas'
     highlight_run.font.highlight_color = WD_COLOR_INDEX.TURQUOISE
@@ -870,7 +870,7 @@ def export_summary():
 
     title.add_run().add_break()
 
-    subsubtitle_run = title.add_run("Total Semester Cost: $")
+    subsubtitle_run = title.add_run("Total Semester Cost: ")
     subsubtitle_run.bold = False
     subsubtitle_run.font.size = Pt(14)
     subsubtitle_run.font.name = 'Consolas'

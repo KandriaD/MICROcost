@@ -113,13 +113,6 @@ media_list = {
         "cost_per_ml": 50.65/500 # $50.65 for 500mL
     },
 
-    "dpbs": {
-        "name": "Dulbecco's Phosphate Buffered Saline (DPBS)",
-        "supplier": "VWR",
-        "catalog_number": "45000-426",
-        "cost_per_ml": 164.82/6/500 #500ml per bottle, pack of 6
-    },
-
     "ec_broth": { 
         "name": "EC broth",
         "supplier": "VWR",
@@ -314,13 +307,6 @@ media_list = {
         "supplier": "VWR",
         "catalog_number": "90001-686", 
         "cost_per_ml": 251.33/500*15/1000
-    },
-
-    "pbs": {
-        "name": "Phosphate Buffered Saline (PBS)",
-        "supplier": "VWR",
-        "catalog_number": "76371-734",
-        "cost_per_ml": 102.81/100/1000 #in powder packs, 1 pack makes 1L, 100 packs per box $102.81
     },
 
     "pda": {

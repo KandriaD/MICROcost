@@ -9,6 +9,14 @@ supplies = {
         "quantity": 100
     },
 
+    "adapters_for_syringe_to_column": {
+        "name": "Adapters for Syringe to Column",
+        "supplier": "VWR",
+        "catalog_number": "10500-513",
+        "cost_per_unit": 0, #143.14 for pack of 2, but are reusable
+        "quantity": 2
+    },
+
     "api_20e_kit": {
         "name": "API 20E Kit",
         "supplier": "VWR",
@@ -65,20 +73,12 @@ supplies = {
         "quantity": 1
     },
 
-    "plating_beads": {
-        "name": "Plating Beads",
-        "supplier": "VWR",
-        "catalog_number": "76005-122",
-        "cost_per_unit": 45.57,
-        "quantity": 230 # 230g, using 3-4 beads per plate probably 2g
-    },
-
-    "blue_sharpie": {
-        "name": "Blue Sharpie",
+    "beaker": {
+        "name": "Beaker",
         "supplier": "",
         "catalog_number": "",
-        "cost_per_unit": 11.64,
-        "quantity": 12 #12 per box
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "bibulous_paper":{
@@ -129,12 +129,44 @@ supplies = {
         "quantity": 20
     },
 
+    "biorad_mini-protean_tgx_precast_gels": {
+        "name": "Bio-Rad Mini-Protean TGX Precast Gels",
+        "supplier": "Bio-Rad",
+        "catalog_number": "4561096",
+        "cost_per_unit": 153,
+        "quantity": 10
+    },
+
+    "biorad_dc_protein_assay_kit": {
+        "name": "Biorad DC Protein Assay Kit",
+        "supplier": "Bio Rad",
+        "catalog_number": "5000111",
+        "cost_per_unit": 278, #includes 250ml alkaline copper tartrate, 2L dilute Foiin reagent, 5ml surfactant solution, bovine y-globulin standard; 450 assays
+        "quantity": 1
+    },
+
+    "blue_sharpie": {
+        "name": "Blue Sharpie",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 11.64,
+        "quantity": 12 #12 per box
+    },
+
     "casamino_acids": {
         "name": "Casamino acids",
         "supplier": "VWR",
         "catalog_number": "97063-378",
         "cost_per_unit": 164.85,
         "quantity": 500 #500g
+    },
+
+    "chopsticks": {
+        "name": "Chopsticks",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #cheap disposable chopsticks, so effectively 0
+        "quantity": 1
     },
 
     "clear_tubing": {
@@ -191,6 +223,30 @@ supplies = {
         "catalog_number": "60818-725",
         "cost_per_unit": 352.24,
         "quantity": 500
+    },
+
+    "dacron_sponges": {
+        "name": "Dacron Sponges",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "dialysis_tubing": {
+        "name": "Dialysis Tubing",
+        "supplier": "Fisher Scientific",
+        "catalog_number": "68100",
+        "cost_per_unit": 221.08, #for 10.5 meters
+        "quantity": 1050 #cut into 10cm pieces, so 1050 pieces
+    },
+
+    "disposable_syringe_5ml": {
+        "name": "Disposable Syringe, 5 mL",
+        "supplier": "VWR",
+        "catalog_number": "76837-029",
+        "cost_per_unit": 22.79, 
+        "quantity": 100
     },
 
     "dneasy_powersoil_kit": {
@@ -361,6 +417,22 @@ supplies = {
         "quantity": 10
     },
     
+    "hemocytometer": {
+        "name": "Hemocytometer",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "hot_plate": {
+        "name": "Hot Plate",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "immersion_oil": {
         "name": "Immersion Oil",
         "supplier": "",
@@ -525,6 +597,15 @@ supplies = {
         "quantity": 1 #100 ml per bottle, but noting bottles used
     },
 
+    "nitrocellulose_membranes": {
+        "name": "Nitrocellulose Membranes",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #have lots, so effectively 0
+        "quantity": 1
+    },
+
+
     "oil_cleaner": {
         "name": "Oil Cleaner",
         "supplier": "",
@@ -555,6 +636,14 @@ supplies = {
         "catalog_number": "52858-000",
         "cost_per_unit": 395.76,
         "quantity": 12*(1500/4) #12 roll, each 1500 in long, each square is 4inx4in, so quantity is per square outlined
+    },
+    
+    "plating_beads": {
+        "name": "Plating Beads",
+        "supplier": "VWR",
+        "catalog_number": "76005-122",
+        "cost_per_unit": 45.57,
+        "quantity": 230 # 230g, using 3-4 beads per plate probably 2g
     },
 
     "pcr_purification_kit": {
@@ -654,12 +743,28 @@ supplies = {
         "quantity": 500
     },
 
+    "premade_slides": {
+        "name": "Premade Slides",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "prospore_ampoule": {
         "name": "Prospore Ampoule",
         "supplier": "VWR",
         "catalog_number": "101384-678",
         "cost_per_unit": 224.20,
         "quantity": 50
+    },
+
+    "protein_g_sepharose_column": {
+        "name": "Protein G Sepharose Column",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "GE17-0404-01",
+        "cost_per_unit": 972,
+        "quantity": 5 #pack of 5 x 1mL
     },
 
     "pry_kit": {
@@ -702,6 +807,14 @@ supplies = {
         "quantity": 400
     },
 
+    "sigmafast_dab_tablets": {
+        "name": "SigmaFast DAB (3, 3'-diaminobenzidine) Tablets",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "D4293",
+        "cost_per_unit": 259, 
+        "quantity": 50
+    },
+
     "simulated_abo/rh_blood_typing_kit": {
         "name": "Simulated ABO/Rh Blood Typing Kit",
         "supplier": "Carolina Biological Supply",
@@ -732,6 +845,14 @@ supplies = {
         "catalog_number": "S33102",
         "cost_per_unit": 95.65,
         "quantity": 400 #400 uL
+    },
+
+    "tally_counter": {
+        "name": "Tally Counter",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "test_tube_rack": {
@@ -780,6 +901,22 @@ supplies = {
         "catalog_number": "95060-976",
         "cost_per_unit": 60.04,  
         "quantity": 10 #2x5ml
+    },
+
+    "waste_disposal_container": {
+        "name": "Waste Disposal Container (Liquid)",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #usually a beacker and is reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "wax_pencil": {
+        "name": "Wax Pencil",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #use for multiple years, so effectively 0
+        "quantity": 1
     },
 
     "zym_a": {

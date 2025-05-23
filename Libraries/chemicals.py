@@ -5,8 +5,8 @@ chemical_list = {
         "name": "Acetic Acid",
         "supplier": "UH Chem Stock Room",
         "catalog_number": "",
-        "cost_per_unit": 0.0, #cost per ml
-        "quantity": 1 #500ml
+        "cost_per_unit": 36.82, 
+        "quantity": 500 #500ml
     },
 
     "acid_alcohol": {
@@ -41,6 +41,30 @@ chemical_list = {
         "quantity": 500 #23.59 for 500g; density 1.73g/ml, mm 381.37 g/mol
     },
 
+    "coomassie_blue": {
+        "name": "Coomassie Blue R-250",
+        "supplier": "Bio-Rad",
+        "catalog_number": "1610435",
+        "cost_per_unit": 197*(1/3), #kit contatins 1L stain and 2L destain
+        "quantity": 1000 #1L
+    },
+
+    "coomassie_gel_destain": {
+        "name": "Coomassie Gel Destain",
+        "supplier": "Bio-Rad",
+        "catalog_number": "1610435",
+        "cost_per_unit": 197*(2/3), #kit contatins 1L stain and 2L destain
+        "quantity": 2000 #2L
+    },
+
+    "coomassie_gel_stain": {
+        "name": "Coomassie Gel Stain",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 8.83,
+        "quantity": 1000 #1L
+    },
+
     "crystal_violet": {
         "name": "Crystal Violet",
         "supplier": "VWR",
@@ -65,6 +89,22 @@ chemical_list = {
         "quantity": 500 #500g
     },
 
+    "dpbs": {
+        "name": "Dulbecco's Phosphate Buffered Saline (DPBS)",
+        "supplier": "VWR",
+        "catalog_number": "45000-426",
+        "cost_per_unit": 164.82/6/500, #500ml per bottle, pack of 6
+        "quantity": 1 #1ml
+    },
+
+    "95%_ethanol": {
+        "name": "Ethanol (95%)",
+        "supplier": "UH Chem Stock Room",
+        "catalog_number": "",
+        "cost_per_unit": 13.20, #95% ethonol from chem stock room
+        "quantity": 3785.41 #1 gallon = 3785.41 mL
+    },
+
     "ferric_chloride": {
         "name": "10% Ferric Chloride Solution",
         "supplier": "VWR",
@@ -79,6 +119,14 @@ chemical_list = {
         "catalog_number": "JT4059-0",
         "cost_per_unit": 81.97, #81.97 for 250g of pure, need 0.1M solution
         "quantity": 33300 #33300 mL of 0.1M solution
+    },
+
+    "hcl": {
+        "name": "Hydrochloric Acid (HCl)",
+        "supplier": "UH Chem Stock Room",
+        "catalog_number": "",
+        "cost_per_unit": 18.19,
+        "quantity": 500 #500ml
     },
 
     "hydrogen_peroxide": {
@@ -169,6 +217,14 @@ chemical_list = {
         "quantity": 100 
     },
 
+    "methanol": {
+        "name": "Methanol",
+        "supplier": "UH Chem Stock Room",
+        "catalog_number": "",
+        "cost_per_unit": 34.27, 
+        "quantity": 4000 #4L
+    },
+
     "methylene_blue":{
         "name": "Methylene Blue",
         "supplier": "",
@@ -224,6 +280,14 @@ chemical_list = {
         "cost_per_unit": 103.01, #cost for 4%
         "quantity": 4000 #1%
     },
+
+    "pbs": {
+        "name": "Phosphate Buffered Saline (PBS)",
+        "supplier": "VWR",
+        "catalog_number": "76371-734",
+        "cost_per_unit": 102.81/100/1000, #in powder packs, 1 pack makes 1L, 100 packs per box $102.81
+        "quantity": 1 #1ml
+    },
         
     "poly_l_lysine": {
         "name": "Poly-L-Lysine",
@@ -254,6 +318,14 @@ chemical_list = {
         "catalog_number": "470300-256",
         "cost_per_unit": 0.017, #15.38 for 500g, for 4.1M, $0.01667/ml solution
         "quantity": 1 #ml of solution
+    },
+
+    "sds": {
+        "name": "Sodium Dodecyl Sulfate (SDS)",
+        "supplier": "VWR",
+        "catalog_number": "97064-496",
+        "cost_per_unit": 92.95, #cost per bottle of 100g
+        "quantity": 100 #100g 
     },
 
     "sigmafast_opd_hrp_substrate": {
@@ -304,6 +376,30 @@ chemical_list = {
         "quantity": 10 #2x5mL
     },
 
+    "towbin_transfer_buffer": {
+        "name": "Towbin Transfer Buffer",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 5.645, 
+        "quantity": 1000 #cost per 1000ml
+    },
+
+    "tris_base": {
+        "name": "Tris Base (1M)",
+        "supplier": "VWR",
+        "catalog_number": "95029-578",
+        "cost_per_unit": 146.93, #cost per bottle of 500g
+        "quantity": 4127 #4127mL of 1M solution
+    },
+
+    "tris_hcl": {
+        "name": "Tris-HCl (1M)",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 10, 
+        "quantity": 3300 #33000mL of 1M solution for $10
+    },
+
     "trypan_blue": {
         "name": "Trypan Blue Stain (0.1%)",
         "supplier": "VWR",
@@ -324,8 +420,8 @@ chemical_list = {
         "name": "Tween 20 (0.05%)", 
         "supplier": "VWR",
         "catalog_number": "97062-332",
-        "cost_per_unit": 98.03,
-        "quantity": 1000/5 #1000ml per bottle, need 0.05%  
+        "cost_per_unit": 0.049, #98.03 for 1000ml pure
+        "quantity": 1000 
     },
 
     "tweeen_80": {
@@ -361,6 +457,14 @@ chemical_list = {
     },
 
 #serums, antiserums, and such
+    "2_ab_solution": {
+        "name": "2\\N{DEGREE SIGN} Ab solution (rabbit anit-goat IgG-HRP in 0.5% BSA/TBS)",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "A542C",
+        "cost_per_unit": 252, 
+        "quantity": 1000 #1ml is 1000 ul
+    },
+
     "antibiodies_anti-bovine": {
         "name": "Antibodies (Anti-Bovine IgG)",
         "supplier": "Millipore Sigma",
@@ -430,7 +534,15 @@ chemical_list = {
         "supplier": "Fisher Scientific",
         "catalog_number": "A18817",
         "cost_per_unit": 205.00, 
-        "quantity": 10 #1mg at concentration of 2mg/ml, need it at 0.1mlg/ml, so 10 ml of diluted solution per vial
+        "quantity": 10000 #1mg at concentration of 2mg/ml, need it at 0.1mlg/ml, so 10 ml of diluted solution per vial, 10ml = 10000 ul
+    },
+
+    "heat-inactivated_serum": {
+        "name": "Heat-Inactivated Serum",
+                "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
+        "quantity": 1 #never purchased
     },
 
     "hrp_conjugated_raabbit_antigoat_igg": {
@@ -456,6 +568,14 @@ chemical_list = {
         "cost_per_unit": 226.80, 
         "quantity": 100*100 #100ml per bottle, diluted 1:100
     },
+    
+    "protein_ladder": {
+        "name": "1 kb Protein Ladder",
+        "supplier": "New England Biolabs",
+        "catalog_number": "N3232S",
+        "cost_per_unit": 62,
+        "quantity": 500 #500ul
+    },
 
     "rabbit_antisrbc_antiserum": {
         "name": "Rabbit Anti-RBC Antiserum",
@@ -468,9 +588,9 @@ chemical_list = {
     "rt_anti-digoxigenin_peroxidase": {
         "name": "RT Anti-Digoxigenin Peroxidase Conjugate Antibody",
         "supplier": "Millipore Sigma",
-        "catalog_number": "90420", #NEED TO ASK CARRIE
-        "cost_per_unit": 0.0, 
-        "quantity": 1
+        "catalog_number": "11633716001", 
+        "cost_per_unit": 407.00, #says 50 units, how much is a unit? I am going to estimate a total  of 200ul based on other prices of similar products
+        "quantity": 200 #200ul
     },
 
     "salmonella_h_antiserum": {
@@ -487,8 +607,20 @@ chemical_list = {
         "catalog_number": "90002-044",
         "cost_per_unit": 281.02, 
         "quantity": 3 #comes in 3ml vials
+    },
+
+    "serum_w_complement": {
+        "name": "Serum with Complement",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
+        "quantity": 1 #never purchased
     }
 }
+
+#towbin transfer buffer
+## 25 mM Tris, 192 mM glycine, 20% (v/v) methanol, 0.025–0.1% SDS (pH 8.3)
+## Add 2.5–10 ml 10% SDS to 1 L buffer prepared above
 
 #boratge buffered saline
 ## 0.17M borate solution and 0.12 M NACL (adjust pH 8.5 with NaOH)
