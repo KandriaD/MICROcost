@@ -11,7 +11,8 @@ standard_volumes_ml = {
     "premade": 1, #premaid plates do not use mL-based calculations
     "topper_test_tube": 5,
     "topper_microcentrifuge_tube": 1,
-    "1_ml": 1, #1mL, used for chemicals when need specific volumes
+    "1_ml": 1,
+    "0.5_ml": 0.5 #1mL, used for chemicals when need specific volumes
 }
 
 media_list = {

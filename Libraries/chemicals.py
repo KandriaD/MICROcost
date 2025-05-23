@@ -293,7 +293,8 @@ chemical_list = {
         "name": "Poly-L-Lysine",
         "supplier": "Millipore Sigma",
         "catalog_number": "P8920",
-        "cost_per_ml": 157/100 # $157.00 for 100ml
+        "cost_per_unit": 157, # $157.00 for 100ml
+        "quantity": 100 #100ml
     },
 
     "saline": {
