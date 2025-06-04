@@ -17,6 +17,14 @@ supplies = {
         "quantity": 2
     },
 
+    "agarose_gels": {
+        "name": "1% Agarose Gels for Electrophoresis",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 4.09, #cost per gel
+        "quantity": 1
+    },
+
     "api_20e_kit": {
         "name": "API 20E Kit",
         "supplier": "VWR",
@@ -368,6 +376,14 @@ supplies = {
         "catalog_number": "90003-644",
         "cost_per_unit": 80.40,
         "quantity": 20
+    },
+
+    "glass_test_tube": {
+        "name": "Glass Test Tube",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
     },
 
     "glo_germ": {
