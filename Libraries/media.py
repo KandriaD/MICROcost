@@ -8,6 +8,7 @@ standard_volumes_ml = {
     "broth_full": 9,
     "durham_tube": 9,
     "microcentrifuge_tube": 0.5, #500uL per microcentrifuge tube
+    "microcentrifuge_tube_full": 1, #1ml
     "premade": 1, #premaid plates do not use mL-based calculations
     "topper_test_tube": 5,
     "topper_microcentrifuge_tube": 1,
