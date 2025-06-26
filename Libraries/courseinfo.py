@@ -20,6 +20,7 @@ micro351L = Course("MICRO351L", 2, 31, 15, ["115B", "115B"]) #updated on 5/5 for
 micro401L = Course("MICRO401L", 2, 34, 17, ["115C", "115B"])
 micro461L = Course("MICRO461L", 1, 16, 4, ["113"])
 micro463L = Course("MICRO463L", 1, 15, 7, ["115B"])
+micro475L = Course("MICRO475L", 1, 19, 6, ["115C"])
 
 # Storing all courses in a dictionary for easy access
 courses = {
@@ -27,5 +28,6 @@ courses = {
     micro351L.name: micro351L,
     micro401L.name: micro401L,
     micro461L.name: micro461L,
-    micro463L.name: micro463L
+    micro463L.name: micro463L,
+    micro475L.name: micro475L
 }
