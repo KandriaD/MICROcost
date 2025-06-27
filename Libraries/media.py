@@ -11,17 +11,25 @@ standard_volumes_ml = {
     "microcentrifuge_tube_full": 1, #1ml
     "premade": 1, #premaid plates do not use mL-based calculations
     "topper_test_tube": 5,
-    "topper_microcentrifuge_tube": 1,
+    "topper_microcentrifuge_tube": 0.1,
     "1_ml": 1,
-    "0.5_ml": 0.5 #1mL, used for chemicals when need specific volumes
+    "0.5_ml": 0.5, #1mL, used for chemicals when need specific volumes
+    "1_ul": 0.001 #1uL, used for chemicals when need specific volumes, have changed everything to be in ml so this should work when need ul
 }
 
 media_list = {
     "agar": {
-        "name": "Agar",
+        "name": "Agar (1.2%)",
         "supplier": "VWR",
         "catalog_number": "IC10026280",
         "cost_per_ml": (165.67/250)*(1.2/100) # $165.67 for 250g, want 1.2%, so 1.2g/100mL
+    },
+
+    "agar_w/borate_buffered_saline_and_typan_blue": {
+        "name": "Agar (1.2%) w/ 0.01% Trypan Blue in Borate Buffered Saline",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_ml": 2.1882/100
     },
 
     "bglb": {

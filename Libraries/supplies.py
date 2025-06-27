@@ -257,6 +257,22 @@ supplies = {
         "quantity": 100
     },
 
+    "electrophoresis_apparatus": {
+        "name": "Electrophoresis Apparatus",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "electrophoresis_power_supply": {
+        "name": "Electrophoresis Power Supply",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "dneasy_powersoil_kit": {
         "name": "DNeasy PowerSoil Kit",
         "supplier": "",
@@ -271,6 +287,14 @@ supplies = {
         "catalog_number": "470338-650",
         "cost_per_unit": 230.45,
         "quantity": 144
+    },
+
+    "drybath": {
+        "name": "Dry Bath",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "durham_tube": {  # 0.7mL tubes
@@ -306,6 +330,22 @@ supplies = {
         "quantity": 500
     },
 
+    "falcon_tube_rack": {
+        "name": "Falcon Tube Rack",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+    
+    "filter_forceps": {
+        "name": "Filter Forceps",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "filter_paper_55mm": {
         "name": "Filter Paper, 55mm",
         "supplier": "VWR",
@@ -321,6 +361,23 @@ supplies = {
         "cost_per_unit": 43.29,
         "quantity": 100 #100 peices per pack
     },
+
+    "flask": {
+        "name": "Flask",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "forceps": {
+        "name": "Forceps",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
 
     "gaspak_anaerobe_sachet": {
         "name": "GasPak Anaerobe Sachet",
@@ -386,6 +443,14 @@ supplies = {
         "quantity": 1
     },
 
+    "glass_tray": {
+        "name": "Glass Tray",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "glo_germ": {
         "name": "Glo Germ Hand Wash",
         "supplier": "VWR",
@@ -432,6 +497,14 @@ supplies = {
         "cost_per_unit": 122.31,
         "quantity": 10
     },
+
+    "heatblock": {
+        "name": "Heat Block",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
     
     "hemocytometer": {
         "name": "Hemocytometer",
@@ -449,6 +522,14 @@ supplies = {
         "quantity": 1
     },
 
+    "humidified_chamber": {
+        "name": "Humidified Chamber",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "immersion_oil": {
         "name": "Immersion Oil",
         "supplier": "",
@@ -457,8 +538,16 @@ supplies = {
         "quantity": 10 #10 oz
     },
 
+    "inoculation_loop_metal":{
+        "name": "Inoculation Loop (metal)",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1 
+    },
+
     "inoculation_loop_yellow":{
-        "name": "Inoculation Loops, 10uL (yellow)",
+        "name": "Inoculation Loop, 10uL (yellow)",
         "supplier": "VWR",
         "catalog_number": "10799-779",
         "cost_per_unit": 69.17,
@@ -573,6 +662,14 @@ supplies = {
         "quantity": 500
     },
 
+    "microcentrifuge_tube_rack": {
+        "name": "Microcentrifuge Tube Rack",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,  #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "microscope_slide_cover_slips": {
             "name": "Microscope Slide Cover Slips, 18x18mm",
         "supplier": "VWR",
@@ -646,12 +743,60 @@ supplies = {
         "quantity": 25
     },
 
+    "p10_micropipette": {
+        "name": "P10 Micropipette",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "p20_micropipette": {
+        "name": "P20 Micropipette",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "p200_micropipette": {
+        "name": "P200 Micropipette",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "p200_multichannel_micropipette": {
+        "name": "P200 Multichannel Micropipette",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "p1000_micropipette": {
+        "name": "P1000 Micropipette",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "parafilm": {
         "name": "Parafilm",
         "supplier": "VWR",
         "catalog_number": "52858-000",
         "cost_per_unit": 395.76,
         "quantity": 12*(1500/4) #12 roll, each 1500 in long, each square is 4inx4in, so quantity is per square outlined
+    },
+
+    "plate_turntable": {
+        "name": "Plate Turntable",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
     
     "plating_beads": {
@@ -718,21 +863,13 @@ supplies = {
         "quantity": 960 #10 racks/case
     },
 
-    "pipet_tips_universial_250uL": {
-        "name": "Pipet tips, 250 uL (UNIVERSAL, green)",
+    "pipet_tips_uni_250uL": {
+        "name": "Pipet tips, 250 uL (UNI, green)",
         "supplier": "Rainin",
         "catalog_number": "30389191",
         "cost_per_unit": 39.90,
         "quantity": 960 #10 racks/case
     },
-
- #   "pipet_tips_lts_1000uL": { #individual refills
- #       "name": "Pipet tips, 1000 uL (LST, blue)",
- #       "supplier": "Rainin",
- #       "catalog_number": "30389271",
- #       "cost_per_unit": 0,
- #       "quantity": 8
- #   },
  
     "pipet_tips_lts_1000uL": { #stacked refills
         "name": "Pipet tips, 1000 uL (LST, blue)",
@@ -742,7 +879,14 @@ supplies = {
         "quantity": 768  #8 layers of 96
     },
 
-    
+    "pipet_tips_uni_1000uL": { 
+       "name": "Pipet tips, 1000 uL (UNI, blue)",
+       "supplier": "",
+       "catalog_number": "",
+       "cost_per_unit": 0, #have lots, so effectively 0
+       "quantity": 1
+   },
+
     "plates_12_well": {
         "name": "12-well plates, sterile",
         "supplier": "VWR",
@@ -779,7 +923,7 @@ supplies = {
         "name": "Protein G Sepharose Column",
         "supplier": "Millipore Sigma",
         "catalog_number": "GE17-0404-01",
-        "cost_per_unit": 972,
+        "cost_per_unit": 972/6, #columns are reusable for 3 years (2 semesters per year)
         "quantity": 5 #pack of 5 x 1mL
     },
 
@@ -823,6 +967,14 @@ supplies = {
         "quantity": 400
     },
 
+    "serological_pipette_plunger": {
+        "name": "Serological Pipette Plunger",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "sigmafast_dab_tablets": {
         "name": "SigmaFast DAB (3, 3'-diaminobenzidine) Tablets",
         "supplier": "Millipore Sigma",
@@ -839,6 +991,30 @@ supplies = {
         "quantity": 30 #30 kits
     },
 
+    "sissors": {
+        "name": "Scissors",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "spreader_rod": {
+        "name": "Spreader Rod",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "stir_bar": {
+        "name": "Stir Bar",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "steam_sterilization_integrator": {
         "name": "Steam Sterilization Integrator",
         "supplier": "VWR",
@@ -853,6 +1029,14 @@ supplies = {
         "catalog_number": "10063-760",
         "cost_per_unit": 948.30,
         "quantity": 60
+    },
+
+    "string": {
+        "name": "String",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #dont have the info for, but likely mulityear use, so effectively 0
+        "quantity": 1
     },
 
     "sybr_dna_stain": {
@@ -875,8 +1059,8 @@ supplies = {
         "name": "Test Tube Rack",
         "supplier": "VWR",
         "catalog_number": "89215-772",
-        "cost_per_unit": 152.38,
-        "quantity": 8 #8 racks per case
+        "cost_per_unit": 0, #152.38, but reusable, so effectively 0
+        "quantity": 1 #8 #8 racks per case
     },
 
     "toothpicks":{
@@ -887,12 +1071,28 @@ supplies = {
         "quantity": 2500
     },
 
+    "transfer_cassettes": {
+        "name": "Transfer Cassettes",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "transfer_pipette": {
         "name": "Sterile Transfer Pipette",
         "supplier": "VWR",
         "catalog_number": "414004-021",
         "cost_per_unit": 29.28,  
         "quantity": 500
+    },
+
+    "tupperware": {
+        "name": "Tupperware",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "vaccum_filtration_setup_150ml": {
@@ -932,6 +1132,14 @@ supplies = {
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #use for multiple years, so effectively 0
+        "quantity": 1
+    },
+
+    "ziplock_bags": {
+        "name": "Ziplock Bags",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get cost 
         "quantity": 1
     },
 
