@@ -31,3 +31,6 @@ courses = {
     micro463L.name: micro463L,
     micro475L.name: micro475L
 }
+
+#note that Biol 471L is also in 113, and uses some of our materials. I am working to figure out items and quantities for that course.
+## pipet tips: 1000ul only blue ones, for 10ul only the ones with low tops, for 20-200 all universial tips in room work.
