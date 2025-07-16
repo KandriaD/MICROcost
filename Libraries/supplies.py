@@ -185,12 +185,20 @@ supplies = {
         "quantity": 25
     },
 
-    "cotton_swabs": {
-        "name": "Sterile Cotton Swabs",
-        "supplier": "VWR",
-        "catalog_number": "10806-050",
-        "cost_per_unit": 14.72,
-        "quantity": 100
+    "colony_counter": {
+        "name": "Colony Counter",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "compound_microscope": {
+        "name": "Compound Microscope",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "coplin_jar": {
@@ -199,6 +207,14 @@ supplies = {
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
         "quantity": 1
+    },
+
+    "cotton_swabs": {
+        "name": "Sterile Cotton Swabs",
+        "supplier": "VWR",
+        "catalog_number": "10806-050",
+        "cost_per_unit": 14.72,
+        "quantity": 100
     },
 
     "cryoblock":{
@@ -538,6 +554,14 @@ supplies = {
         "quantity": 10 #10 oz
     },
 
+    "india_ink":{
+        "name": "India Ink Droppers",
+        "supplier": "VWR",
+        "catalog_number": "90003-681",
+        "cost_per_unit": 97.50,
+        "quantity": 50
+    },
+
     "inoculation_loop_metal":{
         "name": "Inoculation Loop (metal)",
         "supplier": "",
@@ -628,6 +652,14 @@ supplies = {
         "catalog_number": "30002-170",
         "cost_per_unit": 78.69,
         "quantity": 1000  
+    },
+
+    "magnifying_glass": {
+        "name": "Magnifying Glass",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "mcfarland_standard_0.5": {

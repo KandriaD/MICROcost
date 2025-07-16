@@ -209,13 +209,6 @@ chemical_list = {
         "quantity": 100 #100ml
     },
 
-    "india_ink":{
-        "name": "India Ink Droppers",
-        "supplier": "VWR",
-        "catalog_number": "90003-681",
-        "cost_per_unit": 97.50,
-        "quantity": 50
-    },
 
     "iodine": {
         "name": "Gram's Iodine",
@@ -247,6 +240,14 @@ chemical_list = {
         "catalog_number": "",
         "cost_per_unit": 310.39,
         "quantity": 50  #50 dropper ampules
+    },
+
+    "kraus_hall_pondwater": {
+        "name": "Kraus-Hall Pond Water",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
+        "quantity": 1
     },
 
     "lactophenol_cotton_blue":{ #amplule
