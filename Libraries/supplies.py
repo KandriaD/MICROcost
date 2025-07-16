@@ -153,12 +153,28 @@ supplies = {
         "quantity": 1
     },
 
+    "biosafety_cabinet":{
+        "name": "Biosafety Cabinet",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
     "blue_sharpie": {
         "name": "Blue Sharpie",
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 11.64,
         "quantity": 12 #12 per box
+    },
+
+    "cardboard":{
+        "name": "Cardboard",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
     },
 
     "casamino_acids": {
@@ -263,6 +279,14 @@ supplies = {
         "catalog_number": "68100",
         "cost_per_unit": 221.08, #for 10.5 meters
         "quantity": 1050 #cut into 10cm pieces, so 1050 pieces
+    },
+
+    "disk_dispenser":{
+        "name": "Disk Dispenser",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
+        "quantity": 1
     },
 
     "disposable_syringe_5ml": {
@@ -514,6 +538,14 @@ supplies = {
         "quantity": 10
     },
 
+    "hard_candy":{
+        "name": "Hard Candy",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get cost
+        "quantity": 1
+    },
+
     "heatblock": {
         "name": "Heat Block",
         "supplier": "",
@@ -554,12 +586,12 @@ supplies = {
         "quantity": 10 #10 oz
     },
 
-    "india_ink":{
-        "name": "India Ink Droppers",
-        "supplier": "VWR",
-        "catalog_number": "90003-681",
-        "cost_per_unit": 97.50,
-        "quantity": 50
+    "incubator":{
+        "name": "Incubator",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1 
     },
 
     "inoculation_loop_metal":{
@@ -1071,6 +1103,14 @@ supplies = {
         "quantity": 1
     },
 
+    "stopwatch":{
+        "name": "Stopwatch",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
     "sybr_dna_stain": {
         "name": "SYBR Safe DNA gel stain",
         "supplier": "Fisher Scientific",
@@ -1121,6 +1161,14 @@ supplies = {
 
     "tupperware": {
         "name": "Tupperware",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "uv_lamp":{
+        "name": "UV Lamp",
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
@@ -1191,4 +1239,3 @@ supplies = {
         "quantity": 2
     }  # 10x5mL vials (check this)
 }
-
