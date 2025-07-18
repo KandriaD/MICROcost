@@ -185,6 +185,14 @@ chemical_list = {
         "quantity": 33300 #33300 mL of 0.1M solution
     },
 
+    "hay_infusion": {
+        "name": "Hay Infusion",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
+        "quantity": 1 
+    },
+
     "hcl": {
         "name": "Hydrochloric Acid (HCl)",
         "supplier": "UH Chem Stock Room",
@@ -208,7 +216,6 @@ chemical_list = {
         "cost_per_unit": 0.8131, 
         "quantity": 100 #100ml
     },
-
 
     "iodine": {
         "name": "Gram's Iodine",
@@ -377,6 +384,14 @@ chemical_list = {
         "cost_per_unit": 102.81/100/1000, #in powder packs, 1 pack makes 1L, 100 packs per box $102.81
         "quantity": 1 #1ml
     },
+
+    "petroleum_jelly": {
+        "name": "Petroleum Jelly",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need get this information
+        "quantity": 1 #need to get this information
+    },
         
     "poly_l_lysine": {
         "name": "Poly-L-Lysine",
@@ -536,6 +551,22 @@ chemical_list = {
         "catalog_number": "76347-646",
         "cost_per_unit": 38.11,
         "quantity": 500  
+    },
+
+    "vpa": {
+        "name": "VP A", #for API 20E kit
+        "supplier": "VWR",
+        "catalog_number": "95060-978",
+        "cost_per_unit": 60.04,  
+        "quantity": 10 #2x5ml
+    },
+
+    "vpb": {
+        "name": "VP B", #for API 20E kit
+        "supplier": "VWR",
+        "catalog_number": "95060-976",
+        "cost_per_unit": 60.04,  
+        "quantity": 10 #2x5ml
     },
 
     "washing_solution": {

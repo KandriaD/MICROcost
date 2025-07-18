@@ -265,8 +265,24 @@ supplies = {
         "quantity": 500
     },
 
+    "cuvettes": {
+        "name": "Cuvettes",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "dacron_sponges": {
         "name": "Dacron Sponges",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "depression_slides": {
+        "name": "Depression Slides",
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
@@ -295,6 +311,14 @@ supplies = {
         "catalog_number": "76837-029",
         "cost_per_unit": 22.79, 
         "quantity": 100
+    },
+
+    "dissecting_microscope": {
+        "name": "Dissecting Microscope",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "electrophoresis_apparatus": {
@@ -592,6 +616,14 @@ supplies = {
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
         "quantity": 1 
+    },
+
+    "india_ink":{
+        "name": "India Ink Droppers",
+        "supplier": "VWR",
+        "catalog_number": "90003-681",
+        "cost_per_unit": 97.50,
+        "quantity": 50
     },
 
     "inoculation_loop_metal":{
@@ -1135,6 +1167,14 @@ supplies = {
         "quantity": 1 #8 #8 racks per case
     },
 
+    "tin_foil": {
+        "name": "Tin Foil (per ft)",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get cost
+        "quantity": 1
+    },
+
     "toothpicks":{
         "name": "Sterile Toothpicks",
         "supplier": "",
@@ -1183,21 +1223,6 @@ supplies = {
         "quantity": 12
     },
 
-    "vpa": {
-        "name": "VP A", #for API 20E kit
-        "supplier": "VWR",
-        "catalog_number": "95060-978",
-        "cost_per_unit": 60.04,  
-        "quantity": 10 #2x5ml
-    },
-
-    "vpb": {
-        "name": "VP B", #for API 20E kit
-        "supplier": "VWR",
-        "catalog_number": "95060-976",
-        "cost_per_unit": 60.04,  
-        "quantity": 10 #2x5ml
-    },
 
     "waste_disposal_container": {
         "name": "Waste Disposal Container (Liquid)",
