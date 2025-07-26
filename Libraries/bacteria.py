@@ -554,6 +554,18 @@ bacteria_list = {
         "stock_cost": 0.00
     },
 
+    "Salmonella enterica enterica serovar enteriditis": {
+        "synonyms": ["S. enterica serovar enteriditis", "Salmonella enterica serotype enteriditis", "S. enterica enterica serovar enteriditis", "S. enteritidis"],
+        "gram": "negative",
+        "shape": "rod",
+        "growth": "facultative anaerobe",
+        "optimum_temperature": "37C",
+        "optimum_pH": "7.0",
+        "pathogenicity": "major cause of foodborne illness",
+        "notes": "common in poultry",
+        "stock_cost": 0.00
+    },
+
     "Salmonella enterica enterica serovar typhimurium": {
         "synonyms": ["S. enterica serovar typhimurium", "Salmonella enterica serotype typhimurium", "S. enterica enterica serovar typhimurium", "S. typhimurium"],
         "gram": "negative",

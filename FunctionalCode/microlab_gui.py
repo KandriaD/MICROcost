@@ -27,7 +27,7 @@ import bacteria
 import media
 import courseinfo
 import supplies
-from antibiotics import antibiotics
+import antibiotics
 import chemicals
 
 # --- Funtion to start a new experiment ---
@@ -515,8 +515,8 @@ frame_position['supplies_content_frame'] = {'row': 4, 'column': 0, 'columnspan':
 supply_names = [item["name"] for item in supplies.supplies.values()]
 supply_name_to_key = {item["name"]: key for key, item in supplies.supplies.items()}
 
-antibiotic_names = [item["name"] for item in antibiotics.values()]
-antibiotic_name_to_key = {item["name"]: key for key, item in antibiotics.items()}
+antibiotic_names = [item["name"] for item in antibiotics.antibiotics.values()]
+antibiotic_name_to_key = {item["name"]: key for key, item in antibiotics.antibiotics.items()}
 
 combined_items = supply_names + antibiotic_names
 
