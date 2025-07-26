@@ -59,7 +59,7 @@ media_list = {
 
     "bile_esculin_agar": {
         "name": "Bile Esculin Agar (BEA)",
-        "synonym": ["BEA", "Bile Esculin Agar"],
+        "synonym": ["BEA", "Bile Esculin Agar", "Bile Esculin"],
         "supplier": "VWR",
         "catalog_number": "89405-170",
         "cost_per_ml": 0.02088 #168.41 for 500g
