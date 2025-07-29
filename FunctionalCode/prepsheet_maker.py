@@ -55,6 +55,9 @@ def get_all_weeks():
         schedule_df.columns = schedule_df.columns.str.strip()
         weeks = schedule_df["Week"].unique()
         all_weeks.update(weeks)
+    
+    print(f"Found experiment files: {experiment_files}")
+    print(f"Found weeks: {all_weeks}")
     return sorted(all_weeks)
 
 # == Check entry against Libraries ==
@@ -137,6 +140,7 @@ def gather_weekly_needs(week_number=None, category_filter=None):
                 sheet_name = sheet_name[:-2]
             
             if sheet_name not in xls.sheet_names:
+                print(f"Sheet '{sheet_name}' not found in file '{file}' — skipping.")
                 continue
             
             experiment_df = xls.parse(sheet_name)
@@ -240,6 +244,7 @@ def style_and_format_excel(filename):
 
 def export_all_weeks_to_two_sheets(filename):
     all_weeks = get_all_weeks()
+    print(f"Exporting weekly needs for {len(all_weeks)} weeks...")
     all_biologicals = []
     all_supplies = []
 
