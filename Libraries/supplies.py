@@ -911,8 +911,8 @@ supplies = {
         "quantity": 50 #50 preps
     },
 
-    "petri_plate_small": {
-        "name": "Empty Petri Dish, 60mm",
+    "culture_plate_small": {
+        "name": "Culture Plate, 60mm",
         "supplier": "VWR",
         "catalog_number": "25384-092",
         "cost_per_unit": 83.64,
@@ -982,6 +982,14 @@ supplies = {
        "cost_per_unit": 0, #have lots, so effectively 0
        "quantity": 1
    },
+
+    "platte_reader": {
+        "name": "Plate Reader",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
 
     "plates_12_well": {
         "name": "12-well plates, sterile",
@@ -1143,12 +1151,36 @@ supplies = {
         "quantity": 1
     },
 
+    "student_sample:": {
+        "name": "Student Sample",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #samples that were previously made
+        "quantity": 1
+    },
+
     "sybr_dna_stain": {
         "name": "SYBR Safe DNA gel stain",
         "supplier": "Fisher Scientific",
         "catalog_number": "S33102",
         "cost_per_unit": 95.65,
         "quantity": 400 #400 uL
+    },
+
+    "t25_flask": {
+        "name": "T25 Flask",
+        "supplier": "VWR",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get cost
+        "quantity": 1 
+    },
+
+    "t75_flask": {
+        "name": "T75 Flask",
+        "supplier": "VWR",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get cost
+        "quantity": 1 
     },
 
     "tally_counter": {

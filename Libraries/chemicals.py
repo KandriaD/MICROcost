@@ -668,6 +668,7 @@ chemical_list = {
 
     "bsa": {
         "name": "Bovine Serum Albumin (BSA) (1%)",
+        "synonym": "BSA",
         "supplier": "Millipore Sigma",
         "catalog_number": "126609",
         "cost_per_unit": 1260, #cost per bottle of 100g
@@ -676,6 +677,7 @@ chemical_list = {
 
     "fetal_bovine_serum_100%": {
         "name": "Fetal Bovine Serum (100%)",
+        "synonym": "FBS",
         "supplier": "VWR",
         "catalog_number": "89510-194",
         "cost_per_unit": 96.78, #cost per bottle of 50ml
@@ -699,7 +701,7 @@ chemical_list = {
     },
 
     "heat-inactivated_serum": {
-        "name": "Heat-Inactivated Serum",
+        "name": "Heat-Inactivated Serum", #is FBS
                 "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, 
@@ -771,7 +773,7 @@ chemical_list = {
     },
 
     "serum_w_complement": {
-        "name": "Serum with Complement",
+        "name": "Serum with Complement", #is Guinea Pig Complement, we will need to purchase, so add info then
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, 

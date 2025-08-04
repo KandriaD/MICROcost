@@ -206,7 +206,9 @@ def gather_weekly_needs(week_number=None, category_filter=None):
         return weekly_supplies
     else:
         return weekly_biologicals, weekly_supplies
+    
 
+## exporting formatting
 def style_and_format_excel(filename):
     wb = load_workbook(filename)
     for ws in wb.worksheets:
