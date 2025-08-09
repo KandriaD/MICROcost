@@ -51,6 +51,7 @@ chemical_list = {
 
     "bleach": {
         "name": "Bleach (Sodium Hypochlorite)",
+        "synonym": ["Sodium Hypochlorite", "Bleach"],
         "supplier": "Longs Drugs",
         "catalog_number": "",
         "cost_per_unit": 3.43, #"bleach" 3.43 for 43 oz
@@ -67,6 +68,7 @@ chemical_list = {
 
     "borate_buffered_saline": {
         "name": "Borate Buffered Saline (BBS)",
+        "synonym": ["Borate Buffered Saline", "BBS"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0.003,
@@ -195,6 +197,7 @@ chemical_list = {
 
     "hcl": {
         "name": "Hydrochloric Acid (HCl)",
+        "synonym": ["HCl", "Hydrochloric Acid"],
         "supplier": "UH Chem Stock Room",
         "catalog_number": "",
         "cost_per_unit": 18.19,
@@ -283,6 +286,7 @@ chemical_list = {
 
     "lysol": {
         "name": "Lysol (Disinfectant Spray)",
+        "synonym": ["Lysol", "Disinfectant Spray"],
         "supplier": "Longs Drugs",
         "catalog_number": "",
         "cost_per_unit": 3.98, # 3.98 for 28 oz
@@ -331,6 +335,7 @@ chemical_list = {
 
     "nacl": {
         "name": "Sodium Chloride (NaCl)",
+        "synonym": ["NaCl", "Sodium Chloride"],
         "supplier": "VWR",
         "catalog_number": "470302-522",
         "cost_per_unit": 7.46,
@@ -379,6 +384,7 @@ chemical_list = {
 
     "pbs": {
         "name": "Phosphate Buffered Saline (PBS)",
+        "synonym": ["PBS", "Phosphate Buffered Saline"],
         "supplier": "VWR",
         "catalog_number": "76371-734",
         "cost_per_unit": 102.81/100/1000, #in powder packs, 1 pack makes 1L, 100 packs per box $102.81
@@ -418,7 +424,8 @@ chemical_list = {
     },
 
     "saturated_ammonium_sulfate": {
-        "name": "Saturated Ammonium Sulfate (4.1 M)",
+        "name": "Saturated Ammonium Sulfate (SAS)",
+        "synonym": ["SAS", "Saturated Ammonium Sulfate"],
         "supplier": "VWR",
         "catalog_number": "470300-256",
         "cost_per_unit": 0.017, #15.38 for 500g, for 4.1M, $0.01667/ml solution
@@ -427,6 +434,7 @@ chemical_list = {
 
     "sds": {
         "name": "Sodium Dodecyl Sulfate (SDS)",
+        "synonym": ["SDS", "Sodium Dodecyl Sulfate"],
         "supplier": "VWR",
         "catalog_number": "97064-496",
         "cost_per_unit": 92.95, #cost per bottle of 100g
@@ -443,6 +451,7 @@ chemical_list = {
 
     "sheep_red_blood_cells": {
         "name": "Sheep Red Blood Cells (SRBC)",
+        "synonym": ["SRBC", "Sheep Red Blood Cells"],
         "supplier": "Rockland",
         "catalog_number": "R406-0050",
         "cost_per_unit": 431, #cost for 50ml
@@ -475,6 +484,7 @@ chemical_list = {
 
     "1x_tbs": {
         "name": "1x TBS (Tris Buffered Saline)",
+        "synonym": ["1x TBS", "Tris Buffered Saline"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 3.56, #100ml tris base in 900ml water
@@ -521,12 +531,12 @@ chemical_list = {
         "quantity": 100*4 #need diluted to 0.1%
     },
 
-    "trypan_blue_in_dpbs": {
-        "name": "Trypan Blue Stain (0.1%) in DPBS",
+    "trypan_blue_in_pbs": {
+        "name": "Trypan Blue Stain (0.1%) in PBS", #changed to pbs instead of dpbs, didnt adjust numbers just name
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 148.81, 
-        "quantity": 1000 #1000mL of 0.1% trypan blue in DPBS 
+        "quantity": 1000 #1000mL of 0.1% trypan blue in PBS 
     },
 
     "trypsin": {
@@ -700,13 +710,13 @@ chemical_list = {
         "quantity": 10 #1mg at concentration of 2mg/ml, need it at 0.1mlg/ml, so 10 ml of diluted solution per vial, 10ml = 10000 ul
     },
 
-    "heat-inactivated_serum": {
-        "name": "Heat-Inactivated Serum", #is FBS
-                "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0, 
-        "quantity": 1 #never purchased
-    },
+    # "heat-inactivated_serum": {
+    #     "name": "Heat-Inactivated Serum", #is FBS
+    #             "supplier": "",
+    #     "catalog_number": "",
+    #     "cost_per_unit": 0, 
+    #     "quantity": 1 #never purchased
+    # },
 
     "hrp_conjugated_raabbit_antigoat_igg": {
         "name": "HRP Conjugated Rabbit Anti-Goat IgG (1:20,000)",
@@ -725,12 +735,21 @@ chemical_list = {
     },
 
     "human_serum": {
+        "name": "Human Serum", #undiluted
+        "supplier": "Millipore Sigma",
+        "catalog_number": "H4522",
+        "cost_per_unit": 120, 
+        "quantity": 20
+    },
+
+    "human_serum_1:100": {
         "name": "Human Serum (1:100)",
         "supplier": "Millipore Sigma",
         "catalog_number": "H4522",
-        "cost_per_unit": 226.80, 
+        "cost_per_unit": 270, 
         "quantity": 100*100 #100ml per bottle, diluted 1:100
     },
+
     
     "protein_ladder": {
         "name": "1 kb Protein Ladder",

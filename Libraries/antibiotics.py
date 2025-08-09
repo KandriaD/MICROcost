@@ -121,6 +121,15 @@ antibiotics = {
         "quantity": 50
     },
 
+    "penstrep": {
+        "name": "Penicillin-Streptomycin",
+        "synonym": "Pen-Strep",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "P4333",
+        "cost_per_unit": 16.20,
+        "quantity": 20 # 20ml per bottle
+    },
+
     "streptomycin": {
         "name": "Streptomycin 10 uG",
         "supplier": "VWR",
