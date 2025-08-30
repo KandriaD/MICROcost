@@ -228,12 +228,12 @@ supplies = {
     "cotton_swabs": {
         "name": "Sterile Cotton Swabs",
         "supplier": "VWR",
-        "catalog_number": "10806-050",
+        "catalog_number": "10806-050", #new catalog number VWR 76240-036; have not changed price yet
         "cost_per_unit": 14.72,
         "quantity": 100
     },
 
-    "cryoblock":{
+    "cryoblock": {
         "name": "Cryoblock", 
         "supplier": "VWR",
         "catalog_number": "75784-932",
@@ -752,6 +752,7 @@ supplies = {
 
     "microcentrifuge_tube": {
         "name": "Microcentrifuge Tube, 1.5 mL",
+        "synonyms": ["eppendorf tube", "microfuge tube", "Microcentrifuge Tube"],
         "supplier": "VWR",
         "catalog_number": "20170-038",
         "cost_per_unit": 27.00,  
@@ -1031,8 +1032,8 @@ supplies = {
         "quantity": 5 #pack of 5 x 1mL
     },
 
-    "pry_kit": {
-        "name": "PRY Kit",
+    "pyr_kit": {
+        "name": "PYR Kit",
         "supplier": "VWR",
         "catalog_number": "10324-574",
         "cost_per_unit": 211.47,

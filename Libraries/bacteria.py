@@ -338,7 +338,7 @@ bacteria_list = {
         "stock_cost": 0.00
     },
 
-    "Lactocoocus lactis": {
+    "Lactococcus lactis": {
         "synonyms": ["L. lactis"],
         "gram": "positive",
         "shape": "cocci",

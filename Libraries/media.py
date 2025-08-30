@@ -401,7 +401,7 @@ media_list = {
 
     "rodac_plates": {
         "name": "RODAC Plates [premade]",
-        "synonym": ["RODAC", "RODAC Agar"],
+        "synonym": ["RODAC", "RODAC Agar", "RODAC Plates"],
         "supplier": "VWR",
         "catalog_number": "101205-670",
         "cost_per_ml": 22.34/10 #premade
@@ -561,7 +561,7 @@ media_list = {
 
     "urea_slants": { 
         "name": "Urea Slants [premade]",
-        "synonym": ["Urea Slants", "Urea Agar", "Urea"],
+        "synonym": ["Urea Slants", "Urea Agar", "Urea", "Urea Slant"],
         "supplier": "VWR",
         "catalog_number": "10065-304",
         "cost_per_ml": 82.34/20 #premade

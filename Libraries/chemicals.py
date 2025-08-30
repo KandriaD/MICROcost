@@ -139,6 +139,15 @@ chemical_list = {
         "quantity": 500 #500g
     },
 
+    "dimethylaminocinnamaldehyde": {
+        "name": "0.01% - 𝛒-Dimethylaminocinnamaldehyde (DMACA)",
+        "synonym": ["DMACA", "Dimethylaminocinnamaldehyde","0.01% - 𝛒-dimethylaminocinnamaldehyde"],
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get this information
+        "quantity": 1
+    },
+
     "dpbs": {
         "name": "Dulbecco's Phosphate Buffered Saline (DPBS)",
         "supplier": "VWR",
@@ -252,8 +261,8 @@ chemical_list = {
         "quantity": 50  #50 dropper ampules
     },
 
-    "kraus_hall_pondwater": {
-        "name": "Kraus-Hall Pond Water",
+    "pondwater": {
+        "name": "Pond Water",
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, 
@@ -589,6 +598,7 @@ chemical_list = {
 
     "water": {
         "name": "Water (distilled)",
+        "synonym": ["Distilled Water", "Water", "sterile water"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0,

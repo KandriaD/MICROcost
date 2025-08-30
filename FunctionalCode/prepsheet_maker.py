@@ -2,6 +2,7 @@ import sys
 import pandas as pd
 import glob
 import os
+import datetime
 from openpyxl import load_workbook
 from openpyxl.styles import Font
 from openpyxl.utils import get_column_letter
@@ -19,6 +20,30 @@ import chemicals
 
 special_forms = ["1_ml", "0.5_ml", "1_ul"]
 
+# === Week Parsing Helper ===
+def parse_week_string(week_str):
+    """
+    Convert a week string like 'Sept 2-3' or 'Sept30- Oct1' into a datetime (first day).
+    Always returns a datetime (bad rows go to far future).
+    """
+    import datetime, re
+    
+    if not isinstance(week_str, str) or not week_str.strip():
+        return datetime.datetime.max
+
+    # Normalize month names
+    week_str = week_str.replace("Sept", "Sep")
+
+    # Ensure there's a space between month and day (e.g., "Sep30" → "Sep 30")
+    week_str = re.sub(r'([A-Za-z]+)(\d)', r'\1 \2', week_str)
+
+    try:
+        first_part = week_str.split("-")[0].strip()
+        return datetime.datetime.strptime(first_part + " 2025", "%b %d %Y")
+    except Exception:
+        return datetime.datetime.max
+
+
 def load_course_info(course_df):
     return {
         "students": int(course_df.loc[0, "Students"]),
@@ -27,7 +52,7 @@ def load_course_info(course_df):
         "rooms": course_df.loc[0, "Rooms"].split(", ")
     }
 
-def caluclate_total_qty(quantity, dist_type, course_info,form=None):
+def caluclate_total_qty(quantity, dist_type, course_info, form=None):
     multiplier = {
         "Per Student": course_info["students"],
         "Per Pair": course_info["students"] // 2,
@@ -58,41 +83,53 @@ def get_all_weeks():
     
     print(f"Found experiment files: {experiment_files}")
     print(f"Found weeks: {all_weeks}")
-    return sorted(all_weeks)
 
-# == Check entry against Libraries ==
+    # ✅ Sort weeks using parse_week_string
+    return sorted(all_weeks, key=parse_week_string)
+
+
+# == Lookup with synonym support ==
 def lookup_by_name_or_key(name, library_dict, lib_label="item"):
-    name_lower = name.strip().lower()
+    """Look up an item in a dictionary-based library (with optional synonyms)."""
+    if not name or str(name).lower() == "nan":
+        return None
+    name_lower = str(name).strip().lower()
 
     for key, info in library_dict.items():
-
+        # Match dictionary key
         if key.strip().lower() == name_lower:
             return info
 
-        if info.get("name", "").strip().lower() == name_lower:
+        # Match "name" field
+        if str(info.get("name", "")).strip().lower() == name_lower:
             return info
 
-        synonym = info.get("synonyms", [])
-        if any(synonyms.strip().lower() == name_lower for synonyms in synonym):
+        # Match synonyms list
+        synonyms = info.get("synonyms", [])
+        if any(syn.strip().lower() == name_lower for syn in synonyms):
             return info
+
     print(f"Warning: '{name}' not found in {lib_label} library.")
     return None
 
 
+# === Category validators ===
 def is_valid_bacteria(name):
-    return name.strip() in bacteria.bacteria_list  # No change, list of strings
+    # Exact key match only, no synonyms
+    return name.strip() in bacteria.bacteria_list
 
 def is_valid_media(name):
-    return lookup_by_name_or_key(name.strip(), media.media_list) is not None
+    return lookup_by_name_or_key(name, media.media_list, "media") is not None
 
 def is_valid_supply(name):
-    return lookup_by_name_or_key(name.strip(), supplies.supplies) is not None
+    return lookup_by_name_or_key(name, supplies.supplies, "supply") is not None
 
 def is_valid_chemical(name):
-    return lookup_by_name_or_key(name.strip(), chemicals.chemical_list) is not None
+    return lookup_by_name_or_key(name, chemicals.chemical_list, "chemical") is not None
 
 def is_valid_antibiotic(name):
-    return lookup_by_name_or_key(name.strip(), antibiotics.antibiotics) is not None
+    return lookup_by_name_or_key(name, antibiotics.antibiotics, "antibiotic") is not None
+
 
 def validate_item(name, category):
     if category == "Biological":
@@ -119,7 +156,6 @@ def gather_weekly_needs(week_number=None, category_filter=None):
     experiment_files = glob.glob(pattern)
 
     weekly_biologicals = []
-    # weekly_antibiotics = []
     weekly_supplies = []
 
     for file in experiment_files:
@@ -144,9 +180,6 @@ def gather_weekly_needs(week_number=None, category_filter=None):
                 continue
             
             experiment_df = xls.parse(sheet_name)
-            if sheet_name not in xls.sheet_names:
-                print(f"Sheet {sheet_name} not found in {file}, skipping.")
-                continue
             experiment_df.columns = experiment_df.columns.str.strip()
 
             category_records = []
@@ -180,7 +213,6 @@ def gather_weekly_needs(week_number=None, category_filter=None):
                     record = {
                         "Week": week_number,
                         "Course": course_name,
-                        # "Experiment Title": exp_title,
                         "Category": item_category,
                         "Item/Organism": name,
                         "Media Used": media_used,
@@ -244,13 +276,14 @@ def style_and_format_excel(filename):
 
     wb.save(filename)
 
+
 def export_all_weeks_to_two_sheets(filename):
     all_weeks = get_all_weeks()
     print(f"Exporting weekly needs for {len(all_weeks)} weeks...")
     all_biologicals = []
     all_supplies = []
 
-    for week in sorted(all_weeks):
+    for week in all_weeks:  # already sorted with parse_week_string
         biologicals = gather_weekly_needs(week, "Biological")
         supplies = gather_weekly_needs(week, "Supplies")
 
