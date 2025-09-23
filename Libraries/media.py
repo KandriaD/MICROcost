@@ -309,7 +309,7 @@ media_list = {
 
     "nutrient_agar_powder": {
         "name": "Nutrient Agar (NA)",
-        "synonym": ["NA"],
+        "synonym": ["nutrient agar", "NA."],
         "supplier": "VWR",
         "catalog_number": "470227-474",
         "cost_per_ml": 0.00492  # cost per mL ##213.85 for 1kg

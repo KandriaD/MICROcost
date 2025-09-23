@@ -83,6 +83,14 @@ chemical_list = {
         "quantity": 500 #23.59 for 500g; density 1.73g/ml, mm 381.37 g/mol
     },
 
+    "congo_red": {
+        "name": "Congo Red",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get this information
+        "quantity": 1
+    },
+
     "coomassie_blue": {
         "name": "Coomassie Blue R-250",
         "supplier": "Bio-Rad",
@@ -156,6 +164,14 @@ chemical_list = {
         "quantity": 1 #1ml
     },
 
+    "70%_ethanol": {
+        "name": "Ethanol (70%)",
+        "supplier": "UH Chem Stock Room",
+        "catalog_number": "",
+        "cost_per_unit": 13.2*70/95, #95% ethonol from chem stock room
+        "quantity": 3785.41 #1 gallon = 3785.41 mL
+    },
+
     "95%_ethanol": {
         "name": "Ethanol (95%)",
         "supplier": "UH Chem Stock Room",
@@ -215,6 +231,7 @@ chemical_list = {
 
     "hydrogen_peroxide": {
         "name": "Hydrogen Peroxide (30%)",
+        "synonym": ["H2O2", "Hydrogen Peroxide"],
         "supplier": "Fisher Sci",
         "catalog_number": "0000", #need to get the catalog_number 
         "cost_per_unit": 36.03, #36.03/500ml for 30%
@@ -250,6 +267,15 @@ chemical_list = {
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #have not purchased this in a long time
+        "quantity": 1
+    },
+
+    "koh": {
+        "name": "Potassium Hydroxide (KOH)",
+        "synonym": ["KOH", "Potassium Hydroxide"],
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
         "quantity": 1
     },
 
@@ -418,6 +444,7 @@ chemical_list = {
 
     "saline": {
         "name": "Saline (0.85% NaCl)",
+        "synonym": ["Saline", "0.85% NaCl"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0.03,

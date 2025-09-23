@@ -768,7 +768,7 @@ supplies = {
     },
 
     "microscope_slide_cover_slips": {
-            "name": "Microscope Slide Cover Slips, 18x18mm",
+        "name": "Microscope Slide Cover Slips, 18x18mm",
         "supplier": "VWR",
         "catalog_number": "470112-504",
         "cost_per_unit": 5.63,  
@@ -788,6 +788,14 @@ supplies = {
         "supplier": "VWR",
         "catalog_number": "55710-200",
         "cost_per_unit": 0, #reusable, so effectively 0;  $110.11 each
+        "quantity": 1
+    },
+
+    "nanodrop": {
+        "name": "Nanodrop", #borrow from Biology, contact Chris Nakano a week prior
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
         "quantity": 1
     },
 
