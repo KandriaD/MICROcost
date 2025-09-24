@@ -1088,6 +1088,14 @@ supplies = {
         "quantity": 1
     },
 
+    "shaker": {
+        "name": "Shaker",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "sigmafast_dab_tablets": {
         "name": "SigmaFast DAB (3, 3'-diaminobenzidine) Tablets",
         "supplier": "Millipore Sigma",
@@ -1106,6 +1114,14 @@ supplies = {
 
     "sissors": {
         "name": "Scissors",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "spectrophotometer": {
+        "name": "Spectrophotometer",
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
