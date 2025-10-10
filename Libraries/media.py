@@ -168,7 +168,7 @@ media_list = {
 
     "lauryl_triptose_broth": { 
         "name": "Lauryl Tryptose Broth (LT)",
-        "synonym": ["LT Broth", "Lauryl Tryptose", "LT"],
+        "synonym": ["LT Broth", "Lauryl Tryptose", "LT", "LTB"],
         "supplier": "VWR",
         "catalog_number": "90001-770",
         "cost_per_ml": 0.01063  #149.33 for 500g

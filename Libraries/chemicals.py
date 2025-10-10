@@ -189,7 +189,7 @@ chemical_list = {
     },
 
     "freezing_medium": {
-        "name": "Freezing Medium (10% gylcerolin 100% Fetal Bovine Serum)",
+        "name": "Freezing Medium (10% gylcerol in 100% Fetal Bovine Serum)",
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 176.28, 
@@ -368,6 +368,14 @@ chemical_list = {
         "quantity": 1
     },
 
+    "mgcl2": {
+        "name": "MgCl2 0.1M",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get this information
+        "quantity": 1
+    },
+
     "nacl": {
         "name": "Sodium Chloride (NaCl)",
         "synonym": ["NaCl", "Sodium Chloride"],
@@ -477,6 +485,15 @@ chemical_list = {
         "quantity": 100 #100g 
     },
 
+    "seawater": {
+        "name": "Seawater",
+        "synonym": ["Seawater", "SW"],
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
     "sigmafast_opd_hrp_substrate": {
         "name": "SigmaFast OPD HRP Substrate",
         "supplier": "Millipore Sigma",
@@ -518,6 +535,14 @@ chemical_list = {
         "quantity": 50
     },
 
+    "sucrose": {
+        "name": "Sucrose",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get this information
+        "quantity": 1
+    },
+
     "1x_tbs": {
         "name": "1x TBS (Tris Buffered Saline)",
         "synonym": ["1x TBS", "Tris Buffered Saline"],
@@ -533,6 +558,14 @@ chemical_list = {
         "catalog_number": "95060-952",
         "cost_per_unit": 60.04,
         "quantity": 10 #2x5mL
+    },
+
+    "tg_salts": {
+        "name": "TG Salts",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get this information ###Per 1 L: 11.02g (CaCl2*2H2O; FW 147.02); 1.22g (MgCl2*6H2O; W 203.3); 150g glycerol
+        "quantity": 1
     },
 
     "towbin_transfer_buffer": {

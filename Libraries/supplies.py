@@ -153,6 +153,14 @@ supplies = {
         "quantity": 1
     },
 
+    "biorad_gene_pulser": {
+        "name": "Bio-Rad Gene Pulser", ## I have no idea what this is, it was added to the prepsheet by 475L TAs
+        "supplier": "Bio-Rad",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "biosafety_cabinet":{
         "name": "Biosafety Cabinet",
         "supplier": "",
@@ -169,6 +177,14 @@ supplies = {
         "quantity": 12 #12 per box
     },
 
+    "bunsen_burner": {
+        "name": "Bunsen Burner",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "cardboard":{
         "name": "Cardboard",
         "supplier": "",
@@ -183,6 +199,14 @@ supplies = {
         "catalog_number": "97063-378",
         "cost_per_unit": 164.85,
         "quantity": 500 #500g
+    },
+
+    "centrifuge": {
+        "name": "Centrifuge",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "chopsticks": {
@@ -596,6 +620,14 @@ supplies = {
 
     "humidified_chamber": {
         "name": "Humidified Chamber",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "ice_bucket": {
+        "name": "Ice Bucket",
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
@@ -1222,6 +1254,14 @@ supplies = {
         "catalog_number": "89215-772",
         "cost_per_unit": 0, #152.38, but reusable, so effectively 0
         "quantity": 1 #8 #8 racks per case
+    },
+
+    "thermometer": {
+        "name": "Thermometer",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
     },
 
     "tin_foil": {
