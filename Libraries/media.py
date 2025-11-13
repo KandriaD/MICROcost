@@ -75,7 +75,7 @@ media_list = {
 
     "campy_cva":{
         "name": "Campy CVA [premade]",
-        "synonym": ["CVA", "Campy"],
+        "synonym": ["CVA", "Campy", "Campy CVA"],
         "supplier": "VWR",
         "catalog_number": "89405-034",
         "cost_per_ml": 15.92/10 #premade

@@ -3,7 +3,7 @@
 
 bacteria_list = {
     "Acinetobacter baumannii": {
-        "synonyms": ["A. baumannii"],
+        "synonym": ["A. baumannii"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -15,7 +15,7 @@ bacteria_list = {
     },
 
     "Actinetobacter lwoffii": {
-        "synonyms": ["A. lwoffii"],
+        "synonym": ["A. lwoffii"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -27,7 +27,7 @@ bacteria_list = {
     },
 
     "Alcaligenes faecalis": {
-        "synonyms": ["A. faecalis"],
+        "synonym": ["A. faecalis"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -39,7 +39,7 @@ bacteria_list = {
     },
 
     "Aspergillus niger": {
-        "synonyms": ["A. niger"],
+        "synonym": ["A. niger"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -51,7 +51,7 @@ bacteria_list = {
     },
 
     "Bacillus cereus": {
-        "synonyms": ["B. cereus"],
+        "synonym": ["B. cereus"],
         "gram": "positive",
         "shape": "rod",
         "growth": "aerobic",
@@ -63,7 +63,7 @@ bacteria_list = {
     },
 
     "Bacillus subtilis": {
-        "synonyms": ["B. subtilis"],
+        "synonym": ["B. subtilis"],
         "gram": "positive",
         "shape": "rod",
         "growth": "aerobic",
@@ -75,7 +75,7 @@ bacteria_list = {
     },
 
     "Bordetella bronchiseptica": {
-        "synonyms": ["B. bronchiseptica"],
+        "synonym": ["B. bronchiseptica"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -87,7 +87,7 @@ bacteria_list = {
     },
 
     "Burkholderia cepacia": {
-        "synonyms": ["B. cepacia"],
+        "synonym": ["B. cepacia"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -99,7 +99,7 @@ bacteria_list = {
     },
 
     "Campylobacter jenuni": {
-        "synonyms": ["C. jenuni"],
+        "synonym": ["C. jenuni"],
         "gram": "negative",
         "shape": "spiral",
         "growth": "microaerophilic",
@@ -111,7 +111,7 @@ bacteria_list = {
     },
 
     "Canidia albicans": {
-        "synonyms": ["C. albicans"],
+        "synonym": ["C. albicans"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -123,7 +123,7 @@ bacteria_list = {
     },
 
     "Canidia tropicalis": {
-        "synonyms": ["C. tropicalis"],
+        "synonym": ["C. tropicalis"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -135,7 +135,7 @@ bacteria_list = {
     },
 
     "Citrobacter freundii": {
-        "synonyms": ["C. freundii"],
+        "synonym": ["C. freundii"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -147,7 +147,7 @@ bacteria_list = {
     },
 
     "Clostridium sporogenes": {
-        "synonyms": ["C. sporogenes"],
+        "synonym": ["C. sporogenes"],
         "gram": "positive",
         "shape": "rod",
         "growth": "anaerobic",
@@ -159,7 +159,7 @@ bacteria_list = {
     },
 
     "Corynebacterium diphtheriae": {
-        "synonyms": ["C. diphtheriae"],
+        "synonym": ["C. diphtheriae"],
         "gram": "positive",
         "shape": "rod",
         "growth": "aerobic",
@@ -171,7 +171,7 @@ bacteria_list = {
     },
 
     "Corynebacterium xerosis": {
-        "synonyms": ["C. xerosis"],
+        "synonym": ["C. xerosis"],
         "gram": "positive",
         "shape": "rod",
         "growth": "aerobic",
@@ -183,7 +183,7 @@ bacteria_list = {
     },
 
     "Edwardsiella tarda": {
-        "synonyms": ["E. tarda"],
+        "synonym": ["E. tarda"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -195,7 +195,7 @@ bacteria_list = {
     },
 
     "Elizabethkingia meningoseptica": {
-        "synonyms": ["E. meningoseptica"],
+        "synonym": ["E. meningoseptica"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -207,7 +207,7 @@ bacteria_list = {
     },
 
     "Enterobacter cloacae": {
-        "synonyms": ["E. cloacae", "Klebsiella cloacae", "K. cloacae"],
+        "synonym": ["E. cloacae", "Klebsiella cloacae", "K. cloacae"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -219,7 +219,7 @@ bacteria_list = {
     },
 
     "Enterococcus faecalis": {
-        "synonyms": ["E. faecalis"],
+        "synonym": ["E. faecalis"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -231,7 +231,7 @@ bacteria_list = {
     },
 
     "Erysipelothrix rhusiopathiae": {
-        "synonyms": ["E. rhusiopathiae"],
+        "synonym": ["E. rhusiopathiae"],
         "gram": "positive",
         "shape": "rod",
         "growth": "aerobic",
@@ -243,7 +243,7 @@ bacteria_list = {
     },
 
     "Escherichia coli": {
-        "synonyms": ["E. coli"],
+        "synonym": ["E. coli"],
         "gram": "negative",
         "shape": "rod",
         "growth": "facultative anaerobe",
@@ -255,7 +255,7 @@ bacteria_list = {
     },
 
     "Geobacillus stearothermophilus": {
-        "synonyms": ["G. stearothermophilus"],
+        "synonym": ["G. stearothermophilus"],
         "gram": "positive",
         "shape": "rod",
         "growth": "aerobic",
@@ -267,7 +267,7 @@ bacteria_list = {
     },
 
     "Haemophilus influenzae": {
-        "synonyms": ["H. influenzae"],
+        "synonym": ["H. influenzae"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -279,7 +279,7 @@ bacteria_list = {
     },
 
     "Haeomphilus parainfluenzae": {
-        "synonyms": ["H. parainfluenzae"],
+        "synonym": ["H. parainfluenzae"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -291,7 +291,7 @@ bacteria_list = {
     },
 
     "Halobacterium salinarum": {
-        "synonyms": ["H. salinarum"],
+        "synonym": ["H. salinarum"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -303,7 +303,7 @@ bacteria_list = {
     },
 
     "Klebsiella aerogenes": {
-        "synonyms": ["K. aerogenes", "E. aerogenes", "E. aerogenes"],
+        "synonym": ["K. aerogenes", "E. aerogenes", "E. aerogenes"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -315,7 +315,7 @@ bacteria_list = {
     },
 
     "Klebsiella pneumoniae": {
-        "synonyms": ["K. pneumoniae", "E. pneumoniae", "E. pneumoniae"],
+        "synonym": ["K. pneumoniae", "E. pneumoniae", "E. pneumoniae"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -327,7 +327,7 @@ bacteria_list = {
     },
 
     "Kocuria rosea": {
-        "synonyms": ["K. rosea"],
+        "synonym": ["K. rosea"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -339,7 +339,7 @@ bacteria_list = {
     },
 
     "Lactococcus lactis": {
-        "synonyms": ["L. lactis"],
+        "synonym": ["L. lactis"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -351,7 +351,7 @@ bacteria_list = {
     },
 
     "Listeria monocytogenes": {
-        "synonyms": ["L. monocytogenes"],
+        "synonym": ["L. monocytogenes"],
         "gram": "positive",
         "shape": "rod",
         "growth": "aerobic",
@@ -363,7 +363,7 @@ bacteria_list = {
     },
 
     "Micrococcus luteus": {
-        "synonyms": ["M. luteus"],
+        "synonym": ["M. luteus"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -375,7 +375,7 @@ bacteria_list = {
     },
 
     "Moraxella catarrhalis": {
-        "synonyms": ["M. catarrhalis"],
+        "synonym": ["M. catarrhalis"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -387,7 +387,7 @@ bacteria_list = {
     },
 
     "Mycrobacterium gordonae": {
-        "synonyms": ["M. gordonae"],
+        "synonym": ["M. gordonae"],
         "gram": "positive",
         "shape": "rod",
         "growth": "aerobic",
@@ -399,7 +399,7 @@ bacteria_list = {
     },
 
     "Mycobacterium smegmatis": {
-        "synonyms": ["M. smegmatis"],
+        "synonym": ["M. smegmatis"],
         "gram": "positive",
         "shape": "rod",
         "growth": "aerobic",
@@ -411,7 +411,7 @@ bacteria_list = {
     },
 
     "Neisseria gonorrhoeae": {
-        "synonyms": ["N. gonorrhoeae"],
+        "synonym": ["N. gonorrhoeae"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -423,7 +423,7 @@ bacteria_list = {
     },
 
     "Neisseria lactamica": {
-        "synonyms": ["N. lactamica"],
+        "synonym": ["N. lactamica"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -435,7 +435,7 @@ bacteria_list = {
     },
 
     "Neisseria meningitidis": {
-        "synonyms": ["N. meningitidis"],
+        "synonym": ["N. meningitidis"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -447,7 +447,7 @@ bacteria_list = {
     },
 
     "Neisseria sicca": {
-        "synonyms": ["N. sicca"],
+        "synonym": ["N. sicca"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -459,7 +459,7 @@ bacteria_list = {
     },
 
     "Penicillium notatum": {
-        "synonyms": ["P. notatum"],
+        "synonym": ["P. notatum"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -471,7 +471,7 @@ bacteria_list = {
     },
 
     "Proteus hauseri": {
-        "synonyms": ["P. hauseri", "P. vulgaris", "Proteus vulgaris"],
+        "synonym": ["P. hauseri", "P. vulgaris", "Proteus vulgaris"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -483,7 +483,7 @@ bacteria_list = {
     },
 
     "Proteus mirabilis": {
-        "synonyms": ["P. mirabilis"],
+        "synonym": ["P. mirabilis"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -495,7 +495,7 @@ bacteria_list = {
     },
 
     "Proteus vulgaris": {
-        "synonyms": ["P. vulgaris"],
+        "synonym": ["P. vulgaris"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -507,7 +507,7 @@ bacteria_list = {
     },
 
     "Providencia stuartii": {
-        "synonyms": ["P. stuartii"],
+        "synonym": ["P. stuartii"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -519,7 +519,7 @@ bacteria_list = {
     },
 
     "Pseudomonas aeruginosa": {
-        "synonyms": ["P. aeruginosa"],
+        "synonym": ["P. aeruginosa"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -531,7 +531,7 @@ bacteria_list = {
     },
 
     "Saccharomyces cerevisiae": {
-        "synonyms": ["S. cerevisiae"],
+        "synonym": ["S. cerevisiae"],
         "gram": "negative",
         "shape": "cocci",
         "growth": "aerobic",
@@ -543,7 +543,7 @@ bacteria_list = {
     },
 
     "Salmonella enterica": {
-        "synonyms": ["S. enterica"],
+        "synonym": ["S. enterica"],
         "gram": "negative",
         "shape": "rod",
         "growth": "facultative anaerobe",
@@ -555,7 +555,7 @@ bacteria_list = {
     },
 
     "Salmonella enterica enterica serovar enteriditis": {
-        "synonyms": ["S. enterica serovar enteriditis", "Salmonella enterica serotype enteriditis", "S. enterica enterica serovar enteriditis", "S. enteritidis"],
+        "synonym": ["S. enterica serovar enteriditis", "Salmonella enterica serotype enteriditis", "S. enterica enterica serovar enteriditis", "S. enteritidis"],
         "gram": "negative",
         "shape": "rod",
         "growth": "facultative anaerobe",
@@ -567,7 +567,7 @@ bacteria_list = {
     },
 
     "Salmonella enterica enterica serovar typhimurium": {
-        "synonyms": ["S. enterica serovar typhimurium", "Salmonella enterica serotype typhimurium", "S. enterica enterica serovar typhimurium", "S. typhimurium"],
+        "synonym": ["Salmonella enterica serotype typhimurium","S. enterica serovar typhimurium", "Salmonella enterica serotype typhimurium", "S. enterica enterica serovar typhimurium", "S. typhimurium"],
         "gram": "negative",
         "shape": "rod",
         "growth": "facultative anaerobe",
@@ -579,7 +579,7 @@ bacteria_list = {
     },
 
     "Serratia marcescens": {
-        "synonyms": ["S. marcescens"],
+        "synonym": ["S. marcescens"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -591,7 +591,7 @@ bacteria_list = {
     },
 
     "Shigella dysenteriae": {
-        "synonyms": ["S. dysenteriae"],
+        "synonym": ["S. dysenteriae"],
         "gram": "negative",
         "shape": "rod",
         "growth": "facultative anaerobe",
@@ -603,7 +603,7 @@ bacteria_list = {
     },
 
     "Shigella flexneri": {
-        "synonyms": ["S. flexneri"],
+        "synonym": ["S. flexneri"],
         "gram": "negative",
         "shape": "rod",
         "growth": "facultative anaerobe",
@@ -615,7 +615,7 @@ bacteria_list = {
     },
 
     "Shigella sonnei": {
-        "synonyms": ["S. sonnei"],
+        "synonym": ["S. sonnei"],
         "gram": "negative",
         "shape": "rod",
         "growth": "facultative anaerobe",
@@ -627,7 +627,7 @@ bacteria_list = {
     },
 
     "Staphylococcus aureus": {
-        "synonyms": ["S. aureus"],
+        "synonym": ["S. aureus"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -639,7 +639,7 @@ bacteria_list = {
     },
 
     "Staphylococcus epidermidis": {
-        "synonyms": ["S. epidermidis"],
+        "synonym": ["S. epidermidis"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -651,7 +651,7 @@ bacteria_list = {
     },
 
     "Staphylococcus saprophyticus": {
-        "synonyms": ["S. saprophyticus"],
+        "synonym": ["S. saprophyticus"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -663,7 +663,7 @@ bacteria_list = {
     },
 
     "Stenorophomonas maltophilia": {
-        "synonyms": ["S. maltophilia"],
+        "synonym": ["S. maltophilia"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -675,7 +675,7 @@ bacteria_list = {
     },
 
     "Streptococcus agalactiae": {
-        "synonyms": ["S. agalactiae"],
+        "synonym": ["S. agalactiae"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -687,7 +687,7 @@ bacteria_list = {
     },
 
     "Streptococcus gallolyticus": {
-        "synonyms": ["S. gallolyticus", "S. bovis", "Streptococcus bovis"],
+        "synonym": ["S. gallolyticus", "S. bovis", "Streptococcus bovis"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -699,7 +699,7 @@ bacteria_list = {
     },
 
     "Streptococcus mitis": {
-        "synonyms": ["S. mitis"],
+        "synonym": ["S. mitis"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -711,7 +711,7 @@ bacteria_list = {
     },
 
     "Streptococcus pneumoniae": {
-        "synonyms": ["S. pneumoniae"],
+        "synonym": ["S. pneumoniae"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -723,7 +723,7 @@ bacteria_list = {
     },
 
     "Streptococcus pyogenes": {
-        "synonyms": ["S. pyogenes"],
+        "synonym": ["S. pyogenes"],
         "gram": "positive",
         "shape": "cocci",
         "growth": "aerobic",
@@ -735,7 +735,7 @@ bacteria_list = {
     },
 
     "Virbrio alginolyticus": {
-        "synonyms": ["V. alginolyticus"],
+        "synonym": ["V. alginolyticus"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -747,7 +747,7 @@ bacteria_list = {
     },
 
     "Vibrio parahaemolyticus": {
-        "synonyms": ["V. parahaemolyticus"],
+        "synonym": ["V. parahaemolyticus"],
         "gram": "negative",
         "shape": "rod",
         "growth": "aerobic",
@@ -759,7 +759,7 @@ bacteria_list = {
     },
     
     "Yersinia enterocolitica": {
-        "synonyms": ["Y. enterocolitica"],
+        "synonym": ["Y. enterocolitica"],
         "gram": "negative",
         "shape": "rod",
         "growth": "facultative anaerobe",
