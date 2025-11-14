@@ -361,6 +361,14 @@ supplies = {
         "quantity": 1
     },
 
+    "diabetic_lancets": {
+        "name": "Diabetic Lancets",
+        "supplier": "Fisher Scientific", #havent purchased yet, may get from somewhere else at different price
+        "catalog_number": "21-888-003",
+        "cost_per_unit": 21.14,
+        "quantity": 100
+    },
+
     "dneasy_powersoil_kit": {
         "name": "DNeasy PowerSoil Kit",
         "supplier": "",
@@ -521,6 +529,14 @@ supplies = {
         "catalog_number": "90003-644",
         "cost_per_unit": 80.40,
         "quantity": 20
+    },
+
+    "giemsa_stain_kit": {
+        "name": "Giemsa Stain Kit",
+        "supplier": "Fisher Scientific", #haven't purchased yet, may get from somewhere else at different price
+        "catalog_number": "STLKTWGIPT",
+        "cost_per_unit": 244,
+        "quantity": 500 #kit yeilds between 340-620 slides, so assuming 500
     },
 
     "glass_test_tube": {
@@ -1080,6 +1096,14 @@ supplies = {
         "quantity": 75 
     },
 
+    "raw_cells": {
+        "name": "RAW 264.7 Monocyte Cells", #from mice
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #cells should already be available in lab, so effectively 0
+        "quantity": 1 
+    },
+
     "reagent_reservoir": {
         "name": "Reagent Reservoir",
         "supplier": "VWR",
@@ -1227,17 +1251,17 @@ supplies = {
     "t25_flask": {
         "name": "T25 Flask",
         "supplier": "VWR",
-        "catalog_number": "",
-        "cost_per_unit": 0, #need to get cost
-        "quantity": 1 
+        "catalog_number": "82051-070",
+        "cost_per_unit": 191.21, 
+        "quantity": 200
     },
 
     "t75_flask": {
         "name": "T75 Flask",
         "supplier": "VWR",
-        "catalog_number": "",
-        "cost_per_unit": 0, #need to get cost
-        "quantity": 1 
+        "catalog_number": "82050-854",
+        "cost_per_unit": 202.25, 
+        "quantity": 120 
     },
 
     "tally_counter": {

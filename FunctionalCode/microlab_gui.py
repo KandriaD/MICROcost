@@ -250,7 +250,7 @@ def add_supply():
     antibiotic_key = antibiotic_name_to_key.get(selected_item_name)
 
     supply_info = supplies.supplies.get(supply_key)
-    antibiotic_info = antibiotics.get(antibiotic_key)
+    antibiotic_info = antibiotics.antibiotics.get(antibiotic_key)
 
     # If not found in supplies, check in antibiotics
     if not supply_info and not antibiotic_info:

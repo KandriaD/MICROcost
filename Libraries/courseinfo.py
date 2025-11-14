@@ -18,8 +18,8 @@ class Course:
 micro140L = Course("MICRO140L", 2, 33, 16, ["115C", "114"])
 micro351L = Course("MICRO351L", 2, 31, 15, ["115B", "115B"]) #updated on 5/5 for summer session 2 2025
 micro401L = Course("MICRO401L", 2, 34, 17, ["115C", "115B"])
-micro461L = Course("MICRO461L", 2, 28, 10, ["113", "114"])
-micro463L = Course("MICRO463L", 1, 15, 7, ["115B"])
+micro461L = Course("MICRO461L", 1, 15, 5, ["113"])
+micro463L = Course("MICRO463L", 1, 15, 7, ["115B"]) #updated on 11/13 for summer 2026 estimation
 micro475L = Course("MICRO475L", 1, 19, 6, ["115C"])
 
 # Storing all courses in a dictionary for easy access

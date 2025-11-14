@@ -701,9 +701,9 @@ chemical_list = {
     "2ab_antibody_solution": {
         "name": "2° Ab antibody solution (rabbit anit-goat IgG-HRP in 0.5% BSA/TBS)",
         "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0, #still need to get this information, how much antibody is used in solution?
-        "quantity": 1
+        "catalog_number": "", #we mix
+        "cost_per_unit": 13.02, #based on 1:2000 dilution of antibody with all other components
+        "quantity": 100 #ml
     },
 
     "antibiodies_anti-bovine": {
@@ -863,18 +863,19 @@ chemical_list = {
 
     "serum_w_complement": {
         "name": "Serum with Complement", #is Guinea Pig Complement, we will need to purchase, so add info then
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0, 
-        "quantity": 1 #never purchased
+        "supplier": "VWR",
+        "catalog_number": "IC0855852", #pulled infor from VWR but i am not sure if this is the one we purchased
+        "cost_per_unit": 58.87, #cost per 1ml
+        "quantity": 1000 #converted to ul
     },
 
     "tdt_enzyme": {
         "name": "Terminal Deoxynucleotidyl Transferase (TdT)",
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0, #still need to get this information
-        "quantity": 1 
+        "supplier": "VWR",
+        "catalog_number": "80500-112",
+        "cost_per_unit": 273.92, #pulled from VWR website, not sure if is the one we purchased
+        "quantity": 155 ## 0.155ml, and is called in spreadsheet by ul, so is 155 ul
+        #775 units of TdT; one unit is the amount of enzyme required to transfer 1.0nmol of dAMP from dATP to the 3' -OH terminus of d(A)50 in 60 minutes at 37 °C  
     },
 }
 
