@@ -625,7 +625,7 @@ chemical_list = {
     },
 
     "tweeen_80": {
-        "name": "Tween 80 (water soluble)", 
+        "name": "Tween 80", 
         "supplier": "VWR",
         "catalog_number": "76347-646",
         "cost_per_unit": 38.11,
