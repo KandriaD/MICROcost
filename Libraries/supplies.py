@@ -387,6 +387,7 @@ supplies = {
 
     "diabetic_lancets": {
         "name": "Diabetic Lancets",
+        "synonyms": ["lancets", "Diabetic Lancet"],
         "supplier": "Fisher Scientific", #havent purchased yet, may get from somewhere else at different price
         "catalog_number": "21-888-003",
         "cost_per_unit": 21.14,
@@ -414,6 +415,14 @@ supplies = {
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "dry_ice": {
+        "name": "Dry Ice",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
         "quantity": 1
     },
 
@@ -661,6 +670,7 @@ supplies = {
 
     "hot_plate": {
         "name": "Hot Plate",
+        "name": "Hotplate",
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0

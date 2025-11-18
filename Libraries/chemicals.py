@@ -248,6 +248,7 @@ chemical_list = {
 
     "iodine": {
         "name": "Gram's Iodine",
+        "synonym": ["Iodine", "Gram Iodine"],
         "supplier": "VWR",
         "catalog_number": "470301-184",
         "cost_per_unit": 69.45, 
@@ -748,7 +749,7 @@ chemical_list = {
 
     "bsa": {
         "name": "Bovine Serum Albumin (BSA) (1%)",
-        "synonym": "BSA",
+        "synonym": ["BSA", "Bovine Serum Albumin", "Bovine Serum Albumin (BSA)"],
         "supplier": "Millipore Sigma",
         "catalog_number": "126609",
         "cost_per_unit": 1260, #cost per bottle of 100g
