@@ -141,6 +141,8 @@ def get_cost_per_use(info_dict):
         return 0
 
     quantity = info_dict.get("quantity", 1)
+    if quantity in [0, None]:
+        quantity = 1
     try:
         return float(cost) / float(quantity)
     except Exception as e:
