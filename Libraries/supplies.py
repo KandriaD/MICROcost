@@ -17,6 +17,14 @@ supplies = {
         "quantity": 2
     },
 
+    "alcohol_hand_sanitizer":{
+        "name": "Alcohol-based hand sanitizer",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
+        "quantity": 1
+    },
+
     "agarose_gels": {
         "name": "1% Agarose Gels for Electrophoresis",
         "supplier": "",
@@ -86,6 +94,14 @@ supplies = {
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "betadine":{
+        "name": "Betadine scrub",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
         "quantity": 1
     },
 
@@ -302,6 +318,14 @@ supplies = {
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "dawn_dishsoap":{
+        "name": "Dawn dish soap",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
         "quantity": 1
     },
 
@@ -557,6 +581,7 @@ supplies = {
 
     "glo_germ": {
         "name": "Glo Germ Hand Wash",
+        "synonyms": ["Glo Germ", "Glogerm"],
         "supplier": "VWR",
         "cost_per_unit": 17.09,  # from VWR per bottle
         "quantity": 236.588  # distributed by bottles, but students probably only use about 5mL each, so this is per ml
@@ -626,6 +651,14 @@ supplies = {
         "quantity": 1
     },
 
+    "hibiclens": {
+        "name": "Hibiclens",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
+        "quantity": 1
+    },
+
     "hot_plate": {
         "name": "Hot Plate",
         "supplier": "",
@@ -639,6 +672,14 @@ supplies = {
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "hy5": {
+        "name": "Hy5 brand hand sanitizer",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
         "quantity": 1
     },
 
@@ -668,6 +709,7 @@ supplies = {
 
     "india_ink":{
         "name": "India Ink Droppers",
+        "synonym": ["India Ink"],
         "supplier": "VWR",
         "catalog_number": "90003-681",
         "cost_per_unit": 97.50,
@@ -970,6 +1012,7 @@ supplies = {
 
     "culture_plate_small": {
         "name": "Culture Plate, 60mm",
+        "synonyms": ["Empty Petri Dish, 60mm"],
         "supplier": "VWR",
         "catalog_number": "25384-092",
         "cost_per_unit": 83.64,
