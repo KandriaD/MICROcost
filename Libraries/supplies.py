@@ -640,8 +640,8 @@ supplies = {
         "name": "Hard Candy",
         "supplier": "",
         "catalog_number": "",
-        "cost_per_unit": 0, #need to get cost
-        "quantity": 1
+        "cost_per_unit": 5, #changes depending on type of candy
+        "quantity": 30
     },
 
     "heatblock": {

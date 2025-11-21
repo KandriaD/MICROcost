@@ -386,7 +386,7 @@ bacteria_list = {
         "stock_cost": 0.00
     },
 
-    "Mycrobacterium gordonae": {
+    "Mycobacterium gordonae": {
         "synonym": ["M. gordonae"],
         "gram": "positive",
         "shape": "rod",
@@ -734,7 +734,7 @@ bacteria_list = {
         "stock_cost": 0.00
     },
 
-    "Virbrio alginolyticus": {
+    "Vibrio alginolyticus": {
         "synonym": ["V. alginolyticus"],
         "gram": "negative",
         "shape": "rod",
