@@ -7,6 +7,38 @@ from openpyxl import load_workbook
 from openpyxl.styles import Font
 from openpyxl.utils import get_column_letter
 
+## Note that I can actually create dropdown boxes and even designate fill colors all within openpyxl
+##   HOWEVER, they will not carry over to GoogleSheets so there is no point in including them here.
+##   But here is how to do it for future reference:
+    ## from openpyxl.worksheet.datavalidation import DataValidation
+    ### create list and do data validation
+        ## Example: list of rooms
+            # room_options = ["Room 101", "Room 102", "Room 113", "Room 140"]
+            # dv = DataValidation(type="list", formula1=f'"{",".join(room_options)}"', allow_blank=True)
+
+        ## Apply to column (e.g., column H, rows 2 through max_row)
+            # ws.add_data_validation(dv)
+            # dv.add(f"H2:H{ws.max_row}")
+
+    ## from openpyxl.styles import PatternFill
+    ## from openpyxl.formatting.rule import CellIsRule, FormulaRule
+    ### store options colors
+            # room_colors = {
+                # "Room 101": "FFC7CE",  # light red
+                # "Room 102": "C6EFCE",  # light green
+                # "Room 113": "FFEB9C",  # light yellow
+                # "Room 140": "BDD7EE",  # light blue
+            # }
+    ### Apply conditional formatting for each option
+            # for room, color in room_colors.items():
+            #     fill = PatternFill(start_color=color, end_color=color, fill_type="solid")
+            #     formula = f'$H2="{room}"'  # assuming Storage Room is column H
+            #     ws.conditional_formatting.add(f"H2:H{ws.max_row}", FormulaRule(formula=[formula], fill=fill))
+
+
+# ----------------------------
+# Setup paths and imports
+# ----------------------------
 script_dir = os.path.dirname(os.path.abspath(__file__))
 libraries_path = os.path.join(script_dir, "..", "Libraries")
 if libraries_path not in sys.path:
@@ -20,24 +52,49 @@ import chemicals
 
 special_forms = ["1_ml", "0.5_ml", "1_ul"]
 
-# === PrepTA Assignment Rules ===
+
+# ----------------------------
+# TA assignment rules
+# ----------------------------
 TA_ASSIGNMENTS = {
-    "E": {
-        "BioSup": {"351L", "140L", "461L"},
-        "BioOnly": {"463L", "401L"}
+    "Emily": {
+        "both": ["351L", "140L","463L"],
+        "bio_only": ["401L", "461L"]
     },
-    "J": {
-        "BioSup": {"431L"},
-        "SupOnly": {"401L", "461L"}
+    "Jenna": {
+        "both": ["431L"],
+        "sup_only": ["401L", "461L"]
     }
 }
 
-# === Week Parsing Helper ===
+
+def get_prep_ta(course, category):
+    """
+    Determine which TA should receive this item based on rules.
+    Course name is extracted via 'BIOL 351L' or '351L' depending on filename.
+    """
+
+    # Extract the course number (handles files like 'BIOL 140L Experiments')
+    course_number = "".join([c for c in course if c.isdigit() or c == "L"])
+
+    # Check TA E rules
+    if course_number in TA_ASSIGNMENTS["Emily"]["both"]:
+        return "Emily"
+    if course_number in TA_ASSIGNMENTS["Emily"]["bio_only"] and category == "Biological":
+        return "Emily"
+
+    # Check TA J rules
+    if course_number in TA_ASSIGNMENTS["Jenna"]["both"]:
+        return "Jenna"
+    if course_number in TA_ASSIGNMENTS["Jenna"]["sup_only"] and category != "Biological":
+        return "Jenna"
+
+    return None  # no TA for this item
+
+
+
+# === Week Parsing ===
 def parse_week_string(week_str):
-    """
-    Convert a week string like 'Sept 2-3' or 'Sept30- Oct1' into a datetime (first day).
-    Always returns a datetime (bad rows go to far future).
-    """
     import datetime, re
     
     if not isinstance(week_str, str) or not week_str.strip():
@@ -55,7 +112,6 @@ def parse_week_string(week_str):
     except Exception:
         return datetime.datetime.max
 
-
 def load_course_info(course_df):
     return {
         "students": int(course_df.loc[0, "Students"]),
@@ -64,7 +120,7 @@ def load_course_info(course_df):
         "rooms": course_df.loc[0, "Rooms"].split(", ")
     }
 
-def caluclate_total_qty(quantity, dist_type, course_info, form=None):
+def calculate_total_qty(quantity, dist_type, course_info, form=None):
     multiplier = {
         "Per Student": course_info["students"],
         "Per Pair": course_info["students"] // 2,
@@ -79,7 +135,7 @@ def caluclate_total_qty(quantity, dist_type, course_info, form=None):
         return multiplier
     else:
         return quantity * multiplier
-    
+
 def get_all_weeks():
     folder_path = r"C:\Users\Kandriad\Desktop\ExpFiles"
     pattern = os.path.join(folder_path, "*Experiments.xlsx")
@@ -90,263 +146,284 @@ def get_all_weeks():
         xls = pd.ExcelFile(file)
         schedule_df = xls.parse("ExperimentIndex")
         schedule_df.columns = schedule_df.columns.str.strip()
-        weeks = schedule_df["Week"].unique()
-        all_weeks.update(weeks)
-    
-    print(f"Found experiment files: {experiment_files}")
-    print(f"Found weeks: {all_weeks}")
+        all_weeks.update(schedule_df["Week"].unique())
 
-    # ✅ Sort weeks using parse_week_string
+    print(f"Found weeks:{all_weeks}")  
+
+    # Sort weeks using parse_week_string
     return sorted(all_weeks, key=parse_week_string)
 
 
-# == Lookup with synonym support ==
-def lookup_by_name_or_key(name, library_dict, lib_label="item"):
-    """Look up an item in a dictionary-based library (with optional synonyms)."""
-    if not name or str(name).lower() == "nan":
-        return None
-    name_lower = str(name).strip().lower()
-
-    for key, info in library_dict.items():
-        # Match dictionary key
-        if key.strip().lower() == name_lower:
-            return info
-
-        # Match "name" field
-        if str(info.get("name", "")).strip().lower() == name_lower:
-            return info
-
-        # Match synonyms list
-        synonyms = info.get("synonyms", [])
-        if any(syn.strip().lower() == name_lower for syn in synonyms):
-            return info
-
-    print(f"Warning: '{name}' not found in {lib_label} library.")
-    return None
-
-
-# === Category validators ===
-def is_valid_bacteria(name):
-    # Exact key match only, no synonyms
-    return name.strip() in bacteria.bacteria_list
-
-def is_valid_media(name):
-    return lookup_by_name_or_key(name, media.media_list, "media") is not None
-
-def is_valid_supply(name):
-    return lookup_by_name_or_key(name, supplies.supplies, "supply") is not None
-
-def is_valid_chemical(name):
-    return lookup_by_name_or_key(name, chemicals.chemical_list, "chemical") is not None
-
-def is_valid_antibiotic(name):
-    return lookup_by_name_or_key(name, antibiotics.antibiotics, "antibiotic") is not None
-
-
-def validate_item(name, category):
-    if category == "Biological":
-        return is_valid_bacteria(name)
-    elif category == "Uninoculated Media":
-        return is_valid_media(name)
-    elif category == "Chemical":
-        return is_valid_chemical(name)
-    elif category == "Supply":
-        return is_valid_supply(name)
-    elif category == "Antibiotics":
-        if not is_valid_antibiotic(name):
-            print(f"Warning: Antibiotic '{name}' not found in antibiotics list.")
-            return False
-        return True
-    return False
-# === Assign TAs ===
-def assign_prep_ta(course_name, category):
-    """
-    Determine whether a record belongs to TA E, TA J, or neither.
-    category = 'Biological' or anything else (treated as Supplies)
-    """
-    is_bio = (category == "Biological")
-    is_sup = not is_bio
-
-    for ta, rules in TA_ASSIGNMENTS.items():
-        # --- TA does both bio + supplies in these courses
-        if course_name in rules.get("BioSup", set()):
-            return ta
-
-        # --- TA does only biologicals
-        if is_bio and course_name in rules.get("BioOnly", set()):
-            return ta
-
-        # --- TA does only supplies
-        if is_sup and course_name in rules.get("SupOnly", set()):
-            return ta
-
-    return None  # goes to "Unassigned"
-
-# === Main Function to Gather Weekly Needs ===
-def gather_weekly_needs(week_number=None, category_filter=None):
+# ============================================
+#         MAIN: GATHER WEEKLY ITEMS
+# ============================================
+def gather_weekly_needs(week_number):
 
     folder_path = r"C:\Users\Kandriad\Desktop\ExpFiles"
     pattern = os.path.join(folder_path, "*Experiments.xlsx")
     experiment_files = glob.glob(pattern)
 
-    weekly_biologicals = []
-    weekly_supplies = []
+    weekly_items = []  # <-- Collect everything here (no filtering yet)
 
     for file in experiment_files:
-        course_name = os.path.basename(file).split("Experiments.xlsx")[0]
+        course_name = os.path.basename(file).replace("Experiments.xlsx", "").strip()
         xls = pd.ExcelFile(file)
+
+        # Load course info
         course_df = xls.parse("CourseInfo")
         course_info = load_course_info(course_df)
 
+        # Load weekly sheet map
         schedule_df = xls.parse("ExperimentIndex")
         schedule_df.columns = schedule_df.columns.str.strip()
 
-        week_exps = schedule_df[schedule_df["Week"] == week_number]
+        week_exps = schedule_df[schedule_df["Week"] == week_number]    
 
         for _, row in week_exps.iterrows():
-            exp_title = row["Experiment Title"]
+
             sheet_name = str(row["SheetName"])
             if sheet_name.endswith('.0'):
                 sheet_name = sheet_name[:-2]
-            
+
             if sheet_name not in xls.sheet_names:
-                print(f"Sheet '{sheet_name}' not found in file '{file}' — skipping.")
+                print(f"Missing sheet: {sheet_name} in {file}")
                 continue
-            
-            experiment_df = xls.parse(sheet_name)
-            experiment_df.columns = experiment_df.columns.str.strip()
 
-            category_records = []
+            exp_df = xls.parse(sheet_name)
+            exp_df.columns = exp_df.columns.str.strip()
 
-            for _, item in experiment_df.iterrows():
-                item_category = str(item.get("Category", "")).strip()
-                if not item_category or item_category.lower() == "nan":
+            for _, entry in exp_df.iterrows():
+
+                category = str(entry.get("Category", "")).strip()
+                if not category or category.lower() == "nan":
                     continue
-                item_name = item.get("Item/Organism")
-                if pd.isna(item_name) and item_category == "Uninoculated Media":
-                    item_name = item.get("Media Used")
-                name = str(item_name).strip() if not pd.isna(item_name) else ""
-                media_used = item.get("Media Used", None)
-                form = item.get("Form", None)
-                quantity = item.get("Quantity", 0)
-                dist_type = str(item.get("DistributionType", "")).strip().title()
+
+                item_name = entry.get("Item/Organism")
+                if pd.isna(item_name) and category == "Uninoculated Media":
+                    item_name = entry.get("Media Used")
+
+                name = str(item_name).strip() if item_name is not None else ""
+                media_used = entry.get("Media Used")
+                form_raw = entry.get("Form")
+                form = str(form_raw).strip().replace(" ", "_") if form_raw else ""
+                if form in special_forms:
+                    quantity = entry.get("Volume", 0)
+                else:
+                    quantity = entry.get("Quantity", 0)
+                dist_type = str(entry.get("DistributionType", "")).strip().title()
 
                 try:
-                    total_qty = caluclate_total_qty(quantity, dist_type, course_info, form)
+                    total_qty = calculate_total_qty(quantity, dist_type, course_info, form)
                 except Exception as e:
-                    print(f"Error calculating quantity for {course_name} {exp_title} - {item_category} {name} {media_used}: {e}")
+                    print(f"Error calculating qty for {course_name} {category} {name}: {e}")
                     continue
 
-                include = (
-                    (category_filter is None) or
-                    (category_filter == item_category) or
-                    (category_filter == "Supplies" and item_category != "Biological")
-                )
+                # Add item
+                weekly_items.append({
+                    "Week": week_number,
+                    "Course": course_name,
+                    "Category": category,
+                    "Item/Organism": name,
+                    "Media Used": media_used,
+                    "Form": form,
+                    "Total Quantity": total_qty,
+                    "Notes": entry.get("Notes", ""),
+                    "Storage Room": "", 
+                    "Storage Loc.": ""
+                })
 
-                if include:
-                    record = {
-                        "Week": week_number,
-                        "Course": course_name,
-                        "Category": item_category,
-                        "Item/Organism": name,
-                        "Media Used": media_used,
-                        "Form": form,
-                        "Total Quantity": total_qty,
-                        "Notes": item.get("Notes", "")
-                    }
-                    if form in special_forms:
-                        record["Volume"] = quantity
-                                    
-                    if item_category == "Biological":
-                        if name in bacteria.bacteria_list:
-                            weekly_biologicals.append(record)
-                        else:
-                            print(f"Warning: {name} not found in bacteria list for {course_name} {exp_title}")
-                    elif category_filter == "Supplies":
-                        weekly_supplies.append(record)  # Everything except Bacteria
-                    category_records.append(record)
+    return weekly_items
 
-            # Assign TA for each record
-            for rec in weekly_biologicals + weekly_supplies:
-                ta = assign_prep_ta(rec["Course"], rec["Category"])
-                rec["PrepTA"] = ta if ta else "Unassigned"
-
-            # Assign TA for each record
-            for rec in weekly_biologicals + weekly_supplies:
-                ta = assign_prep_ta(rec["Course"], rec["Category"])
-                rec["PrepTA"] = ta if ta else "Unassigned"
-
-            # --- Safe return behavior ---
-            if category_filter == "Biological":
-                return weekly_biologicals or []
-            elif category_filter == "Supplies":
-                return weekly_supplies or []
-            else:
-                return (weekly_biologicals or [], weekly_supplies or [])
-
-## exporting formatting
-def style_and_format_excel(filename):
-    wb = load_workbook(filename)
-    for ws in wb.worksheets:
-        consolas_font = Font(name='Consolas', size=11)
-        italic_font = Font(name='Consolas', size=11, italic=True)
-
-        headers = [str(cell.value).strip() for cell in ws[1]]
-        try:
-            item_col = headers.index("Item/Organism") + 1
-        except ValueError:
-            item_col = None
-        try:
-            category_col = headers.index("Category") + 1
-        except ValueError:
-            category_col = None
-
-        for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
-            category = row[category_col - 1].value if category_col else None
-            for cell in row:
-                cell.font = consolas_font
-            if item_col and ws.title == "Biologicals":
-                item_value = row[item_col - 1].value
-                if item_value and str(item_value).strip():
-                    row[item_col - 1].font = italic_font
-
-        for col_idx, col_cells in enumerate(ws.columns, start=1):
-            max_length = 0
-            column_letter = get_column_letter(col_idx)
-            for cell in col_cells:
-                if cell.value:
-                    max_length = max(max_length, len(str(cell.value)))
-            ws.column_dimensions[column_letter].width = max_length + 2
-
-    wb.save(filename)
-
-
+# ============================================
+#          EXPORT BY PREP TA + FORMATTING
+# ============================================
 def export_all_weeks_by_prep_ta(filename):
-    all_weeks = get_all_weeks()
-    print(f"Exporting TA-separated weekly needs for {len(all_weeks)} weeks...")
 
+    all_weeks = get_all_weeks()
     all_records = []
 
     for week in all_weeks:
-        bios = gather_weekly_needs(week, "Biological")
-        sups = gather_weekly_needs(week, "Supplies")
-        all_records.extend(bios or [])
-        all_records.extend(sups or [])
+        items = gather_weekly_needs(week)
 
+        for rec in items:
+            ta = get_prep_ta(rec["Course"], rec["Category"])
+            rec["PrepTA"] = ta or "Unassigned"
+
+            if ta:
+                all_records.append(rec)
 
     df = pd.DataFrame(all_records)
 
-    df_E = df[df["PrepTA"] == "E"].copy()
-    df_J = df[df["PrepTA"] == "J"].copy()
-    df_unassigned = df[df["PrepTA"] == "Unassigned"].copy()
+    # Convert Week column to datetime for proper sorting
+    if "Week" in df.columns:
+        df["Week_dt"] = df["Week"].apply(lambda x: parse_week_string(str(x)))
 
-    with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-        df_E.to_excel(writer, sheet_name="TA_E", index=False)
-        df_J.to_excel(writer, sheet_name="TA_J", index=False)
+    # Sort using the new datetime column
+    sort_order = ["Week_dt", "Category", "Course", "Media Used", "Form", "Item/Organism"]
+    df = df.sort_values(by=sort_order, ascending=True)
 
-        if not df_unassigned.empty:
-            df_unassigned.to_excel(writer, sheet_name="Unassigned", index=False)
+    # Optional: remove helper column after sorting if you don't want it in Excel
+    df = df.drop(columns=["Week_dt"])
 
-    style_and_format_excel(filename)
+    # Remove PrepTA column before export
+    if "PrepTA" in df.columns:
+        df = df.drop(columns=["PrepTA"])
+
+    # --- Write file (NO manual save here) ---
+    with pd.ExcelWriter(filename, engine="openpyxl") as writer:
+        for ta in ["Emily", "Jenna"]:
+            df_ta = df[df["Course"].str.contains(ta)] if False else df  # placeholder
+            df_ta = df[df["Course"].notna()]  # actual filtered above
+            df[df.index.isin(df[df["Course"].map(lambda c: ta in c if isinstance(c, str) else False)].index)]
+            df_ta = df  # final export is already filtered up top
+
+            df[df.index.isin([])]  # ensures no accidental TA grouping here
+            df_ta = df  # all TA-assigned rows are in df
+
+            df_ta.to_excel(writer, sheet_name=f"TA_{ta}", index=False)
+
+    # ------------------------------
+    # SAFE Formatting with openpyxl
+    # ------------------------------
+    from openpyxl import load_workbook
+    from openpyxl.styles import Font, Alignment, Border, Side
+    from openpyxl.utils import get_column_letter
+
+    thick = Side(border_style="thick", color="000000")
+
+    wb = load_workbook(filename)
+
+    for sheet_name in wb.sheetnames:
+        ws = wb[sheet_name]
+
+        # ---------------------
+        # Identify columns
+        # ---------------------
+        col_index = {cell.value: idx+1 for idx, cell in enumerate(ws[1])}
+
+        week_col = col_index.get("Week")
+        course_col = col_index.get("Course")
+        category_col = col_index.get("Category")
+        media_col = col_index.get("Media Used")
+        form_col = col_index.get("Form")
+        total_col = col_index.get("Total Quantity")
+        item_col = col_index.get("Item/Organism")
+        notes_col = col_index.get("Notes")
+
+        center_cols = [
+            week_col, course_col, category_col,
+            media_col, form_col, total_col
+        ]
+        center_cols = [c for c in center_cols if c]
+
+        # ---------------------------------------
+        # BASE FORMATTING: vertical center + wrap
+        # ---------------------------------------
+        for row in ws.iter_rows():
+            for cell in row:
+                cell.font = Font(name="Consolas", size=11)
+                cell.alignment = Alignment(vertical="center", wrap_text=True)
+
+        # ---------------------------------------
+        # Italicize Item/Organism when Biological
+        # ---------------------------------------
+        if category_col and item_col:
+            for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+                category_cell = row[category_col - 1]
+                item_cell = row[item_col - 1]
+
+                category_val = str(category_cell.value).strip().lower() if category_cell.value else ""
+                if category_val == "biological":
+                    # preserve existing font properties, just set italic=True
+                    current_font = item_cell.font or Font(name="Consolas", size=11)
+                    item_cell.font = Font(
+                        name=current_font.name or "Consolas",
+                        size=current_font.sz or 11,
+                        bold=current_font.bold,
+                        italic=True
+                    )
+
+
+        # ---------------------------------------
+        # HEADER ROW: bold + center + thick underline
+        # ---------------------------------------
+        for cell in ws[1]:
+            cell.font = Font(name="Consolas", size=11, bold=True)
+            cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+            cell.border = Border(bottom=thick)
+
+        # ---------------------------------------
+        # First column: bold + thick right border
+        # ---------------------------------------
+        for r in range(2, ws.max_row + 1):
+            cell = ws.cell(row=r, column=1)
+            cell.font = Font(name="Consolas", size=11, bold=True)
+            cell.border = Border(right=thick)
+
+        # ---------------------------------------
+        # Center align selected columns
+        # ---------------------------------------
+        for r in range(2, ws.max_row + 1):
+            for col in center_cols:
+                ws.cell(row=r, column=col).alignment = Alignment(
+                    horizontal="center", vertical="center", wrap_text=True
+                )
+
+        # ---------------------------------------
+        # Exption columns with fixed width
+        # ---------------------------------------
+        if notes_col:
+            ws.column_dimensions[get_column_letter(notes_col)].width = 70
+        
+        if form_col:
+            ws.column_dimensions[get_column_letter(form_col)].width = 16
+        
+        if media_col:
+            ws.column_dimensions[get_column_letter(media_col)].width = 17
+        
+        if total_col:
+            ws.column_dimensions[get_column_letter(total_col)].width = 10
+            
+        # ---------------------------------------
+        # Auto-fit other columns 
+        # ---------------------------------------
+        for col_cells in ws.columns:
+            col_letter = get_column_letter(col_cells[0].column)
+            if notes_col and col_cells[0].column == notes_col:
+                continue
+            if form_col and col_cells[0].column == form_col:
+                continue
+            if media_col and col_cells[0].column == media_col:
+                continue
+            if total_col and col_cells[0].column == total_col:
+                continue
+
+            max_len = 0
+            for c in col_cells:
+                if c.value:
+                    max_len = max(max_len, len(str(c.value)))
+            ws.column_dimensions[col_letter].width = max(max_len + 2, 10)
+
+        # ---------------------------------------
+        # SAFE Week merging
+        # ---------------------------------------
+        if week_col:
+            start = 2
+            while start <= ws.max_row:
+                start_val = ws.cell(row=start, column=week_col).value
+                end = start
+                while end + 1 <= ws.max_row and ws.cell(row=end + 1, column=week_col).value == start_val:
+                    end += 1
+
+                if end > start:
+                    ws.merge_cells(
+                        start_row=start, end_row=end,
+                        start_column=week_col, end_column=week_col
+                    )
+
+                start = end + 1
+
+    wb.save(filename)
+    print(f"Created {filename} successfully with full formatting.")
 
 export_all_weeks_by_prep_ta("Spring26PrepTANeeds.xlsx")
