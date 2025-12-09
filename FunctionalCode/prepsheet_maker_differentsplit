@@ -238,7 +238,7 @@ def gather_weekly_needs(week_number):
 #          EXPORT BY PREP TA + FORMATTING
 # ============================================
 def export_all_weeks_by_prep_ta(filename):
-
+    
     all_weeks = get_all_weeks()
     all_records = []
 
@@ -252,35 +252,52 @@ def export_all_weeks_by_prep_ta(filename):
             if ta:
                 all_records.append(rec)
 
+    # Build DataFrame (may be empty)
     df = pd.DataFrame(all_records)
 
-    # Convert Week column to datetime for proper sorting
-    if "Week" in df.columns:
+    # If df is empty, we still want to create sheets with headers
+    expected_columns = [
+        "Week", "Course", "Category", "Item/Organism", "Media Used",
+        "Form", "Total Quantity", "Notes", "Storage Room", "Storage Loc.", "PrepTA"
+    ]
+
+    # Convert Week column to datetime for proper sorting (only if present)
+    if not df.empty and "Week" in df.columns:
         df["Week_dt"] = df["Week"].apply(lambda x: parse_week_string(str(x)))
 
-    # Sort using the new datetime column
+    # Sort using the new datetime column if possible
     sort_order = ["Week_dt", "Category", "Course", "Media Used", "Form", "Item/Organism"]
-    df = df.sort_values(by=sort_order, ascending=True)
+    if not df.empty and all(col in df.columns for col in sort_order):
+        df = df.sort_values(by=sort_order, ascending=True)
 
-    # Optional: remove helper column after sorting if you don't want it in Excel
-    df = df.drop(columns=["Week_dt"])
-
-    # Remove PrepTA column before export
-    if "PrepTA" in df.columns:
-        df = df.drop(columns=["PrepTA"])
+    # If Week_dt was added, drop it now
+    if "Week_dt" in df.columns:
+        df = df.drop(columns=["Week_dt"])
 
     # --- Write file (NO manual save here) ---
     with pd.ExcelWriter(filename, engine="openpyxl") as writer:
-        for ta in ["Emily", "Jenna"]:
-            df_ta = df[df["Course"].str.contains(ta)] if False else df  # placeholder
-            df_ta = df[df["Course"].notna()]  # actual filtered above
-            df[df.index.isin(df[df["Course"].map(lambda c: ta in c if isinstance(c, str) else False)].index)]
-            df_ta = df  # final export is already filtered up top
 
-            df[df.index.isin([])]  # ensures no accidental TA grouping here
-            df_ta = df  # all TA-assigned rows are in df
+        # If df is empty, create empty sheets with headers for each TA to avoid saving problems
+        if df.empty:
+            headers_df = pd.DataFrame(columns=expected_columns)
+            for ta in ["Emily", "Jenna"]:
+                headers_df.to_excel(writer, sheet_name=f"TA_{ta}", index=False)
+        else:
+            # Ensure PrepTA column exists before filtering
+            if "PrepTA" not in df.columns:
+                df["PrepTA"] = "Unassigned"
 
-            df_ta.to_excel(writer, sheet_name=f"TA_{ta}", index=False)
+            for ta in ["Emily", "Jenna"]:
+                df_ta = df[df["PrepTA"] == ta].copy()
+
+                if "PrepTA" in df_ta.columns:
+                    df_ta = df_ta.drop(columns=["PrepTA"])
+
+                # If TA has no rows, write an empty sheet with headers (to keep structure consistent)
+                if df_ta.empty:
+                    pd.DataFrame(columns=df.columns).to_excel(writer, sheet_name=f"TA_{ta}", index=False)
+                else:
+                    df_ta.to_excel(writer, sheet_name=f"TA_{ta}", index=False)
 
     # ------------------------------
     # SAFE Formatting with openpyxl
@@ -423,7 +440,18 @@ def export_all_weeks_by_prep_ta(filename):
 
                 start = end + 1
 
+    # -------------------------------------------------------
+    # Remove existing output file if it exists (overwrite)
+    # -------------------------------------------------------
+    if os.path.exists(filename):
+        try:
+            os.remove(filename)
+        except Exception as e:
+            print(f"Could not delete existing file: {e}")
+            return
+        
     wb.save(filename)
     print(f"Created {filename} successfully with full formatting.")
 
 export_all_weeks_by_prep_ta("Spring26PrepTANeeds.xlsx")
+
