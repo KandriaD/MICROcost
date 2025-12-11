@@ -67,6 +67,22 @@ TA_ASSIGNMENTS = {
     }
 }
 
+# ============================
+#   SORT PROFILES FOR SHEETS
+# ============================
+
+SORT_PROFILES = {
+    "Option1": ["Course", "Category", "Media Used", "Form", "Item/Organism"],
+    "Option2": ["Category", "Media Used","Form", "Item/Organism", "Course"],
+    "Option3": ["Category", "Course",  "Media Used", "Form", "Item/Organism"],
+    "Option4": ["Course", "Category", "Item/Organism", "Media Used", "Form"]
+}
+
+TA_SORT_PROFILE = {
+    "Emily": "Option3",
+    "Jenna": "Option2"
+}
+
 
 def get_prep_ta(course, category):
     """
@@ -265,10 +281,10 @@ def export_all_weeks_by_prep_ta(filename):
     if not df.empty and "Week" in df.columns:
         df["Week_dt"] = df["Week"].apply(lambda x: parse_week_string(str(x)))
 
-    # Sort using the new datetime column if possible
-    sort_order = ["Week_dt", "Category", "Course", "Media Used", "Form", "Item/Organism"]
-    if not df.empty and all(col in df.columns for col in sort_order):
-        df = df.sort_values(by=sort_order, ascending=True)
+    # # Sort using the new datetime column if possible
+    # sort_order = ["Week_dt", "Category", "Course", "Media Used", "Form", "Item/Organism"]
+    # if not df.empty and all(col in df.columns for col in sort_order):
+    #     df = df.sort_values(by=sort_order, ascending=True)
 
     # If Week_dt was added, drop it now
     if "Week_dt" in df.columns:
@@ -289,6 +305,15 @@ def export_all_weeks_by_prep_ta(filename):
 
             for ta in ["Emily", "Jenna"]:
                 df_ta = df[df["PrepTA"] == ta].copy()
+                
+                sort_profile_name = TA_SORT_PROFILE.get(ta)
+                if sort_profile_name:
+                    sort_columns = SORT_PROFILES.get(sort_profile_name, [])
+                    # Only keep columns that actually exist in df_ta
+                    valid_sort_cols = [c for c in sort_columns if c in df_ta.columns]
+                    
+                    if valid_sort_cols:
+                        df_ta = df_ta.sort_values(by=valid_sort_cols, ascending=True)
 
                 if "PrepTA" in df_ta.columns:
                     df_ta = df_ta.drop(columns=["PrepTA"])

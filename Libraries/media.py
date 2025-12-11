@@ -512,7 +512,7 @@ media_list = {
     },
 
     "tributyruin_agar": {
-        "name": "Tributyruin Agar",
+        "name": "Tributyruin Agar", #replacement for Sprirt Blue Agar
         "synonym": ["Tributyrin"],
         "supplier": "",
         "catalog_number": "",
