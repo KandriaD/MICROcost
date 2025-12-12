@@ -72,10 +72,10 @@ TA_ASSIGNMENTS = {
 # ============================
 
 SORT_PROFILES = {
-    "Option1": ["Course", "Category", "Media Used", "Form", "Item/Organism"],
-    "Option2": ["Category", "Media Used","Form", "Item/Organism", "Course"],
-    "Option3": ["Category", "Course",  "Media Used", "Form", "Item/Organism"],
-    "Option4": ["Course", "Category", "Item/Organism", "Media Used", "Form"]
+    "Option1": ["Week_dt", "Course", "Category", "Media Used", "Form", "Item/Organism"],
+    "Option2": ["Week_dt", "Category", "Media Used","Form", "Item/Organism", "Course"],
+    "Option3": ["Week_dt", "Category", "Course",  "Media Used", "Form", "Item/Organism"],
+    "Option4": ["Week_dt", "Course", "Category", "Item/Organism", "Media Used", "Form"]
 }
 
 TA_SORT_PROFILE = {
@@ -286,10 +286,6 @@ def export_all_weeks_by_prep_ta(filename):
     # if not df.empty and all(col in df.columns for col in sort_order):
     #     df = df.sort_values(by=sort_order, ascending=True)
 
-    # If Week_dt was added, drop it now
-    if "Week_dt" in df.columns:
-        df = df.drop(columns=["Week_dt"])
-
     # --- Write file (NO manual save here) ---
     with pd.ExcelWriter(filename, engine="openpyxl") as writer:
 
@@ -317,6 +313,10 @@ def export_all_weeks_by_prep_ta(filename):
 
                 if "PrepTA" in df_ta.columns:
                     df_ta = df_ta.drop(columns=["PrepTA"])
+                
+                    # If Week_dt was added, drop it now
+                if "Week_dt" in df_ta.columns:
+                    df_ta = df_ta.drop(columns=["Week_dt"])
 
                 # If TA has no rows, write an empty sheet with headers (to keep structure consistent)
                 if df_ta.empty:
