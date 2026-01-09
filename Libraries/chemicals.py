@@ -280,6 +280,15 @@ chemical_list = {
         "quantity": 1
     },
 
+    "kmno4": {
+        "name": "Potassium Permanganate (KMnO4)",
+        "synonym": ["KMnO4", "Potassium Permanganate", "Potassium Permanganate Solution"],
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
     "kovacs_reagent":{
         "name": "Kovac's Reagent",
         "supplier": "",
