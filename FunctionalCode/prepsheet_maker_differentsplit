@@ -244,6 +244,7 @@ def gather_weekly_needs(week_number):
                     "Form": form,
                     "Total Quantity": total_qty,
                     "Notes": entry.get("Notes", ""),
+                    "Prep Person": "",
                     "Storage Room": "", 
                     "Storage Loc.": ""
                 })
@@ -274,7 +275,7 @@ def export_all_weeks_by_prep_ta(filename):
     # If df is empty, we still want to create sheets with headers
     expected_columns = [
         "Week", "Course", "Category", "Item/Organism", "Media Used",
-        "Form", "Total Quantity", "Notes", "Storage Room", "Storage Loc.", "PrepTA"
+        "Form", "Total Quantity", "Notes", "Prep Person", "Storage Room", "Storage Loc.", "PrepTA"
     ]
 
     # Convert Week column to datetime for proper sorting (only if present)
@@ -351,10 +352,11 @@ def export_all_weeks_by_prep_ta(filename):
         total_col = col_index.get("Total Quantity")
         item_col = col_index.get("Item/Organism")
         notes_col = col_index.get("Notes")
+        prep_person_col = col_index.get("Prep Person")
 
         center_cols = [
             week_col, course_col, category_col,
-            media_col, form_col, total_col
+            media_col, form_col, total_col, prep_person_col
         ]
         center_cols = [c for c in center_cols if c]
 

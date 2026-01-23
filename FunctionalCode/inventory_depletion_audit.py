@@ -264,7 +264,7 @@ if __name__ == "__main__":
             warning_date = parse_week_string(str(warning_week)).strftime("%b %d, %Y")
             if next_low_week:
                 low_date = parse_week_string(str(next_low_week)).strftime("%b %d, %Y")
-                next_text = f", if do not make more, will not have engough on: {low_date}"
+                next_text = f", if do not make more, will not have enough on: {low_date}"
             else:
                 next_text = " Not Needed Again This Semester"
 
