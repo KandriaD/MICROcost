@@ -193,7 +193,19 @@ def gather_weekly_needs(week_number):
         schedule_df = xls.parse("ExperimentIndex")
         schedule_df.columns = schedule_df.columns.str.strip()
 
-        week_exps = schedule_df[schedule_df["Week"] == week_number]    
+        def normalize_week_string(s):
+            import re
+            s = str(s).strip()
+            s = s.replace("Sept", "Sep")
+            s = s.replace("–", "-")   # en dash → hyphen
+            s = s.replace("—", "-")   # em dash → hyphen
+            s = re.sub(r"\s*-\s*", "-", s)  # remove spaces around dash
+            return s
+
+        schedule_df["Week"] = schedule_df["Week"].apply(normalize_week_string)
+        week_number = normalize_week_string(week_number)
+
+        week_exps = schedule_df[schedule_df["Week"] == week_number]
 
         for _, row in week_exps.iterrows():
 
@@ -201,17 +213,38 @@ def gather_weekly_needs(week_number):
             if sheet_name.endswith('.0'):
                 sheet_name = sheet_name[:-2]
 
-            if sheet_name not in xls.sheet_names:
+            sheet_name = sheet_name.strip()
+            xls_sheet_names = [s.strip() for s in xls.sheet_names]
+
+            if sheet_name not in xls_sheet_names:
                 print(f"Missing sheet: {sheet_name} in {file}")
                 continue
 
-            exp_df = xls.parse(sheet_name)
+            # Read raw without assuming header
+            raw_df = xls.parse(sheet_name, header=None)
+
+            # Find header row by looking for "Category"
+            header_row = None
+            for i, row in raw_df.iterrows():
+                row_values = [str(v).strip() for v in row.values]
+                if "Category" in row_values:
+                    header_row = i
+                    break
+
+            if header_row is None:
+                print(f"Could not find header row in {course_name} {sheet_name}")
+                continue
+
+            # Re-read using correct header row
+            exp_df = xls.parse(sheet_name, header=header_row)
             exp_df.columns = exp_df.columns.str.strip()
+
 
             for _, entry in exp_df.iterrows():
 
                 category = str(entry.get("Category", "")).strip()
                 if not category or category.lower() == "nan":
+                    # print(f"Skipping {course_name} {sheet_name} row due to empty category: {entry.to_dict()}")
                     continue
 
                 item_name = entry.get("Item/Organism")
@@ -220,6 +253,7 @@ def gather_weekly_needs(week_number):
 
                 name = str(item_name).strip() if item_name is not None else ""
                 media_used = entry.get("Media Used")
+                prep_person = entry.get("Prep Person")
                 form_raw = entry.get("Form")
                 form = str(form_raw).strip().replace(" ", "_") if form_raw else ""
                 if form in special_forms:
@@ -234,6 +268,10 @@ def gather_weekly_needs(week_number):
                     print(f"Error calculating qty for {course_name} {category} {name}: {e}")
                     continue
 
+                if pd.isna(total_qty):
+                    print("Found NaN total quantity for:", name, "in", course_name, sheet_name)
+
+
                 # Add item
                 weekly_items.append({
                     "Week": week_number,
@@ -244,12 +282,13 @@ def gather_weekly_needs(week_number):
                     "Form": form,
                     "Total Quantity": total_qty,
                     "Notes": entry.get("Notes", ""),
-                    "Prep Person": "",
+                    "Prep Person": prep_person,
                     "Storage Room": "", 
                     "Storage Loc.": ""
                 })
 
     return weekly_items
+
 
 # ============================================
 #          EXPORT BY PREP TA + FORMATTING
@@ -481,4 +520,6 @@ def export_all_weeks_by_prep_ta(filename):
     print(f"Created {filename} successfully with full formatting.")
 
 export_all_weeks_by_prep_ta("Spring26PrepTANeeds.xlsx")
+
+
 
