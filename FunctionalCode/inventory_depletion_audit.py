@@ -93,7 +93,7 @@ def calculate_total_qty(quantity, dist_type, course_info, form=None):
 # Inventory loading
 # ============================================
 def load_media_inventory(INVENTORY_PATH):
-    df = pd.read_excel(INVENTORY_PATH, sheet_name="MediaSummary1.21.26")
+    df = pd.read_excel(INVENTORY_PATH, sheet_name="MediaSummary2.27.26")
     inventory = {}
     for _, row in df.iterrows():
         key = (
@@ -214,6 +214,17 @@ def forecast_weekly_inventory(inventory, all_weeks):
         for item in weekly_items:
             key = (item["Media Used"], item["Form"], normalize_notes(item["Notes"]))
             usage_schedule[key].append(week)
+
+    # Detect items already below threshold at start of semester
+    for key, qty in inv.items():
+        threshold = get_low_stock_threshold(*key)
+        if qty < threshold and key not in first_low_week:
+            next_usage = usage_schedule[key][0] if usage_schedule[key] else None
+            first_low_week[key] = {
+                "warning_week": "START OF SEMESTER",
+                "remaining_before": qty,
+                "next_low_week": next_usage
+            }
 
     # Simulate week-by-week depletion
     for week in all_weeks:
