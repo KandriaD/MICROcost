@@ -67,6 +67,7 @@ antibiotics = {
 
     "gentamicin": {
         "name": "Gentamicin 10 uG",
+        "synonym": ["Gentamicin", "Gentamycin"],
         "supplier": "VWR",
         "catalog_number": "90002-216",
         "cost_per_unit": 35.48,  # cost per 50 disks
@@ -91,6 +92,7 @@ antibiotics = {
 
     "nalidixic_acid": {
         "name": "Nalidixic Acid 30 uG",
+        "synonym": "Nalidixic Acid",
         "supplier": "VWR",
         "catalog_number": "90002-086",
         "cost_per_unit": 36.51,  # cost per 50 disks
@@ -164,6 +166,7 @@ antibiotics = {
 
     "v_factor":{
         "name": "V-Factor",
+        "synonym": "V factor strips",
         "supplier": "VWR",
         "catalog_number": "75832-736",
         "cost_per_unit": 32.99,  # cost per 50 disks
@@ -172,6 +175,7 @@ antibiotics = {
 
     "x_factor":{
         "name": "X-Factor",
+        "synonym": "X factor strips",
         "supplier": "VWR",
         "catalog_number": "90002-554",
         "cost_per_unit": 85.62,  # cost per 50 disks

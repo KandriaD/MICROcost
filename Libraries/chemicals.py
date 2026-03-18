@@ -3,6 +3,7 @@
 chemical_list = {
     "20mm_phosphate_buffer": {
         "name": "20mM Phosphate Buffer (pH 7.0)",
+        "synonym": ["M/15 Phosphate Buffer", "M/15 Phosphate (pH 7) buffer"], #i thnk this is the same as 20mM phosphate buffer, but need to confirm
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0.0, #need to get this information
@@ -11,6 +12,7 @@ chemical_list = {
 
     "ferric_chloride": {
         "name": "10% Ferric Chloride Solution",
+        "synonym": ["10% Ferric Chloride Solution", "Ferric Chloride"],
         "supplier": "VWR",
         "catalog_number": "00-00", #look at Cas# on bottle and find cheap on on VWR
         "cost_per_unit": 0.00853, #cost per ml for 10%solution
@@ -27,11 +29,31 @@ chemical_list = {
 
     "acid_alcohol": {
         "name": "Acid Alcohol (3% HCl in Ethanol)",
+        "synonym": ["Acid Alcohol", "3% HCl in Ethanol"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 68, #this is cost of ethonol only #3% HCl in ethanol from chem stock room
         "quantity": 1000 #mL
     },
+
+    "bca_reagent_a": {
+        "name": "BCA Reagent A (Bicinchoninic Acid Solution)",
+        "synonym": ["BCA Reagent A", "Bicinchoninic Acid Solution"],
+        "supplier": "Fisher Scientific",
+        "catalog_number": "A7963",
+        "cost_per_unit": 394.67/2, #same kit as reagent B)
+        "quantity": 1000 #mL
+    },
+
+    "bca_reagent_b": {
+        "name": "BCA Reagent B (Folin Reagent)",
+        "synonym": ["BCA Reagent B", "Folin Reagent"],
+        "supplier": "Fisher Scientific",
+        "catalog_number": "A7963", #same kit as reagent A
+        "cost_per_unit": 394.67/2,
+        "quantity": 1000 #mL
+    },
+
 
     "biorad_dc_protein_assay_kit_reagentA": {
         "name": "Biorad DC Protein Assay Kit Reagent A (Alkaline Copper Tartrate)",
@@ -82,6 +104,15 @@ chemical_list = {
         "cost_per_unit": 23.59,
         "quantity": 500 #23.59 for 500g; density 1.73g/ml, mm 381.37 g/mol
     },
+
+    "buffered_sodium_nitrate": {
+        "name": "Buffered Sodium Nitrate Solution",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #need to get this information
+        "quantity": 1
+    },
+
 
     "congo_red": {
         "name": "Congo Red",
@@ -190,6 +221,7 @@ chemical_list = {
 
     "freezing_medium": {
         "name": "Freezing Medium (10% gylcerol in 100% Fetal Bovine Serum)",
+        "synonym": ["Freezing Medium", "10% gylcerol in 100% Fetal Bovine Serum", "Freezing Medium (10% gylcerol in 100% HI-Fetal Bovine Serum)"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 176.28, 
@@ -232,10 +264,19 @@ chemical_list = {
     "hydrogen_peroxide": {
         "name": "Hydrogen Peroxide (30%)",
         "synonym": ["H2O2", "Hydrogen Peroxide"],
-        "supplier": "Fisher Sci",
-        "catalog_number": "0000", #need to get the catalog_number 
+        "supplier": "",
+        "catalog_number": "", #
         "cost_per_unit": 36.03, #36.03/500ml for 30%
         "quantity": 500 
+    },
+
+    "hydrogen_peroxide_3%": {
+        "name": "Hydrogen Peroxide (3%)",
+        "synonym": ["H2O2 3%", "3% Hydrogen Peroxide"],
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 36.03/10, #36.03/500ml for 30%, so divide by 10 for 3%
+        "quantity": 500
     },
 
     "hydrogen_peroxide_3%_in_pbs": {
@@ -265,6 +306,7 @@ chemical_list = {
 
     "kinyounin_carbolfuchsin": {
         "name": "Kinyoun's Carbolfuchsin",
+        "synonym": ["Kinyoun Carbolfuchsin", "Carbolfuchsin"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #have not purchased this in a long time
@@ -538,11 +580,21 @@ chemical_list = {
     },
 
     "sodium_deoxycholate": {
-        "name": "Sodium Deoxycholate", 
+        "name": "Sodium Deoxycholate",
+        "synonym": ["Deoxycholate"],
         "supplier": "VWR",
         "catalog_number": "97062-028",
         "cost_per_unit": 152.14,
-        "quantity": 50
+        "quantity": 50 #50grams
+    },
+
+    "sodium_deoxycholate_2%": {
+        "name": "2% Sodium Deoxycholate",
+        "synonym": ["2% Deoxycholate"],
+        "supplier": "VWR",
+        "catalog_number": "97062-028",
+        "cost_per_unit": 60.86, #cost per 2% solution, we make from pure
+        "quantity": 1000
     },
 
     "sucrose": {
@@ -610,13 +662,22 @@ chemical_list = {
         "quantity": 100*4 #need diluted to 0.1%
     },
 
-    "trypan_blue_in_pbs": {
-        "name": "Trypan Blue Stain (0.1%) in PBS", #changed to pbs instead of dpbs, didnt adjust numbers just name
+    "trypan_blue_in_pbs_0.1": {
+        "name": "Trypan Blue Stain (0.1%) in PBS", 
         "supplier": "",
         "catalog_number": "",
-        "cost_per_unit": 148.81, 
+        "cost_per_unit": 0.43, 
         "quantity": 1000 #1000mL of 0.1% trypan blue in PBS 
     },
+
+    "trypan_blue_in_pbs_0.4": {
+        "name": "Trypan Blue Stain (0.4%) in PBS",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 1.72, 
+        "quantity": 1000 #1000mL of 0.4% trypan blue in PBS 
+    },
+
 
     "trypsin": {
         "name": "Trypsin (0.05% / mM EDTA)",
@@ -758,7 +819,7 @@ chemical_list = {
 
     "bsa": {
         "name": "Bovine Serum Albumin (BSA) (1%)",
-        "synonym": ["BSA", "Bovine Serum Albumin", "Bovine Serum Albumin (BSA)"],
+        "synonym": ["BSA", "Bovine Serum Albumin", "Bovine Serum Albumin (BSA)", "Unknown protein sample"],
         "supplier": "Millipore Sigma",
         "catalog_number": "126609",
         "cost_per_unit": 1260, #cost per bottle of 100g
@@ -767,7 +828,7 @@ chemical_list = {
 
     "fetal_bovine_serum_100%": {
         "name": "Fetal Bovine Serum (100%)",
-        "synonym": "FBS",
+        "synonym": ["FBS", "Fetal Bovine Serum", "FBS (100%)"],
         "supplier": "VWR",
         "catalog_number": "89510-194",
         "cost_per_unit": 96.78, #cost per bottle of 50ml
@@ -881,6 +942,7 @@ chemical_list = {
 
     "tdt_enzyme": {
         "name": "Terminal Deoxynucleotidyl Transferase (TdT)",
+        "synonym": ["TdT", "Terminal Deoxynucleotidyl Transferase", "Terminal Deoxynucleotidyl Transferase (TdT enzyme)"],
         "supplier": "VWR",
         "catalog_number": "80500-112",
         "cost_per_unit": 273.92, #pulled from VWR website, not sure if is the one we purchased

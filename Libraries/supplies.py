@@ -3,9 +3,10 @@
 supplies = {
     "96_well_plates":{
         "name": "96 well plates",
+        "synonyms": ["96 well plate", "96 well microplate"],
         "supplier": "",
         "catalog_number": "",
-        "cost_per_unit": 136.08,
+        "cost_per_unit": 140,
         "quantity": 100
     },
 
@@ -35,6 +36,7 @@ supplies = {
 
     "api_20e_kit": {
         "name": "API 20E Kit",
+        "synonyms": ["API 20E"],
         "supplier": "VWR",
         "catalog_number": "95060-674",
         "cost_per_unit": 511.37,
@@ -217,6 +219,15 @@ supplies = {
         "quantity": 500 #500g
     },
 
+    "cell_culture_dishes": {
+        "name": "Cell Culture Dishes",
+        "synonyms": ["Cell Culture Dish", "Cell Culture Plate", "Cell Culture Treated Petri Plate, 60mm"],
+        "supplier": "VWR",
+        "catalog_number": "10062-890",
+        "cost_per_unit": 158.66,
+        "quantity": 600
+    },
+
     "centrifuge": {
         "name": "Centrifuge",
         "supplier": "",
@@ -230,6 +241,14 @@ supplies = {
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #cheap disposable chopsticks, so effectively 0
+        "quantity": 1
+    },
+
+    "clear_tape": {
+        "name": "Clear Tape",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, 
         "quantity": 1
     },
 
@@ -267,6 +286,7 @@ supplies = {
 
     "cotton_swabs": {
         "name": "Sterile Cotton Swabs",
+        "synonyms": ["Cotton Swabs", "Swabs", "Cotton Swab"],
         "supplier": "VWR",
         "catalog_number": "10806-050", #new catalog number VWR 76240-036; have not changed price yet
         "cost_per_unit": 14.72,
@@ -307,6 +327,7 @@ supplies = {
 
     "cuvettes": {
         "name": "Cuvettes",
+        "synonyms": ["Cuvette", "Spectrophotometer Cuvette"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0
@@ -369,6 +390,15 @@ supplies = {
         "quantity": 1
     },
 
+    "dissection_needles": {
+        "name": "Dissection Needles",
+        "synonyms": ["Dissecting Needle", "Inoculating Needle", "Dissecting Needles"],
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "electrophoresis_apparatus": {
         "name": "Electrophoresis Apparatus",
         "supplier": "",
@@ -387,10 +417,10 @@ supplies = {
 
     "diabetic_lancets": {
         "name": "Diabetic Lancets",
-        "synonyms": ["lancets", "Diabetic Lancet"],
+        "synonyms": ["lancets", "Diabetic Lancet", "Safety Lancet"],
         "supplier": "Fisher Scientific", #havent purchased yet, may get from somewhere else at different price
         "catalog_number": "21-888-003",
-        "cost_per_unit": 21.14,
+        "cost_per_unit": 18.58,
         "quantity": 100
     },
 
@@ -477,6 +507,7 @@ supplies = {
 
     "filter_paper_55mm": {
         "name": "Filter Paper, 55mm",
+        "synonyms": ["Filter Paper", "55mm Filter Paper"],
         "supplier": "VWR",
         "catalog_number": "",
         "cost_per_unit": 13.37,
@@ -518,6 +549,7 @@ supplies = {
 
     "gaspak_campy_sachet": {
         "name": "GasPak EZ Campy Sachet",
+        "synonym": ["CampyPaks", "CampyPak"],
         "supplier": "VWR",
         "catalog_number": "90003-646",
         "cost_per_unit": 102.24,
@@ -574,6 +606,7 @@ supplies = {
 
     "glass_test_tube": {
         "name": "Glass Test Tube",
+        "synonyms": ["Glass Test Tubes", "Test Tube", "Empty 12x 75mm tubes", "Test Tubes"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0,
@@ -587,6 +620,16 @@ supplies = {
         "cost_per_unit": 0, #reusable, so effectively 0
         "quantity": 1
     },
+
+    "glass_tubes_w_caps": {
+        "name": "Glass Tubes with Caps",
+        "synonyms": ["Test Tubes with Cap", "Glass Test Tubes with Caps", "12x75mm tubes with caps", "Test Tubes w/ Caps"],
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0,
+        "quantity": 1
+    },
+
 
     "glo_germ": {
         "name": "Glo Germ Hand Wash",
@@ -836,6 +879,7 @@ supplies = {
     
     "mic_stips": {
         "name": "MIC Strips from Liofilchem MTS Truimethoprim-Sulamethoxazole",
+        "synonyms": ["MIC Strips", "MTS Truimethoprim-Sulamethoxazole"],
         "supplier": "Fischer Scientific",
         "catalog_number": "22-777-912",
         "cost_per_unit": 136.62,
@@ -852,7 +896,7 @@ supplies = {
 
     "microcentrifuge_tube": {
         "name": "Microcentrifuge Tube, 1.5 mL",
-        "synonyms": ["eppendorf tube", "microfuge tube", "Microcentrifuge Tube"],
+        "synonyms": ["eppendorf tube", "microfuge tube", "Microcentrifuge Tube", "Microcentrifuge Tubes", "Eppendorf Tube", "Eppendorf Tubes"],
         "supplier": "VWR",
         "catalog_number": "20170-038",
         "cost_per_unit": 27.00,  
@@ -867,12 +911,30 @@ supplies = {
         "quantity": 1
     },
 
+    "microplate_reader": {
+        "name": "Microplate Reader",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "microscope_slide_cover_slips": {
         "name": "Microscope Slide Cover Slips, 18x18mm",
+        "synonyms": ["Cover Slips", "Microscope Slide Cover Slips"],
         "supplier": "VWR",
         "catalog_number": "470112-504",
         "cost_per_unit": 5.63,  
         "quantity": 100 #check this
+    },
+
+    "microscope_slide_cover_slips_circular": {
+        "name": "Microscope Slide Cover Slips, circular",
+        "synonyms": ["Microscope Slide Cover Slips, circular, 22mm", "Circular Cover Slips", "Microscope Slide Cover Slips, circular"],
+        "supplier": "VWR",
+        "catalog_number": "62407-063",
+        "cost_per_unit": 471.79,
+        "quantity": 500 
     },
 
     "microscope_slides": {
@@ -901,6 +963,7 @@ supplies = {
 
     "nitrate_reagent_a": {
         "name": "Nitrate reagent A",
+        "synonyms": ["Nitrate reagent A", "Nitrate A"],
         "supplier": "Millipore Sigma",
         "catalog_number": "38497",
         "cost_per_unit": 47.5,
@@ -909,6 +972,7 @@ supplies = {
 
     "nitrate_reagent_b": {
         "name": "Nitrate reagent B",
+        "synonyms": ["Nitrate reagent B", "Nitrate B"],
         "supplier": "Millipore Sigma",
         "catalog_number": "39441",
         "cost_per_unit": 47.5,
@@ -1031,6 +1095,7 @@ supplies = {
 
     "petri_plate_standard": {
         "name": "Empty Petri Dish, 100mm",
+        "synonyms": ["Petri Dish"],
         "supplier": "VWR",
         "catalog_number": "25384-342",
         "cost_per_unit": 97.64,
@@ -1303,6 +1368,7 @@ supplies = {
 
     "t25_flask": {
         "name": "T25 Flask",
+        "synonyms": ["T25 Cell Culture Flask"],
         "supplier": "VWR",
         "catalog_number": "82051-070",
         "cost_per_unit": 191.21, 
@@ -1311,6 +1377,7 @@ supplies = {
 
     "t75_flask": {
         "name": "T75 Flask",
+        "synonyms": ["T75 Cell Culture Flask"],
         "supplier": "VWR",
         "catalog_number": "82050-854",
         "cost_per_unit": 202.25, 
@@ -1367,6 +1434,7 @@ supplies = {
 
     "transfer_pipette": {
         "name": "Sterile Transfer Pipette",
+        "synonyms": ["Transfer Pipette","Transfer Pipettes", "Disposable Transfer Pipette"],
         "supplier": "VWR",
         "catalog_number": "414004-021",
         "cost_per_unit": 29.28,  
@@ -1403,6 +1471,14 @@ supplies = {
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #usually a beacker and is reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "water_bath": {
+        "name": "Water Bath",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
         "quantity": 1
     },
 

@@ -192,15 +192,15 @@ media_list = {
     
     "loeffler_agar_slants": { 
         "name": "Loeffler Agar Slants [premade]",
-        "synonym": ["Loeffler Slants", "Loeffler Agar" "Loeffler Slant"],
+        "synonym": ["Loeffler Slants", "Loeffler Agar", "Loeffler Slant"],
         "supplier": "VWR",
         "catalog_number": "89426-236",
         "cost_per_ml": 130.40/20 #premade
     },
 
     "lowenstein_jensen_slants": { 
-        "name": "Lowensteun-Jensen Slants [premade]",
-        "synonym": ["LJ Slants", "Lowenstein-Jensen Agar", "LJ Agar"],
+        "name": "Lowenstein-Jensen Slants [premade]",
+        "synonym": ["LJ Slants", "Lowenstein-Jensen Agar", "LJ Agar", "Lowenstein-Jensen"],
         "supplier": "VWR",
         "catalog_number": "90001-154",
         "cost_per_ml": 48.35/10  #premade
@@ -295,6 +295,7 @@ media_list = {
 
     "muller_hinton": {
         "name": "Muller-Hinton Agar",
+        "synonym": ["Muller-Hinton", "Muller Hinton Agar", "MH", "Mueller-Hinton"],
         "supplier": "VWR",
         "catalog_number": '95039-350',
         "cost_per_ml": 165.75/500*38/1000
@@ -408,6 +409,14 @@ media_list = {
         "cost_per_ml": 22.34/10 #premade
     },
 
+    "serum_tellurite_agar": {
+        "name": "Serum Tellurite Agar [premade]",
+        "synonym": ["Serum Tellurite Agar", "Serum Tellurite"],
+        "supplier": "Fischer Scientific",
+        "catalog_number": "50-948-700",
+        "cost_per_ml": 80.18/20 #premade
+    },
+
     "ss_agar": { #salmonella shigella agar 500g 169.84 makes 555 plates
         "name": "Salmonella Shigella (SS) Agar",
         "synonym": ["SS Agar", "Salmonella Shigella Agar", "SS"],
@@ -441,6 +450,7 @@ media_list = {
 
     "skim_milk_agar":{
         "name": "Skim Milk Agar",
+        "synonym": ["Skim Milk Agar", "Skim Milk", "Milk Agar"],
         "supplier": "VWR",
         "catolog_number": "90002-594",
         "cost_per_ml": 67.38/500*100/1000 #67.38 for 500g ##100g/L
@@ -512,8 +522,8 @@ media_list = {
         "cost_per_ml": 0.00852
     },
 
-    "tributyruin_agar": {
-        "name": "Tributyruin Agar", #replacement for Sprirt Blue Agar
+    "tributyrin_agar": {
+        "name": "Tributyrin Agar", #replacement for Sprirt Blue Agar
         "synonym": ["Tributyrin"],
         "supplier": "",
         "catalog_number": "",
