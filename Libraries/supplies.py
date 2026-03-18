@@ -670,7 +670,7 @@ supplies = {
 
     "hot_plate": {
         "name": "Hot Plate",
-        "name": "Hotplate",
+        "synonyms": ["Hotplate", "Hot Plates"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_unit": 0, #reusable, so effectively 0

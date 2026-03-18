@@ -184,7 +184,7 @@ media_list = {
 
     "lb_broth": {
         "name": "Lennox Broth (LB)",
-        "synonym": ["LB Broth"],
+        "synonym": ["LB Broth", "LB"],
         "supplier": "VWR",
         "catalog_number": "76346-580",
         "cost_per_ml": 0.00287 # $71.64 for 500g
@@ -192,7 +192,7 @@ media_list = {
     
     "loeffler_agar_slants": { 
         "name": "Loeffler Agar Slants [premade]",
-        "synonym": ["Loeffler Slants", "Loeffler Agar"],
+        "synonym": ["Loeffler Slants", "Loeffler Agar" "Loeffler Slant"],
         "supplier": "VWR",
         "catalog_number": "89426-236",
         "cost_per_ml": 130.40/20 #premade
@@ -263,7 +263,7 @@ media_list = {
 
     "motility_media": {
         "name": "Motility Media",
-        "synonym": ["Motility Agar", "Motility Test Media", "MM"],
+        "synonym": ["Motility Agar", "Motility Test Media", "MM", "Motility Medium"],
         "supplier": "VWR",
         "catalog_number": "95021-572",
         "cost_per_ml": 236.68/500*20/1000 #236.68 for 500g ##20g/1L
@@ -287,7 +287,7 @@ media_list = {
 
     "mtm_agar": {
         "name": "Modified Thayer-Martin Agar (MTM) [premade]",
-        "synonym": ["MTM Agar", "Thayer-Martin Agar", "MTM", "Modified Thayer-Martin"],
+        "synonym": ["MTM Agar", "Thayer-Martin Agar", "MTM", "Modified Thayer-Martin", "Thayer-Martin"],
         "supplier": "VWR",
         "catalog_number": "10324-496",
         "cost_per_ml": 16.04/10 #premade
@@ -356,6 +356,7 @@ media_list = {
 
     "pda": {
         "name": "Potato Dextrose Agar",
+        "synonym": ["PDA", "Potato Flake Agar"],
         "supplier": "VWR",
         "catalog_number": "90000-758", 
         "cost_per_ml": 193.69/500*39/1000
