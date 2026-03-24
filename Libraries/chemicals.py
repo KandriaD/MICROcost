@@ -10,6 +10,15 @@ chemical_list = {
         "quantity": 1 
     },
 
+    "abts_substrate_solution": {
+        "name": "ABTS Substrate Solution",
+        "synonym": ["ABTS Substrate Solution", "2,2'-Azino-bis(3-ethylbenzothiazoline-6-sulfonic acid)"],
+        "supplier": "Fischer Scientific",
+        "catalog_number": "37615",
+        "cost_per_unit": 160,
+        "quantity": 250 #ml
+    },
+
     "ferric_chloride": {
         "name": "10% Ferric Chloride Solution",
         "synonym": ["10% Ferric Chloride Solution", "Ferric Chloride"],
@@ -644,6 +653,14 @@ chemical_list = {
         "catalog_number": "",
         "cost_per_unit": 0, #need to get this information ###Per 1 L: 11.02g (CaCl2*2H2O; FW 147.02); 1.22g (MgCl2*6H2O; W 203.3); 150g glycerol
         "quantity": 1
+    },
+
+    "tmb_substrate_solution": {
+        "name": "TMB-Blotting Substrate Solution",
+        "supplier": "Thermo Fisher Scientific",
+        "catalog_number": "34018",
+        "cost_per_unit": 210,
+        "quantity": 250 #ml
     },
 
     "towbin_transfer_buffer": {
