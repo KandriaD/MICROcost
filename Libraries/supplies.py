@@ -228,6 +228,14 @@ supplies = {
         "quantity": 600
     },
 
+    "cell_scrapers": {
+        "name": "Cell Scraper",
+        "supplier": "Thermo Fisher Scientific",
+        "catalog_number": "179693PK",
+        "cost_per_unit": 278.65,
+        "quantity": 50
+    },
+
     "centrifuge": {
         "name": "Centrifuge",
         "supplier": "",
@@ -1272,6 +1280,7 @@ supplies = {
 
     "sigmafast_dab_tablets": {
         "name": "SigmaFast DAB (3, 3'-diaminobenzidine) Tablets",
+        "synonyms": ["SigmaFast DAB Tablets", "DAB (3, 3'-diaminobenzidine) Tablets"],
         "supplier": "Millipore Sigma",
         "catalog_number": "D4293",
         "cost_per_unit": 259, 
@@ -1280,10 +1289,14 @@ supplies = {
 
     "simulated_abo/rh_blood_typing_kit": {
         "name": "Simulated ABO/Rh Blood Typing Kit",
-        "supplier": "Carolina Biological Supply",
-        "catalog_number": "700101",
-        "cost_per_unit": 63.90, 
-        "quantity": 30 #30 kits
+        "supplier": "VWR",
+        "catalog_number": "470015-184",
+        "cost_per_unit": 32.59,
+        "quantity": 12 #12 kits... honestly can be used more, depends on how much fake blood is in each bottle
+        # "supplier": "Carolina Biological Supply",
+        # "catalog_number": "700101",
+        # "cost_per_unit": 63.90, 
+        # "quantity": 30 #30 kits
     },
 
     "sissors": {

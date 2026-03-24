@@ -27,7 +27,7 @@ media_list = {
 
     "agar_w/borate_buffered_saline_and_typan_blue": {
         "name": "Agar (1.2%) w/ 0.01% Trypan Blue in Borate Buffered Saline",
-        "synonym": ["Agar BBS TB"],
+        "synonym": ["Agar BBS TB", "Trypan Gels"],
         "supplier": "",
         "catalog_number": "",
         "cost_per_ml": 2.1882/100
@@ -131,7 +131,7 @@ media_list = {
         "synonym": ["DMEM", "Dulbecco's Modified Eagle's Medium"],
         "supplier": "Fischer Scientific",
         "catalog_number": "12491015",
-        "cost_per_ml": 50.65/500 # $50.65 for 500mL
+        "cost_per_ml": 52.65/500 # $50.65 for 500mL
     },
 
     "ec_broth": { 

@@ -493,13 +493,29 @@ chemical_list = {
         "cost_per_unit": 0, #need get this information
         "quantity": 1 #need to get this information
     },
-        
+
     "poly_l_lysine": {
-        "name": "Poly-L-Lysine",
+        "name": "Poly-L-Lysine", #0.1 % (w/v) in H2O
         "supplier": "Millipore Sigma",
         "catalog_number": "P8920",
-        "cost_per_unit": 157, # $157.00 for 100ml
+        "cost_per_unit": 163, 
         "quantity": 100 #100ml
+    },
+        
+    "poly_l_lysine_hydrobromide": {
+        "name": "Poly-L-Lysine hydrobromide",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "P4832",
+        "cost_per_unit": 140, # $140for 50ml
+        "quantity": 50 #ml
+    },
+
+    "poly_l_lysine_hydrobromide_0.1%": {
+        "name": "0.1% Poly-L-Lysine hydrobromide solution",
+        "supplier": "Millipore Sigma",
+        "catalog_number": "P4832",
+        "cost_per_unit": 140, # $140for 50ml
+        "quantity": 50000 # mL of 0.1% working solution a 50mL stock bottle yields (50 / 0.001)
     },
 
     "saline": {
@@ -755,10 +771,11 @@ chemical_list = {
 #serums, antiserums, and such
     "1ab_antibody": {
         "name": "1° Ab antibody",
+        "synonym": ["1° Ab antibody: goat anti-human IgG", "Primary Antibody"],
         "supplier": "",
         "catalog_number": "",
-        "cost_per_unit": 0, #still need to get this information
-        "quantity": 1 
+        "cost_per_unit": 0.14*1000, #$275 for 1mg, estimated working solution is 1:2000, so 1ul ~$0.14
+        "quantity": 1 #cost per ml
     },
 
     "2ab_antibody": {
@@ -771,8 +788,8 @@ chemical_list = {
 
     "2ab_antibody_solution": {
         "name": "2° Ab antibody solution (rabbit anit-goat IgG-HRP in 0.5% BSA/TBS)",
-        "supplier": "",
-        "catalog_number": "", #we mix
+        "supplier": "Millipore Sigma",
+        "catalog_number": "A5420", 
         "cost_per_unit": 13.02, #based on 1:2000 dilution of antibody with all other components
         "quantity": 100 #ml
     },
@@ -830,8 +847,8 @@ chemical_list = {
         "name": "Fetal Bovine Serum (100%)",
         "synonym": ["FBS", "Fetal Bovine Serum", "FBS (100%)"],
         "supplier": "VWR",
-        "catalog_number": "89510-194",
-        "cost_per_unit": 96.78, #cost per bottle of 50ml
+        "catalog_number": "MSPP-CFML-14",
+        "cost_per_unit": 73.56, #cost per bottle of 50ml
         "quantity": 50 #50ml
     },
     
@@ -871,16 +888,16 @@ chemical_list = {
         "name": "Human IgG (0.1mg/mL)",
         "supplier": "Millipore Sigma",
         "catalog_number": "I4506",
-        "cost_per_unit": 281.00, 
-        "quantity": 50/0.1 #50 mg in vial, need diluted to 0.1mg/ml, will call in ul, but this is ml
+        "cost_per_unit": 46.2, 
+        "quantity": 10/0.1 #10 mg in vial, need diluted to 0.1mg/ml
     },
 
     "human_serum": {
         "name": "Human Serum", #undiluted
         "supplier": "Millipore Sigma",
         "catalog_number": "H4522",
-        "cost_per_unit": 120, 
-        "quantity": 20
+        "cost_per_unit": 289, 
+        "quantity": 100 #100ml
     },
 
     "human_serum_1:100": {
@@ -916,19 +933,19 @@ chemical_list = {
         "quantity": 0.2 #200ul= 0.2 ml
     },
 
-    "salmonella_h_antiserum": {
-        "name": "Salmonella H Antiserum",
+    "salmonella_h:q_antiserum": {
+        "name": "Salmonella H:q Antiserum",
         "supplier": "Bio-Rad",
         "catalog_number": "3561124",
-        "cost_per_unit": 1560, 
-        "quantity": 60*3 #comes in 3ml vials, 60 per box; need to call by ml
+        "cost_per_unit": 3404, 
+        "quantity": 3 #comes in 3ml vials
     },
 
     "salmonella_o_antiserum": {
         "name": "Salmonella O Antiserum",
         "supplier": "VWR",
         "catalog_number": "90002-044",
-        "cost_per_unit": 281.02, 
+        "cost_per_unit": 340, 
         "quantity": 3 #comes in 3ml vials
     },
 
@@ -937,7 +954,7 @@ chemical_list = {
         "supplier": "VWR",
         "catalog_number": "IC0855852", #pulled infor from VWR but i am not sure if this is the one we purchased
         "cost_per_unit": 58.87, #cost per 1ml
-        "quantity": 1000 #converted to ul
+        "quantity": 1 
     },
 
     "tdt_enzyme": {

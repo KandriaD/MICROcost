@@ -273,11 +273,18 @@ def calculate_item_cost(row, course_info, exp_title=None, sheet_name=None):
         base_cost = total_samples * volume_ml * item_info.get("cost_per_ml", 0)
 
     elif category == "Chemical":
-        item_info = validate_item(name, "Chemical", sheet_name, exp_title)
-        if not item_info:
-            return 0
-        volume_ml = media.standard_volumes_ml.get(form_str, 1)
-        base_cost = total_samples * volume_ml * get_cost_per_use(item_info)
+            item_info = validate_item(name, "Chemical", sheet_name, exp_title)
+            if not item_info:
+                return 0
+            if form_lower == "1_ul":
+                # Library cost_per_unit is priced over `quantity` which is in mL.
+                # 1 µL = 0.001 mL, so scale the cost-per-mL down accordingly.
+                cost_per_ml = get_cost_per_use(item_info)   # cost per 1 mL
+                cost_per_ul = cost_per_ml * 0.001            # cost per 1 µL
+                base_cost   = total_samples * cost_per_ul
+            else:
+                volume_ml = media.standard_volumes_ml.get(form_str, 1)
+                base_cost = total_samples * volume_ml * get_cost_per_use(item_info)
 
     elif category in ["Supply", "Antibiotics"]:
         item_info = validate_item(name, category, sheet_name, exp_title)
