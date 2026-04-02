@@ -519,7 +519,7 @@ def export_all_weeks_by_prep_ta(filename):
     wb.save(filename)
     print(f"Created {filename} successfully with full formatting.")
 
-export_all_weeks_by_prep_ta("Spring26PrepTANeeds.xlsx")
+export_all_weeks_by_prep_ta("Summer26PrepTANeeds.xlsx")
 
 
 

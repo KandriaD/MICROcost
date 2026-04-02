@@ -460,7 +460,7 @@ supplies = {
         "name": "Dry Ice",
         "supplier": "",
         "catalog_number": "",
-        "cost_per_unit": 0,
+        "cost_per_unit": 30, #cost for 10 lbs, but calling as "use" so just 1 fill of 10lbs
         "quantity": 1
     },
 

@@ -6,8 +6,8 @@ chemical_list = {
         "synonym": ["M/15 Phosphate Buffer", "M/15 Phosphate (pH 7) buffer"], #i thnk this is the same as 20mM phosphate buffer, but need to confirm
         "supplier": "",
         "catalog_number": "",
-        "cost_per_unit": 0.0, #need to get this information
-        "quantity": 1 
+        "cost_per_unit": 31.58, #2.39g Sodium phosphate monobasic and 5.35g Sodium phosphate dibasic heptahydrate to make 100ml of 20mM phosphate buffer, so cost per liter is (2.39/500*54.4) + (5.35/500*81.97) = 31.58
+        "quantity": 100 
     },
 
     "abts_substrate_solution": {
@@ -118,17 +118,16 @@ chemical_list = {
         "name": "Buffered Sodium Nitrate Solution",
         "supplier": "",
         "catalog_number": "",
-        "cost_per_unit": 0, #need to get this information
-        "quantity": 1
+        "cost_per_unit": 1.53, #made using 9.15g sodium phosphate dibasic heptahydrate, 1.17g  potassium phosphate monobasic, and 0.85g Sodium nitrate to give 1L  
+        "quantity": 1000 #1000ml
     },
-
 
     "congo_red": {
         "name": "Congo Red",
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0, #need to get this information
-        "quantity": 1
+        "supplier": "VWR",
+        "catalog_number": "IC10509990",
+        "cost_per_unit": 272.65, #we have not had to order in years, but using this information from vwr for estimation
+        "quantity": 500/5*100 #500g, 5g per 100ml
     },
 
     "coomassie_blue": {
@@ -316,10 +315,10 @@ chemical_list = {
     "kinyounin_carbolfuchsin": {
         "name": "Kinyoun's Carbolfuchsin",
         "synonym": ["Kinyoun Carbolfuchsin", "Carbolfuchsin"],
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0, #have not purchased this in a long time
-        "quantity": 1
+        "supplier": "VWR",
+        "catalog_number": "77540-94",
+        "cost_per_unit": 44.88, #have not purchased this in a long time
+        "quantity": 250
     },
 
     "koh": {
@@ -334,10 +333,10 @@ chemical_list = {
     "kmno4": {
         "name": "Potassium Permanganate (KMnO4)",
         "synonym": ["KMnO4", "Potassium Permanganate", "Potassium Permanganate Solution"],
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0,
-        "quantity": 1
+        "supplier": "VWR",
+        "catalog_number": "EM1091221007", #not sure if this is the one we use, but using for cost estimation
+        "cost_per_unit": 64.19,
+        "quantity": 1000
     },
 
     "kovacs_reagent":{
@@ -391,10 +390,10 @@ chemical_list = {
 
     "malachite_green": {
         "name": "Malachite Green",
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0,
-        "quantity": 1 #mL
+        "supplier": "VWR",
+        "catalog_number": "77540-298",
+        "cost_per_unit": 30.25,
+        "quantity": 250 #mL
     },
 
     "maltose_monohydrate": {
@@ -403,6 +402,15 @@ chemical_list = {
         "catalog_number": "97062-604",
         "cost_per_unit": 46.62, #cost per bottle of 100g
         "quantity": 100 
+    },
+
+    "manevals_solution_#1": {  
+        "name": "Maneval's Solution #1",
+        "synonym": ["Maneval's Solution", "5% Acetic Acid", "Maneval Solution"],
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #waiting to get SOP from Carrie to get cost info
+        "quantity": 1
     },
 
     "methanol": {
@@ -415,18 +423,18 @@ chemical_list = {
 
     "methylene_blue":{
         "name": "Methylene Blue",
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0,
-        "quantity": 1
+        "supplier": "VWR",
+        "catalog_number": "RC4850-32",
+        "cost_per_unit": 59.09,
+        "quantity": 1000
     },
 
     "methyl_red": {
         "name": "Methyl Red",
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0,
-        "quantity": 1
+        "supplier": "VWR",
+        "catalog_number": "RC5060-32",
+        "cost_per_unit": 63.20,
+        "quantity": 1000
     },
 
     "mgcl2": {
@@ -464,10 +472,10 @@ chemical_list = {
 
     "nigrosin": {
         "name": "Nigrosin",
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0, 
-        "quantity": 1
+        "supplier": "Fisher Scientific",
+        "catalog_number": "AAA1814722",
+        "cost_per_unit":  55.26,
+        "quantity": 100*100/10 #100g * 100ml/10g = number of ml 
     },
 
     "paraformaldehyde_4%": {
@@ -527,6 +535,14 @@ chemical_list = {
         "quantity": 50000 # mL of 0.1% working solution a 50mL stock bottle yields (50 / 0.001)
     },
 
+    "potassium_phosphate_monobasic": {
+        "name": "Potassium Phosphate Monobasic",
+        "supplier": "VWR",
+        "catalog_number": "76177-920",
+        "cost_per_unit": 89.18, #cost for 500g
+        "quantity": 500 #g
+    },
+
     "saline": {
         "name": "Saline (0.85% NaCl)",
         "synonym": ["Saline", "0.85% NaCl"],
@@ -538,10 +554,10 @@ chemical_list = {
 
     "safranin":{
         "name": "Safranin",
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0,
-        "quantity": 1
+        "supplier": "VWR",
+        "catalog_number": "77540-260",
+        "cost_per_unit": 249.79,
+        "quantity": 3785.41 #1 gallon = 3785.41 mL
     },
 
     "saturated_ammonium_sulfate": {
@@ -620,6 +636,31 @@ chemical_list = {
         "catalog_number": "97062-028",
         "cost_per_unit": 60.86, #cost per 2% solution, we make from pure
         "quantity": 1000
+    },
+
+    "sodium_nitrate": {
+        "name": "Sodium Nitrate",
+        "supplier": "VWR",
+        "catalog_number": "BDH4574-500G",
+        "cost_per_unit": 92.85, #cost per bottle of 500g
+        "quantity": 500 #500g
+    },
+
+    "sodium_phosphate_monobasic": {
+        "name": "Sodium Phosphate Monobasic",
+        "supplier": "VWR",
+        "catalog_number": "77993-298",
+        "cost_per_unit": 54.4, #cost for 5g
+        "quantity": 5 #g
+    },
+
+
+    "sodium_phosphate_dibasic_heptahydrate": {
+        "name": "Sodium Phosphate Dibasic Heptahydrate",
+        "supplier": "VWR",
+        "catalog_number": "76348-192",
+        "cost_per_unit": 63.85, #cost for 500g
+        "quantity": 500 #g
     },
 
     "sucrose": {
