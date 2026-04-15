@@ -195,6 +195,14 @@ supplies = {
         "quantity": 12 #12 per box
     },
 
+    "bucket": {
+        "name": "Bucket",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
     "bunsen_burner": {
         "name": "Bunsen Burner",
         "supplier": "",
@@ -407,22 +415,6 @@ supplies = {
         "quantity": 1
     },
 
-    "electrophoresis_apparatus": {
-        "name": "Electrophoresis Apparatus",
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0, #reusable, so effectively 0
-        "quantity": 1
-    },
-
-    "electrophoresis_power_supply": {
-        "name": "Electrophoresis Power Supply",
-        "supplier": "",
-        "catalog_number": "",
-        "cost_per_unit": 0, #reusable, so effectively 0
-        "quantity": 1
-    },
-
     "diabetic_lancets": {
         "name": "Diabetic Lancets",
         "synonyms": ["lancets", "Diabetic Lancet", "Safety Lancet"],
@@ -472,6 +464,29 @@ supplies = {
         "quantity": 720
     },
 
+        "electrophoresis_apparatus": {
+        "name": "Electrophoresis Apparatus",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "electrophoresis_power_supply": {
+        "name": "Electrophoresis Power Supply",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 0, #reusable, so effectively 0
+        "quantity": 1
+    },
+
+    "em_facility_visit": {
+        "name": "EM Facility Visit",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 1000, 
+        "quantity": 53
+    },
 
 #    "enteropluri_kit": {  #discontinued
 #        "name": "EnteroPluri Kit",
@@ -969,23 +984,7 @@ supplies = {
         "quantity": 1
     },
 
-    "nitrate_reagent_a": {
-        "name": "Nitrate reagent A",
-        "synonyms": ["Nitrate reagent A", "Nitrate A"],
-        "supplier": "Millipore Sigma",
-        "catalog_number": "38497",
-        "cost_per_unit": 47.5,
-        "quantity": 1 #100 mL per bottle, but noting bottles used
-    }, 
-
-    "nitrate_reagent_b": {
-        "name": "Nitrate reagent B",
-        "synonyms": ["Nitrate reagent B", "Nitrate B"],
-        "supplier": "Millipore Sigma",
-        "catalog_number": "39441",
-        "cost_per_unit": 47.5,
-        "quantity": 1 #100 ml per bottle, but noting bottles used
-    },
+    
 
     "nitrocellulose_membranes": {
         "name": "Nitrocellulose Membranes",
@@ -1270,6 +1269,14 @@ supplies = {
         "quantity": 1
     },
 
+    "sequencing": {
+        "name": "Sequencing",
+        "supplier": "",
+        "catalog_number": "",
+        "cost_per_unit": 9.60,
+        "quantity": 2
+    },
+
     "shaker": {
         "name": "Shaker",
         "supplier": "",
@@ -1474,8 +1481,8 @@ supplies = {
         "name": "Vaccum Filtratuion Setup, 150 mL",
         "supplier": "VWR",
         "catalog_number": "10040-460",
-        "cost_per_unit": 74.16,  
-        "quantity": 12
+        "cost_per_unit": 0, 
+        "quantity": 1
     },
 
 

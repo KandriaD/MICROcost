@@ -335,8 +335,8 @@ chemical_list = {
         "synonym": ["KMnO4", "Potassium Permanganate", "Potassium Permanganate Solution"],
         "supplier": "VWR",
         "catalog_number": "EM1091221007", #not sure if this is the one we use, but using for cost estimation
-        "cost_per_unit": 64.19,
-        "quantity": 1000
+        "cost_per_unit": 0, #64.19 for 1000g, but comes from Stuart's lab, so we are treating as free for now
+        "quantity": 1
     },
 
     "kovacs_reagent":{
@@ -476,6 +476,24 @@ chemical_list = {
         "catalog_number": "AAA1814722",
         "cost_per_unit":  55.26,
         "quantity": 100*100/10 #100g * 100ml/10g = number of ml 
+    },
+
+    "nitrate_reagent_a": {
+        "name": "Nitrate reagent A",
+        "synonyms": ["Nitrate reagent A", "Nitrate A"],
+        "supplier": "Millipore Sigma",
+        "catalog_number": "38497",
+        "cost_per_unit": 47.5,
+        "quantity": 100 #100 mL per bottle
+    }, 
+
+    "nitrate_reagent_b": {
+        "name": "Nitrate reagent B",
+        "synonyms": ["Nitrate reagent B", "Nitrate B"],
+        "supplier": "Millipore Sigma",
+        "catalog_number": "39441",
+        "cost_per_unit": 47.5,
+        "quantity": 100 #100 ml per bottle
     },
 
     "paraformaldehyde_4%": {
