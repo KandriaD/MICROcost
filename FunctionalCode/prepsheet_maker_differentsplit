@@ -57,13 +57,13 @@ special_forms = ["1_ml", "0.5_ml", "1_ul"]
 # TA assignment rules
 # ----------------------------
 TA_ASSIGNMENTS = {
-    "Emily": {
-        "both": ["351L", "140L","463L"],
-        "bio_only": ["401L", "461L"]
+    "A": {
+        "both": ["140L","351L","401L","431L","461L","463L","475L"],
+        "bio_only": []
     },
-    "Jenna": {
-        "both": ["431L"],
-        "sup_only": ["401L", "461L"]
+    "B": {
+        "both": [],
+        "sup_only": []
     }
 }
 
@@ -79,8 +79,8 @@ SORT_PROFILES = {
 }
 
 TA_SORT_PROFILE = {
-    "Emily": "Option3",
-    "Jenna": "Option2"
+    "A": "Option3",
+    "B": "Option2"
 }
 
 
@@ -94,38 +94,78 @@ def get_prep_ta(course, category):
     course_number = "".join([c for c in course if c.isdigit() or c == "L"])
 
     # Check TA E rules
-    if course_number in TA_ASSIGNMENTS["Emily"]["both"]:
-        return "Emily"
-    if course_number in TA_ASSIGNMENTS["Emily"]["bio_only"] and category == "Biological":
-        return "Emily"
+    if course_number in TA_ASSIGNMENTS["A"]["both"]:
+        return "A"
+    if course_number in TA_ASSIGNMENTS["A"]["bio_only"] and category == "Biological":
+        return "A"
 
     # Check TA J rules
-    if course_number in TA_ASSIGNMENTS["Jenna"]["both"]:
-        return "Jenna"
-    if course_number in TA_ASSIGNMENTS["Jenna"]["sup_only"] and category != "Biological":
-        return "Jenna"
+    if course_number in TA_ASSIGNMENTS["B"]["both"]:
+        return "B"
+    if course_number in TA_ASSIGNMENTS["B"]["sup_only"] and category != "Biological":
+        return "B"
 
     return None  # no TA for this item
 
 
 
 # === Week Parsing ===
-def parse_week_string(week_str):
-    import datetime, re
-    
-    if not isinstance(week_str, str) or not week_str.strip():
+def parse_week_string(week_value):
+    import datetime
+    import pandas as pd
+    import re
+
+    # ----------------------------------------
+    # Handle missing values
+    # ----------------------------------------
+    if pd.isna(week_value):
         return datetime.datetime.max
 
-    # Normalize month names
-    week_str = week_str.replace("Sept", "Sep")
+    # ----------------------------------------
+    # Handle pandas Timestamp directly
+    # ----------------------------------------
+    if isinstance(week_value, pd.Timestamp):
+        return week_value.to_pydatetime()
 
-    # Ensure there's a space between month and day (e.g., "Sep30" → "Sep 30")
+    # ----------------------------------------
+    # Handle normal datetime/date objects
+    # ----------------------------------------
+    if isinstance(week_value, (datetime.datetime, datetime.date)):
+        return datetime.datetime.combine(
+            week_value,
+            datetime.datetime.min.time()
+        )
+
+    # ----------------------------------------
+    # Convert remaining values to string
+    # ----------------------------------------
+    week_str = str(week_value).strip()
+
+    if not week_str:
+        return datetime.datetime.max
+
+    # ----------------------------------------
+    # Normalize formatting
+    # ----------------------------------------
+    week_str = week_str.replace("Sept", "Sep")
+    week_str = week_str.replace("–", "-")
+    week_str = week_str.replace("—", "-")
+
+    # Example: "May26" -> "May 26"
     week_str = re.sub(r'([A-Za-z]+)(\d)', r'\1 \2', week_str)
 
     try:
         first_part = week_str.split("-")[0].strip()
-        return datetime.datetime.strptime(first_part + " 2025", "%b %d %Y")
-    except Exception:
+
+        current_year = datetime.datetime.now().year
+
+        return datetime.datetime.strptime(
+            f"{first_part} {current_year}",
+            "%b %d %Y"
+        )
+
+    except Exception as e:
+        print(f"Could not parse week string: {week_str} ({e})")
         return datetime.datetime.max
 
 def load_course_info(course_df):
@@ -162,7 +202,13 @@ def get_all_weeks():
         xls = pd.ExcelFile(file)
         schedule_df = xls.parse("ExperimentIndex")
         schedule_df.columns = schedule_df.columns.str.strip()
-        all_weeks.update(schedule_df["Week"].unique())
+
+        # Drop rows with no Week value -- an empty Week cell means that
+        # experiment isn't being run this term, so ignore it entirely.
+        weeks_in_file = schedule_df["Week"].dropna()
+        weeks_in_file = weeks_in_file[weeks_in_file.astype(str).str.strip() != ""]
+
+        all_weeks.update(weeks_in_file.unique())
 
     print(f"Found weeks:{all_weeks}")  
 
@@ -195,6 +241,12 @@ def gather_weekly_needs(week_number):
 
         def normalize_week_string(s):
             import re
+            if pd.isna(s):
+                return ""
+
+            if isinstance(s, pd.Timestamp):
+                return s.strftime("%b%d")
+
             s = str(s).strip()
             s = s.replace("Sept", "Sep")
             s = s.replace("–", "-")   # en dash → hyphen
@@ -325,6 +377,11 @@ def export_all_weeks_by_prep_ta(filename):
     # sort_order = ["Week_dt", "Category", "Course", "Media Used", "Form", "Item/Organism"]
     # if not df.empty and all(col in df.columns for col in sort_order):
     #     df = df.sort_values(by=sort_order, ascending=True)
+    # ============================================
+    # Force Week column to remain TEXT
+    # ============================================
+    if not df.empty and "Week" in df.columns:
+        df["Week"] = df["Week"].astype(str)
 
     # --- Write file (NO manual save here) ---
     with pd.ExcelWriter(filename, engine="openpyxl") as writer:
@@ -332,14 +389,14 @@ def export_all_weeks_by_prep_ta(filename):
         # If df is empty, create empty sheets with headers for each TA to avoid saving problems
         if df.empty:
             headers_df = pd.DataFrame(columns=expected_columns)
-            for ta in ["Emily", "Jenna"]:
+            for ta in ["A", "B"]:
                 headers_df.to_excel(writer, sheet_name=f"TA_{ta}", index=False)
         else:
             # Ensure PrepTA column exists before filtering
             if "PrepTA" not in df.columns:
                 df["PrepTA"] = "Unassigned"
 
-            for ta in ["Emily", "Jenna"]:
+            for ta in ["A", "B"]:
                 df_ta = df[df["PrepTA"] == ta].copy()
                 
                 sort_profile_name = TA_SORT_PROFILE.get(ta)
@@ -363,6 +420,14 @@ def export_all_weeks_by_prep_ta(filename):
                     pd.DataFrame(columns=df.columns).to_excel(writer, sheet_name=f"TA_{ta}", index=False)
                 else:
                     df_ta.to_excel(writer, sheet_name=f"TA_{ta}", index=False)
+    
+    # Force Excel to treat Week column as text
+    worksheet = writer.sheets[f"TA_{ta}"]
+
+    for cell in worksheet["A"]:
+        cell.number_format = "@"
+        if cell.value is not None:
+            cell.value = str(cell.value)
 
     # ------------------------------
     # SAFE Formatting with openpyxl
@@ -490,7 +555,7 @@ def export_all_weeks_by_prep_ta(filename):
         # ---------------------------------------
         # SAFE Week merging
         # ---------------------------------------
-        if week_col:
+        if week_col and ws.max_row > 1:
             start = 2
             while start <= ws.max_row:
                 start_val = ws.cell(row=start, column=week_col).value
@@ -519,7 +584,7 @@ def export_all_weeks_by_prep_ta(filename):
     wb.save(filename)
     print(f"Created {filename} successfully with full formatting.")
 
-export_all_weeks_by_prep_ta("Summer26PrepTANeeds.xlsx")
+export_all_weeks_by_prep_ta("Fall26PrepTANeeds.xlsx")
 
 
 

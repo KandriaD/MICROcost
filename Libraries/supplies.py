@@ -464,7 +464,7 @@ supplies = {
         "quantity": 720
     },
 
-        "electrophoresis_apparatus": {
+    "electrophoresis_apparatus": {
         "name": "Electrophoresis Apparatus",
         "supplier": "",
         "catalog_number": "",
@@ -666,7 +666,7 @@ supplies = {
         "name": "Nitrile Gloves XS",
         "supplier": "VWR",
         "catalog_number": "76579-100",
-        "cost_per_unit": 102.53,
+        "cost_per_unit": 128.69,
         "quantity": 10 #10 boxes per case, 100 gloves/box
     },
    
@@ -674,8 +674,8 @@ supplies = {
         "name": "Nitrile Gloves S",
         "supplier": "VWR",
         "catalog_number": "76499-262",
-        "cost_per_unit": 66.39,
-        "quantity": 10
+        "cost_per_unit": 88.5,
+        "quantity": 10 #10 boxes per case, 100 gloves/box
     },
     
     "gloves_m": {
@@ -683,23 +683,23 @@ supplies = {
         "supplier": "VWR",
         "catalog_number": "76499-264",
         "cost_per_unit": 122.31,
-        "quantity": 10
+        "quantity": 10 #10 boxes per case, 100 gloves/box
     },
     
     "gloves_l": {
         "name": "Nitrile Gloves L",
         "supplier": "VWR",
         "catalog_number": "76499-266",
-        "cost_per_unit": 122.31,
-        "quantity": 10
+        "cost_per_unit": 135.10,
+        "quantity": 10 #10 boxes per case, 100 gloves/box
     },
 
     "gloves_xl": {
         "name": "Nitrile Gloves XL",
         "supplier": "VWR",
         "catalog_number": "76499-268",
-        "cost_per_unit": 122.31,
-        "quantity": 10
+        "cost_per_unit": 135.6,
+        "quantity": 10 #10 boxes per case, 100 gloves/box
     },
 
     "hard_candy":{
@@ -1102,7 +1102,7 @@ supplies = {
 
     "petri_plate_standard": {
         "name": "Empty Petri Dish, 100mm",
-        "synonyms": ["Petri Dish"],
+        "synonyms": ["Petri Dish", "Empty Petri Dish, 100mm, Stackable"],
         "supplier": "VWR",
         "catalog_number": "25384-342",
         "cost_per_unit": 97.64,
@@ -1121,7 +1121,7 @@ supplies = {
         "name": "Pipet tips, 10 uL (LTS, red)",
         "supplier": "Rainin",
         "catalog_number": "30389291",
-        "cost_per_unit": 40,
+        "cost_per_unit": 83,
         "quantity": 960 #10 racks/case, 960 tips (10 racks of 96 tips)
     },
 
@@ -1129,7 +1129,7 @@ supplies = {
         "name": "Pipet tips, 20 uL (LTS, red)",
         "supplier": "Rainin",
         "catalog_number": "30389200",
-        "cost_per_unit": 39.90,
+        "cost_per_unit": 83.00,
         "quantity": 960 #10 racks/case. 960 tips total
     },
 
@@ -1137,7 +1137,7 @@ supplies = {
         "name": "Pipet tips, 250 uL (LTS, green)",
         "supplier": "Rainin",
         "catalog_number": "30389243",
-        "cost_per_unit": 39.90,
+        "cost_per_unit": 83.00,
         "quantity": 960 #10 racks/case
     },
 
@@ -1153,7 +1153,7 @@ supplies = {
         "name": "Pipet tips, 1000 uL (LST, blue)",
         "supplier": "Rainin",
         "catalog_number": "30389292",
-        "cost_per_unit": 40,
+        "cost_per_unit": 83,
         "quantity": 768  #8 layers of 96
     },
 

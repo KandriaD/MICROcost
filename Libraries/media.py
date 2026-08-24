@@ -398,7 +398,7 @@ media_list = {
         "synonym": ["RCP", "Rabbit Coagulase Plasma"],
         "supplier": "VWR",
         "catalog_number": "90003-150", 
-        "cost_per_ml": 621.38/10/15,  # cost/ packs/ ml made per pack
+        "cost_per_ml": 621.38/10/15,  # cost/ packs/ ml made per pack ##each vial can make 30 tubes of 500ul
     },
 
     "rodac_plates": {
@@ -543,7 +543,7 @@ media_list = {
         "synonym": ["TSA", "Tryptic Soy Agar"],
         "supplier": "VWR",
         "catolog_number": "89405-202",
-        "cost_per_ml": 0.00876
+        "cost_per_ml": 0.00876 #118.56 per 500g
     },
 
     "tsa_plates_premade": {
@@ -559,7 +559,7 @@ media_list = {
         "synonym": ["TSB", "Tryptic Soy Broth"],
         "supplier": "VWR",
         "catalog_number": "470227-520",
-        "cost_per_ml": 0.00456
+        "cost_per_ml": 0.00456 #91.19 per 500g
     },
 
     "tsia": { 

@@ -6,6 +6,8 @@ import datetime
 import pandas as pd
 from collections import defaultdict
 import warnings
+from openpyxl import Workbook
+from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 
 # ============================================
 # Path setup
@@ -25,7 +27,8 @@ import chemicals
 # Constants
 # ============================================
 EXPFILES_PATH = r"C:\Users\Kandriad\Desktop\ExpFiles"
-INVENTORY_PATH = r"C:\Users\Kandriad\Desktop\Sp26 Needs.xlsx"
+INVENTORY_PATH = r"C:\Users\Kandriad\Desktop\MediaInventory.xlsx"  # pulls counts of what have
+MEDIA_NEEDS_OUTPUT = r"C:\Users\Kandriad\Desktop\F26Media_Needs.xlsx"
 
 special_forms = ["1_ml", "0.5_ml", "1_ul"]
 
@@ -67,11 +70,12 @@ def parse_week_string(week_str):
         return datetime.datetime.max
 
 def load_course_info(course_df):
+    row = course_df.iloc[0]
     return {
-        "students": int(course_df.loc[0, "Students"]),
-        "sections": int(course_df.loc[0, "Sections"]),
-        "groups": int(course_df.loc[0, "Groups"]),
-        "rooms": course_df.loc[0, "Rooms"].split(", ")
+        "students": int(row["Students"]),
+        "sections": int(row["Sections"]),
+        "groups":   int(row["Groups"]),
+        "rooms":    row["Rooms"].split(", ")
     }
 
 def calculate_total_qty(quantity, dist_type, course_info, form=None):
@@ -93,7 +97,7 @@ def calculate_total_qty(quantity, dist_type, course_info, form=None):
 # Inventory loading
 # ============================================
 def load_media_inventory(INVENTORY_PATH):
-    df = pd.read_excel(INVENTORY_PATH, sheet_name="MediaSummary2.27.26")
+    df = pd.read_excel(INVENTORY_PATH, sheet_name="Inventory", header=0)
     inventory = {}
     for _, row in df.iterrows():
         key = (
@@ -107,43 +111,76 @@ def load_media_inventory(INVENTORY_PATH):
 # ============================================
 # Experiment parsing
 # ============================================
-def get_all_weeks():
-    pattern = os.path.join(EXPFILES_PATH, "*Experiments.xlsx")
-    experiment_files = glob.glob(pattern)
-    all_weeks = set()
-    for file in experiment_files:
-        xls = pd.ExcelFile(file)
-        schedule_df = xls.parse("ExperimentIndex")
-        schedule_df.columns = schedule_df.columns.str.strip()
-        all_weeks.update(schedule_df["Week"].dropna().unique())
-    return sorted(all_weeks, key=parse_week_string)
+def parse_sheet_with_header_search(xls, sheet_name, search_col):
+    """
+    Parse a sheet by first searching for the row that contains search_col
+    as a header, then re-reading with that row as the header.
+    Falls back to row 0 if the column is not found.
+    """
+    raw_df = xls.parse(sheet_name, header=None)
+    header_row = None
+    for i, row in raw_df.iterrows():
+        if search_col in [str(v).strip() for v in row.values]:
+            header_row = i
+            break
+    if header_row is None:
+        print(f"Warning: could not find '{search_col}' header in sheet '{sheet_name}', defaulting to row 0")
+        header_row = 0
+    df = xls.parse(sheet_name, header=header_row)
+    df.columns = df.columns.str.strip()
+    return df
 
-def gather_weekly_needs(week_number, inventory_keys):
+# ============================================
+# SINGLE-PASS CACHE BUILDER
+# ============================================
+# This replaces the old pattern of re-opening and re-parsing every Excel
+# file from disk once per week, per call site (it was happening 3x total
+# across the script). Instead, every file and every sheet is read from
+# disk exactly ONCE here, and everything downstream just looks things up
+# from the in-memory cache below.
+
+def build_weekly_items_cache(inventory_keys):
+    """
+    Reads every *Experiments.xlsx file and every sheet it references ONE
+    time each, and returns a dict: {week_number: [list of item dicts]}
+    """
     pattern = os.path.join(EXPFILES_PATH, "*Experiments.xlsx")
     experiment_files = glob.glob(pattern)
-    weekly_items = []
-    for file in experiment_files:
-        course_name = os.path.basename(file).replace("Experiments.xlsx", "").strip()
+
+    weekly_items_cache = defaultdict(list)
+
+    print(f"⏳ Reading {len(experiment_files)} experiment file(s) from disk (single pass)...")
+    for file_idx, file in enumerate(experiment_files, start=1):
+        print(f"   [{file_idx}/{len(experiment_files)}] parsing: {os.path.basename(file)}")
+
         xls = pd.ExcelFile(file)
-        course_df = xls.parse("CourseInfo")
+        course_df = parse_sheet_with_header_search(xls, "CourseInfo", "Students")
         course_info = load_course_info(course_df)
-        schedule_df = xls.parse("ExperimentIndex")
-        schedule_df.columns = schedule_df.columns.str.strip()
-        week_exps = schedule_df[schedule_df["Week"] == week_number]
+        schedule_df = parse_sheet_with_header_search(xls, "ExperimentIndex", "Week")
 
-        for _, row in week_exps.iterrows():
+        # Cache each experiment sheet within this file so it's only parsed once,
+        # even if it's referenced by multiple weeks/rows.
+        sheet_cache = {}
+
+        for _, row in schedule_df.iterrows():
+            week = row["Week"]
+            if pd.isna(week):
+                continue
+
             sheet_name = str(row["SheetName"])
             if sheet_name.endswith(".0"):
                 sheet_name = sheet_name[:-2]
             if sheet_name not in xls.sheet_names:
                 continue
-            exp_df = xls.parse(sheet_name)
-            exp_df.columns = exp_df.columns.str.strip()
+
+            if sheet_name not in sheet_cache:
+                sheet_cache[sheet_name] = parse_sheet_with_header_search(xls, sheet_name, "Category")
+            exp_df = sheet_cache[sheet_name]
 
             for _, entry in exp_df.iterrows():
                 media_used = entry.get("Media Used")
                 if not media_used or pd.isna(media_used) or str(media_used).strip() == "":
-                    continue  # skip irrelevant
+                    continue
 
                 form_raw = entry.get("Form")
                 form = str(form_raw).strip().replace(" ", "_") if form_raw else ""
@@ -151,7 +188,7 @@ def gather_weekly_needs(week_number, inventory_keys):
 
                 key = (str(media_used).strip(), form, notes_key)
                 if key not in inventory_keys:
-                    continue  # skip items not in inventory
+                    continue
 
                 if form in special_forms:
                     quantity = entry.get("Volume", 0)
@@ -163,13 +200,18 @@ def gather_weekly_needs(week_number, inventory_keys):
                 except Exception:
                     continue
 
-                weekly_items.append({
+                weekly_items_cache[week].append({
                     "Media Used": media_used,
                     "Form": form,
                     "Total Quantity": float(total_qty),
                     "Notes": notes_key
                 })
-    return weekly_items
+
+    print("✅ Finished single-pass read of all experiment files.")
+    return weekly_items_cache
+
+def get_all_weeks_from_cache(weekly_items_cache):
+    return sorted(weekly_items_cache.keys(), key=lambda w: parse_week_string(str(w)))
 
 # ============================================
 # Inventory usage calculation
@@ -198,24 +240,18 @@ def get_low_stock_threshold(media_name, form, notes):
 # ============================================
 # Week-by-week forecast
 # ============================================
-def forecast_weekly_inventory(inventory, all_weeks):
-    """
-    Simulate week-by-week inventory and return:
-    - first_low_week: dict of first week each item drops below threshold (before going negative)
-    - remaining_inventory: final remaining quantities after all weeks
-    """
+def forecast_weekly_inventory(inventory, all_weeks, weekly_items_cache):
     inv = inventory.copy()
     first_low_week = {}
     usage_schedule = defaultdict(list)
 
-    # Build a schedule of when each media is used
+    print("⏳ Building usage schedule from cache...")
     for week in all_weeks:
-        weekly_items = gather_weekly_needs(week, inventory.keys())
+        weekly_items = weekly_items_cache.get(week, [])
         for item in weekly_items:
             key = (item["Media Used"], item["Form"], normalize_notes(item["Notes"]))
             usage_schedule[key].append(week)
 
-    # Detect items already below threshold at start of semester
     for key, qty in inv.items():
         threshold = get_low_stock_threshold(*key)
         if qty < threshold and key not in first_low_week:
@@ -226,9 +262,9 @@ def forecast_weekly_inventory(inventory, all_weeks):
                 "next_low_week": next_usage
             }
 
-    # Simulate week-by-week depletion
+    print("⏳ Simulating inventory drawdown week by week...")
     for week in all_weeks:
-        weekly_items = gather_weekly_needs(week, inventory.keys())
+        weekly_items = weekly_items_cache.get(week, [])
         usage = calculate_media_usage(weekly_items)
 
         for key, qty_used in usage.items():
@@ -240,34 +276,113 @@ def forecast_weekly_inventory(inventory, all_weeks):
             remaining_after = remaining_before - qty_used
             inv[key] = remaining_after
 
-            # Check if this week is the first week the stock will drop below threshold
             if remaining_before >= threshold and remaining_after < threshold and key not in first_low_week:
-                # The week AFTER this warning week is when stock would go below threshold
                 future_weeks = [w for w in usage_schedule[key] if parse_week_string(str(w)) > parse_week_string(str(week))]
                 next_usage = future_weeks[0] if future_weeks else None
 
                 first_low_week[key] = {
-                    "warning_week": week,                # last safe week
+                    "warning_week": week,
                     "remaining_before": remaining_before,
-                    "next_low_week": next_usage          # first week that would be below threshold
+                    "next_low_week": next_usage
                 }
 
+    print("✅ Finished drawdown simulation.")
     return first_low_week, inv
+
+# ============================================
+# Export media needs to Excel ##NEED TO FIND A WAY TO HAVE IT PUT IN ALL MEDIA INCLUDING THOSE THAT ARE ZERO
+# ============================================
+def export_media_needs(all_weeks, weekly_items_cache, inventory, output_path=MEDIA_NEEDS_OUTPUT):
+    # Gather and aggregate all needs across every week (from cache, no re-reading disk)
+    all_items = []
+    print("⏳ Aggregating totals for export...")
+    for week in all_weeks:
+        all_items.extend(weekly_items_cache.get(week, []))
+
+    usage = calculate_media_usage(all_items)
+
+    # Start from EVERY item in MediaInventory.xlsx (defaulting to 0 need),
+    # then layer in any actual usage found. This guarantees items that were
+    # never used this semester still show up in the export with 0.
+    all_keys = set(inventory.keys()) | set(usage.keys())
+
+    rows = sorted(
+        [
+            {
+                "Media Used": media_used,
+                "Form": form,
+                "Notes": notes,
+                "Total Need": usage.get((media_used, form, notes), 0.0)
+            }
+            for (media_used, form, notes) in all_keys
+        ],
+        key=lambda r: (r["Media Used"], r["Form"], r["Notes"])
+    )
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Media Needs"
+
+    # Styles
+    header_font     = Font(name="Consolas", bold=True, color="FFFFFF", size=12)
+    header_fill     = PatternFill("solid", start_color="4D4D4D")   # dark gray
+    data_font       = Font(name="Consolas", size=11)
+    alt_fill        = PatternFill("solid", start_color="B2B2B2")   # light gray stripe
+    center_align    = Alignment(horizontal="center", vertical="center")
+    left_align      = Alignment(horizontal="left",   vertical="center")
+
+    headers = ["Media Used", "Form", "Notes", "Total Need"]
+    col_widths = [30, 18, 28, 14]
+
+    # Write headers
+    for col_idx, (header, width) in enumerate(zip(headers, col_widths), start=1):
+        cell = ws.cell(row=1, column=col_idx, value=header)
+        cell.font = header_font
+        cell.fill = header_fill
+        cell.alignment = center_align
+        ws.column_dimensions[cell.column_letter].width = width
+
+    ws.row_dimensions[1].height = 20
+
+    # Write data rows
+    for row_idx, row in enumerate(rows, start=2):
+        fill = alt_fill if row_idx % 2 == 0 else PatternFill()
+        values = [row["Media Used"], row["Form"], row["Notes"], row["Total Need"]]
+        for col_idx, value in enumerate(values, start=1):
+            cell = ws.cell(row=row_idx, column=col_idx, value=value)
+            cell.font = data_font
+            cell.fill = fill
+            cell.alignment = center_align if col_idx in (2, 4) else left_align
+            if col_idx == 4:
+                cell.number_format = "#,##0"
+
+    # Freeze header row
+    ws.freeze_panes = "A2"
+
+    wb.save(output_path)
+    print(f"✅ Media needs exported to: {output_path}")
 
 # ============================================
 # MAIN
 # ============================================
 if __name__ == "__main__":
     inventory = load_media_inventory(INVENTORY_PATH)
-    all_weeks = get_all_weeks()
-    first_low_week, final_inventory = forecast_weekly_inventory(inventory, all_weeks)
+    print(f"✅ Loaded inventory: {len(inventory)} items")
+
+    # Single disk pass: read every experiment file/sheet exactly once
+    weekly_items_cache = build_weekly_items_cache(inventory.keys())
+
+    all_weeks = get_all_weeks_from_cache(weekly_items_cache)
+    print(f"✅ Found {len(all_weeks)} weeks to process")
+
+    first_low_week, final_inventory = forecast_weekly_inventory(inventory, all_weeks, weekly_items_cache)
 
     print("\n=== WEEKLY LOW STOCK FORECAST ===\n")
     if not first_low_week:
         print("✅ All media stocks are above threshold for all weeks.")
     else:
         for key, info in first_low_week.items():
-            media, form, notes = key
+            media_name, form, notes = key
             warning_week = info["warning_week"]
             remaining = info["remaining_before"]
             next_low_week = info["next_low_week"]
@@ -279,9 +394,12 @@ if __name__ == "__main__":
             else:
                 next_text = " Not Needed Again This Semester"
 
-            print(f"🚨 {media} ({form}, {notes or 'no notes'}) → {remaining:.2f} remaining as of {warning_date}{next_text}")
+            print(f"🚨 {media_name} ({form}, {notes or 'no notes'}) → {remaining:.2f} remaining as of {warning_date}{next_text}")
 
     print("\n=== FINAL INVENTORY AFTER ALL WEEKS ===\n")
     for key, remaining in final_inventory.items():
-        media, form, notes = key
-        print(f"{media} | {form} | {notes or 'no notes'} → {remaining:.2f}")
+        media_name, form, notes = key
+        print(f"{media_name} | {form} | {notes or 'no notes'} → {remaining:.2f}")
+
+    # Export media needs summary to Excel
+    export_media_needs(all_weeks, weekly_items_cache, inventory)
