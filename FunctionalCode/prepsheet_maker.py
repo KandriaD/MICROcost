@@ -57,7 +57,7 @@ def caluclate_total_qty(quantity, dist_type, course_info, form=None):
         "Per Student": course_info["students"],
         "Per Pair": course_info["students"] // 2,
         "Per Group": course_info["groups"],
-        "Per Table": sum(5 if room.strip() == "113" else 6 for room in course_info['rooms']),
+        "Per Table": sum(5 if room.strip() == "115C" else 6 for room in course_info['rooms']),
         "Per Section": course_info["sections"],
         "Per Room": len(course_info["rooms"]),
         "Per Course": 1

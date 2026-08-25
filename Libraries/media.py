@@ -290,7 +290,7 @@ media_list = {
         "synonym": ["MTM Agar", "Thayer-Martin Agar", "MTM", "Modified Thayer-Martin", "Thayer-Martin"],
         "supplier": "VWR",
         "catalog_number": "10324-496",
-        "cost_per_ml": 16.04/10 #premade
+        "cost_per_ml": 35.7/10 #premade
     },
 
     "muller_hinton": {
